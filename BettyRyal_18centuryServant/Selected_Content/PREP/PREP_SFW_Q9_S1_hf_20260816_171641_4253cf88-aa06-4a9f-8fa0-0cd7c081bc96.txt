@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_hf_20260816_171641_4253cf88-aa06-4a9f-8fa0-0cd7c081bc96.png
+Anonymized ID: hf_20260816_171641_4253cf88-aa06-4a9f-8fa0-0cd7c081bc96
+File Format: .PNG | Size: 7559.8 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts three women in a 18th-century setting, with one woman adjusting the dress of another who is seated. The woman standing wears a simple, period-appropriate dress and head covering, while the seated woman is dressed in an elaborate red gown with lace details. The third woman, seated beside the first, wears a green gown with intricate embroidery. The setting is a dimly lit room with a fireplace, wooden furniture, and period-appropriate decor, suggesting a domestic scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a focus on the textures and lighting that enhance the historical atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the historical clothing and setting.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The scene appears to be a preparation or dressing moment, as indicated by the woman adjusting the gown of the seated woman.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts three women in a 18th-century setting, with one woman adjusting the dress of another who is seated. The woman standing wears a simple, period-appropriate dress and head covering, while the seated woman is dressed in an elaborate red gown with lace details. The third woman, seated beside the first, wears a green gown with intricate embroidery. The setting is a dimly lit room with a fireplace, wooden furniture, and period-appropriate decor, suggesting a domestic scene.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a focus on the textures and lighting that enhance the historical atmosphere.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the historical clothing and setting.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The scene appears to be a preparation or dressing moment, as indicated by the woman adjusting the gown of the seated woman.
+
+ISSUES: NONE
+====================================================

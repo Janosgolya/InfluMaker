@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S5_hf_20260816_180606_5f878400-9a6a-42b3-adc2-099cbafa4474.png
+Anonymized ID: hf_20260816_180606_5f878400-9a6a-42b3-adc2-099cbafa4474
+File Format: .PNG | Size: 7252.8 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is seated beside a steaming bath, wearing a beige dress and a headscarf. She is positioned on a wooden bench with a towel and a bar of soap in front of her. The setting appears to be a rustic, dimly lit room with stone walls and hanging lanterns, suggesting a historical spa or bathhouse.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and the environment.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 5 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman's bare arms and legs, which are not considered naked under the strict rule.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and steam suggest a morning bath, as the environment is calm and the woman appears relaxed.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is seated beside a steaming bath, wearing a beige dress and a headscarf. She is positioned on a wooden bench with a towel and a bar of soap in front of her. The setting appears to be a rustic, dimly lit room with stone walls and hanging lanterns, suggesting a historical spa or bathhouse.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and the environment.
+
+SENSUALITY: 5
+SENSUALITY_REASON: The image shows the woman's bare arms and legs, which are not considered naked under the strict rule.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting and steam suggest a morning bath, as the environment is calm and the woman appears relaxed.
+
+ISSUES: NONE
+====================================================

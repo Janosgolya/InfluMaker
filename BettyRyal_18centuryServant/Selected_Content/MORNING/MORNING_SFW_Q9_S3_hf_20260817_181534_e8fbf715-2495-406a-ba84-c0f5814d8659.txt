@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S3_hf_20260817_181534_e8fbf715-2495-406a-ba84-c0f5814d8659.png
+Anonymized ID: hf_20260817_181534_e8fbf715-2495-406a-ba84-c0f5814d8659
+File Format: .PNG | Size: 7436.1 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman stands in a rustic, sunlit room, facing a tall mirror. She wears a loose, off-the-shoulder dress, and her hair is styled in loose curls. The room has a vintage feel, with a wooden bed, a trunk, and a small table with a pitcher and cloth. The sunlight streams through a window, casting a warm glow throughout the space.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has excellent clarity and detail, with a warm, natural lighting that enhances the historical atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman's upper body and arms, which are covered by her dress, but the focus is on her reflection and the room's ambiance rather than explicit sensuality.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The warm sunlight and the woman's attire suggest a morning setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman stands in a rustic, sunlit room, facing a tall mirror. She wears a loose, off-the-shoulder dress, and her hair is styled in loose curls. The room has a vintage feel, with a wooden bed, a trunk, and a small table with a pitcher and cloth. The sunlight streams through a window, casting a warm glow throughout the space.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has excellent clarity and detail, with a warm, natural lighting that enhances the historical atmosphere.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image shows the woman's upper body and arms, which are covered by her dress, but the focus is on her reflection and the room's ambiance rather than explicit sensuality.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The warm sunlight and the woman's attire suggest a morning setting.
+
+ISSUES: NONE
+====================================================

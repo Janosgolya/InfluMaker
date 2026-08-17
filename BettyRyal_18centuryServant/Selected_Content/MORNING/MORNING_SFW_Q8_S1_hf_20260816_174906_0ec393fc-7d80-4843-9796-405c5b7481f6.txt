@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q8_S1_hf_20260816_174906_0ec393fc-7d80-4843-9796-405c5b7481f6.png
+Anonymized ID: hf_20260816_174906_0ec393fc-7d80-4843-9796-405c5b7481f6
+File Format: .PNG | Size: 6989.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress is sweeping the floor of a dimly lit room with a broom. The setting appears to be a rustic kitchen or dining area, with a long table in the background adorned with candles and various items. The lighting is soft and natural, coming from windows on either side of the room.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a realistic depiction of the scene and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the woman is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting suggests early morning light coming through the windows.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress is sweeping the floor of a dimly lit room with a broom. The setting appears to be a rustic kitchen or dining area, with a long table in the background adorned with candles and various items. The lighting is soft and natural, coming from windows on either side of the room.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with a realistic depiction of the scene and characters.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the woman is fully clothed.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting suggests early morning light coming through the windows.
+
+ISSUES: NONE
+====================================================

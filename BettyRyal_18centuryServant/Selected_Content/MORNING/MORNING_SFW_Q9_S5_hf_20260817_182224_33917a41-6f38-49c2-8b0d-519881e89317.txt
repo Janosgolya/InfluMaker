@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S5_hf_20260817_182224_33917a41-6f38-49c2-8b0d-519881e89317.png
+Anonymized ID: hf_20260817_182224_33917a41-6f38-49c2-8b0d-519881e89317
+File Format: .PNG | Size: 6953.1 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman stands in a dimly lit, 18th-century room, wearing a loose, light-colored gown. The setting includes wooden beams, a bed, a small table with a lit candle, and a window draped with curtains. Sunlight streams through the window, creating a dramatic and moody atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a strong emphasis on lighting and atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 5 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman in a partially undressed state, which is suggestive but not explicit.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The sunlight streaming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman stands in a dimly lit, 18th-century room, wearing a loose, light-colored gown. The setting includes wooden beams, a bed, a small table with a lit candle, and a window draped with curtains. Sunlight streams through the window, creating a dramatic and moody atmosphere.
+
+AGE_ESTIMATE: Mature adult 26+.
+
+QUALITY: 9
+
+QUALITY_REASON: The image has high resolution and detail, with a strong emphasis on lighting and atmosphere.
+
+SENSUALITY: 5
+
+SENSUALITY_REASON: The image shows the woman in a partially undressed state, which is suggestive but not explicit.
+
+CATEGORY: SFW
+
+THEME: MORNING
+
+THEME_REASON: The sunlight streaming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

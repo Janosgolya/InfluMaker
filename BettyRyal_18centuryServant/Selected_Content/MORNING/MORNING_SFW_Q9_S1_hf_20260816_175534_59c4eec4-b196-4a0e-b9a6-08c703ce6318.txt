@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_175534_59c4eec4-b196-4a0e-b9a6-08c703ce6318.png
+Anonymized ID: hf_20260816_175534_59c4eec4-b196-4a0e-b9a6-08c703ce6318
+File Format: .PNG | Size: 7063.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is seen in a rustic bedroom, adjusting a bedsheet. She wears a simple, off-the-shoulder dress with a belt and a white head covering. The room is dimly lit by natural light coming through a window, casting a warm glow on the scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and the setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the subject is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is seen in a rustic bedroom, adjusting a bedsheet. She wears a simple, off-the-shoulder dress with a belt and a white head covering. The room is dimly lit by natural light coming through a window, casting a warm glow on the scene.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and the setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the subject is fully clothed.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

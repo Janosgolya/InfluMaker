@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S5_hf_20260816_180014_7be143df-8dc0-4389-932f-0badeb43bf21.png
+Anonymized ID: hf_20260816_180014_7be143df-8dc0-4389-932f-0badeb43bf21
+File Format: .PNG | Size: 6660.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire stands in a dimly lit room, looking into a bed where two people are lying. The woman's clothing is simple and period-appropriate, and the setting appears to be a rustic, wooden interior. The lighting is low, creating a somber and intimate atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a focus on the textures of the clothing and the wooden interior.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 5 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the presence of the woman in period clothing and the setting suggests a historical context rather than a modern or explicit sexual scenario.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The low lighting and the intimate setting suggest a nighttime scene.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire stands in a dimly lit room, looking into a bed where two people are lying. The woman's clothing is simple and period-appropriate, and the setting appears to be a rustic, wooden interior. The lighting is low, creating a somber and intimate atmosphere.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with a focus on the textures of the clothing and the wooden interior.
+
+SENSUALITY: 5
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the presence of the woman in period clothing and the setting suggests a historical context rather than a modern or explicit sexual scenario.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The low lighting and the intimate setting suggest a nighttime scene.
+
+ISSUES: NONE
+====================================================

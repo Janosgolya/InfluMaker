@@ -1,0 +1,45 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S4_hf_20260816_171809_1a7ec15b-2834-4efc-becc-a7e1f097e575.png
+Anonymized ID: hf_20260816_171809_1a7ec15b-2834-4efc-becc-a7e1f097e575
+File Format: .PNG | Size: 7168.1 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene set in a dimly lit, 18th-century room with a fireplace in the background. A woman in period attire holds a lit candle, while another woman in a red dress dances, and a man plays a lute. The setting suggests a social gathering or a domestic scene, with a warm, intimate atmosphere created by the candlelight.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the textures of the clothing and the ambiance of the room.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 4 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image contains a woman in period attire with bare arms and legs, but no naked breasts or genitalia are visible.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and candlelight suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene set in a dimly lit, 18th-century room with a fireplace in the background. A woman in period attire holds a lit candle, while another woman in a red dress dances, and a man plays a lute. The setting suggests a social gathering or a domestic scene, with a warm, intimate atmosphere created by the candlelight.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the textures of the clothing and the ambiance of the room.
+
+SENSUALITY: 4
+SENSUALITY_REASON: The image contains a woman in period attire with bare arms and legs, but no naked breasts or genitalia are visible.
+
+CATEGORY: SFW
+THEME: NIGHT
+THEME_REASON: The dim lighting and candlelight suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S3_hf_20260817_191822_ac393608-d95e-40b4-91bc-118b08fe7222.png
+Anonymized ID: hf_20260817_191822_ac393608-d95e-40b4-91bc-118b08fe7222
+File Format: .PNG | Size: 6785.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is seated at a wooden table, leaning on her hands with a book and a glass of red wine in front of her. The setting is dimly lit by a candelabra and a fireplace, creating a warm and intimate atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with a focus on the subject and the setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows a woman in historical clothing with a glass of wine, which is suggestive but not explicitly sexual.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The lighting and setting suggest a nighttime scene, with the use of candles and the dark background.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is seated at a wooden table, leaning on her hands with a book and a glass of red wine in front of her. The setting is dimly lit by a candelabra and a fireplace, creating a warm and intimate atmosphere.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detailed textures, with a focus on the subject and the setting.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image shows a woman in historical clothing with a glass of wine, which is suggestive but not explicitly sexual.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The lighting and setting suggest a nighttime scene, with the use of candles and the dark background.
+
+ISSUES: NONE
+====================================================

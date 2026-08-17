@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_175711_8039ea32-f676-4573-920b-f981b6c72fca.png
+Anonymized ID: hf_20260816_175711_8039ea32-f676-4573-920b-f981b6c72fca
+File Format: .PNG | Size: 7090.7 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a woman in 18th-century attire, likely a servant, engaged in washing clothes in a large wooden tub. She is wearing a simple dress and a headscarf, and the setting appears to be a rustic kitchen or laundry room with a fireplace in the background. The lighting is warm and natural, suggesting it is daytime. The woman is smiling and appears to be enjoying her task.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive content.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural lighting and the woman's cheerful expression suggest it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a woman in 18th-century attire, likely a servant, engaged in washing clothes in a large wooden tub. She is wearing a simple dress and a headscarf, and the setting appears to be a rustic kitchen or laundry room with a fireplace in the background. The lighting is warm and natural, suggesting it is daytime. The woman is smiling and appears to be enjoying her task.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive content.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural lighting and the woman's cheerful expression suggest it is morning.
+
+ISSUES: NONE
+====================================================

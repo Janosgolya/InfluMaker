@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_hf_20260817_181203_f4bddce1-3750-4c87-8c2a-d54af0f5bf00.png
+Anonymized ID: hf_20260817_181203_f4bddce1-3750-4c87-8c2a-d54af0f5bf00
+File Format: .PNG | Size: 7156.4 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress and headscarf is kneeling on a wooden floor, cleaning with a cloth. A large copper pot with steam rising from it is to her left, and a fireplace with a fire burning is in the background. The setting appears to be a rustic, dimly lit room, possibly a kitchen or servants' quarters.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a realistic and well-composed scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the woman's attire and actions are appropriate for the historical setting.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The woman is preparing the room, likely for a task or event.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress and headscarf is kneeling on a wooden floor, cleaning with a cloth. A large copper pot with steam rising from it is to her left, and a fireplace with a fire burning is in the background. The setting appears to be a rustic, dimly lit room, possibly a kitchen or servants' quarters.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a realistic and well-composed scene.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the woman's attire and actions are appropriate for the historical setting.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The woman is preparing the room, likely for a task or event.
+
+ISSUES: NONE
+====================================================

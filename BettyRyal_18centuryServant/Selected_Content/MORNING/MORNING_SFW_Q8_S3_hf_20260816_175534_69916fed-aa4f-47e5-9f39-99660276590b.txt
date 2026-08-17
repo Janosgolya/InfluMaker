@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q8_S3_hf_20260816_175534_69916fed-aa4f-47e5-9f39-99660276590b.png
+Anonymized ID: hf_20260816_175534_69916fed-aa4f-47e5-9f39-99660276590b
+File Format: .PNG | Size: 7086.4 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress is ascending a stone staircase, carrying two buckets of water. The setting appears to be a dimly lit, old-fashioned interior with a small window allowing natural light to filter in. The woman's expression suggests she is focused on her task.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has good clarity and detail, with natural lighting and a realistic depiction of the scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman's bare arms and legs, but no naked breasts or genitalia are visible.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress is ascending a stone staircase, carrying two buckets of water. The setting appears to be a dimly lit, old-fashioned interior with a small window allowing natural light to filter in. The woman's expression suggests she is focused on her task.
+
+QUALITY: 8
+QUALITY_REASON: The image has good clarity and detail, with natural lighting and a realistic depiction of the scene.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image shows the woman's bare arms and legs, but no naked breasts or genitalia are visible.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

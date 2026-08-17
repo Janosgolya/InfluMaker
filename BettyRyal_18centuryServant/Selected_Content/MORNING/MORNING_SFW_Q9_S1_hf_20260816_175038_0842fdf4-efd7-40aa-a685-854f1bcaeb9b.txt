@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_175038_0842fdf4-efd7-40aa-a685-854f1bcaeb9b.png
+Anonymized ID: hf_20260816_175038_0842fdf4-efd7-40aa-a685-854f1bcaeb9b
+File Format: .PNG | Size: 7373.5 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+Two women are depicted in a 18th-century setting, with one woman brushing the hair of the other. The woman being brushed is seated on a wooden chair, wearing a white gown, while the other woman, standing, is dressed in a beige apron and skirt, with a white head covering. The room is dimly lit by natural light coming through a window, and the setting includes wooden furniture, a bed, and framed portraits on the walls.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and realism, with natural lighting and a well-composed scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the focus is on the interaction between the two women.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: Two women are depicted in a 18th-century setting, with one woman brushing the hair of the other. The woman being brushed is seated on a wooden chair, wearing a white gown, while the other woman, standing, is dressed in a beige apron and skirt, with a white head covering. The room is dimly lit by natural light coming through a window, and the setting includes wooden furniture, a bed, and framed portraits on the walls.
+
+QUALITY: 9
+QUALITY_REASON: The image has a high level of detail and realism, with natural lighting and a well-composed scene.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the focus is on the interaction between the two women.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

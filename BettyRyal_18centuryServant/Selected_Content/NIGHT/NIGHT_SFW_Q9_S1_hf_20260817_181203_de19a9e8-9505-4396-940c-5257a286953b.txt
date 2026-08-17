@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_hf_20260817_181203_de19a9e8-9505-4396-940c-5257a286953b.png
+Anonymized ID: hf_20260817_181203_de19a9e8-9505-4396-940c-5257a286953b
+File Format: .PNG | Size: 6869.4 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person dressed in 18th-century attire is adjusting a lantern above a large copper bathtub. Steam rises from the tub, and the setting appears dimly lit, suggesting a historical or period drama scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a focus on the historical setting and lighting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and steam suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person dressed in 18th-century attire is adjusting a lantern above a large copper bathtub. Steam rises from the tub, and the setting appears dimly lit, suggesting a historical or period drama scene.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+
+QUALITY_REASON: The image has high resolution and detail, with a focus on the historical setting and lighting.
+
+SENSUALITY: 1
+
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+
+THEME_REASON: The dim lighting and steam suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

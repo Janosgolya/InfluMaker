@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_174906_d257178b-59ff-4922-84eb-96cb32351752.png
+Anonymized ID: hf_20260816_174906_d257178b-59ff-4922-84eb-96cb32351752
+File Format: .PNG | Size: 7528.8 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire ascends a wooden staircase, carrying two buckets of water. The setting is a dimly lit, rustic interior with brick walls and a single window allowing light to filter through, casting dramatic shadows.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a focus on realistic textures and lighting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The light coming through the window suggests early morning light.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire ascends a wooden staircase, carrying two buckets of water. The setting is a dimly lit, rustic interior with brick walls and a single window allowing light to filter through, casting dramatic shadows.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a focus on realistic textures and lighting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The light coming through the window suggests early morning light.
+
+ISSUES: NONE
+====================================================

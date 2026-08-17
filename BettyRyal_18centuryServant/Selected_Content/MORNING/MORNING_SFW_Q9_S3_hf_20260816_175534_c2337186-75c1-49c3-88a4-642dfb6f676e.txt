@@ -1,0 +1,45 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S3_hf_20260816_175534_c2337186-75c1-49c3-88a4-642dfb6f676e.png
+Anonymized ID: hf_20260816_175534_c2337186-75c1-49c3-88a4-642dfb6f676e
+File Format: .PNG | Size: 7408.5 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts two women in a dimly lit, rustic setting, likely a 18th-century London laundry. The woman in the foreground is wearing a beige dress with a headscarf, washing clothes in a wooden trough. The woman in the background is holding a white cloth and appears to be drying it. The setting includes a stone wall, a lit lantern, and a window with light streaming through, creating a dramatic and historical atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high detail and a realistic texture, with a strong emphasis on historical accuracy in the setting and clothing.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the historical context rather than explicit sexual content.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts two women in a dimly lit, rustic setting, likely a 18th-century London laundry. The woman in the foreground is wearing a beige dress with a headscarf, washing clothes in a wooden trough. The woman in the background is holding a white cloth and appears to be drying it. The setting includes a stone wall, a lit lantern, and a window with light streaming through, creating a dramatic and historical atmosphere.
+
+QUALITY: 9
+QUALITY_REASON: The image has high detail and a realistic texture, with a strong emphasis on historical accuracy in the setting and clothing.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the historical context rather than explicit sexual content.
+
+CATEGORY: SFW
+THEME: MORNING
+THEME_REASON: The light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S4_hf_20260816_171809_f3107643-f49e-4e61-804a-cd3d37a950dc.png
+Anonymized ID: hf_20260816_171809_f3107643-f49e-4e61-804a-cd3d37a950dc
+File Format: .PNG | Size: 6688.0 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a group of five individuals, dressed in 18th-century attire, gathered around a table in a dimly lit room. The setting appears to be a tavern or a private room, with a candle providing the primary light source. The individuals are engaged in a card game, with coins and playing cards spread out on the table. The woman in the center is holding a jug, possibly serving a drink. The overall atmosphere is warm and intimate.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with well-defined characters and a realistic depiction of the scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 4 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the characters' upper bodies and faces, which are not fully exposed.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the presence of a candle suggest that the scene takes place in the evening or at night.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a group of five individuals, dressed in 18th-century attire, gathered around a table in a dimly lit room. The setting appears to be a tavern or a private room, with a candle providing the primary light source. The individuals are engaged in a card game, with coins and playing cards spread out on the table. The woman in the center is holding a jug, possibly serving a drink. The overall atmosphere is warm and intimate.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with well-defined characters and a realistic depiction of the scene.
+
+SENSUALITY: 4
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the characters' upper bodies and faces, which are not fully exposed.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the presence of a candle suggest that the scene takes place in the evening or at night.
+
+ISSUES: NONE
+====================================================

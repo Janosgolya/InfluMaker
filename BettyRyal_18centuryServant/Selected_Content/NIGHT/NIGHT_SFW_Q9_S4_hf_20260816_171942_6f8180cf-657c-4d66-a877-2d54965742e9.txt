@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S4_hf_20260816_171942_6f8180cf-657c-4d66-a877-2d54965742e9.png
+Anonymized ID: hf_20260816_171942_6f8180cf-657c-4d66-a877-2d54965742e9
+File Format: .PNG | Size: 6341.5 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire sits on a wooden staircase, holding a lit candle. She is smiling and looking down at a group of people gathered in a dimly lit room, possibly a tavern or a similar setting. The lighting is warm and focused on the woman, creating a dramatic and intimate atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a strong focus on the subject and a well-composed background.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 4 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman's bare arms and legs, but no naked breasts or genitalia are visible.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and candlelight suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire sits on a wooden staircase, holding a lit candle. She is smiling and looking down at a group of people gathered in a dimly lit room, possibly a tavern or a similar setting. The lighting is warm and focused on the woman, creating a dramatic and intimate atmosphere.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a strong focus on the subject and a well-composed background.
+
+SENSUALITY: 4
+SENSUALITY_REASON: The image shows the woman's bare arms and legs, but no naked breasts or genitalia are visible.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and candlelight suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S5_hf_20260816_175343_72870d1e-78cf-46f3-b43c-b067184b046b.png
+Anonymized ID: hf_20260816_175343_72870d1e-78cf-46f3-b43c-b067184b046b
+File Format: .PNG | Size: 7269.4 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene from a historical period drama set in 18th-century London. Two characters, a man and a woman, are seen kissing in a dimly lit room with a canopy bed and curtains. The woman is facing away from the camera, and the man is facing her. The lighting is soft and warm, creating a romantic atmosphere. The setting appears to be a bedroom with stone walls and wooden furniture.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a warm and romantic ambiance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 5 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows a kiss, which is a common romantic scene but does not involve naked breasts or genitalia.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the presence of a canopy bed suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene from a historical period drama set in 18th-century London. Two characters, a man and a woman, are seen kissing in a dimly lit room with a canopy bed and curtains. The woman is facing away from the camera, and the man is facing her. The lighting is soft and warm, creating a romantic atmosphere. The setting appears to be a bedroom with stone walls and wooden furniture.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with a warm and romantic ambiance.
+
+SENSUALITY: 5
+SENSUALITY_REASON: The image shows a kiss, which is a common romantic scene but does not involve naked breasts or genitalia.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the presence of a canopy bed suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

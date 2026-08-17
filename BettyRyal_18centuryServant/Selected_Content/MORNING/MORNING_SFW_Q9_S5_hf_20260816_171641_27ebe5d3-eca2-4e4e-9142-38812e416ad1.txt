@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S5_hf_20260816_171641_27ebe5d3-eca2-4e4e-9142-38812e416ad1.png
+Anonymized ID: hf_20260816_171641_27ebe5d3-eca2-4e4e-9142-38812e416ad1
+File Format: .PNG | Size: 7210.0 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+Three women are depicted in a dimly lit, stone-walled room, likely a bathhouse or spa, with steam rising from a large stone tub. One woman is pouring water from a copper pitcher into the tub, while another woman, dressed in period attire, is sitting beside the tub holding a cloth and a small bottle. The third woman is reclining in the tub, appearing relaxed and content.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with a focus on the historical setting and characters' expressions.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 5 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows a woman in a state of undress, but only her upper body is visible, and there are no explicit details of naked breasts or genitalia.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting suggests early morning light streaming through a window, creating a serene and peaceful atmosphere.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: Three women are depicted in a dimly lit, stone-walled room, likely a bathhouse or spa, with steam rising from a large stone tub. One woman is pouring water from a copper pitcher into the tub, while another woman, dressed in period attire, is sitting beside the tub holding a cloth and a small bottle. The third woman is reclining in the tub, appearing relaxed and content.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detailed textures, with a focus on the historical setting and characters' expressions.
+
+SENSUALITY: 5
+SENSUALITY_REASON: The image shows a woman in a state of undress, but only her upper body is visible, and there are no explicit details of naked breasts or genitalia.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting suggests early morning light streaming through a window, creating a serene and peaceful atmosphere.
+
+ISSUES: NONE
+====================================================

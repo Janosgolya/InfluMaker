@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MIDDAY_SFW_Q9_S1_hf_20260816_175534_37c3f887-156a-4473-8725-fcc916f9fdfe.png
+Anonymized ID: hf_20260816_175534_37c3f887-156a-4473-8725-fcc916f9fdfe
+File Format: .PNG | Size: 7117.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is cooking over an open fire in a rustic kitchen. She is stirring a pot with a wooden spoon, and the setting includes hanging bread, roasted chickens, and various pottery. The lighting is warm and natural, suggesting a midday scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with a realistic depiction of the historical setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the woman is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: MIDDAY
+Reasoning: The warm lighting and the activity of cooking suggest a midday scene.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MIDDAY
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is cooking over an open fire in a rustic kitchen. She is stirring a pot with a wooden spoon, and the setting includes hanging bread, roasted chickens, and various pottery. The lighting is warm and natural, suggesting a midday scene.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detailed textures, with a realistic depiction of the historical setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the woman is fully clothed.
+
+CATEGORY: SFW
+
+THEME: MIDDAY
+THEME_REASON: The warm lighting and the activity of cooking suggest a midday scene.
+
+ISSUES: NONE
+====================================================

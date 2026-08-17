@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MIDDAY_SFW_Q9_S1_hf_20260816_175535_e763b678-c2d3-4d01-9a6d-8b29ff8831c2.png
+Anonymized ID: hf_20260816_175535_e763b678-c2d3-4d01-9a6d-8b29ff8831c2
+File Format: .PNG | Size: 7261.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts two women in a rustic kitchen setting, dressed in period-appropriate attire. One woman is slicing bread on a wooden cutting board, while the other is stirring a pot over an open fire. The setting is dimly lit with natural light filtering through a window, and herbs hang from the ceiling. The overall atmosphere suggests a historical period drama.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subjects and their actions.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the women's activities in a historical setting.
+
+📅 THEME CLASSIFICATION:
+Theme: MIDDAY
+Reasoning: The lighting and activities suggest a midday scene in a kitchen.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MIDDAY
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts two women in a rustic kitchen setting, dressed in period-appropriate attire. One woman is slicing bread on a wooden cutting board, while the other is stirring a pot over an open fire. The setting is dimly lit with natural light filtering through a window, and herbs hang from the ceiling. The overall atmosphere suggests a historical period drama.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subjects and their actions.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the women's activities in a historical setting.
+
+CATEGORY: SFW
+
+THEME: MIDDAY
+THEME_REASON: The lighting and activities suggest a midday scene in a kitchen.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_hf_20260816_175343_5de2f4fd-bd83-47f7-8165-e82d74449c1f.png
+Anonymized ID: hf_20260816_175343_5de2f4fd-bd83-47f7-8165-e82d74449c1f
+File Format: .PNG | Size: 6892.7 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire stands in a dimly lit room, pulling back red curtains to reveal two individuals seated in a candlelit setting. The woman's back is to the viewer, and she wears a simple dress and bonnet. The setting suggests a historical drama scene, possibly in a private room or chamber.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a focus on the textures of the clothing and the lighting creating a dramatic effect.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and candlelight suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire stands in a dimly lit room, pulling back red curtains to reveal two individuals seated in a candlelit setting. The woman's back is to the viewer, and she wears a simple dress and bonnet. The setting suggests a historical drama scene, possibly in a private room or chamber.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a focus on the textures of the clothing and the lighting creating a dramatic effect.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and candlelight suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

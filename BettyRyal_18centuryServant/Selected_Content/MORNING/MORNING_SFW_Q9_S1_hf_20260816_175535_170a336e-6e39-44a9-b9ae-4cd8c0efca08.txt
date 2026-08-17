@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_175535_170a336e-6e39-44a9-b9ae-4cd8c0efca08.png
+Anonymized ID: hf_20260816_175535_170a336e-6e39-44a9-b9ae-4cd8c0efca08
+File Format: .PNG | Size: 6892.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman dressed in 18th-century attire is kneeling beside a wooden table, cleaning it with a cloth. The setting appears to be a rustic, dimly lit room with stone walls and large windows allowing natural light to filter in. The woman's clothing is simple and period-appropriate, and she is wearing a head covering.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clarity, with detailed textures and lighting that enhance the historical atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the windows suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman dressed in 18th-century attire is kneeling beside a wooden table, cleaning it with a cloth. The setting appears to be a rustic, dimly lit room with stone walls and large windows allowing natural light to filter in. The woman's clothing is simple and period-appropriate, and she is wearing a head covering.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clarity, with detailed textures and lighting that enhance the historical atmosphere.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light coming through the windows suggests it is morning.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S3_hf_20260816_171809_0648cc8e-707f-4978-b3c0-a5b194fee525.png
+Anonymized ID: hf_20260816_171809_0648cc8e-707f-4978-b3c0-a5b194fee525
+File Format: .PNG | Size: 7385.4 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a lively scene in a 18th-century London setting, with individuals dressed in period-appropriate attire. The setting includes wooden beams, red curtains, and wall-mounted lanterns, suggesting an indoor tavern or inn. The lighting is warm and ambient, creating a cozy atmosphere. The characters are engaged in conversation, with one person holding a lantern and another holding a tray, indicating a social gathering.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with well-defined characters and a realistic setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the clothing is appropriate for the 18th-century setting.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The warm lighting and the presence of lanterns suggest that the scene takes place in the evening or at night.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a lively scene in a 18th-century London setting, with individuals dressed in period-appropriate attire. The setting includes wooden beams, red curtains, and wall-mounted lanterns, suggesting an indoor tavern or inn. The lighting is warm and ambient, creating a cozy atmosphere. The characters are engaged in conversation, with one person holding a lantern and another holding a tray, indicating a social gathering.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with well-defined characters and a realistic setting.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the clothing is appropriate for the 18th-century setting.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The warm lighting and the presence of lanterns suggest that the scene takes place in the evening or at night.
+
+ISSUES: NONE
+====================================================

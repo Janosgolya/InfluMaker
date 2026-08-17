@@ -1,0 +1,45 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S5_hf_20260816_180014_f99daf80-c541-4e32-9e3b-da6f312b7ffa.png
+Anonymized ID: hf_20260816_180014_f99daf80-c541-4e32-9e3b-da6f312b7ffa
+File Format: .PNG | Size: 6227.4 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a woman in a historical setting, wearing a cap and a sleeveless dress, looking through a porthole window. Inside the porthole, a couple is seen in bed, suggesting a private moment. The lighting is dim, creating a moody atmosphere, and the setting appears to be a ship or a similar enclosed space.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a focus on the textures and lighting, which are well-executed.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 5 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image contains a scene of a couple in bed, which is suggestive but not explicit. The presence of the woman's back and the couple's intimate setting contribute to the sensuality score.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the intimate setting suggest a nighttime scene.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a woman in a historical setting, wearing a cap and a sleeveless dress, looking through a porthole window. Inside the porthole, a couple is seen in bed, suggesting a private moment. The lighting is dim, creating a moody atmosphere, and the setting appears to be a ship or a similar enclosed space.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with a focus on the textures and lighting, which are well-executed.
+
+SENSUALITY: 5
+SENSUALITY_REASON: The image contains a scene of a couple in bed, which is suggestive but not explicit. The presence of the woman's back and the couple's intimate setting contribute to the sensuality score.
+
+CATEGORY: NSFW
+THEME: NIGHT
+THEME_REASON: The dim lighting and the intimate setting suggest a nighttime scene.
+
+ISSUES: NONE
+====================================================

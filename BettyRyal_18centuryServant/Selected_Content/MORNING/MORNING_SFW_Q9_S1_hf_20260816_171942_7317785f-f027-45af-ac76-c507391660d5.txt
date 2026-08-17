@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_171942_7317785f-f027-45af-ac76-c507391660d5.png
+Anonymized ID: hf_20260816_171942_7317785f-f027-45af-ac76-c507391660d5
+File Format: .PNG | Size: 6367.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person is sleeping peacefully on a simple bed in a dimly lit room. The bedding is minimal, and the person is partially covered by a blanket. The room has a rustic appearance with a small window allowing light to filter in, and a pair of sandals and a cloth are visible on the floor beside the bed.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and a cinematic quality, with a focus on the interplay of light and shadow.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the only visible skin is covered by clothing and bedding.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person is sleeping peacefully on a simple bed in a dimly lit room. The bedding is minimal, and the person is partially covered by a blanket. The room has a rustic appearance with a small window allowing light to filter in, and a pair of sandals and a cloth are visible on the floor beside the bed.
+
+QUALITY: 9
+QUALITY_REASON: The image has a high level of detail and a cinematic quality, with a focus on the interplay of light and shadow.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the only visible skin is covered by clothing and bedding.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

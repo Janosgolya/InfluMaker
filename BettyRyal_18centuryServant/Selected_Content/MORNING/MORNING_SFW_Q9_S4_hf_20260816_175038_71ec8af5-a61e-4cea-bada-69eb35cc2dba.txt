@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S4_hf_20260816_175038_71ec8af5-a61e-4cea-bada-69eb35cc2dba.png
+Anonymized ID: hf_20260816_175038_71ec8af5-a61e-4cea-bada-69eb35cc2dba
+File Format: .PNG | Size: 6937.7 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene from what appears to be a historical setting, possibly a spa or bathhouse, with two women. One woman is seated by a pool of water, holding a copper pitcher, while the other is partially submerged in the water. The setting is dimly lit with natural light streaming through a window, creating a serene and historical ambiance. The architecture suggests a 18th-century European design.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 4 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows a woman with bare shoulders and a partially submerged woman, but no nudity is present.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene from what appears to be a historical setting, possibly a spa or bathhouse, with two women. One woman is seated by a pool of water, holding a copper pitcher, while the other is partially submerged in the water. The setting is dimly lit with natural light streaming through a window, creating a serene and historical ambiance. The architecture suggests a 18th-century European design.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+
+SENSUALITY: 4
+SENSUALITY_REASON: The image shows a woman with bare shoulders and a partially submerged woman, but no nudity is present.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

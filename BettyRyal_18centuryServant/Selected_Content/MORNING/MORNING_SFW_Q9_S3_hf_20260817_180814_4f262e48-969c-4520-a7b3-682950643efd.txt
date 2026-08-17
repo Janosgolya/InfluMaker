@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S3_hf_20260817_180814_4f262e48-969c-4520-a7b3-682950643efd.png
+Anonymized ID: hf_20260817_180814_4f262e48-969c-4520-a7b3-682950643efd
+File Format: .PNG | Size: 7481.1 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a period dress is seated beside a large copper pot emitting steam, suggesting a bath or cooking activity. The setting is a rustic room with wooden floors, a fireplace, and shelves filled with various items, bathed in natural light streaming through a window. The woman appears to be in a moment of relaxation or contemplation.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high detail and clarity, with a warm, natural lighting that enhances the historical ambiance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman's upper body, but no nudity is present, and the setting is domestic and historical.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a period dress is seated beside a large copper pot emitting steam, suggesting a bath or cooking activity. The setting is a rustic room with wooden floors, a fireplace, and shelves filled with various items, bathed in natural light streaming through a window. The woman appears to be in a moment of relaxation or contemplation.
+
+AGE_ESTIMATE: Mature adult 26+.
+
+QUALITY: 9
+
+QUALITY_REASON: The image has high detail and clarity, with a warm, natural lighting that enhances the historical ambiance.
+
+SENSUALITY: 3
+
+SENSUALITY_REASON: The image shows the woman's upper body, but no nudity is present, and the setting is domestic and historical.
+
+CATEGORY: SFW
+
+THEME: MORNING
+
+THEME_REASON: The natural light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

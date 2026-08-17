@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S1_hf_20260816_175211_b919bf66-18f5-45cc-90ca-ce075257a43f.png
+Anonymized ID: hf_20260816_175211_b919bf66-18f5-45cc-90ca-ce075257a43f
+File Format: .PNG | Size: 7182.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is lighting a chandelier in a dimly lit room filled with people. The setting appears to be a tavern or a similar social gathering place, with wooden beams and rustic decor. The lighting is warm and ambient, creating a cozy atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a realistic depiction of the scene and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the historical setting and activity.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the activity of lighting the chandelier suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is lighting a chandelier in a dimly lit room filled with people. The setting appears to be a tavern or a similar social gathering place, with wooden beams and rustic decor. The lighting is warm and ambient, creating a cozy atmosphere.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with a realistic depiction of the scene and characters.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the historical setting and activity.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the activity of lighting the chandelier suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

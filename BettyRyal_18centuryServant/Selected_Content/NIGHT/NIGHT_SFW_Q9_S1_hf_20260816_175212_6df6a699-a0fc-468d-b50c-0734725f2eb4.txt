@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_hf_20260816_175212_6df6a699-a0fc-468d-b50c-0734725f2eb4.png
+Anonymized ID: hf_20260816_175212_6df6a699-a0fc-468d-b50c-0734725f2eb4
+File Format: .PNG | Size: 7243.1 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire stands at the threshold of a dimly lit room, her back to the viewer. She wears a long, flowing dress with a wide belt and sandals, and her hair is tied back. Inside, a group of people is seated around a table, engaged in conversation, with a candle providing the primary light source.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a strong emphasis on lighting and atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and candlelight suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire stands at the threshold of a dimly lit room, her back to the viewer. She wears a long, flowing dress with a wide belt and sandals, and her hair is tied back. Inside, a group of people is seated around a table, engaged in conversation, with a candle providing the primary light source.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a strong emphasis on lighting and atmosphere.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and candlelight suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_hf_20260816_180606_8488f84b-f299-4c1c-bd30-49d6f91e7fbc.png
+Anonymized ID: hf_20260816_180606_8488f84b-f299-4c1c-bd30-49d6f91e7fbc
+File Format: .PNG | Size: 7291.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+Two women are depicted in a 18th-century setting, with one woman brushing the hair of the other. The woman being brushed is seated at a wooden dressing table with a mirror, while the other woman stands behind her, holding a hairbrush. Both women are dressed in period-appropriate attire, and the room is dimly lit with natural light coming from a window on the right. The setting appears to be a bedroom or private chamber.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a realistic depiction of the scene and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the focus is on the interaction between the two women.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The scene depicts the preparation of one woman for an event or occasion, as indicated by the hair brushing and the setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: Two women are depicted in a 18th-century setting, with one woman brushing the hair of the other. The woman being brushed is seated at a wooden dressing table with a mirror, while the other woman stands behind her, holding a hairbrush. Both women are dressed in period-appropriate attire, and the room is dimly lit with natural light coming from a window on the right. The setting appears to be a bedroom or private chamber.
+
+QUALITY: 9
+QUALITY_REASON: The image has a high level of detail and clarity, with a realistic depiction of the scene and characters.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the focus is on the interaction between the two women.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The scene depicts the preparation of one woman for an event or occasion, as indicated by the hair brushing and the setting.
+
+ISSUES: NONE
+====================================================

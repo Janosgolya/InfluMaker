@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S4_hf_20260816_180606_0155adde-05d1-44d0-a73f-ce3fa627ddca.png
+Anonymized ID: hf_20260816_180606_0155adde-05d1-44d0-a73f-ce3fa627ddca
+File Format: .PNG | Size: 7382.4 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts two women in a steamy, ancient-looking bathhouse. The woman in the foreground, dressed in a simple, light-colored gown, is kneeling by the edge of a stone bath, pouring water from a small bowl. The woman in the background is seated in the bath, wearing a white robe. The setting is dimly lit with warm, ambient lighting, and the architecture suggests a historical European style.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with a focus on the historical setting and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 4 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the women in a modest setting, with no visible naked breasts or genitalia. The focus is on their actions and the historical context.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and steam suggest a morning setting, as the bath is likely being prepared for use.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts two women in a steamy, ancient-looking bathhouse. The woman in the foreground, dressed in a simple, light-colored gown, is kneeling by the edge of a stone bath, pouring water from a small bowl. The woman in the background is seated in the bath, wearing a white robe. The setting is dimly lit with warm, ambient lighting, and the architecture suggests a historical European style.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detailed textures, with a focus on the historical setting and characters.
+
+SENSUALITY: 4
+SENSUALITY_REASON: The image shows the women in a modest setting, with no visible naked breasts or genitalia. The focus is on their actions and the historical context.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting and steam suggest a morning setting, as the bath is likely being prepared for use.
+
+ISSUES: NONE
+====================================================

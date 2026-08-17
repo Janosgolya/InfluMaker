@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_hf_20260816_171641_174cd1a3-b3be-4e24-a2ba-276c2c15c989.png
+Anonymized ID: hf_20260816_171641_174cd1a3-b3be-4e24-a2ba-276c2c15c989
+File Format: .PNG | Size: 7416.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts two women in an 18th-century setting, with one woman brushing the hair of the other. The woman being brushed is seated, wearing a dark, velvety dress, while the woman brushing her hair is standing, dressed in a light, flowing gown with a bonnet. The setting appears to be a room with large windows allowing natural light to fill the space, and a wooden table with various items like a mirror, jars, and a bowl is visible. The scene conveys a sense of care and intimacy.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the interaction between the two women.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The scene depicts a moment of preparation, likely before an important event, given the intimate and focused nature of the interaction.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts two women in an 18th-century setting, with one woman brushing the hair of the other. The woman being brushed is seated, wearing a dark, velvety dress, while the woman brushing her hair is standing, dressed in a light, flowing gown with a bonnet. The setting appears to be a room with large windows allowing natural light to fill the space, and a wooden table with various items like a mirror, jars, and a bowl is visible. The scene conveys a sense of care and intimacy.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the interaction between the two women.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The scene depicts a moment of preparation, likely before an important event, given the intimate and focused nature of the interaction.
+
+ISSUES: NONE
+====================================================

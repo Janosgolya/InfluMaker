@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_hf_20260816_175038_c3106809-14da-4627-8e43-7e3c7330671a.png
+Anonymized ID: hf_20260816_175038_c3106809-14da-4627-8e43-7e3c7330671a
+File Format: .PNG | Size: 8022.7 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+Two women are seen from behind, one assisting the other with her dress in a 18th-century setting. The woman being dressed wears a green gown with a corset, while the other wears a beige dress with a bonnet. They are in a room with a fireplace, wooden furniture, and candles, suggesting a domestic interior. The lighting is warm and natural, creating a serene atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, only the women's upper bodies and arms are visible.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The scene depicts the preparation of a gown, which is a common activity in the 18th century.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: Two women are seen from behind, one assisting the other with her dress in a 18th-century setting. The woman being dressed wears a green gown with a corset, while the other wears a beige dress with a bonnet. They are in a room with a fireplace, wooden furniture, and candles, suggesting a domestic interior. The lighting is warm and natural, creating a serene atmosphere.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, only the women's upper bodies and arms are visible.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The scene depicts the preparation of a gown, which is a common activity in the 18th century.
+
+ISSUES: NONE
+====================================================

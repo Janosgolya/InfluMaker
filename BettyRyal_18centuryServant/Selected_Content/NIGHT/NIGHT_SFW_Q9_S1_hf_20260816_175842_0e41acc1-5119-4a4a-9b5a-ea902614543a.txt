@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_hf_20260816_175842_0e41acc1-5119-4a4a-9b5a-ea902614543a.png
+Anonymized ID: hf_20260816_175842_0e41acc1-5119-4a4a-9b5a-ea902614543a
+File Format: .PNG | Size: 6619.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a woman in 18th-century attire, holding a tray, standing in a dimly lit room with a candle on a table in the foreground. The setting appears to be a tavern or a similar establishment, with other individuals in period clothing in the background. The lighting is warm and moody, creating a historical ambiance.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and background, maintaining the historical atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the subject's upper body and attire.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and candlelight suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a woman in 18th-century attire, holding a tray, standing in a dimly lit room with a candle on a table in the foreground. The setting appears to be a tavern or a similar establishment, with other individuals in period clothing in the background. The lighting is warm and moody, creating a historical ambiance.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and background, maintaining the historical atmosphere.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the subject's upper body and attire.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and candlelight suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

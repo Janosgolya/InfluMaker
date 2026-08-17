@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260817_182224_59db207b-e1a8-4cff-8e46-f9cacb29cf5f.png
+Anonymized ID: hf_20260817_182224_59db207b-e1a8-4cff-8e46-f9cacb29cf5f
+File Format: .PNG | Size: 7130.8 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a simple, light-colored dress is kneeling on the floor of a rustic, sunlit attic room. The room features wooden beams, a small bed, a fireplace, and a window with a view of other buildings. The sunlight streams through the window, creating a warm and dramatic effect. The woman appears surprised or startled, with her mouth open and eyes wide.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a strong focus on the subject and a well-composed scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain naked breasts or naked genitalia, and the woman is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The warm sunlight streaming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a simple, light-colored dress is kneeling on the floor of a rustic, sunlit attic room. The room features wooden beams, a small bed, a fireplace, and a window with a view of other buildings. The sunlight streams through the window, creating a warm and dramatic effect. The woman appears surprised or startled, with her mouth open and eyes wide.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a strong focus on the subject and a well-composed scene.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain naked breasts or naked genitalia, and the woman is fully clothed.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The warm sunlight streaming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260817_191617_e24a8cb0-b7fb-47c4-8d2a-376965e63f25.png
+Anonymized ID: hf_20260817_191617_e24a8cb0-b7fb-47c4-8d2a-376965e63f25
+File Format: .PNG | Size: 7243.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is kneeling on a wooden floor, cleaning with a cloth. Behind her is a large copper bathtub emitting steam, and the room is dimly lit with a warm, vintage ambiance. The setting suggests a historical domestic scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high detail and a realistic texture, with excellent lighting and composition.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the woman's attire and actions are appropriate for the historical setting.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and steam suggest early morning activity, possibly after a bath.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is kneeling on a wooden floor, cleaning with a cloth. Behind her is a large copper bathtub emitting steam, and the room is dimly lit with a warm, vintage ambiance. The setting suggests a historical domestic scene.
+
+AGE_ESTIMATE: mature adult 26+.
+
+QUALITY: 9
+
+QUALITY_REASON: The image has high detail and a realistic texture, with excellent lighting and composition.
+
+SENSUALITY: 1
+
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the woman's attire and actions are appropriate for the historical setting.
+
+CATEGORY: SFW
+
+THEME: MORNING
+
+THEME_REASON: The lighting and steam suggest early morning activity, possibly after a bath.
+
+ISSUES: NONE
+====================================================

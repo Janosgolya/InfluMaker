@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_NSFW_Q8_S7_hf_20260816_171942_108773ef-d409-4fd8-bb04-4142aa540abd.png
+Anonymized ID: hf_20260816_171942_108773ef-d409-4fd8-bb04-4142aa540abd
+File Format: .PNG | Size: 6762.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image shows a close-up of a person's face framed by a circular mirror, with a reflection of a couple embracing and kissing in a dimly lit room. The couple is dressed in period-appropriate attire, and the room has a vintage ambiance with soft lighting and draped curtains.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a focus on the reflection and the intimate scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 7 / 10
+Category: NSFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image depicts a couple in an intimate embrace, which is considered a high level of sensuality.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the intimate setting suggest a nighttime scene.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image shows a close-up of a person's face framed by a circular mirror, with a reflection of a couple embracing and kissing in a dimly lit room. The couple is dressed in period-appropriate attire, and the room has a vintage ambiance with soft lighting and draped curtains.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with a focus on the reflection and the intimate scene.
+
+SENSUALITY: 7
+SENSUALITY_REASON: The image depicts a couple in an intimate embrace, which is considered a high level of sensuality.
+
+CATEGORY: NSFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the intimate setting suggest a nighttime scene.
+
+ISSUES: NONE
+====================================================

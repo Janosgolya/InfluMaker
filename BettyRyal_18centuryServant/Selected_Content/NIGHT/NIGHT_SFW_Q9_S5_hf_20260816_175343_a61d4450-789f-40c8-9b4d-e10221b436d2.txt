@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S5_hf_20260816_175343_a61d4450-789f-40c8-9b4d-e10221b436d2.png
+Anonymized ID: hf_20260816_175343_a61d4450-789f-40c8-9b4d-e10221b436d2
+File Format: .PNG | Size: 6370.4 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in period attire leans over a window, observing a couple in a dimly lit room. The setting appears to be a rustic, possibly 18th-century interior, with the woman's clothing suggesting a historical context. The lighting is warm and dramatic, highlighting the woman's figure and the couple's intimate moment below.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a strong emphasis on lighting and mood.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 5 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image contains a couple in an intimate setting, but no naked breasts or genitalia are visible.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the intimate setting suggest a nighttime scenario.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in period attire leans over a window, observing a couple in a dimly lit room. The setting appears to be a rustic, possibly 18th-century interior, with the woman's clothing suggesting a historical context. The lighting is warm and dramatic, highlighting the woman's figure and the couple's intimate moment below.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a strong emphasis on lighting and mood.
+
+SENSUALITY: 5
+SENSUALITY_REASON: The image contains a couple in an intimate setting, but no naked breasts or genitalia are visible.
+
+CATEGORY: NSFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the intimate setting suggest a nighttime scenario.
+
+ISSUES: NONE
+====================================================

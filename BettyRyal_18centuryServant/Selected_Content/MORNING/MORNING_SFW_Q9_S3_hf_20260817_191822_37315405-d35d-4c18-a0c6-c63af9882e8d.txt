@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S3_hf_20260817_191822_37315405-d35d-4c18-a0c6-c63af9882e8d.png
+Anonymized ID: hf_20260817_191822_37315405-d35d-4c18-a0c6-c63af9882e8d
+File Format: .PNG | Size: 5701.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire sits on a wooden bench, holding an open book. She wears a beige dress with lace trim and a bonnet, set against a backdrop of cobblestone streets and a stone well, suggesting a historical setting in London.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with natural lighting enhancing the historical atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman's bare arms and cleavage, which are typical for the era but still modest.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and shadows suggest early morning light.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire sits on a wooden bench, holding an open book. She wears a beige dress with lace trim and a bonnet, set against a backdrop of cobblestone streets and a stone well, suggesting a historical setting in London.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with natural lighting enhancing the historical atmosphere.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image shows the woman's bare arms and cleavage, which are typical for the era but still modest.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting and shadows suggest early morning light.
+
+ISSUES: NONE
+====================================================

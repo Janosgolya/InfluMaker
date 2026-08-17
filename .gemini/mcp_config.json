@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "fanvue": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.fanvue.com/mcp"]
+    }
+  }
+}

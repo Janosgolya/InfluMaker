@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S5_hf_20260816_180014_25f5e781-7003-41e7-8f0c-aae7c2d08f10.png
+Anonymized ID: hf_20260816_180014_25f5e781-7003-41e7-8f0c-aae7c2d08f10
+File Format: .PNG | Size: 6136.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene from a historical period drama set in 18th-century London. A woman, dressed in period attire, stands in a dimly lit doorway, observing a couple in the background who appear to be embracing. The setting suggests a private room with rustic wooden furniture and a bed, illuminated by a soft, warm light that creates a dramatic and intimate atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and a cinematic quality, with a well-balanced composition and effective use of lighting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 5 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain naked breasts or naked genitalia, and the sensuality is conveyed through the intimate setting and the woman's observation of the couple.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the intimate setting suggest a nighttime scene.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene from a historical period drama set in 18th-century London. A woman, dressed in period attire, stands in a dimly lit doorway, observing a couple in the background who appear to be embracing. The setting suggests a private room with rustic wooden furniture and a bed, illuminated by a soft, warm light that creates a dramatic and intimate atmosphere.
+
+QUALITY: 9
+QUALITY_REASON: The image has a high level of detail and a cinematic quality, with a well-balanced composition and effective use of lighting.
+
+SENSUALITY: 5
+SENSUALITY_REASON: The image does not contain naked breasts or naked genitalia, and the sensuality is conveyed through the intimate setting and the woman's observation of the couple.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the intimate setting suggest a nighttime scene.
+
+ISSUES: NONE
+====================================================

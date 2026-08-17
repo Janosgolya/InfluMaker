@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_180606_bee45b68-22ce-49f3-8915-fda5abe1ab14.png
+Anonymized ID: hf_20260816_180606_bee45b68-22ce-49f3-8915-fda5abe1ab14
+File Format: .PNG | Size: 7223.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+Two women are seated at a rustic wooden table in a dimly lit room, suggesting a historical setting. The woman on the left wears a simple off-the-shoulder dress and a white bonnet, while the woman on the right is dressed in a more substantial apron and bonnet, indicating a servant or domestic role. The table is set with bread, cheese, apples, and metal mugs, evoking a meal scene. The lighting is soft and natural, coming from a window in the background, casting gentle shadows and highlighting the textures of the clothing and food.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a focus on natural lighting and realistic textures.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the clothing is modest and historical.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The soft lighting and the presence of apples suggest a morning meal.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: Two women are seated at a rustic wooden table in a dimly lit room, suggesting a historical setting. The woman on the left wears a simple off-the-shoulder dress and a white bonnet, while the woman on the right is dressed in a more substantial apron and bonnet, indicating a servant or domestic role. The table is set with bread, cheese, apples, and metal mugs, evoking a meal scene. The lighting is soft and natural, coming from a window in the background, casting gentle shadows and highlighting the textures of the clothing and food.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a focus on natural lighting and realistic textures.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the clothing is modest and historical.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The soft lighting and the presence of apples suggest a morning meal.
+
+ISSUES: NONE
+====================================================

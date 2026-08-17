@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260817_184613_36e2b445-8259-460f-9f7a-01cc76e0a20e.png
+Anonymized ID: hf_20260817_184613_36e2b445-8259-460f-9f7a-01cc76e0a20e
+File Format: .PNG | Size: 7000.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress sits on a stool in a dimly lit room, holding a letter and a small object. The setting includes a bed, a table with books, and a portrait on the wall, suggesting a private chamber. The lighting is soft and natural, creating a serene and contemplative atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with a focus on natural lighting and realistic composition.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the only visible skin is covered by the dress.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The soft lighting and the woman's contemplative pose suggest a morning setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress sits on a stool in a dimly lit room, holding a letter and a small object. The setting includes a bed, a table with books, and a portrait on the wall, suggesting a private chamber. The lighting is soft and natural, creating a serene and contemplative atmosphere.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detailed textures, with a focus on natural lighting and realistic composition.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the only visible skin is covered by the dress.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The soft lighting and the woman's contemplative pose suggest a morning setting.
+
+ISSUES: NONE
+====================================================

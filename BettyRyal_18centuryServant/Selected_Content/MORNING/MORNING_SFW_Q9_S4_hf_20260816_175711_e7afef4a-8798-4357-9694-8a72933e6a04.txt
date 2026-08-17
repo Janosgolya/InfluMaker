@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S4_hf_20260816_175711_e7afef4a-8798-4357-9694-8a72933e6a04.png
+Anonymized ID: hf_20260816_175711_e7afef4a-8798-4357-9694-8a72933e6a04
+File Format: .PNG | Size: 7323.5 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress and bonnet is seen in a dimly lit, steamy bathhouse. She is leaning over a wooden table, handling a towel and a bar of soap, with a large stone bath and tiled walls in the background. The lighting is soft and atmospheric, creating a sense of historical ambiance.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a focus on the textures and lighting, giving it a museum-quality appearance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 4 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman's bare arms and shoulders, which are not considered naked under the strict rule. The presence of a towel and soap adds to the context of the scene.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The steam rising from the bath suggests a morning scene, as baths were often taken in the morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress and bonnet is seen in a dimly lit, steamy bathhouse. She is leaning over a wooden table, handling a towel and a bar of soap, with a large stone bath and tiled walls in the background. The lighting is soft and atmospheric, creating a sense of historical ambiance.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a focus on the textures and lighting, giving it a museum-quality appearance.
+
+SENSUALITY: 4
+SENSUALITY_REASON: The image shows the woman's bare arms and shoulders, which are not considered naked under the strict rule. The presence of a towel and soap adds to the context of the scene.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The steam rising from the bath suggests a morning scene, as baths were often taken in the morning.
+
+ISSUES: NONE
+====================================================

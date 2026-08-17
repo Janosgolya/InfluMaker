@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_175535_73c5aacd-cbe8-48aa-8998-912dee1dd945.png
+Anonymized ID: hf_20260816_175535_73c5aacd-cbe8-48aa-8998-912dee1dd945
+File Format: .PNG | Size: 6998.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman dressed in 18th-century attire is kneeling on a wooden floor, brushing the surface. She is wearing a simple dress with a white apron and a headscarf. The setting appears to be a modest room with a bed, a wooden table, and a window letting in natural light. The lighting is soft and natural, creating a serene atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a focus on the subject and the setting, giving it a museum fine art photography quality.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the woman's attire and posture are modest.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman dressed in 18th-century attire is kneeling on a wooden floor, brushing the surface. She is wearing a simple dress with a white apron and a headscarf. The setting appears to be a modest room with a bed, a wooden table, and a window letting in natural light. The lighting is soft and natural, creating a serene atmosphere.
+
+QUALITY: 9
+QUALITY_REASON: The image has a high level of detail and clarity, with a focus on the subject and the setting, giving it a museum fine art photography quality.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the woman's attire and posture are modest.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

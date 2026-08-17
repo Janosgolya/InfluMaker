@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_hf_20260816_175211_8f913310-1fbe-460c-8702-838ada7756d9.png
+Anonymized ID: hf_20260816_175211_8f913310-1fbe-460c-8702-838ada7756d9
+File Format: .PNG | Size: 7171.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress and bonnet holds a tray, facing away from the viewer. She stands in a dimly lit, rustic interior with wooden beams and red curtains. In the background, three individuals in period attire are engaged in conversation, suggesting a social gathering or event.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the textures of the clothing and the setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the historical setting and characters.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and shadows suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress and bonnet holds a tray, facing away from the viewer. She stands in a dimly lit, rustic interior with wooden beams and red curtains. In the background, three individuals in period attire are engaged in conversation, suggesting a social gathering or event.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the textures of the clothing and the setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the historical setting and characters.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and shadows suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_hf_20260816_175038_9f05b121-a76b-4763-8075-28cb43109475.png
+Anonymized ID: hf_20260816_175038_9f05b121-a76b-4763-8075-28cb43109475
+File Format: .PNG | Size: 7077.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is seen preparing a bath in a dimly lit, steam-filled room. She is wearing a long, light-colored dress and a headscarf, and she is handling towels and soap on a wooden bench beside a large stone bathtub. The setting is rustic, with stone columns and wall-mounted candles providing the only light.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and a realistic texture, with soft lighting and atmospheric effects that enhance the historical ambiance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the woman's actions rather than her body.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The image depicts the preparation for a bath, which is a common activity in the morning or evening, but the specific time is not explicitly indicated.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is seen preparing a bath in a dimly lit, steam-filled room. She is wearing a long, light-colored dress and a headscarf, and she is handling towels and soap on a wooden bench beside a large stone bathtub. The setting is rustic, with stone columns and wall-mounted candles providing the only light.
+
+QUALITY: 9
+QUALITY_REASON: The image has a high level of detail and a realistic texture, with soft lighting and atmospheric effects that enhance the historical ambiance.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the woman's actions rather than her body.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The image depicts the preparation for a bath, which is a common activity in the morning or evening, but the specific time is not explicitly indicated.
+
+ISSUES: NONE
+====================================================

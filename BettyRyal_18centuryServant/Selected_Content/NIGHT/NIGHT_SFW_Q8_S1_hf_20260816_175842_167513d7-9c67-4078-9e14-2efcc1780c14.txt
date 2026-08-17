@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S1_hf_20260816_175842_167513d7-9c67-4078-9e14-2efcc1780c14.png
+Anonymized ID: hf_20260816_175842_167513d7-9c67-4078-9e14-2efcc1780c14
+File Format: .PNG | Size: 7067.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a period dress stands on a platform, holding a candlestick towards a large chandelier. She is surrounded by a crowd of people in a dimly lit room, likely a tavern or inn, with warm lighting and a fireplace in the background. The scene suggests a historical setting, possibly in 18th-century London.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has good clarity and detail, with a focus on the subject and background, though there is a slight graininess that might be due to the lighting conditions.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the woman's attire and setting are consistent with the historical period depicted.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting, candlelight, and overall atmosphere suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a period dress stands on a platform, holding a candlestick towards a large chandelier. She is surrounded by a crowd of people in a dimly lit room, likely a tavern or inn, with warm lighting and a fireplace in the background. The scene suggests a historical setting, possibly in 18th-century London.
+
+QUALITY: 8
+QUALITY_REASON: The image has good clarity and detail, with a focus on the subject and background, though there is a slight graininess that might be due to the lighting conditions.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the woman's attire and setting are consistent with the historical period depicted.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting, candlelight, and overall atmosphere suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_hf_20260816_175711_1e7ff61c-100d-48f0-8d0b-b12072941663.png
+Anonymized ID: hf_20260816_175711_1e7ff61c-100d-48f0-8d0b-b12072941663
+File Format: .PNG | Size: 7496.7 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts two women in a 18th-century setting, with one woman combing the hair of the other. The woman being combed is seated at a wooden dressing table with a mirror, while the other woman stands beside her. Both are dressed in period-appropriate attire, and the room is lit by natural light coming through a window and a candle on the table. The setting appears to be a modest room with a bed and a tapestry on the wall.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the textures of the clothing and the room's ambiance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive content.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The scene depicts a preparatory activity, likely for a formal occasion, which is typical of the 18th-century setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts two women in a 18th-century setting, with one woman combing the hair of the other. The woman being combed is seated at a wooden dressing table with a mirror, while the other woman stands beside her. Both are dressed in period-appropriate attire, and the room is lit by natural light coming through a window and a candle on the table. The setting appears to be a modest room with a bed and a tapestry on the wall.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the textures of the clothing and the room's ambiance.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive content.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The scene depicts a preparatory activity, likely for a formal occasion, which is typical of the 18th-century setting.
+
+ISSUES: NONE
+====================================================

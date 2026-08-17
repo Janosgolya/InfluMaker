@@ -1,0 +1,53 @@
+name: InfluMaker Daily Autonomous Scheduler
+
+on:
+  schedule:
+    # 4 times daily (UTC): 06:00 (MORNING), 11:00 (MIDDAY), 16:00 (PREP), 20:00 (NIGHT)
+    - cron: '0 6,11,16,20 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  run-daily-tick:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code & Media
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Restore Social Sessions
+        run: |
+          mkdir -p config
+          if [ -n "${{ secrets.INSTAGRAM_SESSION_JSON }}" ]; then
+            echo '${{ secrets.INSTAGRAM_SESSION_JSON }}' > config/instagram_session.json
+          fi
+          if [ -n "${{ secrets.TIKTOK_SESSION_JSON }}" ]; then
+            echo '${{ secrets.TIKTOK_SESSION_JSON }}' > config/tiktok_session.json
+          fi
+
+      - name: Execute George Producer Tick
+        env:
+          FANVUE_ACCESS_TOKEN: ${{ secrets.FANVUE_ACCESS_TOKEN }}
+          FANVUE_REFRESH_TOKEN: ${{ secrets.FANVUE_REFRESH_TOKEN }}
+          FANVUE_CLIENT_ID: ${{ secrets.FANVUE_CLIENT_ID }}
+          FANVUE_CLIENT_SECRET: ${{ secrets.FANVUE_CLIENT_SECRET }}
+        run: node src/agents/george.js --tick
+
+      - name: Commit and Push Updated Log
+        run: |
+          git config --global user.name "George [InfluMaker AI]"
+          git config --global user.email "george@influmaker.local"
+          git add config/published_log.json
+          git diff-index --quiet HEAD || git commit -m "chore(george): update published_log after scheduled cycle [skip ci]"
+          git push

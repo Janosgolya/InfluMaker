@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_175534_d40f507a-d75c-4f9e-9815-c0014e52d02d.png
+Anonymized ID: hf_20260816_175534_d40f507a-d75c-4f9e-9815-c0014e52d02d
+File Format: .PNG | Size: 7120.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman dressed in 18th-century attire is sweeping a room filled with wooden furniture and candles. The setting appears to be a rustic, dimly lit interior, possibly a tavern or a common room, with sunlight streaming through the windows. The woman is holding a broom and smiling, suggesting a cheerful and domestic atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a well-composed and balanced composition.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, only a cleavage that is not exposed.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The sunlight streaming through the windows suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman dressed in 18th-century attire is sweeping a room filled with wooden furniture and candles. The setting appears to be a rustic, dimly lit interior, possibly a tavern or a common room, with sunlight streaming through the windows. The woman is holding a broom and smiling, suggesting a cheerful and domestic atmosphere.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a well-composed and balanced composition.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, only a cleavage that is not exposed.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The sunlight streaming through the windows suggests it is morning.
+
+ISSUES: NONE
+====================================================

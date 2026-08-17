@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MIDDAY_SFW_Q9_S3_hf_20260816_175842_84bdf7ce-8049-49c6-b148-d24e8822a14a.png
+Anonymized ID: hf_20260816_175842_84bdf7ce-8049-49c6-b148-d24e8822a14a
+File Format: .PNG | Size: 6887.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene set in a 18th-century London tavern. A woman in a beige dress holds a copper pitcher, while another woman in a red gown dances with a man in a dark coat. The setting includes a stone fireplace with a fire burning, wooden furniture, and various period-appropriate items on the shelves. The lighting is warm and natural, suggesting a daytime scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a well-balanced composition and natural lighting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the clothing is modest.
+
+📅 THEME CLASSIFICATION:
+Theme: MIDDAY
+Reasoning: The warm lighting and the presence of a fire suggest a daytime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MIDDAY
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene set in a 18th-century London tavern. A woman in a beige dress holds a copper pitcher, while another woman in a red gown dances with a man in a dark coat. The setting includes a stone fireplace with a fire burning, wooden furniture, and various period-appropriate items on the shelves. The lighting is warm and natural, suggesting a daytime scene.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a well-balanced composition and natural lighting.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the clothing is modest.
+
+CATEGORY: SFW
+
+THEME: MIDDAY
+THEME_REASON: The warm lighting and the presence of a fire suggest a daytime setting.
+
+ISSUES: NONE
+====================================================

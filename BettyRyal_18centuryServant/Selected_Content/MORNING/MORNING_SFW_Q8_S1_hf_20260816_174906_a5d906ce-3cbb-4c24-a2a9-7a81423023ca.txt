@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q8_S1_hf_20260816_174906_a5d906ce-3cbb-4c24-a2a9-7a81423023ca.png
+Anonymized ID: hf_20260816_174906_a5d906ce-3cbb-4c24-a2a9-7a81423023ca
+File Format: .PNG | Size: 7117.4 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts two women in a rustic kitchen setting, likely from the 18th century. One woman, wearing a bonnet and a long dress, is slicing bread on a wooden board, while the other, dressed in similar attire, is working near the hearth. The setting is dimly lit with natural light streaming through a window, and the atmosphere is warm and earthy, with hanging herbs and cooking pots visible.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a realistic depiction of the historical setting and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the historical activity of bread-making.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts two women in a rustic kitchen setting, likely from the 18th century. One woman, wearing a bonnet and a long dress, is slicing bread on a wooden board, while the other, dressed in similar attire, is working near the hearth. The setting is dimly lit with natural light streaming through a window, and the atmosphere is warm and earthy, with hanging herbs and cooking pots visible.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with a realistic depiction of the historical setting and characters.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the historical activity of bread-making.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

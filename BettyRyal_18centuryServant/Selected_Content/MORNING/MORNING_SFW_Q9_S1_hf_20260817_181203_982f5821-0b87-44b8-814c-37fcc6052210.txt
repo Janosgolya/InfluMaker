@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260817_181203_982f5821-0b87-44b8-814c-37fcc6052210.png
+Anonymized ID: hf_20260817_181203_982f5821-0b87-44b8-814c-37fcc6052210
+File Format: .PNG | Size: 6930.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is pouring water from a copper pitcher into a large copper pot in a dimly lit, rustic kitchen. The setting includes a stone fireplace with a fire burning and a candle on the wall, creating a warm, historical ambiance. The woman is wearing a bonnet and a long, light-colored dress with a sash, and she appears focused on her task.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high detail and a realistic, cinematic quality that enhances the historical setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the woman's attire and actions are appropriate for the historical period.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and the steam rising from the pot suggest a morning activity, possibly preparing breakfast or another meal.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is pouring water from a copper pitcher into a large copper pot in a dimly lit, rustic kitchen. The setting includes a stone fireplace with a fire burning and a candle on the wall, creating a warm, historical ambiance. The woman is wearing a bonnet and a long, light-colored dress with a sash, and she appears focused on her task.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high detail and a realistic, cinematic quality that enhances the historical setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the woman's attire and actions are appropriate for the historical period.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting and the steam rising from the pot suggest a morning activity, possibly preparing breakfast or another meal.
+
+ISSUES: NONE
+====================================================

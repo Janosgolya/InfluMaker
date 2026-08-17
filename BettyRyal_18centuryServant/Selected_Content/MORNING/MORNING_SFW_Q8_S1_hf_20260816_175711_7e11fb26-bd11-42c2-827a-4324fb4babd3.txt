@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q8_S1_hf_20260816_175711_7e11fb26-bd11-42c2-827a-4324fb4babd3.png
+Anonymized ID: hf_20260816_175711_7e11fb26-bd11-42c2-827a-4324fb4babd3
+File Format: .PNG | Size: 7004.8 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+Two women dressed in 18th-century attire are in a dimly lit room, possibly a bedroom or a parlour. One woman holds a fur-lined garment, while the other holds a lit candle. The room features a stone fireplace, wooden furniture, and a window with curtains, suggesting a historical setting.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with well-defined textures and lighting that enhances the historical atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the clothing is modest, adhering to the strict rule.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting from the window suggests early morning light, and the activities of the women imply a routine or preparation for the day.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: Two women dressed in 18th-century attire are in a dimly lit room, possibly a bedroom or a parlour. One woman holds a fur-lined garment, while the other holds a lit candle. The room features a stone fireplace, wooden furniture, and a window with curtains, suggesting a historical setting.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with well-defined textures and lighting that enhances the historical atmosphere.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the clothing is modest, adhering to the strict rule.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting from the window suggests early morning light, and the activities of the women imply a routine or preparation for the day.
+
+ISSUES: NONE
+====================================================

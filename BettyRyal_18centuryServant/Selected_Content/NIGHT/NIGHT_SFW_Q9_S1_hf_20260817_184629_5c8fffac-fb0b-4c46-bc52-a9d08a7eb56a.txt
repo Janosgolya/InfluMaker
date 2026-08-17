@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_hf_20260817_184629_5c8fffac-fb0b-4c46-bc52-a9d08a7eb56a.png
+Anonymized ID: hf_20260817_184629_5c8fffac-fb0b-4c46-bc52-a9d08a7eb56a
+File Format: .PNG | Size: 7515.5 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire stands in a dimly lit, rustic interior, holding a piece of paper. The setting includes wooden shelves filled with various items and a candlelit wall, suggesting a historical domestic scene. The lighting is warm and moody, casting dramatic shadows.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a focus on the subject and the setting, creating a realistic historical atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and candlelight suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire stands in a dimly lit, rustic interior, holding a piece of paper. The setting includes wooden shelves filled with various items and a candlelit wall, suggesting a historical domestic scene. The lighting is warm and moody, casting dramatic shadows.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a focus on the subject and the setting, creating a realistic historical atmosphere.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and candlelight suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

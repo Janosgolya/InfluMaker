@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Environment Variables & API Keys (DO NOT COMMIT)
+.env
+.env.local
+.env.*.local
+
+# Session credential files (Injected securely via GitHub Secrets)
+config/*_session.json
+!config/posting_schedule.json
+!config/storage_limits.json
+
+# Temporary logs & Playwright artifacts
+logs/
+*.log
+test-results/
+playwright-report/
+.tempmediaStorage/
+temp_insta_profile/
+RawGenerations/
+BettyRyal_18centuryServant/RawGenerations/
+BettyRyal_18centuryServant/Rejected_Slop/
+Rejected_Slop/
+
+# OS files
+.DS_Store
+Thumbs.db

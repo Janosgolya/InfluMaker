@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_175711_287f6735-8dae-4b4b-9735-fdddee945116.png
+Anonymized ID: hf_20260816_175711_287f6735-8dae-4b4b-9735-fdddee945116
+File Format: .PNG | Size: 6923.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts two women in 18th-century attire, seated at a wooden table in a dimly lit room with a window in the background. The woman in the foreground is wearing a light-colored, off-the-shoulder dress and a bonnet, while the woman in the background is dressed in a similar style but with a more modest neckline. They appear to be eating, with plates of food and a mug on the table. The setting suggests a domestic scene, possibly a kitchen or dining area.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the focus is on the characters' upper bodies and actions.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and the presence of food suggest a morning meal.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts two women in 18th-century attire, seated at a wooden table in a dimly lit room with a window in the background. The woman in the foreground is wearing a light-colored, off-the-shoulder dress and a bonnet, while the woman in the background is dressed in a similar style but with a more modest neckline. They appear to be eating, with plates of food and a mug on the table. The setting suggests a domestic scene, possibly a kitchen or dining area.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the focus is on the characters' upper bodies and actions.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting and the presence of food suggest a morning meal.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,48 @@
+{
+  "fanvue_schedule": {
+    "daily_image_posts": [
+      {
+        "slot": 1,
+        "time": "08:00",
+        "theme": "Morning Routine & Waking Up",
+        "description": "Waking up in attic room, messy bedsheets, soft morning sunlight, morning linen dress."
+      },
+      {
+        "slot": 2,
+        "time": "13:00",
+        "theme": "Mid-day Maid Duties & Everyday Inn Life",
+        "description": "Cleaning floors, changing bedsheets, making laundry, helping ladies get dressed."
+      },
+      {
+        "slot": 3,
+        "time": "18:30",
+        "theme": "Evening Party Preparation & Gathering",
+        "description": "Candlelight, evening gathering atmosphere, flirting, undressing, pinup style moments."
+      },
+      {
+        "slot": 4,
+        "time": "22:30",
+        "theme": "Night Activities & Aftermath",
+        "description": "Loose semi-transparent night gown, bathing, steam, quiet relaxation in attic room."
+      }
+    ],
+    "weekly_video_posts": [
+      {
+        "day": "Sunday",
+        "time": "19:00",
+        "theme": "Weekly High-Quality Video Highlight",
+        "description": "Motion video generated from selected top-rated still image."
+      }
+    ]
+  },
+  "social_coordination": {
+    "instagram_agent": "Tom",
+    "tiktok_agent": "Ana",
+    "strategy": "Coordinates with Tom & Ana for optimal viral short-form video & teaser image timing to funnel traffic to Fanvue link-in-bio."
+  },
+  "producer_reporting": {
+    "summary_day": "Friday",
+    "summary_time": "17:00",
+    "email_notification": true
+  }
+}

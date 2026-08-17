@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S3_hf_20260816_175212_cfbe4e86-8d94-47a9-a4b5-d60c31d98faf.png
+Anonymized ID: hf_20260816_175212_cfbe4e86-8d94-47a9-a4b5-d60c31d98faf
+File Format: .PNG | Size: 7386.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a lively scene in a 18th-century London tavern. A woman in a red dress is dancing, while a man in a black coat and breeches claps along. Another woman, dressed in a beige gown, stands with her back to the viewer, holding a copper pitcher. The setting is dimly lit by a warm fire in the background, and the room is adorned with period-appropriate decor.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a warm, atmospheric lighting that enhances the historical setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the only visible skin is the arms and legs of the characters, which are covered by their clothing.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The warm lighting and the presence of a fire suggest that the scene takes place in the evening or at night.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a lively scene in a 18th-century London tavern. A woman in a red dress is dancing, while a man in a black coat and breeches claps along. Another woman, dressed in a beige gown, stands with her back to the viewer, holding a copper pitcher. The setting is dimly lit by a warm fire in the background, and the room is adorned with period-appropriate decor.
+
+QUALITY: 9
+QUALITY_REASON: The image has a high level of detail and clarity, with a warm, atmospheric lighting that enhances the historical setting.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the only visible skin is the arms and legs of the characters, which are covered by their clothing.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The warm lighting and the presence of a fire suggest that the scene takes place in the evening or at night.
+
+ISSUES: NONE
+====================================================

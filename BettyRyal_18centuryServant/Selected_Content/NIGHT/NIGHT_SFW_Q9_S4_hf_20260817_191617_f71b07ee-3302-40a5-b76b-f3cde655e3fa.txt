@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S4_hf_20260817_191617_f71b07ee-3302-40a5-b76b-f3cde655e3fa.png
+Anonymized ID: hf_20260817_191617_f71b07ee-3302-40a5-b76b-f3cde655e3fa
+File Format: .PNG | Size: 7191.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress is seated in a copper bathtub filled with steaming water. The setting appears to be a rustic, dimly lit room with wooden beams, a fireplace, and candlelight, suggesting a historical period drama scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and the setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 4 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman's bare arms and chest, which is considered a moderate level of sensuality.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and presence of candles suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress is seated in a copper bathtub filled with steaming water. The setting appears to be a rustic, dimly lit room with wooden beams, a fireplace, and candlelight, suggesting a historical period drama scene.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and the setting.
+
+SENSUALITY: 4
+SENSUALITY_REASON: The image shows the woman's bare arms and chest, which is considered a moderate level of sensuality.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and presence of candles suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_NSFW_Q9_S7_hf_20260816_180014_037115a8-8ebe-4ba1-afc4-40d1aa8f89bf.png
+Anonymized ID: hf_20260816_180014_037115a8-8ebe-4ba1-afc4-40d1aa8f89bf
+File Format: .PNG | Size: 7309.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene from a historical period drama set in 18th-century London. Two characters, dressed in period attire, are seen sharing a passionate kiss in a dimly lit room. A third character, wearing a bonnet and a gown, stands in the foreground, observing the intimate moment. The setting appears to be a bedroom with a bed and curtains, and the lighting is soft and warm, creating a dramatic and intimate atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a focus on the characters and their expressions, making it visually striking.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 7 / 10
+Category: NSFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image contains a kiss, which is a common element in historical dramas and can be considered sensual, but it does not include any nudity.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the intimate setting suggest a nighttime scene.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene from a historical period drama set in 18th-century London. Two characters, dressed in period attire, are seen sharing a passionate kiss in a dimly lit room. A third character, wearing a bonnet and a gown, stands in the foreground, observing the intimate moment. The setting appears to be a bedroom with a bed and curtains, and the lighting is soft and warm, creating a dramatic and intimate atmosphere.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a focus on the characters and their expressions, making it visually striking.
+
+SENSUALITY: 7
+SENSUALITY_REASON: The image contains a kiss, which is a common element in historical dramas and can be considered sensual, but it does not include any nudity.
+
+CATEGORY: NSFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the intimate setting suggest a nighttime scene.
+
+ISSUES: NONE
+====================================================

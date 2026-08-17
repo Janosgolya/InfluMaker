@@ -1,0 +1,45 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S5_hf_20260816_175343_f30fd426-6eb6-43dc-9cb0-26cf1dc5afb3.png
+Anonymized ID: hf_20260816_175343_f30fd426-6eb6-43dc-9cb0-26cf1dc5afb3
+File Format: .PNG | Size: 6101.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman with long, light-colored hair is seen from behind, looking into a small, oval mirror embedded in a dark wooden door. The reflection in the mirror shows two people in intimate embrace, suggesting a private moment. The woman is wearing a light-colored, off-the-shoulder garment, and the setting appears to be dimly lit, evoking a historical atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a focus on the textures and lighting, which are well-executed.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 5 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image contains a reflection of two people in intimate embrace, which is suggestive but not explicit. The presence of the woman looking into the mirror adds a layer of curiosity and intrigue.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the intimate setting suggest a nighttime scenario.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman with long, light-colored hair is seen from behind, looking into a small, oval mirror embedded in a dark wooden door. The reflection in the mirror shows two people in intimate embrace, suggesting a private moment. The woman is wearing a light-colored, off-the-shoulder garment, and the setting appears to be dimly lit, evoking a historical atmosphere.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with a focus on the textures and lighting, which are well-executed.
+
+SENSUALITY: 5
+SENSUALITY_REASON: The image contains a reflection of two people in intimate embrace, which is suggestive but not explicit. The presence of the woman looking into the mirror adds a layer of curiosity and intrigue.
+
+CATEGORY: NSFW
+THEME: NIGHT
+THEME_REASON: The dim lighting and the intimate setting suggest a nighttime scenario.
+
+ISSUES: NONE
+====================================================

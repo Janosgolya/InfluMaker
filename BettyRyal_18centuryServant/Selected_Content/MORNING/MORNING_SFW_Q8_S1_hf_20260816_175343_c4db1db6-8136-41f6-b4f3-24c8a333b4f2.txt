@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q8_S1_hf_20260816_175343_c4db1db6-8136-41f6-b4f3-24c8a333b4f2.png
+Anonymized ID: hf_20260816_175343_c4db1db6-8136-41f6-b4f3-24c8a333b4f2
+File Format: .PNG | Size: 6628.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person is lying on a bed in a dimly lit attic room, covered with a blanket. The room has wooden beams and a small window letting in natural light. The person is wearing a white nightgown and appears to be resting or sleeping. The bed is simple, with a pillow and a blanket. There are sandals and a cloth on the floor next to the bed.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has good clarity and detail, with natural lighting and a realistic setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, only a person in a nightgown lying on a bed.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person is lying on a bed in a dimly lit attic room, covered with a blanket. The room has wooden beams and a small window letting in natural light. The person is wearing a white nightgown and appears to be resting or sleeping. The bed is simple, with a pillow and a blanket. There are sandals and a cloth on the floor next to the bed.
+
+QUALITY: 8
+QUALITY_REASON: The image has good clarity and detail, with natural lighting and a realistic setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, only a person in a nightgown lying on a bed.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

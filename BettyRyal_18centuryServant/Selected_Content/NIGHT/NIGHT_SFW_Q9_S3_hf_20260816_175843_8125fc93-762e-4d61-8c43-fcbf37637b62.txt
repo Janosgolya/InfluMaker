@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S3_hf_20260816_175843_8125fc93-762e-4d61-8c43-fcbf37637b62.png
+Anonymized ID: hf_20260816_175843_8125fc93-762e-4d61-8c43-fcbf37637b62
+File Format: .PNG | Size: 6663.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene set in a rustic, 18th-century interior, likely a tavern or home. A man in period attire is seated on a stool, playing a lute, while a woman in a white dress with a bonnet sits on a bench nearby, her hand resting on her chin. The setting is dimly lit, with a warm fire burning in the background, casting a soft glow on the wooden walls and floor. The overall atmosphere suggests a quiet, intimate moment.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and sharp details, with a focus on the textures of the clothing and the lighting creating a realistic ambiance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity, so the sensuality score is low.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and presence of a fire suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene set in a rustic, 18th-century interior, likely a tavern or home. A man in period attire is seated on a stool, playing a lute, while a woman in a white dress with a bonnet sits on a bench nearby, her hand resting on her chin. The setting is dimly lit, with a warm fire burning in the background, casting a soft glow on the wooden walls and floor. The overall atmosphere suggests a quiet, intimate moment.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and sharp details, with a focus on the textures of the clothing and the lighting creating a realistic ambiance.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image does not contain any nudity, so the sensuality score is low.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and presence of a fire suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

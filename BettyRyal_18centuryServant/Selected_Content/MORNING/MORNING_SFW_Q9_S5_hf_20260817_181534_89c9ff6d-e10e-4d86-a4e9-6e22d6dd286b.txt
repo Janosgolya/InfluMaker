@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S5_hf_20260817_181534_89c9ff6d-e10e-4d86-a4e9-6e22d6dd286b.png
+Anonymized ID: hf_20260817_181534_89c9ff6d-e10e-4d86-a4e9-6e22d6dd286b
+File Format: .PNG | Size: 7086.0 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman stands in a rustic, sunlit room with wooden beams and a bed in the foreground. She is wearing a simple, light-colored, off-the-shoulder dress and is eating something while looking out of the window. The setting appears to be a historical period, possibly 18th-century London, with a view of old buildings and a church steeple in the distance.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with natural lighting and a realistic depiction of the scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 5 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman in a modest dress, with no exposed breasts or genitalia, and the sensuality is low due to the clothing and setting.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The sunlight streaming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman stands in a rustic, sunlit room with wooden beams and a bed in the foreground. She is wearing a simple, light-colored, off-the-shoulder dress and is eating something while looking out of the window. The setting appears to be a historical period, possibly 18th-century London, with a view of old buildings and a church steeple in the distance.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with natural lighting and a realistic depiction of the scene.
+
+SENSUALITY: 5
+SENSUALITY_REASON: The image shows the woman in a modest dress, with no exposed breasts or genitalia, and the sensuality is low due to the clothing and setting.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The sunlight streaming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

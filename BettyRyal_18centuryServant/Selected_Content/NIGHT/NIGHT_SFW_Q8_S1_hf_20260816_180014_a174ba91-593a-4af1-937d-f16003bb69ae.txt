@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S1_hf_20260816_180014_a174ba91-593a-4af1-937d-f16003bb69ae.png
+Anonymized ID: hf_20260816_180014_a174ba91-593a-4af1-937d-f16003bb69ae
+File Format: .PNG | Size: 7178.1 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire stands outside a window, looking into a warmly lit room where two individuals are seated by a fireplace. The room is dimly lit, with the fire providing the primary light source, casting a cozy glow. The woman's back is to the viewer, and she appears to be observing the scene inside the room.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with a focus on the textures of the clothing and the warm lighting of the room.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the only visible skin is the woman's back, which is not considered naked under the strict rule.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the presence of a fireplace suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire stands outside a window, looking into a warmly lit room where two individuals are seated by a fireplace. The room is dimly lit, with the fire providing the primary light source, casting a cozy glow. The woman's back is to the viewer, and she appears to be observing the scene inside the room.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with a focus on the textures of the clothing and the warm lighting of the room.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the only visible skin is the woman's back, which is not considered naked under the strict rule.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the presence of a fireplace suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

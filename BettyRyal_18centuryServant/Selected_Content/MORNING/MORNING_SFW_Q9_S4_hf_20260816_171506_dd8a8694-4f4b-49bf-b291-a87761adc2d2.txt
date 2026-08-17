@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S4_hf_20260816_171506_dd8a8694-4f4b-49bf-b291-a87761adc2d2.png
+Anonymized ID: hf_20260816_171506_dd8a8694-4f4b-49bf-b291-a87761adc2d2
+File Format: .PNG | Size: 6891.5 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in period attire is standing beside a four-poster bed in a dimly lit room. The sunlight streams through a window, casting a warm glow and creating a hazy effect. She is holding a piece of fabric, possibly a garment, and appears to be in the process of dressing or undressing.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a warm, natural lighting effect that enhances the historical atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 4 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman in a state of undress, which is a significant element of sensuality, but it does not include naked breasts or genitalia.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The sunlight streaming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in period attire is standing beside a four-poster bed in a dimly lit room. The sunlight streams through a window, casting a warm glow and creating a hazy effect. She is holding a piece of fabric, possibly a garment, and appears to be in the process of dressing or undressing.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a warm, natural lighting effect that enhances the historical atmosphere.
+
+SENSUALITY: 4
+SENSUALITY_REASON: The image shows the woman in a state of undress, which is a significant element of sensuality, but it does not include naked breasts or genitalia.
+
+CATEGORY: NSFW
+
+THEME: MORNING
+THEME_REASON: The sunlight streaming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

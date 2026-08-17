@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_175711_30363cd1-7293-45a6-948e-9a6a7a748f7a.png
+Anonymized ID: hf_20260816_175711_30363cd1-7293-45a6-948e-9a6a7a748f7a
+File Format: .PNG | Size: 7689.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene from what appears to be a historical setting, possibly a spa or bathhouse, with a woman in period attire kneeling by a steaming pool. She is holding a copper pitcher and appears to be pouring water. Another woman is partially submerged in the pool in the background. The setting is dimly lit with warm, ambient lighting, and the architecture suggests a historical European style with arched columns and intricate designs.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with a focus on the historical ambiance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, only bare arms and legs, which are not considered as naked in this context.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and steam suggest a morning setting, as the environment appears to be warm and the woman is dressed in a way that suggests she is preparing for the day.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene from what appears to be a historical setting, possibly a spa or bathhouse, with a woman in period attire kneeling by a steaming pool. She is holding a copper pitcher and appears to be pouring water. Another woman is partially submerged in the pool in the background. The setting is dimly lit with warm, ambient lighting, and the architecture suggests a historical European style with arched columns and intricate designs.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detailed textures, with a focus on the historical ambiance.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, only bare arms and legs, which are not considered as naked in this context.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting and steam suggest a morning setting, as the environment appears to be warm and the woman is dressed in a way that suggests she is preparing for the day.
+
+ISSUES: NONE
+====================================================

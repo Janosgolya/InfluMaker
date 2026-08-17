@@ -1,0 +1,45 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S3_hf_20260816_175842_84ab0e99-3364-4bd2-a20c-96157f3e661b.png
+Anonymized ID: hf_20260816_175842_84ab0e99-3364-4bd2-a20c-96157f3e661b
+File Format: .PNG | Size: 7035.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a lively scene in what appears to be a 18th-century tavern. A woman in period attire is holding a tray of beer mugs, while others in similar clothing are dancing and socializing in the background. The setting is dimly lit, with a warm glow from a fireplace, and the atmosphere is festive and energetic.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has good clarity and detail, with a focus on the central figure and the background activity.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the social interaction rather than any explicit sexual content.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the presence of a fireplace suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a lively scene in what appears to be a 18th-century tavern. A woman in period attire is holding a tray of beer mugs, while others in similar clothing are dancing and socializing in the background. The setting is dimly lit, with a warm glow from a fireplace, and the atmosphere is festive and energetic.
+
+QUALITY: 8
+QUALITY_REASON: The image has good clarity and detail, with a focus on the central figure and the background activity.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the social interaction rather than any explicit sexual content.
+
+CATEGORY: SFW
+THEME: NIGHT
+THEME_REASON: The dim lighting and the presence of a fireplace suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

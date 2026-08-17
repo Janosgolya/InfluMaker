@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_180014_c85f510f-60a6-4f3f-ac1a-4f83c72196de.png
+Anonymized ID: hf_20260816_180014_c85f510f-60a6-4f3f-ac1a-4f83c72196de
+File Format: .PNG | Size: 6207.5 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A young woman lies on a rustic bed in a dimly lit attic room, wearing a simple, sleeveless gray dress. The setting appears to be historical, with straw and old-fashioned bedding. The lighting is soft and natural, coming from a small window in the background, creating a serene and contemplative atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and a realistic texture, with soft lighting that enhances the historical ambiance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, only a young woman in a historical setting.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The soft light coming from the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A young woman lies on a rustic bed in a dimly lit attic room, wearing a simple, sleeveless gray dress. The setting appears to be historical, with straw and old-fashioned bedding. The lighting is soft and natural, coming from a small window in the background, creating a serene and contemplative atmosphere.
+
+QUALITY: 9
+QUALITY_REASON: The image has a high level of detail and a realistic texture, with soft lighting that enhances the historical ambiance.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, only a young woman in a historical setting.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The soft light coming from the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

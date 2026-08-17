@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_hf_20260816_175842_61b1dde5-5ee9-4d12-80a9-ffd4d23bd628.png
+Anonymized ID: hf_20260816_175842_61b1dde5-5ee9-4d12-80a9-ffd4d23bd628
+File Format: .PNG | Size: 6533.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene set in a dimly lit, rustic room, likely from the 18th century. A woman in a period dress and bonnet stands at the doorway, observing three other individuals seated around a table, engaged in conversation. The setting is intimate, with a candle providing the primary light source, casting shadows and creating a moody atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a focus on the textures of the clothing and the room, and the lighting is well-executed.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the only visible skin is the woman's arms and legs, which are covered by her dress.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and candlelight suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene set in a dimly lit, rustic room, likely from the 18th century. A woman in a period dress and bonnet stands at the doorway, observing three other individuals seated around a table, engaged in conversation. The setting is intimate, with a candle providing the primary light source, casting shadows and creating a moody atmosphere.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a focus on the textures of the clothing and the room, and the lighting is well-executed.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the only visible skin is the woman's arms and legs, which are covered by her dress.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and candlelight suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

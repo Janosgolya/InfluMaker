@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_180606_e25f5445-9ca1-419c-8863-6444469180fa.png
+Anonymized ID: hf_20260816_180606_e25f5445-9ca1-419c-8863-6444469180fa
+File Format: .PNG | Size: 7601.1 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman dressed in 18th-century attire is washing clothes in a wooden tub over a fire. The setting appears to be a rustic kitchen or laundry room, with various pottery and hanging herbs in the background. The lighting is warm and natural, suggesting it is daytime.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a realistic depiction of the scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, only clothed arms and legs.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural lighting and the woman's activity suggest it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman dressed in 18th-century attire is washing clothes in a wooden tub over a fire. The setting appears to be a rustic kitchen or laundry room, with various pottery and hanging herbs in the background. The lighting is warm and natural, suggesting it is daytime.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a realistic depiction of the scene.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, only clothed arms and legs.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural lighting and the woman's activity suggest it is morning.
+
+ISSUES: NONE
+====================================================

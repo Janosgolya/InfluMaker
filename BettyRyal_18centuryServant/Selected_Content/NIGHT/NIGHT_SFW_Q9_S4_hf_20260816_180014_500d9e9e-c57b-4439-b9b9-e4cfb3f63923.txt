@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S4_hf_20260816_180014_500d9e9e-c57b-4439-b9b9-e4cfb3f63923.png
+Anonymized ID: hf_20260816_180014_500d9e9e-c57b-4439-b9b9-e4cfb3f63923
+File Format: .PNG | Size: 6704.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in an 18th-century dress stands behind red curtains, observing a couple in a dimly lit room. The couple is seated at a table, illuminated by a single candle, suggesting a private and intimate setting. The woman's posture and the lighting create a sense of curiosity or longing.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a focus on the textures of the clothing and the lighting effects.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 4 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image contains a scene of a couple in a private setting, which could be considered suggestive, but it does not explicitly show naked breasts or genitalia.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and candlelight suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in an 18th-century dress stands behind red curtains, observing a couple in a dimly lit room. The couple is seated at a table, illuminated by a single candle, suggesting a private and intimate setting. The woman's posture and the lighting create a sense of curiosity or longing.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a focus on the textures of the clothing and the lighting effects.
+
+SENSUALITY: 4
+SENSUALITY_REASON: The image contains a scene of a couple in a private setting, which could be considered suggestive, but it does not explicitly show naked breasts or genitalia.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and candlelight suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

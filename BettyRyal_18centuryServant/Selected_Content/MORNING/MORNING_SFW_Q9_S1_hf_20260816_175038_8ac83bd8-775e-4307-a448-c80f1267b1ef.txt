@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_175038_8ac83bd8-775e-4307-a448-c80f1267b1ef.png
+Anonymized ID: hf_20260816_175038_8ac83bd8-775e-4307-a448-c80f1267b1ef
+File Format: .PNG | Size: 7125.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+Two women are depicted in a rustic, 18th-century setting, likely a kitchen or dining area. The woman on the left, wearing a long, flowing dress and a bonnet, is pouring a drink from a jug into a cup held by the woman on the right, who is seated at a wooden table. The table has a plate with bread and cheese. The room is dimly lit with sunlight streaming through a window, creating a warm, natural ambiance.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and the activity suggest a morning scene, possibly breakfast.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: Two women are depicted in a rustic, 18th-century setting, likely a kitchen or dining area. The woman on the left, wearing a long, flowing dress and a bonnet, is pouring a drink from a jug into a cup held by the woman on the right, who is seated at a wooden table. The table has a plate with bread and cheese. The room is dimly lit with sunlight streaming through a window, creating a warm, natural ambiance.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a realistic depiction of the scene and characters.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting and the activity suggest a morning scene, possibly breakfast.
+
+ISSUES: NONE
+====================================================

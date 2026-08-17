@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_hf_20260817_181203_465dfc4c-6d76-44e4-8bb1-4b804ed9e678.png
+Anonymized ID: hf_20260817_181203_465dfc4c-6d76-44e4-8bb1-4b804ed9e678
+File Format: .PNG | Size: 7387.7 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress is holding a steaming wooden bucket, likely preparing a bath. The setting appears to be a rustic room with a copper bathtub, a fire burning in the background, and a candle on the wall, suggesting a historical period drama scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with a strong sense of atmosphere and period authenticity.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain naked breasts or naked genitalia, and the woman is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The scene depicts the preparation of a bath, which is a common activity in historical settings.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress is holding a steaming wooden bucket, likely preparing a bath. The setting appears to be a rustic room with a copper bathtub, a fire burning in the background, and a candle on the wall, suggesting a historical period drama scene.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detailed textures, with a strong sense of atmosphere and period authenticity.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain naked breasts or naked genitalia, and the woman is fully clothed.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The scene depicts the preparation of a bath, which is a common activity in historical settings.
+
+ISSUES: NONE
+====================================================

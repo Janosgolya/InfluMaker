@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260816_174906_e1e32a0f-bf20-4d8a-879b-ea9c29bd74b7.png
+Anonymized ID: hf_20260816_174906_e1e32a0f-bf20-4d8a-879b-ea9c29bd74b7
+File Format: .PNG | Size: 7129.8 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts two women in a dimly lit, rustic setting, likely a laundry room from the 18th century. One woman is washing clothes in a wooden tub, while the other is handling a piece of cloth. The lighting is dramatic, with beams of light streaming through a window, creating a moody atmosphere. The women are dressed in period-appropriate attire, with simple, earth-toned clothing.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with a strong emphasis on lighting and atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the historical context rather than explicit sexual content.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts two women in a dimly lit, rustic setting, likely a laundry room from the 18th century. One woman is washing clothes in a wooden tub, while the other is handling a piece of cloth. The lighting is dramatic, with beams of light streaming through a window, creating a moody atmosphere. The women are dressed in period-appropriate attire, with simple, earth-toned clothing.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detailed textures, with a strong emphasis on lighting and atmosphere.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the historical context rather than explicit sexual content.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

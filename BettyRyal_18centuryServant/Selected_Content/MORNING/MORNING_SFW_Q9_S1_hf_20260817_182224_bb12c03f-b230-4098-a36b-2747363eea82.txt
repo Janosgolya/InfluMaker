@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_hf_20260817_182224_bb12c03f-b230-4098-a36b-2747363eea82.png
+Anonymized ID: hf_20260817_182224_bb12c03f-b230-4098-a36b-2747363eea82
+File Format: .PNG | Size: 6924.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century setting is depicted in a rustic kitchen. She is wearing a white blouse and brown skirt, holding a piece of food in her hand. The lighting is warm and natural, suggesting it is morning or early afternoon. The setting includes wooden beams, a mirror, and a large pot on the stove.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with natural lighting and a realistic setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the woman is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The warm lighting and the woman's attire suggest it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century setting is depicted in a rustic kitchen. She is wearing a white blouse and brown skirt, holding a piece of food in her hand. The lighting is warm and natural, suggesting it is morning or early afternoon. The setting includes wooden beams, a mirror, and a large pot on the stove.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detailed textures, with natural lighting and a realistic setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the woman is fully clothed.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The warm lighting and the woman's attire suggest it is morning.
+
+ISSUES: NONE
+====================================================

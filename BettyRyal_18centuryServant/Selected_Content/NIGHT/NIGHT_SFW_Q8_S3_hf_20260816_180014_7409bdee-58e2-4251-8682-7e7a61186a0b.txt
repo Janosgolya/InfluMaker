@@ -1,0 +1,46 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q8_S3_hf_20260816_180014_7409bdee-58e2-4251-8682-7e7a61186a0b.png
+Anonymized ID: hf_20260816_180014_7409bdee-58e2-4251-8682-7e7a61186a0b
+File Format: .PNG | Size: 6906.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene from what appears to be an 18th-century London setting. A woman in a period dress holds a lit candle, while two other individuals, dressed in historical attire, stand in the background. The setting is dimly lit, suggesting a nighttime or low-light environment, and the architecture suggests a wooden, possibly tavern-like structure.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with well-defined characters and lighting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows a woman in a period dress with a visible cleavage, which is considered a form of sensuality but does not reach the threshold for a higher score.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the presence of a candle suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene from what appears to be an 18th-century London setting. A woman in a period dress holds a lit candle, while two other individuals, dressed in historical attire, stand in the background. The setting is dimly lit, suggesting a nighttime or low-light environment, and the architecture suggests a wooden, possibly tavern-like structure.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with well-defined characters and lighting.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image shows a woman in a period dress with a visible cleavage, which is considered a form of sensuality but does not reach the threshold for a higher score.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the presence of a candle suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

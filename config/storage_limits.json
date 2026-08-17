@@ -1,0 +1,14 @@
+{
+  "max_project_storage_gb": 10,
+  "max_project_storage_bytes": 10737418240,
+  "max_selected_images_count": 1460,
+  "daily_image_target": 4,
+  "annual_days_target": 365,
+  "paths": {
+    "project_root": "d:/AntigravityProjects/InfluMaker/BettyRyal_18centuryServant",
+    "character_references": "d:/AntigravityProjects/InfluMaker/BettyRyal_18centuryServant/CharacterReferences",
+    "selected_content": "d:/AntigravityProjects/InfluMaker/BettyRyal_18centuryServant/Selected_Content",
+    "raw_generations": "d:/AntigravityProjects/InfluMaker/BettyRyal_18centuryServant/RawGenerations",
+    "raw_references": "d:/AntigravityProjects/InfluMaker/BettyRyal_18centuryServant/RawGenerations/RawReferences"
+  }
+}
