@@ -4,6 +4,7 @@ const path = require('path');
 const EveScreenwriterAgent = require('./eve');
 const AnaSocialManager = require('./ana');
 const RoombaAgent = require('./roomba');
+const NotificationService = require('../services/notification_service');
 
 class GeorgeProducerAgent {
     constructor(options = {}) {
@@ -16,6 +17,7 @@ class GeorgeProducerAgent {
         this.eve = new EveScreenwriterAgent();
         this.ana = new AnaSocialManager();
         this.roomba = new RoombaAgent();
+        this.notifier = new NotificationService({ recipient: 'janosgolya@gmail.com' });
         
         this.loadSchedule();
     }
@@ -104,11 +106,41 @@ class GeorgeProducerAgent {
         const storageReport = this.roomba.inspectStorage();
         results.storage = storageReport;
 
+        // 5. Send notification to janosgolya@gmail.com (Instant for 14 days, then weekly)
+        const remainingCount = this.getRemainingContentCount();
+        console.log(`[George] 📧 Triggering notification check for janosgolya@gmail.com (Remaining: ${remainingCount})...`);
+        try {
+            await this.notifier.notifyPostPublished({
+                theme,
+                item: nextItem,
+                results,
+                remainingCount
+            });
+        } catch (mailErr) {
+            console.error(`[George] Notification dispatch note:`, mailErr.message);
+        }
+
         console.log(`\n======================================================`);
         console.log(`✅ GEORGE: Scheduled Tick Completed Successfully`);
         console.log(`======================================================\n`);
 
         return results;
+    }
+
+    /**
+     * Get total remaining approved images across all theme folders
+     */
+    getRemainingContentCount() {
+        let count = 0;
+        const themes = ['MORNING', 'MIDDAY', 'PREP', 'NIGHT'];
+        for (const t of themes) {
+            const dir = path.join(this.selectedContentDir, t);
+            if (fs.existsSync(dir)) {
+                const files = fs.readdirSync(dir);
+                count += files.filter(f => f.endsWith('.png') || f.endsWith('.jpg') || f.endsWith('.webp') || f.endsWith('.jpeg')).length;
+            }
+        }
+        return count;
     }
 
     /**
@@ -150,14 +182,15 @@ class GeorgeProducerAgent {
     /**
      * Generate Friday Weekly Producer Summary
      */
-    generateWeeklySummary() {
+    async generateWeeklySummary(sendNotification = true) {
         let log = [];
         if (fs.existsSync(this.logPath)) {
             try { log = JSON.parse(fs.readFileSync(this.logPath, 'utf8')); } catch (e) { log = []; }
         }
         const roombaReport = this.roomba.inspectStorage();
+        const remainingRunway = this.getRemainingContentCount();
 
-        return {
+        const summary = {
             title: "🎬 Producer George - Weekly Execution Summary",
             date: new Date().toLocaleDateString('pl-PL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
             character: "Betty Ryal (@bettyryal / @secretsofthelondonmansion)",
@@ -169,9 +202,17 @@ class GeorgeProducerAgent {
                 tiktok: log.filter(p => p.platform === 'TikTok').length,
                 omnichannel_video: log.filter(p => p.platform === 'OmniChannel_Video').length
             },
+            remainingRunway,
             storageQuota: roombaReport.storage,
             status: "ALL AGENTS OPERATIONAL & AUTONOMOUS"
         };
+
+        if (sendNotification) {
+            console.log(`[George] 📧 Sending Weekly Producer Summary to janosgolya@gmail.com...`);
+            await this.notifier.notifyWeeklySummary(summary);
+        }
+
+        return summary;
     }
 }
 
@@ -189,7 +230,7 @@ if (require.main === module) {
                 const forcedTheme = themeIdx !== -1 ? args[themeIdx + 1] : null;
                 await george.runTick(forcedTheme);
             } else if (args.includes('--summary') || args.includes('-s')) {
-                console.log(JSON.stringify(george.generateWeeklySummary(), null, 2));
+                console.log(JSON.stringify(await george.generateWeeklySummary(), null, 2));
             } else {
                 console.log(`\n======================================================`);
                 console.log(`🎬 GEORGE: Main Producer & Workflow Coordinator`);

@@ -42,6 +42,10 @@ jobs:
           FANVUE_REFRESH_TOKEN: ${{ secrets.FANVUE_REFRESH_TOKEN }}
           FANVUE_CLIENT_ID: ${{ secrets.FANVUE_CLIENT_ID }}
           FANVUE_CLIENT_SECRET: ${{ secrets.FANVUE_CLIENT_SECRET }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
         run: node src/agents/george.js --tick
 
       - name: Commit and Push Updated Log
