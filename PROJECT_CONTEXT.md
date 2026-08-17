@@ -80,12 +80,17 @@
 
 ## ☁️ 24/7 Cloud Architecture & Deployment Kit
 
-- **Google Cloud Platform (Always Free VM `e2-micro`)**:
-  - Turnkey PM2 configuration: [`ecosystem.config.js`](file:///d:/AntigravityProjects/InfluMaker/ecosystem.config.js).
-  - 1-command installer script: [`setup_gcp_vm.sh`](file:///d:/AntigravityProjects/InfluMaker/setup_gcp_vm.sh).
-  - Step-by-step setup guide: [`GCP_SETUP_GUIDE.md`](file:///d:/AntigravityProjects/InfluMaker/GCP_SETUP_GUIDE.md).
-- **GitHub Actions Cloud Runner**:
-  - Automated workflow: [`.github/workflows/daily_influencer_cron.yml`](file:///d:/AntigravityProjects/InfluMaker/.github/workflows/daily_influencer_cron.yml).
+- **GitHub Actions Cron Scheduler**: [`.github/workflows/daily_influencer_cron.yml`](file:///d:/AntigravityProjects/InfluMaker/.github/workflows/daily_influencer_cron.yml)
+  - **Schedule**: 4 times daily (06:00, 11:00, 16:00, 20:00 UTC).
+  - **Live Secrets Configured on GitHub**:
+    - `FANVUE_ACCESS_TOKEN` & `FANVUE_REFRESH_TOKEN`
+    - `INSTAGRAM_SESSION_JSON` (Clean 5 KB Playwright session)
+    - `TIKTOK_SESSION_JSON` (Optimized 5.14 KB auth session)
+    - `GMAIL_USER` & `GMAIL_APP_PASSWORD` (Direct delivery to `janosgolya@gmail.com`)
+  - **Email Notification Schedule**:
+    - **Phase 1 (First 14 days up to 2026-09-01)**: Instant email notification sent to `janosgolya@gmail.com` after every successful publish cycle.
+    - **Phase 2 (From 2026-09-01 onwards)**: Automatic transition to weekly Sunday executive producer digest.
+- **Repository**: [`https://github.com/Janosgolya/InfluMaker`](https://github.com/Janosgolya/InfluMaker) (100% Synced & Autonomous).
 
 ---
 
