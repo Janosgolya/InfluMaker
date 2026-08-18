@@ -1,6 +1,5 @@
 ================================================================================
 🎭 INFLUMAKER - EVE SCREENWRITER AGENT
-================================================================================
 Image File: NIGHT_SFW_Q9_S1_hf_20260816_175343_8786061c-eb4a-4eb6-9a0d-06fa6625d474.png
 Character: Betty Ryal (18th-Century London Inn Maid)
 Theme: NIGHT
@@ -10,7 +9,6 @@ Generated At: 2026-08-17T21:55:49.739Z
 👁️ VISUAL SCENE SUMMARY:
 A woman in 18th-century attire stands by a window, looking out at a group of people gathered around a fire inside a dimly lit room. The setting appears to be a cozy, candlelit interior, and the woman is wearing a bonnet and a dress with a belt. The lighting is soft and moody, creating a sense of intimacy and historical atmosphere.
 
-================================================================================
 ### SECTION 1: 📱 TIKTOK FORMAT (Top-of-Funnel Viral Hook & SFW Conversion)
 
 **ON-SCREEN TEXT HOOK:**
@@ -54,4 +52,3 @@ Your support means the world to me. Tip with me, send a private request, or subs
 
 **HASHTAGS:**
 #Fanvue #BettyRyal #HistoricalDrama
-================================================================================

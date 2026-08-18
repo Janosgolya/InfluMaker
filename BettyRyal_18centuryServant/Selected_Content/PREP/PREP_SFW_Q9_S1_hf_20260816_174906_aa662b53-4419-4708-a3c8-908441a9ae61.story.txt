@@ -1,6 +1,5 @@
 ================================================================================
 🎭 INFLUMAKER - EVE SCREENWRITER AGENT
-================================================================================
 Image File: PREP_SFW_Q9_S1_hf_20260816_174906_aa662b53-4419-4708-a3c8-908441a9ae61.png
 Character: Betty Ryal (18th-Century London Inn Maid)
 Theme: PREP
@@ -10,7 +9,6 @@ Generated At: 2026-08-17T17:14:48.206Z
 👁️ VISUAL SCENE SUMMARY:
 The image depicts a woman in 18th-century attire, standing in a rustic kitchen with a stone fireplace. She is wearing a white apron and a headscarf, reaching up to hang a copper pot on a wooden beam. The setting is dimly lit, with warm light emanating from the fire, casting shadows and highlighting the textures of the stone walls and hanging utensils.
 
-================================================================================
 ### SECTION 1: 📱 TIKTOK FORMAT (Top-of-Funnel Viral Hook & SFW Conversion)
 
 **ON-SCREEN TEXT HOOK:** "POV: You caught the inn's new maid in the quiet corridor... #18thCentury"
@@ -48,4 +46,3 @@ The image depicts a woman in 18th-century attire, standing in a rustic kitchen w
 ---
 
 Format your response exactly with clear headers and sections.
-================================================================================

@@ -1,6 +1,5 @@
 ================================================================================
 🎭 INFLUMAKER - EVE SCREENWRITER AGENT
-================================================================================
 Image File: MORNING_SFW_Q9_S3_hf_20260817_191617_043e8af4-6d49-48e6-ba6f-6a8c96950c43.png
 Character: Betty Ryal (18th-Century London Inn Maid)
 Theme: MORNING
@@ -10,7 +9,6 @@ Generated At: 2026-08-17T21:41:24.559Z
 👁️ VISUAL SCENE SUMMARY:
 A woman stands in a rustic, dimly lit room, wearing a period-appropriate gown with a lace-up bodice and a full skirt. She is adjusting her sleeve, and the room has a bed and curtains in the background, suggesting a bedroom setting. The lighting is soft and natural, coming from a window.
 
-================================================================================
 ### SECTION 1: 📱 TIKTOK FORMAT
 
 **ON-SCREEN TEXT HOOK:** "POV: I was scrubbing the hearth in the scullery, when I heard a soft rustling from the bedroom."
@@ -42,4 +40,3 @@ A woman stands in a rustic, dimly lit room, wearing a period-appropriate gown wi
 **TIP MENU & VIP CTA:** "Support Betty's diary with a tip, or send your private requests in DMs. Let's delve deeper into the mysteries of the inn. #BettyRyal #FanVue #PPV"
 
 **HASHTAGS:** #BettyRyal #FanVue #HistoricalRomance
-================================================================================

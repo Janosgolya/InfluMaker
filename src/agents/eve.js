@@ -199,14 +199,41 @@ THEME: <MORNING, MIDDAY, PREP, or NIGHT>`;
      */
     sanitizeEnglishStory(text) {
         if (!text) return '';
-        // 1. Remove all Chinese / East Asian characters, emojis, and non-Latin ideographs
+
+        // 1. Remove all Chinese / East Asian characters
         let cleaned = text.replace(/[\u3000-\u303f\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff\uff00-\uffef]/g, '');
-        
-        // 2. Split into lines and deduplicate repeated content
+
+        // 2. Strip LLM meta-commentary lines - instructions that leaked into output
+        //    Pattern: lines that start with or are entirely a parenthetical tone/format label
+        //    e.g. "(Exclusive, seductive tone)" "(Whispered, intimate)" "(Note: ...)" "(In a warm voice)"
+        cleaned = cleaned.replace(/^\s*\([^)]{0,80}\)\s*$/gm, '');
+
+        // 3. Strip inline meta-commentary prefixes at the START of a sentence
+        //    e.g. "(Exclusive, seductive tone) "What happened..." -> "What happened..."
+        //    e.g. "(Whispered) She reached for..." -> "She reached for..."
+        cleaned = cleaned.replace(/^\s*\([^)]{0,80}\)\s*[""]?/gm, '');
+
+        // 4. Strip format labels that LLMs sometimes output as opening words
+        //    e.g. "Exclusive, seductive tone: What happened..." -> "What happened..."
+        const toneLabels = [
+            /^(Exclusive,?\s+seductive\s+tone:?\s*)/gim,
+            /^(Intimate\s+tone:?\s*)/gim,
+            /^(Whispered,?\s+intimate:?\s*)/gim,
+            /^(Seductive\s+tone:?\s*)/gim,
+            /^(Note\s*:?\s*)/gim,
+            /^(Narrator\s*:?\s*)/gim,
+            /^(Betty\s+speaks\s*:?\s*)/gim,
+            /^(Caption\s*:?\s*)/gim,
+        ];
+        for (const pattern of toneLabels) {
+            cleaned = cleaned.replace(pattern, '');
+        }
+
+        // 5. Deduplicate repeated lines
         const lines = cleaned.split('\n');
         const seen = new Set();
         const resultLines = [];
-        
+
         for (const line of lines) {
             const trimmed = line.trim();
             if (!trimmed) {
@@ -220,7 +247,7 @@ THEME: <MORNING, MIDDAY, PREP, or NIGHT>`;
             }
             resultLines.push(trimmed);
         }
-        
+
         return resultLines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
     }
 
@@ -284,7 +311,13 @@ Write a complete, high-converting story file for this exact image in STRICT ENGL
 - PAYWALL & PPV TEASER PITCH: High-converting teaser copy in English designed to sell pay-per-view (PPV) locked photo sets or video drops.
 - TIP MENU & VIP CTA: A warm, seductive callout in English inviting subscribers to tip or send private requests in DMs.
 
-FORMAT YOUR RESPONSE EXACTLY WITH CLEAR HEADERS AND SECTIONS. ENGLISH ONLY. NO REPETITION. DO NOT ADD META COMMENTARY.`;
+FORMAT YOUR RESPONSE EXACTLY WITH CLEAR HEADERS AND SECTIONS. ENGLISH ONLY. NO REPETITION.
+
+ABSOLUTE OUTPUT RULES - NEVER BREAK THESE:
+- DO NOT write parenthetical tone labels in your output. NEVER write things like "(Exclusive, seductive tone)", "(Whispered)", "(Intimate tone)", "(Note:)", "(In Betty's voice)" inside the actual text. These are for your internal guidance only - they must NEVER appear in the final written output.
+- DO NOT prefix any paragraph or sentence with a tone descriptor followed by a colon. NEVER write "Seductive tone: She reached for..." - just write "She reached for..."
+- DO NOT write meta-instructions to yourself inside the output (e.g. "Here is a seductive confession:", "The following is written in an exclusive tone:").
+- WRITE CLEAN PROSE DIRECTLY. Start each section's content immediately with the actual words Betty speaks or writes, with no preamble, no labels, and no self-referential instructions.`;
 
         console.log(`[Eve] 💭 Generating copy with ${this.textModel}...`);
         const rawStory = await this.callOllama(generationPrompt, null, this.textModel);
