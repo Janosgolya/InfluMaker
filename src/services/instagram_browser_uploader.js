@@ -42,9 +42,12 @@ class InstagramBrowserUploader {
         console.log(`======================================================`);
 
         const browser = await chromium.launch({
-            headless: options.headless ?? false,
+            headless: options.headless ?? true,
             args: [
                 '--disable-blink-features=AutomationControlled',
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
                 '--start-maximized',
                 '--enable-webgl'
             ]

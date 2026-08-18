@@ -508,8 +508,8 @@ class AnaSocialManager {
         console.log(`\n[Ana Inspector] 🔍 Verifying Instagram status on @${this.instagram.profile.username}...`);
         const { chromium } = require('playwright');
         const browser = await chromium.launch({
-            headless: false,
-            args: ['--disable-blink-features=AutomationControlled', '--start-maximized']
+            headless: true,
+            args: ['--disable-blink-features=AutomationControlled', '--no-sandbox', '--disable-setuid-sandbox']
         });
         const context = await browser.newContext({
             storageState: path.join(__dirname, '../../config/instagram_session.json'),
@@ -588,8 +588,8 @@ class AnaSocialManager {
         console.log(`\n[Ana Inspector] 🔍 Verifying TikTok Studio content for duplicates...`);
         const { chromium } = require('playwright');
         const browser = await chromium.launch({
-            headless: false,
-            args: ['--disable-blink-features=AutomationControlled', '--start-maximized']
+            headless: true,
+            args: ['--disable-blink-features=AutomationControlled', '--no-sandbox', '--disable-setuid-sandbox']
         });
         const context = await browser.newContext({
             storageState: path.join(__dirname, '../../config/tiktok_session.json'),

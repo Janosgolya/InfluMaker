@@ -56,6 +56,9 @@ class TikTokBrowserUploader {
             headless: options.headless ?? true,
             args: [
                 '--disable-blink-features=AutomationControlled',
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
                 '--start-maximized'
             ]
         });
