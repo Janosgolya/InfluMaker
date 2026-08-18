@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 const sharp = require('sharp');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 const OLLAMA_HOST = 'localhost';
 const OLLAMA_PORT = 11434;
@@ -36,6 +37,47 @@ class EveScreenwriterAgent {
             console.warn(`[Eve] Warning loading character lore: ${e.message}`);
             this.lore = '';
             this.visualLore = '';
+        }
+    }
+
+    /**
+     * Call Google Gemini API as cloud / zero-Ollama fallback
+     */
+    async callGemini(prompt, imagePath = null) {
+        if (!process.env.GEMINI_API_KEY) {
+            throw new Error('GEMINI_API_KEY environment variable is not set');
+        }
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
+        const parts = [prompt];
+        if (imagePath && fs.existsSync(imagePath)) {
+            const mimeType = imagePath.endsWith('.png') ? 'image/png' : 'image/jpeg';
+            const imgBuffer = fs.readFileSync(imagePath);
+            parts.push({
+                inlineData: {
+                    data: imgBuffer.toString('base64'),
+                    mimeType: mimeType
+                }
+            });
+        }
+
+        const result = await model.generateContent(parts);
+        return result.response.text();
+    }
+
+    /**
+     * Unified model caller with automatic local Ollama -> Gemini API fallback
+     */
+    async callModel(prompt, imagePath = null, model = this.textModel) {
+        try {
+            return await this.callOllama(prompt, imagePath, model);
+        } catch (ollamaErr) {
+            if (process.env.GEMINI_API_KEY) {
+                console.log(`[Eve] ℹ️ Local Ollama unavailable (${ollamaErr.message}). Falling back to Gemini Flash API...`);
+                return await this.callGemini(prompt, imagePath);
+            }
+            throw ollamaErr;
         }
     }
 
@@ -159,7 +201,7 @@ SENSUALITY: <score 1-10>
 THEME: <MORNING, MIDDAY, PREP, or NIGHT>`;
 
             try {
-                const rawResp = await this.callOllama(visionPrompt, imagePath, this.visionModel);
+                const rawResp = await this.callModel(visionPrompt, imagePath, this.visionModel);
                 const descMatch = rawResp.match(/DESCRIPTION:\s*([\s\S]*?)(?=\nHAIR_APPEARANCE:|\nSENSUALITY:|\nTHEME:|$)/i);
                 const hairMatch = rawResp.match(/HAIR_APPEARANCE:\s*([^\n]+)/i);
                 const sensMatch = rawResp.match(/SENSUALITY:\s*(\d+)/i);
@@ -337,7 +379,7 @@ ABSOLUTE OUTPUT RULES - NEVER BREAK THESE:
 - WRITE CLEAN PROSE DIRECTLY. Start each section's content immediately with the actual words Betty speaks or writes, with no preamble, no labels, and no self-referential instructions.`;
 
         console.log(`[Eve] 💭 Generating copy with ${this.textModel}...`);
-        const rawStory = await this.callOllama(generationPrompt, null, this.textModel);
+        const rawStory = await this.callModel(generationPrompt, null, this.textModel);
 
         // Sanitize: strip any Chinese / Asian characters and deduplicate lines
         const sanitizedStory = this.sanitizeEnglishStory(rawStory);

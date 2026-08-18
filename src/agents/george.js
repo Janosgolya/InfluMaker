@@ -37,13 +37,19 @@ class GeorgeProducerAgent {
     }
 
     /**
-     * Determine current posting theme based on hour of the day
+     * Determine current posting theme based on hour of the day (Warsaw Timezone / CEST)
      */
     getCurrentThemeForTime(date = new Date()) {
-        const hour = date.getHours();
-        if (hour >= 6 && hour < 12) return 'MORNING';
-        if (hour >= 12 && hour < 17) return 'MIDDAY';
-        if (hour >= 17 && hour < 21) return 'PREP';
+        // Force calculation in Europe/Warsaw timezone to correctly map GitHub Actions UTC runners
+        const warsawHour = parseInt(new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Europe/Warsaw',
+            hour: 'numeric',
+            hour12: false
+        }).format(date), 10);
+
+        if (warsawHour >= 6 && warsawHour < 12) return 'MORNING';
+        if (warsawHour >= 12 && warsawHour < 17) return 'MIDDAY';
+        if (warsawHour >= 17 && warsawHour < 21) return 'PREP';
         return 'NIGHT';
     }
 
