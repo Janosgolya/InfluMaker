@@ -283,14 +283,27 @@ class FanvueService {
     }
 
     /**
-     * Sanitize story text to enforce English-only and remove duplicates
+     * Sanitize story text to enforce English-only, remove meta-commentary, tone labels, and bracket artifacts
      */
     sanitizeEnglishStoryText(text) {
         if (!text) return '';
-        // 1. Remove all Chinese / East Asian characters, emojis, and non-Latin ideographs
-        let cleaned = text.replace(/[\u3000-\u303f\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff\uff00-\uffef]/g, '');
         
-        // 2. Split into lines and deduplicate repeated content
+        // 1. Remove all Chinese / East Asian characters
+        let cleaned = text.replace(/[\u3000-\u303f\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff\uff00-\uffef]/g, '');
+
+        // 2. Strip standalone parenthetical lines and tone labels
+        cleaned = cleaned.replace(/^\s*\([^)]{0,80}\)\s*$/gm, '');
+        cleaned = cleaned.replace(/^\s*\([^)]{0,80}\)\s*[""']?/gm, '');
+        cleaned = cleaned.replace(/^(Exclusive,?\s+seductive\s+tone\s*:\s*)/gim, '');
+        cleaned = cleaned.replace(/^(Intimate\s+tone\s*:\s*)/gim, '');
+        cleaned = cleaned.replace(/^(Whispered,?\s+intimate\s*:\s*)/gim, '');
+        cleaned = cleaned.replace(/^(Seductive\s+tone\s*:\s*)/gim, '');
+
+        // 3. Strip bracketed template placeholders like [Unlock the full 10-photo set...]
+        cleaned = cleaned.replace(/\[Unlock the full[^\]]*\]/gi, '');
+        cleaned = cleaned.replace(/\[Unlock[^\]]*\]/gi, '');
+
+        // 4. Split into lines and deduplicate repeated content
         const lines = cleaned.split('\n');
         const seen = new Set();
         const resultLines = [];
@@ -315,7 +328,7 @@ class FanvueService {
     /**
      * Parse Eve's sidecar .story.txt to extract Fanvue section
      */
-    parseEveStory(storyFilePath) {
+    parseEveStory(storyFilePath, isPaidPost = false) {
         if (!fs.existsSync(storyFilePath)) {
             return null;
         }
@@ -329,12 +342,19 @@ class FanvueService {
         const tipMenuMatch = fanvueText.match(/#### TIP MENU & VIP CTA:\s*\n([\s\S]*?)(?=\n#### HASHTAGS|$)/i);
         const hashtagsMatch = fanvueText.match(/#### HASHTAGS:\s*\n([^\n]+)/i);
 
-        const confession = this.sanitizeEnglishStoryText(confessionMatch ? confessionMatch[1].trim() : "Tonight in my attic room, I wrote down everything that happened behind closed doors...");
-        const paywall = this.sanitizeEnglishStoryText(paywallMatch ? paywallMatch[1].trim() : "Unlock to see the full uncensored moment...");
-        const tipMenu = this.sanitizeEnglishStoryText(tipMenuMatch ? tipMenuMatch[1].trim() : "Tip to support Betty's private diary.");
+        let confession = this.sanitizeEnglishStoryText(confessionMatch ? confessionMatch[1].trim() : "Tonight in my attic room, I wrote down everything that happened behind closed doors...");
+        let paywall = this.sanitizeEnglishStoryText(paywallMatch ? paywallMatch[1].trim() : "Unlock to see the full uncensored moment...");
+        let tipMenu = this.sanitizeEnglishStoryText(tipMenuMatch ? tipMenuMatch[1].trim() : "Tip to support Betty's private diary.");
         const hashtags = hashtagsMatch ? hashtagsMatch[1].trim() : "#BettyRyal #Fanvue #HistoricalRomance";
 
-        const fullPostText = this.sanitizeEnglishStoryText(`${confession}\n\n${paywall}\n\n${tipMenu}\n\n${hashtags}`);
+        // Build elegant post text dynamically based on whether it is a paid PPV drop or standard subscription post
+        let parts = [];
+        if (confession) parts.push(confession);
+        if (isPaidPost && paywall && paywall !== confession) parts.push(paywall);
+        if (tipMenu) parts.push(tipMenu);
+        if (hashtags) parts.push(hashtags);
+
+        const fullPostText = this.sanitizeEnglishStoryText(parts.join('\n\n'));
 
         return {
             confession,
@@ -349,11 +369,6 @@ class FanvueService {
      * End-to-end publish image post to Fanvue via MCP custom flow
      */
     async publishImagePost(imagePath, storyFilePath, options = {}) {
-        const story = this.parseEveStory(storyFilePath);
-        if (!story) {
-            throw new Error(`Missing Eve story file: ${storyFilePath}`);
-        }
-
         const sensualityMatch = storyFilePath.match(/_S(\d+)_/i);
         const sensuality = sensualityMatch ? parseInt(sensualityMatch[1], 10) : 5;
         const theme = options.theme || 'MIDDAY';
@@ -364,6 +379,12 @@ class FanvueService {
             isVideo: options.isVideo || false,
             isBundle: options.isBundle || false
         });
+
+        const isPaid = pricing.priceCents > 0;
+        const story = this.parseEveStory(storyFilePath, isPaid);
+        if (!story) {
+            throw new Error(`Missing Eve story file: ${storyFilePath}`);
+        }
 
         console.log(`\n======================================================`);
         console.log(`🚀 FANVUE LIVE PUBLISHER: ${path.basename(imagePath)}`);
