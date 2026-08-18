@@ -119,6 +119,17 @@ class GeorgeProducerAgent {
             }
         }
 
+        // Publish to X / Twitter (Morning teaser & Night diary drop)
+        if ((theme === 'MORNING' || theme === 'NIGHT') && this.ana.twitter.isConfigured()) {
+            try {
+                console.log(`[George] 🐦 Delegating X / Twitter Post to Ana...`);
+                results.twitter = await this.ana.publishTwitterPost(theme);
+            } catch (e) {
+                console.error(`[George] ⚠️ Twitter publication note:`, e.message);
+                results.twitter = { error: e.message };
+            }
+        }
+
         // Publish to TikTok (Evening Video Slot: PREP or NIGHT) - Hybrid Cadence
         if (theme === 'PREP' || theme === 'NIGHT') {
             try {

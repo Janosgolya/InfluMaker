@@ -6,11 +6,12 @@ const TikTokService = require('../services/tiktok_service');
 const InstagramService = require('../services/instagram_service');
 const PinterestService = require('../services/pinterest_service');
 const RedditService = require('../services/reddit_service');
+const TwitterService = require('../services/twitter_service');
 
 class AnaSocialManager {
     constructor(options = {}) {
         this.name = "Ana";
-        this.role = "Omni-Channel Social & Monetization Manager (Fanvue, TikTok, Instagram, Pinterest, Reddit)";
+        this.role = "Omni-Channel Social & Monetization Manager (Fanvue, TikTok, Instagram, Pinterest, Reddit, X/Twitter)";
         this.schedulePath = options.schedulePath || path.join(__dirname, '../../config/posting_schedule.json');
         this.selectedContentDir = options.selectedContentDir || path.join(__dirname, '../../BettyRyal_18centuryServant/Selected_Content');
         this.logPath = options.logPath || path.join(__dirname, '../../config/published_log.json');
@@ -19,6 +20,7 @@ class AnaSocialManager {
         this.instagram = new InstagramService();
         this.pinterest = PinterestService;
         this.reddit = RedditService;
+        this.twitter = TwitterService;
         this.loadSchedule();
         this.loadLog();
     }
@@ -774,6 +776,39 @@ class AnaSocialManager {
     }
 
     /**
+     * Publish a Tweet with Image to X / Twitter from Selected_Content for a theme
+     */
+    async publishTwitterPost(theme = 'MORNING', options = {}) {
+        console.log(`\n======================================================`);
+        console.log(`🐦 ANA: Publishing Post to X / Twitter (Theme: ${theme})`);
+        console.log(`======================================================\n`);
+
+        const nextItem = this.getNextContentForTheme(theme, 'Twitter');
+        if (!nextItem) {
+            console.log(`[Ana] ℹ️ No pending unposted items found for Twitter theme: ${theme}`);
+            return { success: false, reason: 'No unposted content' };
+        }
+
+        console.log(`[Ana] 🖼️ Selected image: ${path.basename(nextItem.imagePath)}`);
+        const twitterResult = await this.twitter.publishTweet(nextItem.imagePath, nextItem.storyPath, options);
+
+        if (twitterResult.success) {
+            this.log.push({
+                platform: 'Twitter',
+                imageFile: path.basename(nextItem.imagePath),
+                theme: theme.toUpperCase(),
+                tweetText: twitterResult.tweetText,
+                timestamp: new Date().toISOString(),
+                status: 'PUBLISHED'
+            });
+            this.saveLog();
+            console.log(`[Ana] ✅ Tweet logged successfully!`);
+        }
+
+        return twitterResult;
+    }
+
+    /**
      * Autonomous Verification & Self-Healing Engine for Pinterest
      */
     async verifyAndHealPinterest() {
@@ -804,6 +839,21 @@ class AnaSocialManager {
     }
 
     /**
+     * Autonomous Verification & Self-Healing Engine for X / Twitter
+     */
+    async verifyAndHealTwitter() {
+        console.log(`\n[Ana Inspector] 🔍 Verifying Twitter/X session and connection...`);
+        const report = { platform: 'Twitter', healthy: true, actionsTaken: [] };
+        if (!this.twitter.isConfigured()) {
+            report.healthy = false;
+            report.actionsTaken.push('Twitter session not configured. Please run login_twitter.bat');
+        } else {
+            console.log(`[Ana Inspector] ✅ Twitter session active.`);
+        }
+        return report;
+    }
+
+    /**
      * Run complete multi-platform health audit & auto-healing
      */
     async verifyAllChannels() {
@@ -816,6 +866,7 @@ class AnaSocialManager {
         const fvReport = await this.verifyAndHealFanvue();
         const pinReport = await this.verifyAndHealPinterest();
         const redReport = await this.verifyAndHealReddit();
+        const twReport = await this.verifyAndHealTwitter();
 
         console.log(`\n======================================================`);
         console.log(`📊 HEALTH AUDIT SUMMARY`);
@@ -828,9 +879,11 @@ class AnaSocialManager {
         if (pinReport.actionsTaken.length > 0) console.log(`   - ${pinReport.actionsTaken.join('\n   - ')}`);
         console.log(`🤖 Reddit:    ${redReport.healthy ? '🟢 Session Active' : '🟡 Setup Required'}`);
         if (redReport.actionsTaken.length > 0) console.log(`   - ${redReport.actionsTaken.join('\n   - ')}`);
+        console.log(`🐦 X/Twitter: ${twReport.healthy ? '🟢 Session Active' : '🟡 Setup Required'}`);
+        if (twReport.actionsTaken.length > 0) console.log(`   - ${twReport.actionsTaken.join('\n   - ')}`);
         console.log(`======================================================\n`);
 
-        return { igReport, ttReport, fvReport, pinReport, redReport };
+        return { igReport, ttReport, fvReport, pinReport, redReport, twReport };
     }
 }
 
@@ -843,6 +896,8 @@ if (require.main === module) {
         try {
             if (args.includes('--verify') || args.includes('--verify-and-heal') || args.includes('--audit')) {
                 await ana.verifyAllChannels();
+            } else if (args.includes('--twitter-post') || args.includes('--tweet') || args.includes('--twitter') || args.includes('--x')) {
+                await ana.publishTwitterPost('MORNING');
             } else if (args.includes('--reddit-post') || args.includes('--reddit')) {
                 await ana.publishRedditPost('MIDDAY');
             } else if (args.includes('--pinterest-login') || args.includes('--pin-login')) {
