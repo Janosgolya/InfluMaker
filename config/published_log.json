@@ -309,5 +309,23 @@
     "theme": "NIGHT",
     "timestamp": "2026-08-17T17:46:21.758Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "MORNING_SFW_Q8_S1_hf_20260816_175343_c4db1db6-8136-41f6-b4f3-24c8a333b4f2.png",
+    "theme": "MORNING",
+    "price": "Included in Subscription",
+    "priceCents": 0,
+    "audience": "subscribers",
+    "timestamp": "2026-08-18T10:32:33.512Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Instagram",
+    "imageFile": "MORNING_SFW_Q8_S1_hf_20260816_175711_7e11fb26-bd11-42c2-827a-4324fb4babd3.png",
+    "theme": "MORNING",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/Instagram_Ready_Content/MORNING_SFW_Q8_S1_hf_20260816_175711_7e11fb26-bd11-42c2-827a-4324fb4babd3_insta_4x5.jpg",
+    "timestamp": "2026-08-18T10:33:52.078Z",
+    "status": "PUBLISHED"
   }
 ]
