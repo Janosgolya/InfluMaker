@@ -73,6 +73,15 @@ async function uploadRedditPost(options) {
             throw new Error('Reddit session expired or invalid. Please re-run login_reddit.bat.');
         }
 
+        // 0. Accept cookies if banner visible
+        try {
+            const acceptCookies = page.locator('button').filter({ hasText: /^Zaakceptuj wszystkie$|^Accept all$/i }).first();
+            if (await acceptCookies.isVisible({ timeout: 2000 })) {
+                await acceptCookies.click();
+                await page.waitForTimeout(1000);
+            }
+        } catch {}
+
         // 1. Switch to "Images & Video" tab if available
         console.log('📑 Selecting Images & Video tab...');
         const mediaTab = page.locator('button[role="tab"], button').filter({ hasText: /Image|Images|Zdjęcia|Wideo|Media/i }).first();
@@ -92,15 +101,49 @@ async function uploadRedditPost(options) {
 
         // 3. Enter Title
         console.log('✍️ Entering Post Title...');
-        const titleBox = page.locator('textarea[placeholder*="Title" i], textarea[placeholder*="Tytuł" i], input[placeholder*="Title" i], [name="title"], div[role="textbox"]').first();
-        await titleBox.waitFor({ state: 'visible', timeout: 10000 });
-        await titleBox.click();
-        await titleBox.fill(title.substring(0, 300));
+        const titleContainer = page.locator('faceplate-textarea-input[name="title"], [name="title"]').first();
+        if (await titleContainer.isVisible({ timeout: 5000 })) {
+            const innerTextarea = titleContainer.locator('textarea').first();
+            if (await innerTextarea.isVisible({ timeout: 2000 })) {
+                await innerTextarea.fill(title.substring(0, 300));
+            } else {
+                await titleContainer.click();
+                await page.keyboard.type(title.substring(0, 300), { delay: 5 });
+            }
+        } else {
+            const genericTitle = page.locator('textarea[placeholder*="Title" i], textarea[placeholder*="Tytuł" i], input[placeholder*="Title" i]').first();
+            await genericTitle.fill(title.substring(0, 300));
+        }
         console.log('✅ Title populated!');
 
-        await page.waitForTimeout(1000);
+        await page.waitForTimeout(1500);
 
-        // 4. Toggle NSFW if requested
+        // 4. Select Flair (required by many subreddits like r/aiArt)
+        try {
+            console.log('🏷️ Checking for required subreddit Flair...');
+            const flairTrigger = page.locator('button, [role="button"]').filter({ hasText: /Flair|Wyróżnienie|Dodaj wyróżnienie|Add flair/i }).first();
+            if (await flairTrigger.isVisible({ timeout: 3000 })) {
+                await flairTrigger.click();
+                await page.waitForTimeout(1500);
+
+                const firstFlair = page.locator('div[role="dialog"] li, div[role="dialog"] [role="radio"], div[role="dialog"] button, [data-testid*="flair"]').first();
+                if (await firstFlair.isVisible({ timeout: 2000 })) {
+                    await firstFlair.click();
+                    await page.waitForTimeout(500);
+                    const applyFlair = page.locator('div[role="dialog"] button').filter({ hasText: /Zastosuj|Apply|Save/i }).first();
+                    if (await applyFlair.isVisible({ timeout: 2000 })) {
+                        await applyFlair.click();
+                        console.log('✅ Subreddit flair applied!');
+                    }
+                }
+            }
+        } catch (flairErr) {
+            console.log('ℹ️ Flair check note:', flairErr.message);
+        }
+
+        await page.waitForTimeout(1500);
+
+        // 5. Toggle NSFW if requested
         if (isNsfw) {
             console.log('🔞 Toggling NSFW tag...');
             const nsfwBtn = page.locator('button').filter({ hasText: /^NSFW$|^18\+$/i }).first();
@@ -112,14 +155,39 @@ async function uploadRedditPost(options) {
 
         await page.waitForTimeout(1500);
 
-        // 5. Click Submit / Post Button
+        // 6. Click Submit / Post Button
         console.log('🚀 Submitting Post to Reddit...');
-        const postBtn = page.locator('button[type="submit"], button').filter({ hasText: /^Post$|^Opublikuj$|^Submit$/i }).first();
-        await postBtn.waitFor({ state: 'visible', timeout: 10000 });
-        await postBtn.click({ force: true });
+        let submitted = false;
+
+        const postBtnSelectors = [
+            'shreddit-post-form button[type="submit"]',
+            'button[slot="submit-button"]',
+            'button[data-testid="submit-button"]',
+            'button:has-text("Opublikuj")',
+            'button:has-text("Post")',
+            'button:has-text("Submit")',
+            'button[type="submit"]'
+        ];
+
+        for (const sel of postBtnSelectors) {
+            const btn = page.locator(sel).first();
+            if (await btn.isVisible({ timeout: 1500 })) {
+                try {
+                    await btn.click({ force: true });
+                    submitted = true;
+                    console.log(`✅ Clicked submit button via selector: ${sel}`);
+                    break;
+                } catch {}
+            }
+        }
+
+        if (!submitted) {
+            console.log('ℹ️ Attempting native form submit shortcut (Ctrl+Enter)...');
+            await page.keyboard.press('Control+Enter');
+        }
 
         console.log('⏳ Waiting for Reddit post confirmation...');
-        await page.waitForTimeout(7000);
+        await page.waitForTimeout(8000);
 
         const currentPostUrl = page.url();
         console.log(`🌐 Live Post URL: ${currentPostUrl}`);

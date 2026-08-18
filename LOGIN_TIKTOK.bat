@@ -1,11 +1,11 @@
 @echo off
-title TikTok Login - InfluMaker
+title InfluMaker - TikTok Login
 cd /d "%~dp0"
 echo ======================================================
-echo 🎬 INFLUMAKER: TikTok Browser Session Login
+echo 📱 INFLUMAKER: TIKTOK SESSION LOGIN
 echo ======================================================
-echo Otwieram okno logowania TikToka...
-echo Zaloguj sie na konto Betty Ryal.
-echo ======================================================
+echo.
 node src/scripts/tiktok_browser_login.js
+echo.
+echo ======================================================
 pause

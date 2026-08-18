@@ -1,10 +1,11 @@
 @echo off
-title Instagram Login - InfluMaker
+title InfluMaker - Instagram Login
 cd /d "%~dp0"
 echo ======================================================
-echo 📸 INFLUMAKER: Instagram Auto-Login (@secretsofthelondonmansion)
+echo 📸 INFLUMAKER: INSTAGRAM SESSION LOGIN
 echo ======================================================
-echo Otwieram Chrome i loguje sie automatycznie...
+echo.
+node src/scripts/instagram_browser_login.js
+echo.
 echo ======================================================
-node src/scripts/auto_login_instagram.js
 pause
