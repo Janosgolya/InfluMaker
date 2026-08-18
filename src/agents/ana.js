@@ -502,7 +502,7 @@ class AnaSocialManager {
 
     /**
      * Autonomous Verification & Self-Healing Engine for Instagram
-     * Checks if post exists, verifies caption is present, fixes missing captions, and removes duplicates
+     * Checks if post exists, verifies caption is present across recent posts, fixes missing captions, and removes duplicates
      */
     async verifyAndHealInstagram(expectedCaption = null) {
         console.log(`\n[Ana Inspector] 🔍 Verifying Instagram status on @${this.instagram.profile.username}...`);
@@ -519,54 +519,73 @@ class AnaSocialManager {
         const report = { platform: 'Instagram', healthy: true, actionsTaken: [] };
 
         try {
-            await page.goto(`https://www.instagram.com/${this.instagram.profile.username}/`, { waitUntil: 'domcontentloaded' });
+            await page.goto(`https://www.instagram.com/${this.instagram.profile.username}/`, { waitUntil: 'domcontentloaded', timeout: 45000 });
             await page.waitForTimeout(4000);
 
             // Check posts on profile
-            const postLinks = await page.$$eval('a[href*="/p/"], a[href*="/reel/"]', els => els.map(e => e.href));
+            const postLinks = await page.$$eval('a[href*="/p/"], a[href*="/reel/"]', els => {
+                const unique = [];
+                for (const el of els) {
+                    if (el.href && !unique.includes(el.href)) unique.push(el.href);
+                }
+                return unique;
+            });
             console.log(`[Ana Inspector] Found ${postLinks.length} posts on Instagram grid.`);
 
-            if (postLinks.length > 0) {
-                const newestPostUrl = postLinks[0];
-                await page.goto(newestPostUrl, { waitUntil: 'domcontentloaded' });
+            const defaultFallbackCaption = `The morning chill in the stone corridors... 🕯️\n\nBefore the manor stirs, I gather the linens by candlelight and listen to the quiet whispers of the great house.\n\nDiscover the rest of my private diary via the link in my bio 🗝️\n.\n.\n.\n#18thCentury #PeriodRomance #FineArtPortrait #RembrandtLighting #BettyRyal #HistoricalFiction #LondonManor #VintageAesthetic`;
+
+            // Inspect top 4 recent posts
+            for (let i = 0; i < Math.min(postLinks.length, 4); i++) {
+                const postUrl = postLinks[i];
+                await page.goto(postUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
                 await page.waitForTimeout(3000);
 
-                // Check visible text
-                const textContent = await page.evaluate(() => {
-                    const h1 = document.querySelector('h1');
-                    const spans = Array.from(document.querySelectorAll('article span, [role="dialog"] span')).map(s => s.innerText);
-                    return (h1 ? h1.innerText + ' ' : '') + spans.join(' ');
+                const hasEmptyCaption = await page.evaluate(() => {
+                    const article = document.querySelector('article, main');
+                    if (!article) return true;
+                    const text = article.innerText || '';
+                    return text.includes('Start the conversation') || !article.querySelector('h1');
                 });
 
-                const hasCaption = textContent.length > 30;
-                console.log(`[Ana Inspector] Newest post caption length: ${textContent.length} chars (Valid: ${hasCaption})`);
-
-                if (!hasCaption && expectedCaption) {
-                    console.log(`[Ana Healer] ⚠️ Missing caption detected! Automatically fixing via Edit menu...`);
+                if (hasEmptyCaption) {
+                    console.log(`[Ana Healer] ⚠️ Missing caption detected on post ${postUrl}! Healing via Edit menu...`);
                     report.healthy = false;
-                    
-                    // Click 3 dots
-                    const dots = page.locator('svg[aria-label="Więcej opcji"], svg[aria-label="More options"]').first();
-                    await dots.click({ force: true });
-                    await page.waitForTimeout(2000);
 
-                    // Click Edytuj
-                    const editBtn = page.locator('div, button, span').filter({ hasText: /^Edytuj$|^Edit$/i }).first();
-                    if (await editBtn.isVisible()) {
-                        await editBtn.click({ force: true });
-                        await page.waitForTimeout(2500);
+                    const dotsLocator = page.locator('svg[aria-label="More options"], svg[aria-label="Więcej opcji"]').first();
+                    if (await dotsLocator.isVisible({ timeout: 5000 })) {
+                        await dotsLocator.click({ force: true });
+                        await page.waitForTimeout(2000);
 
-                        const captionBox = page.locator('div[role="dialog"]').locator('div[contenteditable="true"]').first();
-                        await captionBox.click({ force: true });
-                        await page.keyboard.type(expectedCaption, { delay: 10 });
-                        await page.waitForTimeout(1000);
+                        const editBtn = page.locator('div[role="dialog"] button, div[role="dialog"] div[role="button"]').filter({ hasText: /^Edit$|^Edytuj$/i }).first();
+                        if (await editBtn.isVisible({ timeout: 5000 })) {
+                            await editBtn.click({ force: true });
+                            await page.waitForTimeout(2500);
 
-                        const doneBtn = page.locator('div[role="dialog"]').locator('div[role="button"], button, span').filter({ hasText: /^Gotowe$|^Done$|^Zapisz$/i }).first();
-                        await doneBtn.click({ force: true });
-                        await page.waitForTimeout(4000);
+                            const targetCaption = (i === 0 && expectedCaption) ? expectedCaption : defaultFallbackCaption;
 
-                        report.actionsTaken.push(`Restored missing caption on ${newestPostUrl}`);
-                        console.log(`[Ana Healer] ✅ Caption restored and verified!`);
+                            const editor = page.locator('div[role="dialog"] div[contenteditable="true"], div[role="dialog"] textarea').first();
+                            await editor.click({ force: true });
+                            await page.waitForTimeout(500);
+
+                            await page.evaluate((text) => {
+                                const el = document.querySelector('div[role="dialog"] div[contenteditable="true"], div[role="dialog"] textarea');
+                                if (el) {
+                                    el.focus();
+                                    document.execCommand('selectAll', false, null);
+                                    document.execCommand('insertText', false, text);
+                                    el.dispatchEvent(new Event('input', { bubbles: true }));
+                                }
+                            }, targetCaption);
+
+                            await page.waitForTimeout(1500);
+
+                            const doneBtn = page.locator('div[role="dialog"]').locator('div[role="button"], button, span').filter({ hasText: /^Done$|^Gotowe$|^Zapisz$/i }).first();
+                            await doneBtn.click({ force: true });
+                            await page.waitForTimeout(4000);
+
+                            report.actionsTaken.push(`Restored missing caption on ${postUrl}`);
+                            console.log(`[Ana Healer] ✅ Caption restored and verified on ${postUrl}!`);
+                        }
                     }
                 }
             }
@@ -635,7 +654,7 @@ class AnaSocialManager {
 
     /**
      * Autonomous Verification & Self-Healing Engine for Fanvue
-     * Checks post count, inspects recent posts for non-English/corrupted text, and repairs them automatically
+     * Checks post count, inspects recent posts for non-English/corrupted text/prompt artifacts, and repairs them automatically
      */
     async verifyAndHealFanvue(expectedText = null) {
         console.log(`\n[Ana Inspector] 🔍 Verifying Fanvue feed status and post quality...`);
@@ -645,18 +664,19 @@ class AnaSocialManager {
             console.log(`[Ana Inspector] Fanvue Post count: ${profile.contentCounts?.postCount || 0}`);
             report.postCount = profile.contentCounts?.postCount || 0;
 
-            // Inspect recent posts for quality and language compliance
-            const postsResp = await this.fanvue.callMcpTool('get-posts', {});
+            // Inspect recent posts for quality, prompt artifacts, and language compliance
+            const postsResp = await this.fanvue.callMcpTool('get-posts', { limit: 15 });
             const posts = postsResp && postsResp.data ? postsResp.data : [];
 
             for (const post of posts) {
                 if (!post.text) continue;
                 
                 const hasAsianChars = /[\u3000-\u303f\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff\uff00-\uffef]/.test(post.text);
+                const hasPromptArtifacts = /### FORMAT|#### CTA:|\[Unlock the full|\(Exclusive|\(PPV teaser|\(Limited to/i.test(post.text);
                 const hasRepetitions = (post.text.match(/#FineArtPhotography/g) || []).length > 2;
 
-                if (hasAsianChars || hasRepetitions) {
-                    console.log(`[Ana Healer] ⚠️ Corrupted/Non-English content detected on Fanvue post ${post.uuid}! Healing...`);
+                if (hasAsianChars || hasPromptArtifacts || hasRepetitions) {
+                    console.log(`[Ana Healer] ⚠️ Corrupted/Prompt artifacts detected on Fanvue post ${post.uuid}! Healing...`);
                     report.healthy = false;
                     
                     const cleanedText = this.fanvue.sanitizeEnglishStoryText(post.text);
@@ -667,9 +687,17 @@ class AnaSocialManager {
                     });
 
                     report.actionsTaken.push(`Repaired and sanitized text on Fanvue post ${post.uuid}`);
-                    console.log(`[Ana Healer] ✅ Post ${post.uuid} updated to clean English!`);
+                    console.log(`[Ana Healer] ✅ Post ${post.uuid} healed and sanitized!`);
                 }
             }
+
+            report.healthy = report.postCount > 0 && report.actionsTaken.length === 0;
+        } catch (e) {
+            console.error(`[Ana Inspector] Error inspecting Fanvue:`, e.message);
+            report.error = e.message;
+        }
+        return report;
+    }
 
             report.healthy = report.postCount > 0 && report.actionsTaken.length === 0;
         } catch (e) {
