@@ -99,12 +99,21 @@ class GeorgeProducerAgent {
 
         // 3. Post-publish health audit & auto-healing
         console.log(`[George] 🛡️ Running Ana's Health Audit & Auto-Correction...`);
-        const audit = await this.ana.verifyAllChannels();
-        results.audit = audit;
+        try {
+            const audit = await this.ana.verifyAllChannels();
+            results.audit = audit;
+        } catch (auditErr) {
+            console.error(`[George] ⚠️ Health audit error (continuing workflow):`, auditErr.message);
+            results.audit = { error: auditErr.message };
+        }
 
         // 4. Roomba storage inspection
-        const storageReport = this.roomba.inspectStorage();
-        results.storage = storageReport;
+        try {
+            const storageReport = this.roomba.inspectStorage();
+            results.storage = storageReport;
+        } catch (roombaErr) {
+            console.error(`[George] ⚠️ Storage inspection error (continuing):`, roombaErr.message);
+        }
 
         // 5. Send notification to janosgolya@gmail.com (Instant for 14 days, then weekly)
         const remainingCount = this.getRemainingContentCount();
