@@ -20,11 +20,12 @@ class VideoSlideshowGenerator {
     createKenBurnsClip(imagePath, outputFilename, options = {}) {
         const duration = options.duration || 10;
         const outputPath = path.join(this.outputDir, outputFilename);
+        const ffmpegPath = require('ffmpeg-static') || 'ffmpeg';
 
         console.log(`[Video Generator] 🎬 Creating 9:16 video clip from ${path.basename(imagePath)} (Duration: ${duration}s)...`);
 
         // ffmpeg command with 1080x1920 crop, Ken Burns zoom, and silent stereo audio track
-        const cmd = `ffmpeg -y -loop 1 -i "${imagePath}" -f lavfi -i anullsrc=r=44100:cl=stereo -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,zoompan=z='min(zoom+0.001,1.15)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${duration * 25}:s=1080x1920:fps=25" -c:v libx264 -preset fast -crf 20 -t ${duration} -pix_fmt yuv420p -c:a aac -b:a 128k -shortest "${outputPath}"`;
+        const cmd = `"${ffmpegPath}" -y -loop 1 -i "${imagePath}" -f lavfi -i anullsrc=r=44100:cl=stereo -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,zoompan=z='min(zoom+0.001,1.15)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${duration * 25}:s=1080x1920:fps=25" -c:v libx264 -preset fast -crf 20 -t ${duration} -pix_fmt yuv420p -c:a aac -b:a 128k -shortest "${outputPath}"`;
 
         try {
             execSync(cmd, { stdio: 'pipe' });

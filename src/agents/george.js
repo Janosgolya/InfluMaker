@@ -97,6 +97,35 @@ class GeorgeProducerAgent {
             }
         }
 
+        // Publish to TikTok (Evening Video Slot: PREP or NIGHT) - Hybrid Cadence
+        if (theme === 'PREP' || theme === 'NIGHT') {
+            try {
+                console.log(`[George] 📱 Delegating TikTok 9:16 Video publication to Ana (Hybrid Engine)...`);
+                const videoDir = path.join(this.selectedContentDir, 'Videos');
+                let postedDedicatedVideo = false;
+                if (fs.existsSync(videoDir)) {
+                    const videoFiles = fs.readdirSync(videoDir).filter(f => f.endsWith('.mp4'));
+                    for (const vf of videoFiles) {
+                        const isPosted = this.ana.log.some(e => e.platform === 'TikTok' && (e.videoFile === vf || e.asset === vf));
+                        if (!isPosted) {
+                            const vPath = path.join(videoDir, vf);
+                            const storyP = path.join(videoDir, vf.replace('.mp4', '.story.txt'));
+                            results.tiktok = await this.ana.publishTikTokVideo(vPath, fs.existsSync(storyP) ? storyP : null, { theme });
+                            postedDedicatedVideo = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!postedDedicatedVideo) {
+                    results.tiktok = await this.ana.publishTikTokPost(theme);
+                }
+            } catch (e) {
+                console.error(`[George] ⚠️ TikTok publication note:`, e.message);
+                results.tiktok = { error: e.message };
+            }
+        }
+
         // 3. Post-publish health audit & auto-healing
         console.log(`[George] 🛡️ Running Ana's Health Audit & Auto-Correction...`);
         try {
