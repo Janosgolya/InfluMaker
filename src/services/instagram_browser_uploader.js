@@ -113,9 +113,41 @@ class InstagramBrowserUploader {
 
             // Write Caption in caption box
             console.log(`[Instagram] ✍️ Entering caption and hashtags...`);
-            const captionBox = await page.waitForSelector('div[aria-label*="caption"], div[aria-label*="podpis"], div[contenteditable="true"]', { timeout: 15000 });
-            await captionBox.click();
-            await page.keyboard.type(captionText, { delay: 10 });
+            await page.waitForTimeout(2000);
+            
+            const captionBox = page.locator('div[aria-label*="Write a caption"], div[aria-label*="Napisz podpis"], div[aria-label*="caption"], div[aria-label*="podpis"], div[role="textbox"][contenteditable="true"]').first();
+            await captionBox.waitFor({ state: 'visible', timeout: 15000 }).catch(() => {});
+            await captionBox.click({ force: true });
+            await page.waitForTimeout(500);
+
+            // Layer A: Insert via document.execCommand (universal for React Lexical & Draft.js)
+            const insertedViaExec = await page.evaluate((text) => {
+                const el = document.querySelector('div[contenteditable="true"][role="textbox"], div[aria-label*="caption"], div[aria-label*="podpis"], div[aria-label*="Write a caption"], div[aria-label*="Napisz podpis"]');
+                if (el) {
+                    el.focus();
+                    document.execCommand('selectAll', false, null);
+                    const success = document.execCommand('insertText', false, text);
+                    el.dispatchEvent(new Event('input', { bubbles: true }));
+                    el.dispatchEvent(new Event('change', { bubbles: true }));
+                    return success && (el.innerText || el.textContent || '').trim().length > 10;
+                }
+                return false;
+            }, captionText);
+
+            // Layer B: Fallback if execCommand did not insert
+            if (!insertedViaExec) {
+                console.log(`[Instagram] Fallback: inserting text via keyboard.insertText...`);
+                await captionBox.click({ force: true });
+                await page.keyboard.insertText(captionText);
+                await page.waitForTimeout(1000);
+            }
+
+            // Verify caption in DOM
+            const verifiedLength = await page.evaluate(() => {
+                const el = document.querySelector('div[contenteditable="true"][role="textbox"], div[aria-label*="caption"], div[aria-label*="podpis"]');
+                return el ? (el.innerText || el.textContent || '').trim().length : 0;
+            });
+            console.log(`[Instagram] 📝 Caption verified in editor (${verifiedLength} chars)`);
 
             await page.waitForTimeout(2000);
 
