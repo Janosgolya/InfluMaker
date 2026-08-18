@@ -1,0 +1,67 @@
+{
+  "schedule_name": "Betty Ryal 24/7 Global Target Audience Growth Schedule",
+  "timezone": "Europe/Warsaw",
+  "strategy": "Omni-channel human-emulated engagement synchronized with global peak activity windows (US + EU)",
+  "daily_slots": [
+    {
+      "slot": "SLOT_1_MORNING_DAWN",
+      "time_cest": "08:30",
+      "target_geography": "UK, Western Europe, Poland",
+      "audience_mood": "Waking up, morning coffee, inspirational aesthetic scrolling",
+      "target_platforms": ["Instagram", "Pinterest"],
+      "actions": {
+        "instagram_story_views": 15,
+        "instagram_comment_likes": 8,
+        "pinterest_pin_curation": 2
+      },
+      "pacing_delay_range_sec": [45, 90]
+    },
+    {
+      "slot": "SLOT_2_US_WAKEUP_EU_LUNCH",
+      "time_cest": "14:00",
+      "target_geography": "US East Coast (08:00 AM) & EU Lunchtime",
+      "audience_mood": "Active browsing, checking notifications, trending topics discovery",
+      "target_platforms": ["Twitter", "Reddit"],
+      "actions": {
+        "twitter_niche_search_scout": 1,
+        "twitter_in_character_reply": 1,
+        "twitter_tweet_likes": 5,
+        "reddit_subreddit_browse": "r/HistoricalCostuming"
+      },
+      "pacing_delay_range_sec": [60, 110]
+    },
+    {
+      "slot": "SLOT_3_EU_EVENING_US_MIDDAY",
+      "time_cest": "19:30",
+      "target_geography": "EU Prime Time (19:30) & US Midday (13:30 EST)",
+      "audience_mood": "Relaxing after work/school, high BookTok and Instagram Reels engagement",
+      "target_platforms": ["Instagram", "Twitter", "TikTok"],
+      "actions": {
+        "instagram_story_views": 20,
+        "instagram_comment_likes": 10,
+        "twitter_in_character_reply": 1
+      },
+      "pacing_delay_range_sec": [45, 95]
+    },
+    {
+      "slot": "SLOT_4_US_PRIME_LATE_NIGHT_FANVUE",
+      "time_cest": "23:30",
+      "target_geography": "US Prime Time (17:30 EST / 14:30 PST) & European Night Owls",
+      "audience_mood": "High intimacy seeking, dark romance reading, private Fanvue conversions",
+      "target_platforms": ["Twitter", "Reddit", "Fanvue"],
+      "actions": {
+        "twitter_viral_discussion_reply": 1,
+        "reddit_in_character_engagement": 1,
+        "fanvue_welcome_dm_check": true
+      },
+      "pacing_delay_range_sec": [50, 120]
+    }
+  ],
+  "safety_guardrails": {
+    "max_total_likes_per_day": 60,
+    "max_total_story_views_per_day": 80,
+    "max_total_replies_per_day": 4,
+    "mandatory_cooldown_between_slots_hours": 3.5,
+    "random_jitter_minutes": 15
+  }
+}
