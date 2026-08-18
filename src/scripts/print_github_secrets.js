@@ -37,4 +37,14 @@ if (fs.existsSync(ttPath)) {
 } else {
     console.log(`(file config/tiktok_session.json not found)`);
 }
+console.log(`\n------------------------------------------------------\n`);
+
+const pinPath = path.join(__dirname, '../../config/pinterest_session.json');
+console.log(`5️⃣ Secret Name: PINTEREST_SESSION_JSON`);
+if (fs.existsSync(pinPath)) {
+    console.log(`Value:`);
+    console.log(fs.readFileSync(pinPath, 'utf8').trim());
+} else {
+    console.log(`(file config/pinterest_session.json not found - run 'node src/scripts/pinterest_browser_login.js' first)`);
+}
 console.log(`\n======================================================\n`);

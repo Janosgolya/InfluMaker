@@ -34,6 +34,7 @@ jobs:
         env:
           INSTAGRAM_SESSION_JSON: ${{ secrets.INSTAGRAM_SESSION_JSON }}
           TIKTOK_SESSION_JSON: ${{ secrets.TIKTOK_SESSION_JSON }}
+          PINTEREST_SESSION_JSON: ${{ secrets.PINTEREST_SESSION_JSON }}
         run: |
           mkdir -p config
           if [ -n "$INSTAGRAM_SESSION_JSON" ]; then
@@ -43,6 +44,10 @@ jobs:
           if [ -n "$TIKTOK_SESSION_JSON" ]; then
             printf '%s' "$TIKTOK_SESSION_JSON" > config/tiktok_session.json
             echo "[Restore] TikTok session restored ($(wc -c < config/tiktok_session.json) bytes)"
+          fi
+          if [ -n "$PINTEREST_SESSION_JSON" ]; then
+            printf '%s' "$PINTEREST_SESSION_JSON" > config/pinterest_session.json
+            echo "[Restore] Pinterest session restored ($(wc -c < config/pinterest_session.json) bytes)"
           fi
 
       - name: Execute George Producer Tick

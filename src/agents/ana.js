@@ -4,17 +4,19 @@ const path = require('path');
 const FanvueService = require('../services/fanvue_service');
 const TikTokService = require('../services/tiktok_service');
 const InstagramService = require('../services/instagram_service');
+const PinterestService = require('../services/pinterest_service');
 
 class AnaSocialManager {
     constructor(options = {}) {
         this.name = "Ana";
-        this.role = "Omni-Channel Social & Monetization Manager (Fanvue, TikTok, Instagram)";
+        this.role = "Omni-Channel Social & Monetization Manager (Fanvue, TikTok, Instagram, Pinterest)";
         this.schedulePath = options.schedulePath || path.join(__dirname, '../../config/posting_schedule.json');
         this.selectedContentDir = options.selectedContentDir || path.join(__dirname, '../../BettyRyal_18centuryServant/Selected_Content');
         this.logPath = options.logPath || path.join(__dirname, '../../config/published_log.json');
         this.fanvue = new FanvueService();
         this.tiktok = new TikTokService();
         this.instagram = new InstagramService();
+        this.pinterest = PinterestService;
         this.loadSchedule();
         this.loadLog();
     }
@@ -699,25 +701,68 @@ class AnaSocialManager {
         return report;
     }
 
-            report.healthy = report.postCount > 0 && report.actionsTaken.length === 0;
-        } catch (e) {
-            console.error(`[Ana Inspector] Error inspecting Fanvue:`, e.message);
-            report.error = e.message;
+    /**
+     * Publish a Pin to Pinterest from Selected_Content for a theme
+     */
+    async publishPinterestPin(theme = 'MORNING', options = {}) {
+        console.log(`\n======================================================`);
+        console.log(`📌 ANA: Publishing Pin to Pinterest (Theme: ${theme})`);
+        console.log(`======================================================\n`);
+
+        const nextItem = this.getNextContentForTheme(theme, 'Pinterest');
+        if (!nextItem) {
+            console.log(`[Ana] ℹ️ No pending unposted items found for Pinterest theme: ${theme}`);
+            return { success: false, reason: 'No unposted content' };
+        }
+
+        console.log(`[Ana] 🖼️ Selected image: ${path.basename(nextItem.imagePath)}`);
+        const pinResult = await this.pinterest.publishPin(nextItem.imagePath, nextItem.storyPath, options);
+
+        if (pinResult.success) {
+            this.log.push({
+                platform: 'Pinterest',
+                imageFile: path.basename(nextItem.imagePath),
+                theme: theme.toUpperCase(),
+                title: pinResult.title,
+                board: pinResult.board,
+                link: pinResult.link,
+                timestamp: new Date().toISOString(),
+                status: 'PUBLISHED'
+            });
+            this.saveLog();
+            console.log(`[Ana] ✅ Pinterest Pin logged successfully!`);
+        }
+
+        return pinResult;
+    }
+
+    /**
+     * Autonomous Verification & Self-Healing Engine for Pinterest
+     */
+    async verifyAndHealPinterest() {
+        console.log(`\n[Ana Inspector] 🔍 Verifying Pinterest session and connection...`);
+        const report = { platform: 'Pinterest', healthy: true, actionsTaken: [] };
+        if (!this.pinterest.isConfigured()) {
+            report.healthy = false;
+            report.actionsTaken.push('Pinterest session not configured. Please run pinterest_browser_login.js');
+        } else {
+            console.log(`[Ana Inspector] ✅ Pinterest session active.`);
         }
         return report;
     }
 
     /**
-     * Run complete 3-platform health audit & auto-healing
+     * Run complete multi-platform health audit & auto-healing
      */
     async verifyAllChannels() {
         console.log(`\n======================================================`);
-        console.log(`🛡️ ANA: 3-PLATFORM HEALTH AUDIT & SELF-HEALING ENGINE`);
+        console.log(`🛡️ ANA: OMNI-CHANNEL HEALTH AUDIT & SELF-HEALING ENGINE`);
         console.log(`======================================================`);
 
         const igReport = await this.verifyAndHealInstagram();
         const ttReport = await this.verifyAndHealTikTok();
         const fvReport = await this.verifyAndHealFanvue();
+        const pinReport = await this.verifyAndHealPinterest();
 
         console.log(`\n======================================================`);
         console.log(`📊 HEALTH AUDIT SUMMARY`);
@@ -726,9 +771,11 @@ class AnaSocialManager {
         console.log(`📱 TikTok:    ${ttReport.healthy ? '🟢 Healthy & Verified' : '🟡 Healed / Cleaned'}`);
         if (ttReport.actionsTaken.length > 0) console.log(`   - ${ttReport.actionsTaken.join('\n   - ')}`);
         console.log(`💎 Fanvue:   ${fvReport.healthy ? '🟢 Healthy & Active' : '🔴 Action Required'}`);
+        console.log(`📌 Pinterest: ${pinReport.healthy ? '🟢 Session Active' : '🟡 Setup Required'}`);
+        if (pinReport.actionsTaken.length > 0) console.log(`   - ${pinReport.actionsTaken.join('\n   - ')}`);
         console.log(`======================================================\n`);
 
-        return { igReport, ttReport, fvReport };
+        return { igReport, ttReport, fvReport, pinReport };
     }
 }
 
@@ -741,6 +788,11 @@ if (require.main === module) {
         try {
             if (args.includes('--verify') || args.includes('--verify-and-heal') || args.includes('--audit')) {
                 await ana.verifyAllChannels();
+            } else if (args.includes('--pinterest-login') || args.includes('--pin-login')) {
+                const loginPin = require('../scripts/pinterest_browser_login');
+                await loginPin();
+            } else if (args.includes('--pinterest-post') || args.includes('--pin-post') || args.includes('--pinterest') || args.includes('--pin')) {
+                await ana.publishPinterestPin('MORNING');
             } else if (args.includes('--status') || args.includes('-s')) {
                 console.log(`\n🔍 Fetching live Fanvue account profile...`);
                 const profile = await ana.fanvue.getAccountProfile();

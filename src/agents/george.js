@@ -97,6 +97,17 @@ class GeorgeProducerAgent {
             }
         }
 
+        // Publish to Pinterest (Morning & Prep slots)
+        if ((theme === 'MORNING' || theme === 'PREP') && this.ana.pinterest.isConfigured()) {
+            try {
+                console.log(`[George] 📌 Delegating Pinterest Pin to Ana...`);
+                results.pinterest = await this.ana.publishPinterestPin(theme);
+            } catch (e) {
+                console.error(`[George] ⚠️ Pinterest publication note:`, e.message);
+                results.pinterest = { error: e.message };
+            }
+        }
+
         // Publish to TikTok (Evening Video Slot: PREP or NIGHT) - Hybrid Cadence
         if (theme === 'PREP' || theme === 'NIGHT') {
             try {

@@ -288,7 +288,7 @@ CURRENT IMAGE SCENE:
 - Time of Day / Theme: ${visualInfo.theme}
 
 YOUR TASK:
-Write a complete, high-converting story file for this exact image in STRICT ENGLISH ONLY, formatted in THREE distinct sections:
+Write a complete, high-converting story file for this exact image in STRICT ENGLISH ONLY, formatted in distinct sections:
 
 ----------------------------------------------------
 ### SECTION 1: 📱 TIKTOK FORMAT (Top-of-Funnel Viral Hook & SFW Conversion)
@@ -310,6 +310,23 @@ Write a complete, high-converting story file for this exact image in STRICT ENGL
 - SUBSCRIBER DIARY CONFESSION: An exclusive, uncensored first-person confession for Betty's paying subscribers in English. Kinky, alluring, slightly erotic, exploring her true desires and secret encounters in the inn.
 - PAYWALL & PPV TEASER PITCH: High-converting teaser copy in English designed to sell pay-per-view (PPV) locked photo sets or video drops.
 - TIP MENU & VIP CTA: A warm, seductive callout in English inviting subscribers to tip or send private requests in DMs.
+
+----------------------------------------------------
+### SECTION 4: 📌 PINTEREST FORMAT (Long-Tail Evergreen Visual Search & Pin Funnel)
+- TITLE: Catchy SEO-rich pin title (e.g. "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic")
+- DESCRIPTION: A 300-500 character evocative description woven with keywords (corset aesthetic, oil painting lighting, period drama, London mansion lore) and a clear invitation to discover Betty's full diary.
+- BOARD: Recommended board name (e.g. "18th Century Aesthetic & Maid Secrets" or "Vintage Candlelight Romance").
+- LINK: Direct destination URL (https://fanvue.com/bettyryal).
+
+----------------------------------------------------
+### SECTION 5: 🤖 REDDIT FORMAT (Niche Community Organic Discovery)
+- POST TITLE: Engaging, curiosity-driven title suitable for r/aiArt or r/HistoricalCostuming (e.g. "Betty's quiet hour before the inn awakens... [OC] [AI]")
+- TARGET SUBREDDITS: Suggested subreddits (r/aiArt, r/AIGirls, r/HistoricalCostuming, r/StableDiffusion).
+- FIRST COMMENT: A friendly, in-character opening comment inviting Redditors to explore the full story in Betty's bio.
+
+----------------------------------------------------
+### SECTION 6: 🐦 X (TWITTER) FORMAT (Viral Micro-Storytelling & Community Teaser)
+- TWEET TEXT: Punchy 200-260 character micro-story with an intriguing question or confession + direct link callout + 3-4 trending hashtags (#AIArt #18thCentury #VirtualInfluencer #BettyRyal).
 
 FORMAT YOUR RESPONSE EXACTLY WITH CLEAR HEADERS AND SECTIONS. ENGLISH ONLY. NO REPETITION.
 
