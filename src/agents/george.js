@@ -57,6 +57,14 @@ class GeorgeProducerAgent {
      * Execute one scheduling cycle tick (Used by Cron / GitHub Actions / GCP)
      */
     async runTick(forcedTheme = null) {
+        if (forcedTheme === 'REPORT') {
+            const growthAnalytics = require('../services/growth_analytics_service');
+            console.log(`[George] 📊 Compiling & Dispatching Executive Growth Report...`);
+            const reportData = await growthAnalytics.generateExecutiveReport();
+            const result = await this.notifier.sendExecutiveGrowthReport(reportData);
+            return { success: true, report: result };
+        }
+
         const theme = forcedTheme || this.getCurrentThemeForTime();
         console.log(`\n======================================================`);
         console.log(`🎬 GEORGE: Running Scheduled Cycle Tick`);
@@ -195,6 +203,18 @@ class GeorgeProducerAgent {
             });
         } catch (mailErr) {
             console.error(`[George] Notification dispatch note:`, mailErr.message);
+        }
+
+        // 6. Send Comprehensive Executive Growth & Revenue Report on NIGHT slot
+        if (theme === 'NIGHT' || forcedTheme === 'REPORT') {
+            try {
+                const growthAnalytics = require('../services/growth_analytics_service');
+                console.log(`[George] 📊 Compiling & Dispatching Executive Growth Report...`);
+                const reportData = await growthAnalytics.generateExecutiveReport();
+                await this.notifier.sendExecutiveGrowthReport(reportData);
+            } catch (reportErr) {
+                console.error(`[George] Executive report dispatch note:`, reportErr.message);
+            }
         }
 
         console.log(`\n======================================================`);
