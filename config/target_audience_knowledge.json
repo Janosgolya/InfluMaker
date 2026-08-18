@@ -1,0 +1,269 @@
+{
+  "lastUpdated": "2026-08-18T19:56:55.309Z",
+  "characterPersona": {
+    "name": "Betty Ryal",
+    "identity": "18th-century London maid in a high-class house of joys / inn for wealthy nobility",
+    "voiceTone": "First-person, breathless, curious, alluring, authentic 18th-century English, sensual yet innocent, diaristic",
+    "coreMotif": "Writing her secret private journal by tallow candlelight about duties, linen, corsets, aristocratic secrets, and sensual awakening"
+  },
+  "audienceArchetypes": [
+    {
+      "id": "HISTORICAL_ROMANCE_BOOKTOK",
+      "title": "The Historical Romance & Period Drama Devotee",
+      "demographics": "Women & Men (20-45), Global (US, UK, Europe, Australia)",
+      "interests": [
+        "Bridgerton",
+        "Outlander",
+        "Poldark",
+        "Pride & Prejudice",
+        "Enola Holmes",
+        "Gothic Romance",
+        "Dark Romance",
+        "BookTok",
+        "Regency/Victorian Fiction",
+        "Sarah J. Maas",
+        "Georgette Heyer",
+        "Lisa Kleypas"
+      ],
+      "psychologicalDrivers": [
+        "Escapism into opulent yet gritty historical settings",
+        "Romantic tension, class-divide romances (servant & lord / maid & gentleman)",
+        "Sensory descriptions of fabrics, candlelight, whispers, and secret encounters",
+        "Appreciation for immersive, first-person storytelling"
+      ],
+      "activePlatforms": [
+        "TikTok",
+        "Instagram",
+        "Pinterest",
+        "Reddit (r/HistoricalRomance, r/RomanceBooks)"
+      ],
+      "triggerKeywords": [
+        "forbidden romance",
+        "hearthside whispers",
+        "stays and corsets",
+        "London manor secrets",
+        "tallow candle",
+        "maid's diary",
+        "stolen glances",
+        "period drama aesthetic",
+        "attic room"
+      ],
+      "engagementStrategy": "In-character witty observations on period tropes, emotional resonance, sensory storytelling, zero spammy links."
+    },
+    {
+      "id": "FINE_ART_CHIAROSCURO",
+      "title": "The Fine Art, Chiaroscuro & Baroque Aesthetic Connoisseur",
+      "demographics": "Art lovers, photographers, digital creators, curators (25-50)",
+      "interests": [
+        "Rembrandt Lighting",
+        "Caravaggio Chiaroscuro",
+        "Vermeer Window Light",
+        "Fine Art Photography",
+        "Dark Academia Aesthetic",
+        "Oil Painting Realism",
+        "Vintage Portraiture",
+        "Baroque Art",
+        "Historical Costuming"
+      ],
+      "psychologicalDrivers": [
+        "Obsession with dramatic lighting (deep shadows, warm golden flame highlights)",
+        "Appreciation for rich textures (raw linen, weathered oak, copper tubs, silk folds)",
+        "Desire to curate beautiful, atmospheric moodboards and saved collections"
+      ],
+      "activePlatforms": [
+        "Pinterest",
+        "Instagram",
+        "Reddit (r/FineArt, r/DarkAcademia, r/HistoricalCostuming)"
+      ],
+      "triggerKeywords": [
+        "chiaroscuro",
+        "Rembrandt light",
+        "fine art photography",
+        "candlelit portrait",
+        "18th century aesthetic",
+        "atmospheric realism",
+        "vintage moody lighting"
+      ],
+      "engagementStrategy": "Focus on visual mastery, lighting nuances, authentic historical dress details, and evergreen Pinterest boards."
+    },
+    {
+      "id": "AI_REALISM_CONNOISSEUR",
+      "title": "The AI Art & Virtual Model Connoisseur",
+      "demographics": "Men & Tech enthusiasts (20-50), AI early adopters, digital art collectors",
+      "interests": [
+        "Aitana Lopez",
+        "Emily Pellegrini",
+        "Milla Sofia",
+        "Stable Diffusion / Midjourney",
+        "Photorealistic AI Models",
+        "Virtual Influencer Innovation",
+        "ComfyUI Realism"
+      ],
+      "psychologicalDrivers": [
+        "Fascination with hyper-realistic synthetic human rendering",
+        "Appreciation for consistent character identity across cinematic narratives",
+        "Desire to follow novel, innovative virtual creators with high production value"
+      ],
+      "activePlatforms": [
+        "X (Twitter)",
+        "Reddit (r/aiArt, r/AIGirls, r/StableDiffusion)",
+        "Instagram"
+      ],
+      "triggerKeywords": [
+        "AI influencer",
+        "photorealism",
+        "virtual creator",
+        "digital model",
+        "BettyRyal",
+        "cinematic AI",
+        "character consistency",
+        "18th century AI"
+      ],
+      "engagementStrategy": "Highlight seamless realism, character narrative continuity, and interactive persona engagement on X and Reddit."
+    },
+    {
+      "id": "HISTORICAL_COSTUMING_LARP",
+      "title": "The Historical Costuming & Reenactment Community",
+      "demographics": "Makers, tailors, cosplayers, reenactors (20-45)",
+      "interests": [
+        "18th Century Stays",
+        "Historical Undergarments",
+        "Petticoats & Shifts",
+        "Costube / Bernadette Banner",
+        "Historical Sewing",
+        "Living History"
+      ],
+      "psychologicalDrivers": [
+        "Respect for accurate historical construction (linen shifts, stays, aprons)",
+        "Love for authentic servant daily routines and material culture",
+        "Immediate rejection of lazy, generic modern anachronisms"
+      ],
+      "activePlatforms": [
+        "Reddit (r/HistoricalCostuming)",
+        "Pinterest",
+        "TikTok",
+        "Instagram"
+      ],
+      "triggerKeywords": [
+        "linen shift",
+        "18th century stays",
+        "scullery maid",
+        "hand-sewn linen",
+        "period accurate",
+        "maid uniform",
+        "tucked petticoat"
+      ],
+      "engagementStrategy": "Use accurate terminology (stays, shifts, mob caps, tallow, hearth) to establish genuine authenticity."
+    },
+    {
+      "id": "FANVUE_VIP_SUBSCRIBERS",
+      "title": "The High-Ticket Fanvue VIP & Private Confidant",
+      "demographics": "Men (25-55), Affluent, Seeking intimate connection & voyeuristic fantasy",
+      "interests": [
+        "Fanvue VIP Subscriptions",
+        "Exclusive PPV Locked Sets",
+        "Sensual Roleplay",
+        "Personalized Direct Messaging",
+        "Custom Scene Requests",
+        "Private Bath & Dressing Scenes"
+      ],
+      "psychologicalDrivers": [
+        "Desire for an exclusive, private sanctuary with a stunning, attentive companion",
+        "Thrill of stepping into an uncensored 18th-century world where Betty confides only in them",
+        "Willingness to tip and unlock premium photo/video vaults when story escalates with high sensual tension"
+      ],
+      "activePlatforms": [
+        "Fanvue (Direct destination of all funnels)",
+        "X (Twitter)",
+        "Instagram DMs"
+      ],
+      "triggerKeywords": [
+        "private attic journal",
+        "locked portrait",
+        "uncensored confessions",
+        "candlelit bath",
+        "what madame didn't see",
+        "exclusive VIP set",
+        "custom scene"
+      ],
+      "engagementStrategy": "Build voyeuristic intimacy, first-person whispered confessions, and irresistible cliffhangers leading directly to the paywall."
+    }
+  ],
+  "subculturesAndHashtagEcosystem": {
+    "instagramHashtags": [
+      "#18thCentury",
+      "#PeriodDrama",
+      "#HistoricalRomance",
+      "#BridgertonAesthetic",
+      "#FineArtPhotography",
+      "#RembrandtLight",
+      "#Chiaroscuro",
+      "#CorsetAesthetic",
+      "#DarkRomance",
+      "#VintageAesthetic",
+      "#BettyRyal",
+      "#SensualArt",
+      "#HistoricalCostuming"
+    ],
+    "twitterHashtags": [
+      "#BettyRyal",
+      "#18thCentury",
+      "#PeriodDrama",
+      "#AIArt",
+      "#VirtualInfluencer",
+      "#HistoricalRomance",
+      "#FineArt",
+      "#DarkAcademia"
+    ],
+    "tiktokKeywords": [
+      "POV 18th century maid",
+      "Historical romance novel POV",
+      "Corset laces ASMR",
+      "Maid secrets in London manor",
+      "Tallow candlelight aesthetic",
+      "Bridgerton maid POV"
+    ],
+    "targetSubreddits": [
+      "r/aiArt",
+      "r/AIGirls",
+      "r/HistoricalCostuming",
+      "r/HistoricalRomance",
+      "r/RomanceBooks",
+      "r/DarkAcademia",
+      "r/StableDiffusion",
+      "r/FineArt"
+    ],
+    "anchorCompetitorsAndInspiration": [
+      "@bridgertonnetflix",
+      "@outlander_starz",
+      "@aitana.lopez",
+      "@emilypellegrini",
+      "@millasofiafin",
+      "@bernadettebanner",
+      "@historicalromanceclub"
+    ]
+  },
+  "antiBotRulesAndHumanPhysics": {
+    "minimumIntervalSeconds": 45,
+    "maximumIntervalSeconds": 120,
+    "maxLikesPerHour": 20,
+    "maxStoryViewsPerHour": 30,
+    "maxCommentsPerSession": 3,
+    "bannedPhrases": [
+      "Check out my link",
+      "Follow for follow",
+      "DM for collab",
+      "Visit my profile",
+      "Awesome post!",
+      "Nice pic",
+      "Check my bio",
+      "Hot pic",
+      "🔥🔥🔥"
+    ],
+    "requiredCommentCharacteristics": [
+      "Must be strictly in Betty's 18th-century voice (I, my diary, our London manor, madame)",
+      "Must directly reference a specific detail from the post/context being replied to",
+      "Must end with an engaging open thought or sensory observation, never a direct link sales pitch"
+    ]
+  }
+}
