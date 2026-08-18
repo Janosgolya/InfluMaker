@@ -27,13 +27,18 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Restore Social Sessions
+        env:
+          INSTAGRAM_SESSION_JSON: ${{ secrets.INSTAGRAM_SESSION_JSON }}
+          TIKTOK_SESSION_JSON: ${{ secrets.TIKTOK_SESSION_JSON }}
         run: |
           mkdir -p config
-          if [ -n "${{ secrets.INSTAGRAM_SESSION_JSON }}" ]; then
-            echo '${{ secrets.INSTAGRAM_SESSION_JSON }}' > config/instagram_session.json
+          if [ -n "$INSTAGRAM_SESSION_JSON" ]; then
+            printf '%s' "$INSTAGRAM_SESSION_JSON" > config/instagram_session.json
+            echo "[Restore] Instagram session restored ($(wc -c < config/instagram_session.json) bytes)"
           fi
-          if [ -n "${{ secrets.TIKTOK_SESSION_JSON }}" ]; then
-            echo '${{ secrets.TIKTOK_SESSION_JSON }}' > config/tiktok_session.json
+          if [ -n "$TIKTOK_SESSION_JSON" ]; then
+            printf '%s' "$TIKTOK_SESSION_JSON" > config/tiktok_session.json
+            echo "[Restore] TikTok session restored ($(wc -c < config/tiktok_session.json) bytes)"
           fi
 
       - name: Execute George Producer Tick
