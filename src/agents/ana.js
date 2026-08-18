@@ -5,11 +5,12 @@ const FanvueService = require('../services/fanvue_service');
 const TikTokService = require('../services/tiktok_service');
 const InstagramService = require('../services/instagram_service');
 const PinterestService = require('../services/pinterest_service');
+const RedditService = require('../services/reddit_service');
 
 class AnaSocialManager {
     constructor(options = {}) {
         this.name = "Ana";
-        this.role = "Omni-Channel Social & Monetization Manager (Fanvue, TikTok, Instagram, Pinterest)";
+        this.role = "Omni-Channel Social & Monetization Manager (Fanvue, TikTok, Instagram, Pinterest, Reddit)";
         this.schedulePath = options.schedulePath || path.join(__dirname, '../../config/posting_schedule.json');
         this.selectedContentDir = options.selectedContentDir || path.join(__dirname, '../../BettyRyal_18centuryServant/Selected_Content');
         this.logPath = options.logPath || path.join(__dirname, '../../config/published_log.json');
@@ -17,6 +18,7 @@ class AnaSocialManager {
         this.tiktok = new TikTokService();
         this.instagram = new InstagramService();
         this.pinterest = PinterestService;
+        this.reddit = RedditService;
         this.loadSchedule();
         this.loadLog();
     }
@@ -737,6 +739,41 @@ class AnaSocialManager {
     }
 
     /**
+     * Publish a Post to Reddit from Selected_Content for a theme
+     */
+    async publishRedditPost(theme = 'MIDDAY', options = {}) {
+        console.log(`\n======================================================`);
+        console.log(`🤖 ANA: Publishing Post to Reddit (Theme: ${theme})`);
+        console.log(`======================================================\n`);
+
+        const nextItem = this.getNextContentForTheme(theme, 'Reddit');
+        if (!nextItem) {
+            console.log(`[Ana] ℹ️ No pending unposted items found for Reddit theme: ${theme}`);
+            return { success: false, reason: 'No unposted content' };
+        }
+
+        console.log(`[Ana] 🖼️ Selected image: ${path.basename(nextItem.imagePath)}`);
+        const redditResult = await this.reddit.publishPost(nextItem.imagePath, nextItem.storyPath, options);
+
+        if (redditResult.success) {
+            this.log.push({
+                platform: 'Reddit',
+                imageFile: path.basename(nextItem.imagePath),
+                theme: theme.toUpperCase(),
+                title: redditResult.title,
+                subreddit: redditResult.subreddit,
+                postUrl: redditResult.postUrl,
+                timestamp: new Date().toISOString(),
+                status: 'PUBLISHED'
+            });
+            this.saveLog();
+            console.log(`[Ana] ✅ Reddit Post logged successfully!`);
+        }
+
+        return redditResult;
+    }
+
+    /**
      * Autonomous Verification & Self-Healing Engine for Pinterest
      */
     async verifyAndHealPinterest() {
@@ -744,9 +781,24 @@ class AnaSocialManager {
         const report = { platform: 'Pinterest', healthy: true, actionsTaken: [] };
         if (!this.pinterest.isConfigured()) {
             report.healthy = false;
-            report.actionsTaken.push('Pinterest session not configured. Please run pinterest_browser_login.js');
+            report.actionsTaken.push('Pinterest session not configured. Please run login_pinterest.bat');
         } else {
             console.log(`[Ana Inspector] ✅ Pinterest session active.`);
+        }
+        return report;
+    }
+
+    /**
+     * Autonomous Verification & Self-Healing Engine for Reddit
+     */
+    async verifyAndHealReddit() {
+        console.log(`\n[Ana Inspector] 🔍 Verifying Reddit session and connection...`);
+        const report = { platform: 'Reddit', healthy: true, actionsTaken: [] };
+        if (!this.reddit.isConfigured()) {
+            report.healthy = false;
+            report.actionsTaken.push('Reddit session not configured. Please run login_reddit.bat');
+        } else {
+            console.log(`[Ana Inspector] ✅ Reddit session active.`);
         }
         return report;
     }
@@ -763,6 +815,7 @@ class AnaSocialManager {
         const ttReport = await this.verifyAndHealTikTok();
         const fvReport = await this.verifyAndHealFanvue();
         const pinReport = await this.verifyAndHealPinterest();
+        const redReport = await this.verifyAndHealReddit();
 
         console.log(`\n======================================================`);
         console.log(`📊 HEALTH AUDIT SUMMARY`);
@@ -773,9 +826,11 @@ class AnaSocialManager {
         console.log(`💎 Fanvue:   ${fvReport.healthy ? '🟢 Healthy & Active' : '🔴 Action Required'}`);
         console.log(`📌 Pinterest: ${pinReport.healthy ? '🟢 Session Active' : '🟡 Setup Required'}`);
         if (pinReport.actionsTaken.length > 0) console.log(`   - ${pinReport.actionsTaken.join('\n   - ')}`);
+        console.log(`🤖 Reddit:    ${redReport.healthy ? '🟢 Session Active' : '🟡 Setup Required'}`);
+        if (redReport.actionsTaken.length > 0) console.log(`   - ${redReport.actionsTaken.join('\n   - ')}`);
         console.log(`======================================================\n`);
 
-        return { igReport, ttReport, fvReport, pinReport };
+        return { igReport, ttReport, fvReport, pinReport, redReport };
     }
 }
 
@@ -788,6 +843,8 @@ if (require.main === module) {
         try {
             if (args.includes('--verify') || args.includes('--verify-and-heal') || args.includes('--audit')) {
                 await ana.verifyAllChannels();
+            } else if (args.includes('--reddit-post') || args.includes('--reddit')) {
+                await ana.publishRedditPost('MIDDAY');
             } else if (args.includes('--pinterest-login') || args.includes('--pin-login')) {
                 const loginPin = require('../scripts/pinterest_browser_login');
                 await loginPin();

@@ -108,6 +108,17 @@ class GeorgeProducerAgent {
             }
         }
 
+        // Publish to Reddit (Midday community drop)
+        if (theme === 'MIDDAY' && this.ana.reddit.isConfigured()) {
+            try {
+                console.log(`[George] 🤖 Delegating Reddit Community Drop to Ana...`);
+                results.reddit = await this.ana.publishRedditPost(theme);
+            } catch (e) {
+                console.error(`[George] ⚠️ Reddit publication note:`, e.message);
+                results.reddit = { error: e.message };
+            }
+        }
+
         // Publish to TikTok (Evening Video Slot: PREP or NIGHT) - Hybrid Cadence
         if (theme === 'PREP' || theme === 'NIGHT') {
             try {

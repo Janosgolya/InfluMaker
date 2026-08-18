@@ -35,6 +35,8 @@ jobs:
           INSTAGRAM_SESSION_JSON: ${{ secrets.INSTAGRAM_SESSION_JSON }}
           TIKTOK_SESSION_JSON: ${{ secrets.TIKTOK_SESSION_JSON }}
           PINTEREST_SESSION_JSON: ${{ secrets.PINTEREST_SESSION_JSON }}
+          REDDIT_SESSION_JSON: ${{ secrets.REDDIT_SESSION_JSON }}
+          TWITTER_SESSION_JSON: ${{ secrets.TWITTER_SESSION_JSON }}
         run: |
           mkdir -p config
           if [ -n "$INSTAGRAM_SESSION_JSON" ]; then
@@ -48,6 +50,14 @@ jobs:
           if [ -n "$PINTEREST_SESSION_JSON" ]; then
             printf '%s' "$PINTEREST_SESSION_JSON" > config/pinterest_session.json
             echo "[Restore] Pinterest session restored ($(wc -c < config/pinterest_session.json) bytes)"
+          fi
+          if [ -n "$REDDIT_SESSION_JSON" ]; then
+            printf '%s' "$REDDIT_SESSION_JSON" > config/reddit_session.json
+            echo "[Restore] Reddit session restored ($(wc -c < config/reddit_session.json) bytes)"
+          fi
+          if [ -n "$TWITTER_SESSION_JSON" ]; then
+            printf '%s' "$TWITTER_SESSION_JSON" > config/twitter_session.json
+            echo "[Restore] Twitter session restored ($(wc -c < config/twitter_session.json) bytes)"
           fi
 
       - name: Execute George Producer Tick

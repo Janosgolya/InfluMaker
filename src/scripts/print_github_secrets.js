@@ -45,6 +45,26 @@ if (fs.existsSync(pinPath)) {
     console.log(`Value:`);
     console.log(fs.readFileSync(pinPath, 'utf8').trim());
 } else {
-    console.log(`(file config/pinterest_session.json not found - run 'node src/scripts/pinterest_browser_login.js' first)`);
+    console.log(`(file config/pinterest_session.json not found - run 'login_pinterest.bat' first)`);
+}
+console.log(`\n------------------------------------------------------\n`);
+
+const redPath = path.join(__dirname, '../../config/reddit_session.json');
+console.log(`6️⃣ Secret Name: REDDIT_SESSION_JSON`);
+if (fs.existsSync(redPath)) {
+    console.log(`Value:`);
+    console.log(fs.readFileSync(redPath, 'utf8').trim());
+} else {
+    console.log(`(file config/reddit_session.json not found - run 'login_reddit.bat' first)`);
+}
+console.log(`\n------------------------------------------------------\n`);
+
+const twPath = path.join(__dirname, '../../config/twitter_session.json');
+console.log(`7️⃣ Secret Name: TWITTER_SESSION_JSON`);
+if (fs.existsSync(twPath)) {
+    console.log(`Value:`);
+    console.log(fs.readFileSync(twPath, 'utf8').trim());
+} else {
+    console.log(`(file config/twitter_session.json not found - run 'login_twitter.bat' first)`);
 }
 console.log(`\n======================================================\n`);
