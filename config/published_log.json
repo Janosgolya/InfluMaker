@@ -371,5 +371,15 @@
     "postUrl": "https://www.reddit.com/r/aiArt/submit/?type=TEXT",
     "timestamp": "2026-08-19T11:32:28.807Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "PREP_SFW_Q9_S1_hf_20260816_174906_aa662b53-4419-4708-a3c8-908441a9ae61.png",
+    "theme": "PREP",
+    "price": "$7.99",
+    "priceCents": 799,
+    "audience": "subscribers",
+    "timestamp": "2026-08-19T19:36:51.009Z",
+    "status": "PUBLISHED"
   }
 ]

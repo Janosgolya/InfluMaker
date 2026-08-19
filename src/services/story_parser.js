@@ -26,6 +26,8 @@ class StoryParser {
         cleaned = cleaned.replace(/^\s*\([^)]{0,80}\)\s*[""]?/gm, '');
         // Remove tone labels
         cleaned = cleaned.replace(/^(Exclusive,?\s+seductive\s+tone:?\s*|Intimate\s+tone:?\s*|Whispered:?\s*|Note:?\s*|Caption:?\s*|Betty:?\s*)/gim, '');
+        // Remove LLM instructions and prompt echoes
+        cleaned = cleaned.replace(/^.*(?:Format your response|generate exactly|do not include markdown).*$/gim, '');
         // Strip lines that contain only stray emojis or symbols with no Latin alphanumeric characters
         if (cleaned.length > 0 && !/[a-zA-Z0-9]/.test(cleaned)) {
             return '';
