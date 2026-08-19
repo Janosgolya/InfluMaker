@@ -130,6 +130,9 @@ async function startOAuthFlow() {
                             console.log(`\n🎉 SUCCESS: Fanvue Access Token Acquired!`);
                             
                             // Save tokens to .env
+                            const envPath = path.join(__dirname, '../../.env');
+                            let envContent = fs.existsSync(envPath) ? fs.readFileSync(envPath, 'utf8') : '';
+
                             if (clientId) {
                                 if (envContent.includes('FANVUE_CLIENT_ID=')) {
                                     envContent = envContent.replace(/FANVUE_CLIENT_ID=.*/, `FANVUE_CLIENT_ID=${clientId}`);
