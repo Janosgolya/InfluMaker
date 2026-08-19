@@ -44,15 +44,39 @@ class NotificationService {
     /**
      * Send email notification on post publication
      */
-    async notifyPostPublished(data = {}) {
-        const { theme, item, results = {}, remainingCount = 0 } = data;
-        const now = new Date();
-
         const platforms = [];
-        if (results.fanvue && !results.fanvue.error) platforms.push('Fanvue');
-        if (results.instagram && !results.instagram.error) platforms.push('Instagram');
-        if (results.tiktok && !results.tiktok.error) platforms.push('TikTok');
-        if (platforms.length === 0) platforms.push('Fanvue (Scheduled)');
+        const errors = [];
+
+        if (results.fanvue) {
+            if (results.fanvue.error) errors.push(`Fanvue: ${results.fanvue.error}`);
+            else platforms.push('Fanvue');
+        }
+        if (results.instagram) {
+            if (results.instagram.error) errors.push(`Instagram: ${results.instagram.error}`);
+            else platforms.push('Instagram');
+        }
+        if (results.tiktok) {
+            if (results.tiktok.error) errors.push(`TikTok: ${results.tiktok.error}`);
+            else platforms.push('TikTok');
+        }
+        if (results.twitter) {
+            if (results.twitter.error) errors.push(`Twitter: ${results.twitter.error}`);
+            else platforms.push('Twitter');
+        }
+        if (results.reddit) {
+            if (results.reddit.error) errors.push(`Reddit: ${results.reddit.error}`);
+            else platforms.push('Reddit');
+        }
+        if (results.pinterest) {
+            if (results.pinterest.error) errors.push(`Pinterest: ${results.pinterest.error}`);
+            else platforms.push('Pinterest');
+        }
+
+        // If NO platform succeeded, send an honest ERROR ALERT instead of a fake success!
+        if (platforms.length === 0) {
+            console.warn(`[NotificationService] ⚠️ Zero platforms succeeded for theme ${theme}. Sending Failure Alert instead.`);
+            return this.sendPublicationFailureAlert({ theme, item, errors, remainingCount });
+        }
 
         const subject = `👑 [InfluMaker] Post Published: ${theme} (${platforms.join(', ')}) - Betty Ryal`;
         const imageName = item?.imagePath ? path.basename(item.imagePath) : 'Period Drama Asset';
@@ -85,6 +109,46 @@ class NotificationService {
         `;
 
         return this.sendEmail({ subject, html, text: `[InfluMaker] New post published for theme ${theme} on ${platforms.join(', ')}.` });
+    }
+
+    /**
+     * Send critical failure alert when all scheduled platforms fail
+     */
+    async sendPublicationFailureAlert(data = {}) {
+        const { theme, item, errors = [], remainingCount = 0 } = data;
+        const now = new Date();
+        const formattedDate = now.toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' });
+        const imageName = item?.imagePath ? path.basename(item.imagePath) : 'Period Drama Asset';
+        const subject = `🚨 [InfluMaker ALARM] Błąd Publikacji dla slotu ${theme} - Betty Ryal`;
+
+        const html = `
+        <div style="font-family: 'Georgia', serif; background-color: #1a1111; color: #f0ede6; padding: 25px; border-radius: 8px; max-width: 600px; margin: auto; border: 1px solid #5a2525;">
+            <div style="text-align: center; border-bottom: 1px solid #732a2a; padding-bottom: 15px; margin-bottom: 20px;">
+                <h1 style="color: #ff5252; margin: 0; font-size: 24px; letter-spacing: 1px;">🚨 BŁĄD PUBLIKACJI POSTA</h1>
+                <p style="color: #c99393; font-size: 13px; margin-top: 5px;">Betty Ryal &bull; George Autonomous Scheduler Alert</p>
+            </div>
+            
+            <div style="background-color: #2b1717; padding: 18px; border-radius: 6px; border-left: 4px solid #ff5252; margin-bottom: 20px;">
+                <p style="margin: 0; font-size: 16px; color: #ffffff;"><strong>⚠️ Żadna z zaplanowanych platform nie powiodła się!</strong></p>
+                <p style="margin: 8px 0 0 0; color: #f0c2c2; font-size: 14px;"><strong>Pora dnia / Slot:</strong> <span style="color: #ff8a80;">${theme}</span></p>
+                <p style="margin: 4px 0 0 0; color: #f0c2c2; font-size: 14px;"><strong>Plik do publikacji:</strong> <code>${imageName}</code></p>
+                <p style="margin: 4px 0 0 0; color: #f0c2c2; font-size: 14px;"><strong>Czas błędu:</strong> ${formattedDate}</p>
+            </div>
+
+            <div style="background-color: #241414; padding: 15px; border-radius: 6px; margin-bottom: 20px; font-size: 13px; color: #ffab91;">
+                <strong style="color: #ff8a80;">🔍 Wykryte Błędy na Platformach:</strong><br>
+                <ul style="margin: 8px 0 0 0; padding-left: 20px;">
+                    ${errors.map(err => `<li><code>${err}</code></li>`).join('')}
+                </ul>
+            </div>
+
+            <div style="text-align: center; border-top: 1px solid #5a2525; padding-top: 15px; font-size: 11px; color: #a17878;">
+                Wymagana weryfikacja sesji / tokenów API. Wiadomość wysłana przez agenta George.
+            </div>
+        </div>
+        `;
+
+        return this.sendEmail({ subject, html, text: `[InfluMaker ALARM] Publication failed for slot ${theme}: ${errors.join(' | ')}` });
     }
 
     /**

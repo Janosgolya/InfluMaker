@@ -194,34 +194,25 @@ class TikTokService {
         return outputPath;
     }
 
-    /**
-     * Parse Eve's sidecar .story.txt to extract TikTok section
-     */
     parseTikTokStory(storyFilePath) {
+        const storyParser = require('./story_parser');
         if (!fs.existsSync(storyFilePath)) {
-            return null;
+            return {
+                hook: "POV: You caught the manor's new maid in the quiet corridor...",
+                spokenVoiceover: "Before the London manor stirs, I write my quiet confessions by candlelight in the attic.",
+                caption: "They never notice the maid at the door... 🕯️ Full diary in bio 🗝️",
+                hashtags: this.profile.defaultHashtags.join(' '),
+                fullTikTokCaption: `They never notice the maid at the door... 🕯️ Full diary in bio 🗝️\n\n👉 Full secret diary link in bio!\n${this.profile.defaultHashtags.join(' ')}`
+            };
         }
 
-        const content = fs.readFileSync(storyFilePath, 'utf8');
-        const tiktokSectionMatch = content.match(/### SECTION 1:\s*📱 TIKTOK FORMAT[\s\S]*?(?=### SECTION 2:|$)/i);
-        const tiktokText = tiktokSectionMatch ? tiktokSectionMatch[0] : content;
-
-        const hookMatch = tiktokText.match(/#### ON-SCREEN TEXT HOOK:\s*\n([^\n]+)/i);
-        const spokenMatch = tiktokText.match(/#### SPOKEN NARRATIVE \/ VOICEOVER:\s*\n([\s\S]*?)(?=\n#### CAPTION|\n#### HASHTAGS|$)/i);
-        const captionMatch = tiktokText.match(/#### CAPTION & BIO REDIRECT:\s*\n([^\n]+)/i);
-        const hashtagsMatch = tiktokText.match(/#### HASHTAGS:\s*\n([^\n]+)/i);
-
-        const hook = hookMatch ? hookMatch[1].trim() : "POV: You caught the inn's new maid in the quiet corridor...";
-        const spokenVoiceover = spokenMatch ? spokenMatch[1].replace(/\(.*?\)/g, '').trim() : "I scurried through the dimly lit halls of the inn...";
-        const caption = captionMatch ? captionMatch[1].trim() : "Caught in the quiet of the laundry room... #PeriodDrama #HistoricalRomance #BettyRyal #MaidLife #POV";
-        const hashtags = hashtagsMatch ? hashtagsMatch[1].trim() : "#18thCentury #PeriodDrama #HistoricalRomance #BettyRyal #MaidLife #POV #Storytime";
-
+        const parsed = storyParser.parse(storyFilePath);
         return {
-            hook,
-            spokenVoiceover,
-            caption,
-            hashtags,
-            fullTikTokCaption: `${caption.replace(/"/g, '')}\n\n👉 Full secret diary link in bio!\n${hashtags}`
+            hook: parsed.tiktok.hook,
+            spokenVoiceover: parsed.tiktok.voiceover,
+            caption: parsed.tiktok.caption,
+            hashtags: parsed.tiktok.rawHashtags.join(' '),
+            fullTikTokCaption: `${parsed.tiktok.caption}\n\n👉 Full secret diary link in bio!`
         };
     }
 

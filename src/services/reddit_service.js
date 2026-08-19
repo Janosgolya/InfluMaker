@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { uploadRedditPost } = require('./reddit_browser_uploader');
+const storyParser = require('./story_parser');
 
 class RedditService {
     constructor() {
@@ -23,56 +24,37 @@ class RedditService {
     }
 
     /**
-     * Extracts Reddit specific copy from Eve's .story.txt file or generates fallback
+     * Extracts Reddit specific copy from Eve's .story.txt file via StoryParser
      * @param {string} storyPath - Path to .story.txt
      */
     parseRedditStory(storyPath) {
-        let title = "Betty's quiet hour in the London mansion by candlelight [OC] [AI]";
-        let subreddit = this.defaultSubreddit;
-        let firstComment = `Before the house awakens, I write my private diary by candlelight... 🕯️\n\nDiscover the full uncensored entries in my bio link: https://fanvue.com/bettyryal`;
-        let isNsfw = false;
-
         if (storyPath && fs.existsSync(storyPath)) {
-            const raw = fs.readFileSync(storyPath, 'utf8');
+            const parsed = storyParser.parse(storyPath);
+            let subreddit = this.defaultSubreddit;
+            const subMatch = parsed.reddit.subreddits.match(/r\/([A-Za-z0-9_]+)/);
+            if (subMatch) subreddit = subMatch[1];
 
-            // Check for SECTION 5: REDDIT FORMAT
-            if (raw.includes('REDDIT FORMAT') || raw.includes('SECTION 5')) {
-                const redditSection = raw.split(/REDDIT FORMAT|SECTION 5/i)[1] || '';
-                const lines = redditSection.split('\n').map(l => l.trim()).filter(Boolean);
-
-                const titleLine = lines.find(l => l.toLowerCase().startsWith('post title:') || l.toLowerCase().startsWith('title:'));
-                if (titleLine) title = titleLine.replace(/^(post\s+)?title:\s*/i, '').replace(/[#*]/g, '').trim();
-
-                const subLine = lines.find(l => l.toLowerCase().startsWith('target subreddits:') || l.toLowerCase().startsWith('subreddit:'));
-                if (subLine) {
-                    const match = subLine.match(/r\/([A-Za-z0-9_]+)/);
-                    if (match) subreddit = match[1];
-                }
-
-                const commentLine = lines.find(l => l.toLowerCase().startsWith('first comment:'));
-                if (commentLine) {
-                    firstComment = commentLine.replace(/^first comment:\s*/i, '').trim();
-                }
-            } else {
-                // Fallback: use first sentence of story
-                const cleaned = raw.replace(/###.+/g, '').replace(/\[.+?\]/g, '').trim();
-                const firstLine = cleaned.split('\n')[0];
-                if (firstLine) title = `${firstLine.substring(0, 100)} [OC] [AI]`;
-            }
-
-            if (raw.toLowerCase().includes('sensuality score: 8') || raw.toLowerCase().includes('sensuality score: 9') || raw.toLowerCase().includes('sensuality score: 10')) {
-                isNsfw = true;
-            }
+            return {
+                title: parsed.reddit.title,
+                subreddit: subreddit,
+                firstComment: parsed.reddit.comment,
+                isNsfw: false
+            };
         }
 
-        return { title, subreddit, firstComment, isNsfw };
+        return {
+            title: "Betty's quiet hour in the London mansion by candlelight [OC] [AI]",
+            subreddit: this.defaultSubreddit,
+            firstComment: `Before the house awakens, I write my private diary by candlelight... 🕯️\n\nDiscover the full uncensored entries in my bio link: https://fanvue.com/bettyryal`,
+            isNsfw: false
+        };
     }
 
     /**
-     * Publishes a post to Reddit
+     * Publishes an image post to Reddit
      * @param {string} imagePath - Path to image file
      * @param {string} [storyPath] - Path to .story.txt file
-     * @param {Object} [overrides] - Custom title/subreddit overrides
+     * @param {Object} [overrides] - Custom overrides for title, subreddit, comment
      */
     async publishPost(imagePath, storyPath = null, overrides = {}) {
         if (!this.isConfigured()) {
@@ -88,8 +70,8 @@ class RedditService {
         return await uploadRedditPost({
             imagePath,
             title,
-            firstComment,
             subreddit,
+            firstComment,
             isNsfw,
             headless: true
         });

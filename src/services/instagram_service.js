@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 const InstagramBrowserUploader = require('./instagram_browser_uploader');
+const storyParser = require('./story_parser');
 
 class InstagramService {
     constructor(options = {}) {
@@ -39,7 +40,6 @@ class InstagramService {
         const baseName = path.basename(imagePath, ext);
         const outputPath = path.join(this.instagramOutputDir, `${baseName}_insta_4x5.jpg`);
 
-        // Instagram 4:5 optimal resolution
         const width = 1080;
         const height = 1350;
 
@@ -56,35 +56,26 @@ class InstagramService {
     }
 
     /**
-     * Parse Eve's sidecar .story.txt to extract Section 2: Instagram Format
+     * Parse Eve's sidecar .story.txt to extract Section 2: Instagram Format via StoryParser
      */
     parseInstagramStory(storyFilePath) {
         if (!fs.existsSync(storyFilePath)) {
-            return null;
+            return {
+                hook: "The morning chill in the stone corridors... 🕯️",
+                journal: "Before the manor stirs, I gather the linens by candlelight and listen to the quiet whispers of the house.",
+                cta: "Discover the rest of my private diary via the link in my bio 🗝️",
+                hashtags: this.profile.defaultHashtags.join(' '),
+                fullCaption: `The morning chill in the stone corridors... 🕯️\n\nBefore the manor stirs, I gather the linens by candlelight and listen to the quiet whispers of the house.\n\nDiscover the rest of my private diary via the link in my bio 🗝️\n.\n.\n.\n${this.profile.defaultHashtags.join(' ')}`
+            };
         }
 
-        const content = fs.readFileSync(storyFilePath, 'utf8');
-        const instaSectionMatch = content.match(/### SECTION 2:\s*📸 INSTAGRAM FORMAT[\s\S]*?(?=### SECTION 3:|$)/i);
-        const instaText = instaSectionMatch ? instaSectionMatch[0] : content;
-
-        const hookMatch = instaText.match(/#### HOOK LINE \/ FIRST SENTENCE:\s*\n([^\n]+)/i);
-        const journalMatch = instaText.match(/#### SENSORY JOURNAL EXCERPT:\s*\n([\s\S]*?)(?=\n#### CALL TO ACTION|\n#### HASHTAGS|$)/i);
-        const ctaMatch = instaText.match(/#### CALL TO ACTION & BIO REDIRECT:\s*\n([^\n]+)/i);
-        const hashtagsMatch = instaText.match(/#### HASHTAGS:\s*\n([^\n]+)/i);
-
-        const hook = hookMatch ? hookMatch[1].trim() : "The quiet of the laundry room before the manor stirs...";
-        const journal = journalMatch ? journalMatch[1].trim() : "The cold London morning yields to the warmth of cedar tubs and rising steam. A quiet hour before the master rings the bell.";
-        const cta = ctaMatch ? ctaMatch[1].trim() : "Read the rest of tonight's diary in my bio link 🕯️";
-        const hashtags = hashtagsMatch ? hashtagsMatch[1].trim() : "#18thCentury #PeriodRomance #FineArtPortrait #RembrandtLighting #BettyRyal";
-
-        const fullCaption = `${hook}\n\n${journal}\n\n${cta}\n.\n.\n.\n${hashtags}`;
-
+        const parsed = storyParser.parse(storyFilePath);
         return {
-            hook,
-            journal,
-            cta,
-            hashtags,
-            fullCaption
+            hook: parsed.instagram.hook,
+            journal: parsed.instagram.excerpt,
+            cta: parsed.instagram.cta,
+            hashtags: parsed.instagram.hashtags.join(' '),
+            fullCaption: parsed.instagram.fullCaption
         };
     }
 
@@ -98,46 +89,51 @@ class InstagramService {
         const postPackage = {
             platform: 'Instagram',
             account: this.profile.username,
-            formattedAssetPath: formattedImage,
-            caption: story ? story.fullCaption : `The quiet morning before the manor stirs... 🕯️\n\nFull diary link in bio!\n${this.profile.defaultHashtags.join(' ')}`,
-            location: this.profile.location,
-            bioRedirectUrl: this.profile.linkInBio,
-            status: 'READY_TO_PUBLISH',
-            timestamp: new Date().toISOString()
+            formattedImagePath: formattedImage,
+            caption: story.fullCaption,
+            hashtags: story.hashtags,
+            aspectRatio: '4:5 (1080x1350)',
+            linkInBio: this.profile.linkInBio,
+            status: 'READY'
         };
 
-        const metaPath = formattedImage.replace('.jpg', '_metadata.json');
-        fs.writeFileSync(metaPath, JSON.stringify(postPackage, null, 2), 'utf8');
-
         console.log(`\n======================================================`);
-        console.log(`📸 INSTAGRAM: Post Package Ready`);
-        console.log(`Account: @${this.profile.username}`);
-        console.log(`Asset: ${path.basename(formattedImage)}`);
-        console.log(`Bio Redirect: ${this.profile.linkInBio}`);
+        console.log(`📸 INSTAGRAM READY POST PACKAGE`);
+        console.log(`======================================================`);
+        console.log(`Image: ${path.basename(formattedImage)}`);
+        console.log(`Caption:\n${story.fullCaption}`);
         console.log(`======================================================\n`);
 
         return postPackage;
     }
 
     /**
-     * Complete Instagram Post Workflow (Formats 4:5 + Publishes via Web Session)
+     * Publish post directly to Instagram via Playwright Browser Uploader
      */
     async publishPost(imagePath, storyFilePath, options = {}) {
-        const postPackage = await this.prepareInstagramPost(imagePath, storyFilePath);
+        console.log(`\n======================================================`);
+        console.log(`📸 INSTAGRAM: Publishing Image Post to @${this.profile.username}`);
+        console.log(`======================================================`);
 
+        const formattedImage = await this.formatForInstagram(imagePath);
+        const story = this.parseInstagramStory(storyFilePath);
+
+        let uploadResult;
         if (this.browserUploader.isLoggedIn()) {
-            console.log(`[Instagram] 🟢 Persistent Instagram Session detected! Publishing directly to Instagram feed...`);
-            const uploadResult = await this.browserUploader.uploadAndPublish(
-                postPackage.formattedAssetPath,
-                postPackage.caption,
-                options
-            );
-            return { ...postPackage, ...uploadResult, status: 'PUBLISHED' };
+            console.log(`[Instagram] 🌐 Authenticated session found. Uploading via Playwright...`);
+            uploadResult = await this.browserUploader.uploadAndPublish(formattedImage, story.fullCaption, options);
         } else {
-            console.log(`[Instagram] ⚠️ No active session found. Asset formatted and saved in Instagram_Ready_Content.`);
-            console.log(`[Instagram] 👉 Run 'node src/scripts/instagram_browser_login.js' once to enable 100% autonomous background posting.`);
-            return postPackage;
+            console.log(`[Instagram] ⚠️ Session not found. Please run login_instagram.bat first.`);
+            uploadResult = { status: 'READY_SAVED', error: 'Not logged in' };
         }
+
+        return {
+            status: uploadResult.status || 'PUBLISHED',
+            platform: 'Instagram',
+            formattedAssetPath: formattedImage,
+            caption: story.fullCaption,
+            result: uploadResult
+        };
     }
 }
 

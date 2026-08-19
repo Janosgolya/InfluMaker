@@ -325,42 +325,37 @@ class FanvueService {
         return resultLines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
     }
 
-    /**
-     * Parse Eve's sidecar .story.txt to extract Fanvue section
-     */
     parseEveStory(storyFilePath, isPaidPost = false) {
+        const storyParser = require('./story_parser');
         if (!fs.existsSync(storyFilePath)) {
-            return null;
+            const fallback = "Tonight in my attic room, I wrote down everything that happened behind closed doors by the glow of my tallow candle.\n\nWith all my whispered secrets,\nBetty 🕯️💋\n\n#BettyRyal #HistoricalRomance #Fanvue #CandlelightChronicles";
+            return {
+                confession: fallback,
+                paywall: "Unlock the full secret set in my private vault...",
+                tipMenu: "Tip to support Betty's private diary.",
+                hashtags: "#BettyRyal #Fanvue #HistoricalRomance",
+                fullPostText: fallback
+            };
         }
 
-        const content = fs.readFileSync(storyFilePath, 'utf8');
-        const fanvueSectionMatch = content.match(/### SECTION 3:\s*💋 FANVUE FORMAT[\s\S]*?(?================================================================================|$)/i);
-        const fanvueText = fanvueSectionMatch ? fanvueSectionMatch[0] : content;
+        const parsed = storyParser.parse(storyFilePath);
+        let confession = parsed.fanvue.confession;
+        let paywall = parsed.fanvue.teaser;
+        let tipMenu = parsed.fanvue.vip;
 
-        const confessionMatch = fanvueText.match(/#### SUBSCRIBER DIARY CONFESSION:\s*\n([\s\S]*?)(?=\n#### PAYWALL|\n#### TIP MENU|$)/i);
-        const paywallMatch = fanvueText.match(/#### PAYWALL & PPV TEASER PITCH:\s*\n([\s\S]*?)(?=\n#### TIP MENU|\n#### HASHTAGS|$)/i);
-        const tipMenuMatch = fanvueText.match(/#### TIP MENU & VIP CTA:\s*\n([\s\S]*?)(?=\n#### HASHTAGS|$)/i);
-        const hashtagsMatch = fanvueText.match(/#### HASHTAGS:\s*\n([^\n]+)/i);
-
-        let confession = this.sanitizeEnglishStoryText(confessionMatch ? confessionMatch[1].trim() : "Tonight in my attic room, I wrote down everything that happened behind closed doors...");
-        let paywall = this.sanitizeEnglishStoryText(paywallMatch ? paywallMatch[1].trim() : "Unlock to see the full uncensored moment...");
-        let tipMenu = this.sanitizeEnglishStoryText(tipMenuMatch ? tipMenuMatch[1].trim() : "Tip to support Betty's private diary.");
-        const hashtags = hashtagsMatch ? hashtagsMatch[1].trim() : "#BettyRyal #Fanvue #HistoricalRomance";
-
-        // Build elegant post text dynamically based on whether it is a paid PPV drop or standard subscription post
         let parts = [];
         if (confession) parts.push(confession);
         if (isPaidPost && paywall && paywall !== confession) parts.push(paywall);
         if (tipMenu) parts.push(tipMenu);
-        if (hashtags) parts.push(hashtags);
+        parts.push("With all my whispered secrets,\nBetty 🕯️💋\n\n#BettyRyal #HistoricalRomance #Fanvue #CandlelightChronicles");
 
-        const fullPostText = this.sanitizeEnglishStoryText(parts.join('\n\n'));
+        const fullPostText = parts.join('\n\n');
 
         return {
             confession,
             paywall,
             tipMenu,
-            hashtags,
+            hashtags: "#BettyRyal #Fanvue #HistoricalRomance",
             fullPostText
         };
     }

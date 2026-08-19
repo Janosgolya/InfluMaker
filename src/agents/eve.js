@@ -32,7 +32,7 @@ class EveScreenwriterAgent {
             this.visualLore = fs.existsSync(visualPath) ? fs.readFileSync(visualPath, 'utf8') : '';
 
             this.characterName = "Betty Ryal";
-            this.characterBio = `Name: Betty Ryal. An orphan from 18th-century London taken in as a maid at a high-class inn / "house of joys" for wealthy gentlemen and elegant ladies. She writes her private journal about her daily duties, cleaning, linen changes, assisting ladies, bathing, attending candlelit gatherings, and her gradual sensual awakening in an atmosphere of joy, flirting, and romance.`;
+            this.characterBio = `Name: Betty Ryal. A 20-year-old orphan from 18th-century London taken in as a maid at a high-class London mansion / inn for wealthy gentlemen and elegant ladies (1780s). She writes her private diary by tallow candlelight about her daily chores, linen changes, dressing ladies, secret glances, and her gradual sensual awakening.`;
         } catch (e) {
             console.warn(`[Eve] Warning loading character lore: ${e.message}`);
             this.lore = '';
@@ -41,7 +41,7 @@ class EveScreenwriterAgent {
     }
 
     /**
-     * Call Google Gemini API as cloud / zero-Ollama fallback
+     * Call Google Gemini API as cloud fallback
      */
     async callGemini(prompt, imagePath = null) {
         if (!process.env.GEMINI_API_KEY) {
@@ -91,14 +91,13 @@ class EveScreenwriterAgent {
             stream: false,
             options: {
                 num_ctx: 8192,
-                num_predict: 1500,
+                num_predict: 1800,
                 temperature: 0.7
             }
         };
 
         if (imagePath && fs.existsSync(imagePath)) {
             try {
-                // Resize image to max 1024 to prevent token overflow while preserving fine visual details
                 const optimizedBuffer = await sharp(imagePath)
                     .resize({ width: 1024, height: 1024, fit: 'inside', withoutEnlargement: true })
                     .jpeg({ quality: 85 })
@@ -158,7 +157,6 @@ class EveScreenwriterAgent {
         const baseName = path.basename(imagePath, ext);
         const dir = path.dirname(imagePath);
         
-        // 1. Check if Jones QC report exists alongside image
         const jonesReportPath = path.join(dir, `${baseName}.txt`);
         let cachedVisuals = null;
         let sensuality = 'Sensual (SFW/NSFW balance)';
@@ -180,52 +178,33 @@ class EveScreenwriterAgent {
                 if (themeMatch) {
                     theme = themeMatch[1].trim();
                 }
-            } catch (e) {
-                // fallback to live vision
-            }
+            } catch (e) {}
         }
 
-        // 2. If no cached visual description, run Ollama Vision
         if (!cachedVisuals) {
             console.log(`[Eve] 👁️ Analyzing visual features for ${path.basename(imagePath)} via ${this.visionModel}...`);
-            const visionPrompt = `Analyze this 18th-century image in detail:
-1. Describe what is visible (the woman/maid, her actions, what she is wearing/holding, the room, lighting, textures, any other persons).
-2. Note the woman's physical appearance (hair color/style: blonde, dark, curly, auburn, red; attire: maid uniform vs noble lady dress).
-3. Rate the sensuality (1-10) where 1 is innocent chore and 10 is explicit.
-4. Suggest the scene theme: MORNING (attic, waking, morning light), MIDDAY (chores, laundry, cleaning, daytime), PREP (evening prep, dressing, corsets, golden hour), or NIGHT (candles, party, bathing, romance, relaxation).
+            const visionPrompt = `Analyze this 18th-century scene of Betty Ryal:
+1. Describe what is visible (the woman/maid, actions, dress, lighting, room, textures).
+2. Rate sensuality (1-10).
+3. Determine theme (MORNING, MIDDAY, PREP, NIGHT).
 
-Format your response as:
-DESCRIPTION: <vivid 2-3 sentence description>
-HAIR_APPEARANCE: <blonde, dark, curly, auburn, lady/mistress, or fellow maids>
+Format as:
+DESCRIPTION: <vivid description>
 SENSUALITY: <score 1-10>
 THEME: <MORNING, MIDDAY, PREP, or NIGHT>`;
 
             try {
                 const rawResp = await this.callModel(visionPrompt, imagePath, this.visionModel);
-                const descMatch = rawResp.match(/DESCRIPTION:\s*([\s\S]*?)(?=\nHAIR_APPEARANCE:|\nSENSUALITY:|\nTHEME:|$)/i);
-                const hairMatch = rawResp.match(/HAIR_APPEARANCE:\s*([^\n]+)/i);
+                const descMatch = rawResp.match(/DESCRIPTION:\s*([\s\S]*?)(?=\nSENSUALITY:|\nTHEME:|$)/i);
                 const sensMatch = rawResp.match(/SENSUALITY:\s*(\d+)/i);
                 const themeMatch = rawResp.match(/THEME:\s*([A-Za-z0-9_-]+)/i);
 
-                if (descMatch && descMatch[1].trim()) {
-                    cachedVisuals = descMatch[1].trim();
-                } else if (rawResp.trim().length > 0) {
-                    cachedVisuals = rawResp.trim();
-                }
-
-                if (hairMatch) {
-                    cachedVisuals += ` [Appearance note: ${hairMatch[1].trim()}]`;
-                }
-
-                if (sensMatch) {
-                    sensuality = `Sensuality score: ${sensMatch[1]}/10`;
-                }
-                if (themeMatch) {
-                    theme = themeMatch[1].trim().toUpperCase();
-                }
+                if (descMatch && descMatch[1].trim()) cachedVisuals = descMatch[1].trim();
+                else cachedVisuals = rawResp.trim();
+                if (sensMatch) sensuality = `Sensuality score: ${sensMatch[1]}/10`;
+                if (themeMatch) theme = themeMatch[1].trim().toUpperCase();
             } catch (err) {
-                console.warn(`[Eve] Vision inspection warning: ${err.message}. Using filename cues.`);
-                cachedVisuals = `An intimate 18th-century scene of Betty Ryal in the inn.`;
+                cachedVisuals = `An intimate 18th-century scene of Betty Ryal in the London manor.`;
             }
         }
 
@@ -237,64 +216,7 @@ THEME: <MORNING, MIDDAY, PREP, or NIGHT>`;
     }
 
     /**
-     * Sanitize story text to enforce English-only and remove duplicates
-     */
-    sanitizeEnglishStory(text) {
-        if (!text) return '';
-
-        // 1. Remove all Chinese / East Asian characters
-        let cleaned = text.replace(/[\u3000-\u303f\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff\uff00-\uffef]/g, '');
-
-        // 2. Strip LLM meta-commentary lines - instructions that leaked into output
-        //    Pattern: lines that start with or are entirely a parenthetical tone/format label
-        //    e.g. "(Exclusive, seductive tone)" "(Whispered, intimate)" "(Note: ...)" "(In a warm voice)"
-        cleaned = cleaned.replace(/^\s*\([^)]{0,80}\)\s*$/gm, '');
-
-        // 3. Strip inline meta-commentary prefixes at the START of a sentence
-        //    e.g. "(Exclusive, seductive tone) "What happened..." -> "What happened..."
-        //    e.g. "(Whispered) She reached for..." -> "She reached for..."
-        cleaned = cleaned.replace(/^\s*\([^)]{0,80}\)\s*[""]?/gm, '');
-
-        // 4. Strip format labels that LLMs sometimes output as opening words
-        //    e.g. "Exclusive, seductive tone: What happened..." -> "What happened..."
-        const toneLabels = [
-            /^(Exclusive,?\s+seductive\s+tone:?\s*)/gim,
-            /^(Intimate\s+tone:?\s*)/gim,
-            /^(Whispered,?\s+intimate:?\s*)/gim,
-            /^(Seductive\s+tone:?\s*)/gim,
-            /^(Note\s*:?\s*)/gim,
-            /^(Narrator\s*:?\s*)/gim,
-            /^(Betty\s+speaks\s*:?\s*)/gim,
-            /^(Caption\s*:?\s*)/gim,
-        ];
-        for (const pattern of toneLabels) {
-            cleaned = cleaned.replace(pattern, '');
-        }
-
-        // 5. Deduplicate repeated lines
-        const lines = cleaned.split('\n');
-        const seen = new Set();
-        const resultLines = [];
-
-        for (const line of lines) {
-            const trimmed = line.trim();
-            if (!trimmed) {
-                resultLines.push('');
-                continue;
-            }
-            if (trimmed.length > 15) {
-                const normalized = trimmed.toLowerCase();
-                if (seen.has(normalized)) continue;
-                seen.add(normalized);
-            }
-            resultLines.push(trimmed);
-        }
-
-        return resultLines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
-    }
-
-    /**
-     * Generate TikTok, Instagram, and Fanvue stories for an image
+     * Generate complete 6-platform structured story file for an image
      */
     async generateStoryForImage(imagePath) {
         console.log(`\n======================================================`);
@@ -304,85 +226,97 @@ THEME: <MORNING, MIDDAY, PREP, or NIGHT>`;
         const visualInfo = await this.inspectImage(imagePath);
         console.log(`👁️ Visual Context: ${visualInfo.description.substring(0, 120)}...`);
 
-        const generationPrompt = `You are Eve, the master creative screenwriter and conversion marketing strategist for virtual influencer Betty Ryal.
+        const generationPrompt = `You are Eve, master creative screenwriter for virtual influencer Betty Ryal.
+Betty Ryal is an authentic 20-year-old 18th-century servant girl (1780s London manor).
+She writes her private diary by tallow candlelight in her drafty attic chamber.
 
-CRITICAL LANGUAGE & REPETITION RULES:
-- STRICT ENGLISH ONLY: Write strictly in 18th-century period English. NEVER output Chinese, Asian characters, or any other language.
-- NO REPETITIONS: Never repeat lines, phrases, or CTAs. Every paragraph must be unique and purposeful.
+FIRST-PRINCIPLES WRITING RULES:
+1. STRICT ENGLISH ONLY (18th-century vocabulary, breathless intimate rhythm).
+2. FULL IMMERSION: Betty speaks/writes directly in first person ("I", "my tallow candle", "the cold linen", "in our London manor").
+3. ZERO META-TEXT: DO NOT write quotation marks around lines, DO NOT write parenthetical tone instructions like "(Whispered)" or "(Seductive)", DO NOT write labels like "Note:".
+4. SEPARATION OF CONCERNS: Keep paragraphs of prose 100% clean. NEVER insert hashtags inside narrative sentences.
 
-CHARACTER PROFILE & NARRATIVE PERSPECTIVE:
-- Main Character / Narrator: Betty Ryal (a young blonde maid with fair hair).
-- World & Setting: 18th-century London mansion / high-class inn. Betty writes her secret personal diary documenting life in the house.
-- Persona Voice: First-person ("I", "my diary"). Warm, breathless, curious, alluring, and authentic to the 18th century.
-
-APPEARANCE & MULTI-CHARACTER HANDLING RULE:
-- IF the woman in the image is blonde / fair-haired: Betty is describing herself directly in the first person ("I was scrubbing the hearth...", "I loosened my stays...").
-- IF the woman in the image has dark hair, curly hair, red/auburn hair, or wears noble silk gowns:
-  Betty is STILL the first-person narrator, BUT she describes the woman in the picture as ANOTHER woman in the house from Betty's perspective:
-  * Another maid / companion: (e.g. "My fellow maid Meg / Clara in the scullery...", "Helping the new girl with the heavy laundry tubs..."),
-  * An aristocratic mistress / lady of the house: (e.g. "Lady Catherine / Lady Eleanor, whose stays I laced before the ball...", "The mistress of the manor in her silk bedchamber..."),
-  * Multiple women: (e.g. "The ladies and maids whispering by the hearth...").
-  Betty tells the story of what she witnessed, assisted with, or the secret desires shared between them.
-
-CURRENT IMAGE SCENE:
+CURRENT SCENE:
 - Visual Scene: ${visualInfo.description}
-- Sensuality / Mood: ${visualInfo.sensuality}
-- Time of Day / Theme: ${visualInfo.theme}
+- Sensuality: ${visualInfo.sensuality}
+- Theme: ${visualInfo.theme}
 
-YOUR TASK:
-Write a complete, high-converting story file for this exact image in STRICT ENGLISH ONLY, formatted in distinct sections:
+WRITE THE STORY FILE EXACTLY IN THIS 6-SECTION STRUCTURE:
 
-----------------------------------------------------
-### SECTION 1: 📱 TIKTOK FORMAT (Top-of-Funnel Viral Hook & SFW Conversion)
-- ON-SCREEN TEXT HOOK: A punchy 1-line curiosity gap / POV hook (e.g. "POV: You caught the inn's new maid in the quiet corridor...")
-- SPOKEN NARRATIVE / VOICEOVER: A 20-30 second intimate, spoken diary monologue from Betty's voice describing what happened in this moment.
-- CAPTION & BIO REDIRECT: A playful, teasing SFW caption in English only, ending with a compelling CTA directing viewers to the link in bio.
-- HASHTAGS: 5-8 curated hashtags (#18thCentury #PeriodDrama #HistoricalRomance #BettyRyal #MaidLife #POV).
+### SECTION 1: 📱 TIKTOK FORMAT
+#### ON-SCREEN TEXT HOOK:
+POV: You caught the manor's new maid in the quiet corridor...
 
-----------------------------------------------------
-### SECTION 2: 📸 INSTAGRAM FORMAT (Middle-of-Funnel Aesthetic & Storytelling)
-- OPENING HOOK LINE: An arresting first sentence that stops the scroll.
-- INTIMATE DIARY EXCERPT: 2-3 poetic paragraphs in English from Betty's personal journal describing the scene, sensations, and secret emotions.
-- ENGAGEMENT QUESTION: A question prompting followers to comment (e.g., "Would you have helped me lace my corset, or let it fall?").
-- FANVUE LINK-IN-BIO CTA: A sensual, alluring invitation directing followers to her Fanvue link in bio.
-- HASHTAGS: 10-15 aesthetic & niche hashtags (#FineArtPhotography #RembrandtLight #HistoricalDrama #Chiaroscuro #BettyRyal #CostumeDrama #SensualArt #VintageAesthetic).
+#### SPOKEN NARRATIVE / VOICEOVER:
+[A 20-30 second spoken diary excerpt in Betty's voice describing what happened in this scene, clean prose without hashtags]
 
-----------------------------------------------------
-### SECTION 3: 💋 FANVUE FORMAT (Bottom-of-Funnel Monetization & PPV Seduction)
-- SUBSCRIBER DIARY CONFESSION: An exclusive, uncensored first-person confession for Betty's paying subscribers in English. Kinky, alluring, slightly erotic, exploring her true desires and secret encounters in the inn.
-- PAYWALL & PPV TEASER PITCH: High-converting teaser copy in English designed to sell pay-per-view (PPV) locked photo sets or video drops.
-- TIP MENU & VIP CTA: A warm, seductive callout in English inviting subscribers to tip or send private requests in DMs.
+#### CAPTION & BIO REDIRECT:
+[Teasing 1-sentence caption directing viewers to read her full diary in her bio link]
 
-----------------------------------------------------
-### SECTION 4: 📌 PINTEREST FORMAT (Long-Tail Evergreen Visual Search & Pin Funnel)
-- TITLE: Catchy SEO-rich pin title (e.g. "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic")
-- DESCRIPTION: A 300-500 character evocative description woven with keywords (corset aesthetic, oil painting lighting, period drama, London mansion lore) and a clear invitation to discover Betty's full diary.
-- BOARD: Recommended board name (e.g. "18th Century Aesthetic & Maid Secrets" or "Vintage Candlelight Romance").
-- LINK: Direct destination URL (https://fanvue.com/bettyryal).
+#### HASHTAGS:
+#18thCentury #PeriodDrama #HistoricalRomance #BettyRyal #MaidLife #POV
 
-----------------------------------------------------
-### SECTION 5: 🤖 REDDIT FORMAT (Niche Community Organic Discovery)
-- POST TITLE: Engaging, curiosity-driven title suitable for r/aiArt or r/HistoricalCostuming (e.g. "Betty's quiet hour before the inn awakens... [OC] [AI]")
-- TARGET SUBREDDITS: Suggested subreddits (r/aiArt, r/AIGirls, r/HistoricalCostuming, r/StableDiffusion).
-- FIRST COMMENT: A friendly, in-character opening comment inviting Redditors to explore the full story in Betty's bio.
+### SECTION 2: 📸 INSTAGRAM FORMAT
+#### OPENING HOOK LINE:
+[A striking, poetic first sentence that stops the scroll]
 
-----------------------------------------------------
-### SECTION 6: 🐦 X (TWITTER) FORMAT (Viral Micro-Storytelling & Community Teaser)
-- TWEET TEXT: Punchy 200-260 character micro-story with an intriguing question or confession + direct link callout + 3-4 trending hashtags (#AIArt #18thCentury #VirtualInfluencer #BettyRyal).
+#### INTIMATE DIARY EXCERPT:
+[2 evocative paragraphs from Betty's journal detailing sensations, textures, candlelight, and hidden feelings]
 
-FORMAT YOUR RESPONSE EXACTLY WITH CLEAR HEADERS AND SECTIONS. ENGLISH ONLY. NO REPETITION.
+#### ENGAGEMENT QUESTION:
+[A question prompting followers to reply, e.g. Would you have helped me lace my corset, or let it fall?]
 
-ABSOLUTE OUTPUT RULES - NEVER BREAK THESE:
-- DO NOT write parenthetical tone labels in your output. NEVER write things like "(Exclusive, seductive tone)", "(Whispered)", "(Intimate tone)", "(Note:)", "(In Betty's voice)" inside the actual text. These are for your internal guidance only - they must NEVER appear in the final written output.
-- DO NOT prefix any paragraph or sentence with a tone descriptor followed by a colon. NEVER write "Seductive tone: She reached for..." - just write "She reached for..."
-- DO NOT write meta-instructions to yourself inside the output (e.g. "Here is a seductive confession:", "The following is written in an exclusive tone:").
-- WRITE CLEAN PROSE DIRECTLY. Start each section's content immediately with the actual words Betty speaks or writes, with no preamble, no labels, and no self-referential instructions.`;
+#### FANVUE LINK-IN-BIO CTA:
+[Sensual invitation directing to the private diary linked in bio]
+
+#### HASHTAGS:
+#FineArtPhotography #RembrandtLight #HistoricalDrama #Chiaroscuro #BettyRyal #CostumeDrama #SensualArt #VintageAesthetic #18thCentury
+
+### SECTION 3: 💋 FANVUE FORMAT
+#### SUBSCRIBER DIARY CONFESSION:
+[An exclusive, intimate first-person confession for paying subscribers exploring her secret desires]
+
+#### PAYWALL & PPV TEASER PITCH:
+[High-converting teaser copy for locked photos/videos]
+
+#### TIP MENU & VIP CTA:
+[Warm invitation to tip or message in DMs]
+
+### SECTION 4: 📌 PINTEREST FORMAT
+#### TITLE:
+[SEO title, e.g. 18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic]
+
+#### DESCRIPTION:
+[Evocative keyword-rich description under 400 characters inviting to explore Betty's diary]
+
+#### BOARD:
+18th Century Aesthetic & Maid Secrets
+
+#### LINK:
+https://fanvue.com/bettyryal
+
+### SECTION 5: 🤖 REDDIT FORMAT
+#### POST TITLE:
+[Engaging title suitable for r/aiArt or r/HistoricalCostuming, e.g. Betty's quiet hour in the London manor [OC]]
+
+#### TARGET SUBREDDITS:
+r/aiArt, r/HistoricalCostuming, r/AIGirls
+
+#### FIRST COMMENT:
+[Friendly in-character comment asking about the art textures and pointing to bio for lore]
+
+### SECTION 6: 🐦 X (TWITTER) FORMAT
+#### TWEET TEXT:
+[A punchy, breathless 1-2 sentence micro-confession strictly under 180 characters. Zero hashtags, zero links in this field]
+
+#### CALLOUT LINK:
+https://fanvue.com/bettyryal
+
+#### HASHTAGS:
+#BettyRyal #18thCentury #PeriodDrama`;
 
         console.log(`[Eve] 💭 Generating copy with ${this.textModel}...`);
         const rawStory = await this.callModel(generationPrompt, null, this.textModel);
-
-        // Sanitize: strip any Chinese / Asian characters and deduplicate lines
-        const sanitizedStory = this.sanitizeEnglishStory(rawStory);
 
         const ext = path.extname(imagePath);
         const baseName = path.basename(imagePath, ext);
@@ -402,12 +336,12 @@ Generated At: ${new Date().toISOString()}
 ${visualInfo.description}
 
 ================================================================================
-${sanitizedStory}
+${rawStory.trim()}
 ================================================================================
 `;
 
         fs.writeFileSync(storyFilePath, fileContent, 'utf8');
-        console.log(`✅ [Eve] Successfully saved story file: ${storyFilePath}`);
+        console.log(`✅ [Eve] Successfully saved structured story file: ${storyFilePath}`);
         return {
             imagePath,
             storyFilePath,
@@ -465,62 +399,8 @@ ${sanitizedStory}
             }
         }
 
-        console.log(`\n======================================================`);
-        console.log(`🎉 EVE BATCH COMPLETE`);
-        console.log(`Total: ${imageFiles.length} | Processed: ${processed} | Skipped: ${skipped} | Errors: ${errors}`);
-        console.log(`======================================================\n`);
-
-        return {
-            total: imageFiles.length,
-            processed,
-            skipped,
-            errors
-        };
+        return { total: imageFiles.length, processed, skipped, errors };
     }
-}
-
-// CLI Execution Support
-if (require.main === module) {
-    const args = process.argv.slice(2);
-    let folder = null;
-    let image = null;
-    let limit = null;
-    let force = false;
-
-    for (let i = 0; i < args.length; i++) {
-        if (args[i] === '--folder' || args[i] === '-f') {
-            folder = args[i + 1];
-            i++;
-        } else if (args[i] === '--image' || args[i] === '-i') {
-            image = args[i + 1];
-            i++;
-        } else if (args[i] === '--limit' || args[i] === '-l') {
-            limit = parseInt(args[i + 1], 10);
-            i++;
-        } else if (args[i] === '--force') {
-            force = true;
-        }
-    }
-
-    const eve = new EveScreenwriterAgent();
-
-    (async () => {
-        try {
-            if (image) {
-                await eve.generateStoryForImage(path.resolve(image));
-            } else if (folder) {
-                await eve.processFolder(path.resolve(folder), { limit, force });
-            } else {
-                // Default test folder
-                const defaultFolder = path.join(__dirname, '../../BettyRyal_18centuryServant/Selected_Content/MORNING');
-                console.log(`No arguments provided. Running Eve on default folder: ${defaultFolder} (Limit: 1)...`);
-                await eve.processFolder(defaultFolder, { limit: 1, force });
-            }
-        } catch (e) {
-            console.error(`[Eve Fatal Error]:`, e.message);
-            process.exit(1);
-        }
-    })();
 }
 
 module.exports = EveScreenwriterAgent;

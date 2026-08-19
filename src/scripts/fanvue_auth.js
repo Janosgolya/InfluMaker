@@ -130,9 +130,14 @@ async function startOAuthFlow() {
                             console.log(`\n🎉 SUCCESS: Fanvue Access Token Acquired!`);
                             
                             // Save tokens to .env
-                            const envPath = path.join(__dirname, '../../.env');
-                            let envContent = fs.existsSync(envPath) ? fs.readFileSync(envPath, 'utf8') : '';
-                            
+                            if (clientId) {
+                                if (envContent.includes('FANVUE_CLIENT_ID=')) {
+                                    envContent = envContent.replace(/FANVUE_CLIENT_ID=.*/, `FANVUE_CLIENT_ID=${clientId}`);
+                                } else {
+                                    envContent += `\nFANVUE_CLIENT_ID=${clientId}`;
+                                }
+                            }
+
                             if (envContent.includes('FANVUE_ACCESS_TOKEN=')) {
                                 envContent = envContent.replace(/FANVUE_ACCESS_TOKEN=.*/, `FANVUE_ACCESS_TOKEN=${tokens.access_token}`);
                             } else {
@@ -148,7 +153,7 @@ async function startOAuthFlow() {
                             }
 
                             fs.writeFileSync(envPath, envContent.trim() + '\n', 'utf8');
-                            console.log(`💾 Token saved to .env file!`);
+                            console.log(`💾 Tokens & Client ID saved to .env file!`);
 
                             res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
                             res.end(`
