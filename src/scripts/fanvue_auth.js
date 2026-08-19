@@ -188,6 +188,15 @@ async function startOAuthFlow() {
         }
     });
 
+    server.on('error', (err) => {
+        if (err.code === 'EADDRINUSE') {
+            console.error(`\n❌ BŁĄD: Port ${port} jest obecnie zajęty przez inny proces.`);
+            console.error(`Uruchom login_fanvue.bat, który automatycznie zwolni port 57280 i wznowi autoryzację.\n`);
+        } else {
+            console.error(`❌ Błąd serwera lokalnego:`, err.message);
+        }
+    });
+
     server.listen(port, () => {
         console.log(`🌐 Callback listener active at http://localhost:${port}/oauth/callback`);
         console.log(`👉 Otwórz poniższy link w przeglądarce, aby się zalogować:\n`);
