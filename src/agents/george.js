@@ -4,6 +4,7 @@ const path = require('path');
 const EveScreenwriterAgent = require('./eve');
 const AnaSocialManager = require('./ana');
 const RoombaAgent = require('./roomba');
+const JonesCensorAgent = require('./jones');
 const NotificationService = require('../services/notification_service');
 
 class GeorgeProducerAgent {
@@ -17,6 +18,7 @@ class GeorgeProducerAgent {
         this.eve = new EveScreenwriterAgent();
         this.ana = new AnaSocialManager();
         this.roomba = new RoombaAgent();
+        this.jones = new JonesCensorAgent();
         this.notifier = new NotificationService({ recipient: 'janosgolya@gmail.com' });
         
         this.loadSchedule();
@@ -72,23 +74,51 @@ class GeorgeProducerAgent {
         console.log(`======================================================\n`);
 
         // 1. Ensure story exists for next unposted item in this theme
-        let nextItem = this.ana.getNextContentForTheme(theme, 'Fanvue');
-        
-        if (!nextItem) {
-            console.log(`[George] 🔍 No unposted item with story found for ${theme}. Triggering Eve to create stories...`);
-            const themeDir = path.join(this.selectedContentDir, theme);
-            if (fs.existsSync(themeDir)) {
-                await this.eve.processFolder(themeDir, { limit: 2 });
-            }
+        let nextItem = null;
+        let rejectedImages = [];
+
+        while (true) {
             nextItem = this.ana.getNextContentForTheme(theme, 'Fanvue');
-        }
+            
+            if (!nextItem) {
+                console.log(`[George] 💡 No unposted item with story found for ${theme}. Triggering Eve to create stories...`);
+                const themeDir = path.join(this.selectedContentDir, theme);
+                if (fs.existsSync(themeDir)) {
+                    await this.eve.processFolder(themeDir, { limit: 2 });
+                }
+                nextItem = this.ana.getNextContentForTheme(theme, 'Fanvue');
+            }
 
-        if (!nextItem) {
-            console.log(`[George] ⚠️ No available images found in ${theme} folder.`);
-            return { success: false, reason: `No images in ${theme}` };
-        }
+            if (!nextItem) {
+                console.log(`[George] ⚠️ No available images found in ${theme} folder.`);
+                return { success: false, reason: `No images in ${theme}`, rejectedImages };
+            }
 
-        console.log(`[George] 🚀 Next asset selected: ${path.basename(nextItem.imagePath)}`);
+            console.log(`[George] 🎯 Next asset selected: ${path.basename(nextItem.imagePath)}`);
+            
+            // JIT Jones Audit
+            console.log(`[George] 🕵️‍♂️ Running JIT Jones Quality Audit before publishing...`);
+            const audit = await this.jones.inspectImageWithVision(path.basename(nextItem.imagePath), nextItem.imagePath);
+            if (audit.rejectionCategory === 'underage_appearance') {
+                console.log(`[George] 🚨 ALERT! Jones flagged this image as underage! Rejecting and seeking alternative...`);
+                rejectedImages.push(nextItem.imagePath);
+                
+                // Move the rejected file out of Selected_Content so it isn't picked again
+                const rejectedBaseDir = path.join(__dirname, '../../BettyRyal_18centuryServant/Rejected_Content/underage_appearance');
+                if (!fs.existsSync(rejectedBaseDir)) fs.mkdirSync(rejectedBaseDir, { recursive: true });
+                const destFile = path.join(rejectedBaseDir, path.basename(nextItem.imagePath));
+                fs.renameSync(nextItem.imagePath, destFile);
+                if (fs.existsSync(nextItem.storyPath)) {
+                    fs.renameSync(nextItem.storyPath, path.join(rejectedBaseDir, path.basename(nextItem.storyPath)));
+                }
+                
+                console.log(`[George] 🔄 Re-rolling image selection...`);
+                continue; // Loop again to find another image
+            }
+
+            console.log(`[George] ✅ Image passed JIT Jones Audit! Proceeds to publication.`);
+            break;
+        }
 
         // 2. Delegate publication to Ana
         const results = {};
@@ -199,7 +229,8 @@ class GeorgeProducerAgent {
                 theme,
                 item: nextItem,
                 results,
-                remainingCount
+                remainingCount,
+                rejectedImages
             });
         } catch (mailErr) {
             console.error(`[George] Notification dispatch note:`, mailErr.message);

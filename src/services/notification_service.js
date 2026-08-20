@@ -44,7 +44,7 @@ class NotificationService {
     /**
      * Send email notification on post publication
      */
-    async notifyPostPublished(results) {
+    async notifyPostPublished({ theme, item, results, remainingCount, rejectedImages = [] }) {
         const platforms = [];
         const errors = [];
 
@@ -99,9 +99,15 @@ class NotificationService {
             </div>
 
             <div style="background-color: #161513; padding: 15px; border-radius: 6px; margin-bottom: 20px; font-size: 13px; color: #a89f91; line-height: 1.5;">
-                <strong style="color: #d4af37;">📊 Stan Magazynu Treści:</strong><br>
+                <strong style="color: #d4af37;">📦 Stan Magazynu Treści:</strong><br>
                 Pozostało gotowych zdjęć w kolejce: <strong>${remainingCount}</strong> (Zapas na ok. ${Math.round(remainingCount / 4)} dni).
             </div>
+
+            ${rejectedImages && rejectedImages.length > 0 ? `
+            <div style="background-color: #2b1717; padding: 15px; border-radius: 6px; margin-bottom: 20px; border-left: 4px solid #ff5252; font-size: 13px; color: #f0c2c2;">
+                <strong style="color: #ff8a80;">🚨 AUDYT JIT (JONES): Odrzucono obrazy przed publikacją!</strong><br>
+                Zanim opublikowano ten post, Jones odrzucił <strong>${rejectedImages.length}</strong> obraz(y) z powodu <strong>underage_appearance</strong> (wygląd poniżej 21 lat). Odrzucone zdjęcia zostały zablokowane i załączone do tego maila do Twojego wglądu.
+            </div>` : ''}
 
             <div style="text-align: center; border-top: 1px solid #332d25; padding-top: 15px; font-size: 11px; color: #736b5e;">
                 Wiadomość wygenerowana automatycznie przez agenta George (InfluMaker 24/7 Cloud).
@@ -109,7 +115,23 @@ class NotificationService {
         </div>
         `;
 
-        return this.sendEmail({ subject, html, text: `[InfluMaker] New post published for theme ${theme} on ${platforms.join(', ')}.` });
+        const attachments = [];
+        if (rejectedImages && rejectedImages.length > 0) {
+            rejectedImages.forEach((imgPath, idx) => {
+                attachments.push({
+                    filename: `rejected_underage_${idx + 1}.jpg`,
+                    path: imgPath,
+                    cid: `rejected${idx}`
+                });
+            });
+        }
+
+        return this.sendEmail({ 
+            subject, 
+            html, 
+            text: `[InfluMaker] New post published for theme ${theme} on ${platforms.join(', ')}.`,
+            attachments 
+        });
     }
 
     /**
@@ -259,7 +281,7 @@ class NotificationService {
     /**
      * Core email dispatcher
      */
-    async sendEmail({ subject, html, text }) {
+    async sendEmail({ subject, html, text, attachments = [] }) {
         const logEntry = `[${new Date().toISOString()}] To: ${this.recipient} | Subject: ${subject}\n`;
         try {
             const dir = path.dirname(this.logPath);
@@ -282,7 +304,8 @@ class NotificationService {
                     to: this.recipient,
                     subject: subject,
                     html: html,
-                    text: text
+                    text: text,
+                    attachments: attachments
                 });
                 console.log(`[NotificationService] 🚀 Executive email delivered successfully to ${this.recipient}: MessageID ${info.messageId}`);
                 return { success: true, messageId: info.messageId };
