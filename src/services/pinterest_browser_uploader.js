@@ -125,38 +125,53 @@ async function uploadPinterestPin(options) {
 
         // 4. Select / Verify Board
         console.log('📁 Selecting Board...');
-        const boardDropdown = page.locator('button[data-test-id="board-dropdown-select-button"], div[data-test-id="board-dropdown"], button[aria-label*="board" i], button[aria-label*="tablic" i]').first();
-        if (await boardDropdown.isVisible({ timeout: 4000 })) {
-            await boardDropdown.click();
+        const boardRow = page.locator('div:has-text("Choose a board"), div:has-text("Wybierz tablicę"), button[data-test-id="board-dropdown-select-button"], div[data-test-id="board-dropdown"]').last();
+        if (await boardRow.isVisible({ timeout: 5000 })) {
+            await boardRow.click();
             await page.waitForTimeout(1500);
 
             // Try to find matching board or pick first existing board
-            const targetBoard = page.locator(`div[role="listbox"] div[title*="${boardName}" i], div[role="listbox"] div:has-text("${boardName}")`).first();
+            const targetBoard = page.locator(`div[role="option"], div[data-test-id*="board-row"], div:has-text("${boardName}")`).first();
             if (await targetBoard.isVisible({ timeout: 2000 })) {
                 await targetBoard.click();
                 console.log(`✅ Selected target board: "${boardName}"`);
             } else {
-                // Select first available board in list
-                const firstBoard = page.locator('div[role="listbox"] div[role="option"], div[role="listbox"] [data-test-id*="board-row"]').first();
-                if (await firstBoard.isVisible()) {
-                    await firstBoard.click();
-                    console.log('✅ Selected default available board');
+                const firstOption = page.locator('div[role="option"], div[data-test-id*="board-row"]').first();
+                if (await firstOption.isVisible({ timeout: 2000 })) {
+                    await firstOption.click();
+                    console.log('✅ Selected first available board');
                 } else {
-                    console.log('ℹ️ No board list options found, keeping default selection');
+                    console.log('Creating new board...');
+                    const createBoardBtn = page.locator('button, div').filter({ hasText: /^Create board$|^Utwórz tablicę$/i }).first();
+                    if (await createBoardBtn.isVisible({ timeout: 2000 })) {
+                        await createBoardBtn.click();
+                        await page.waitForTimeout(1000);
+                        const nameInput = page.locator('input[id*="board-name"], input[placeholder*="Name" i], input[placeholder*="Nazwa" i]').first();
+                        if (await nameInput.isVisible()) {
+                            await nameInput.fill(boardName);
+                            const confirmBtn = page.locator('button').filter({ hasText: /^Create$|^Utwórz$/i }).first();
+                            await confirmBtn.click();
+                            console.log(`✅ Board "${boardName}" created!`);
+                        }
+                    }
                 }
             }
         }
 
         await page.waitForTimeout(2000);
 
-        // 5. Click Publish / Save Button
+        // 5. Click Publish Button
         console.log('🚀 Publishing Pin...');
-        const publishBtn = page.locator('button[data-test-id="board-dropdown-save-button"], button:has-text("Publish"), button:has-text("Opublikuj"), button:has-text("Save"), button:has-text("Zapisz")').first();
+        const publishBtn = page.locator('button:has-text("Publish"), button:has-text("Opublikuj"), button[data-test-id="storyboard-creation-publish-button"]').first();
         await publishBtn.waitFor({ state: 'visible', timeout: 10000 });
         await publishBtn.click({ force: true });
 
-        console.log('⏳ Waiting for upload processing and confirmation...');
-        await page.waitForTimeout(6000);
+        console.log('⏳ Waiting for upload processing and confirmation (10s)...');
+        await page.waitForTimeout(10000);
+
+        // Dismiss any post-publish promo/extension modal
+        await page.keyboard.press('Escape');
+        await page.waitForTimeout(1000);
 
         // Capture confirmation screenshot
         const screenshotPath = path.join(__dirname, '../../config/pinterest_published_confirmation.png');

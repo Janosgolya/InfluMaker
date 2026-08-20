@@ -65,11 +65,13 @@ class RedditService {
         const title = overrides.title || parsed.title;
         const subreddit = overrides.subreddit || parsed.subreddit;
         const firstComment = overrides.firstComment || parsed.firstComment;
+        const bodyText = overrides.bodyText || firstComment || "Created with AI. Step into the 18th-century London manor through Betty's private diary.";
         const isNsfw = overrides.isNsfw !== undefined ? overrides.isNsfw : parsed.isNsfw;
 
         return await uploadRedditPost({
             imagePath,
             title,
+            bodyText,
             subreddit,
             firstComment,
             isNsfw,
