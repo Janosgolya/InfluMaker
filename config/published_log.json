@@ -381,5 +381,15 @@
     "audience": "subscribers",
     "timestamp": "2026-08-19T19:36:51.009Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "MORNING_SFW_Q8_S1_hf_20260816_175711_7e11fb26-bd11-42c2-827a-4324fb4babd3.png",
+    "theme": "MORNING",
+    "price": "Included in Subscription",
+    "priceCents": 0,
+    "audience": "subscribers",
+    "timestamp": "2026-08-20T08:24:47.636Z",
+    "status": "PUBLISHED"
   }
 ]

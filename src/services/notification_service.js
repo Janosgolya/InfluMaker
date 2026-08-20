@@ -44,6 +44,7 @@ class NotificationService {
     /**
      * Send email notification on post publication
      */
+    async sendPostNotification(results) {
         const platforms = [];
         const errors = [];
 
