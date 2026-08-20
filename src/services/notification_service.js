@@ -19,11 +19,18 @@ class NotificationService {
             const pass = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD;
 
             if (user && pass) {
+                const cleanUser = user.trim();
+                const cleanPass = pass.trim().replace(/\s+/g, '');
                 this.transporter = nodemailer.createTransport({
-                    service: 'gmail',
-                    auth: { user, pass }
+                    host: 'smtp.gmail.com',
+                    port: 465,
+                    secure: true,
+                    auth: { 
+                        user: cleanUser, 
+                        pass: cleanPass 
+                    }
                 });
-                console.log(`[NotificationService] 📧 SMTP Transport initialized for: ${user}`);
+                console.log(`[NotificationService] 📧 SMTP Transport initialized for: ${cleanUser}`);
             } else {
                 this.transporter = null;
             }
