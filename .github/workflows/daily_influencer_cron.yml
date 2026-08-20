@@ -4,7 +4,12 @@ on:
   schedule:
     # 4 times daily (UTC): 06:00 (MORNING), 11:00 (MIDDAY), 16:00 (PREP), 20:00 (NIGHT)
     - cron: '0 6,11,16,20 * * *'
-  workflow_dispatch: # Allows manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: 'Publishing Theme Slot (MORNING, MIDDAY, PREP, NIGHT, or AUTO)'
+        required: false
+        default: 'AUTO'
 
 jobs:
   run-daily-tick:
@@ -71,12 +76,17 @@ jobs:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
-        run: node src/agents/george.js --tick
+        run: |
+          if [ "${{ inputs.theme }}" != "" ] && [ "${{ inputs.theme }}" != "AUTO" ]; then
+            node src/agents/george.js --tick --theme ${{ inputs.theme }}
+          else
+            node src/agents/george.js --tick
+          fi
 
       - name: Commit and Push Updated Log
         run: |
           git config --global user.name "George [InfluMaker AI]"
           git config --global user.email "george@influmaker.local"
-          git add config/published_log.json
-          git diff-index --quiet HEAD || git commit -m "chore(george): update published_log after scheduled cycle [skip ci]"
+          git add config/published_log.json BettyRyal_18centuryServant/
+          git diff-index --quiet HEAD || git commit -m "chore(george): update published_log and media queue after scheduled cycle [skip ci]"
           git push

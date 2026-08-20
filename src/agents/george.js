@@ -120,87 +120,118 @@ class GeorgeProducerAgent {
             break;
         }
 
-        // 2. Delegate publication to Ana
+        // 2. Delegate simultaneous omni-channel publication to Ana (ALL platforms 4x daily)
         const results = {};
+        const systemErrors = [];
+
+        // 2.1 Publish to Fanvue (Subscription Feed)
         try {
-            console.log(`[George] Delegating Fanvue publication to Ana...`);
+            console.log(`[George] 💎 Delegating Fanvue publication to Ana...`);
             results.fanvue = await this.ana.publishFanvueItem(nextItem.imagePath, nextItem.storyPath, { theme });
         } catch (e) {
-            console.error(`[George] Fanvue publication error:`, e.message);
+            console.error(`[George] ⚠️ Fanvue publication error:`, e.message);
             results.fanvue = { error: e.message };
+            systemErrors.push(`Fanvue: ${e.message}`);
         }
 
-        // Publish to Instagram (if morning or night slot)
-        if (theme === 'MORNING' || theme === 'NIGHT') {
-            try {
-                console.log(`[George] Delegating Instagram post to Ana...`);
-                results.instagram = await this.ana.publishInstagramPost(theme);
-            } catch (e) {
-                console.error(`[George] Instagram publication error:`, e.message);
-                results.instagram = { error: e.message };
-            }
+        // 2.2 Publish to Instagram (Grid Feed)
+        try {
+            console.log(`[George] 📸 Delegating Instagram Post to Ana...`);
+            results.instagram = await this.ana.publishInstagramPost(theme);
+        } catch (e) {
+            console.error(`[George] ⚠️ Instagram publication error:`, e.message);
+            results.instagram = { error: e.message };
+            systemErrors.push(`Instagram: ${e.message}`);
         }
 
-        // Publish to Pinterest (Morning & Prep slots)
-        if ((theme === 'MORNING' || theme === 'PREP') && this.ana.pinterest.isConfigured()) {
+        // 2.3 Publish to Pinterest (Pin Board)
+        if (this.ana.pinterest.isConfigured()) {
             try {
                 console.log(`[George] 📌 Delegating Pinterest Pin to Ana...`);
                 results.pinterest = await this.ana.publishPinterestPin(theme);
             } catch (e) {
-                console.error(`[George] ⚠️ Pinterest publication note:`, e.message);
+                console.error(`[George] ⚠️ Pinterest publication error:`, e.message);
                 results.pinterest = { error: e.message };
+                systemErrors.push(`Pinterest: ${e.message}`);
             }
+        } else {
+            results.pinterest = { error: 'Pinterest session not configured (missing config/pinterest_session.json)' };
         }
 
-        // Publish to Reddit (Midday community drop)
-        if (theme === 'MIDDAY' && this.ana.reddit.isConfigured()) {
+        // 2.4 Publish to Reddit (u_BettyRyal Profile Drop)
+        if (this.ana.reddit.isConfigured()) {
             try {
-                console.log(`[George] 🤖 Delegating Reddit Community Drop to Ana...`);
+                console.log(`[George] 🤖 Delegating Reddit Post to Ana...`);
                 results.reddit = await this.ana.publishRedditPost(theme);
             } catch (e) {
-                console.error(`[George] ⚠️ Reddit publication note:`, e.message);
+                console.error(`[George] ⚠️ Reddit publication error:`, e.message);
                 results.reddit = { error: e.message };
+                systemErrors.push(`Reddit: ${e.message}`);
             }
+        } else {
+            results.reddit = { error: 'Reddit session not configured (missing config/reddit_session.json)' };
         }
 
-        // Publish to X / Twitter (Morning teaser & Night diary drop)
-        if ((theme === 'MORNING' || theme === 'NIGHT') && this.ana.twitter.isConfigured()) {
+        // 2.5 Publish to X / Twitter (Video or Image Tweet)
+        if (this.ana.twitter.isConfigured()) {
             try {
                 console.log(`[George] 🐦 Delegating X / Twitter Post to Ana...`);
-                results.twitter = await this.ana.publishTwitterPost(theme);
-            } catch (e) {
-                console.error(`[George] ⚠️ Twitter publication note:`, e.message);
-                results.twitter = { error: e.message };
-            }
-        }
-
-        // Publish to TikTok (Evening Video Slot: PREP or NIGHT) - Hybrid Cadence
-        if (theme === 'PREP' || theme === 'NIGHT') {
-            try {
-                console.log(`[George] 📱 Delegating TikTok 9:16 Video publication to Ana (Hybrid Engine)...`);
+                // Check if dedicated video exists in Selected_Content/Videos
                 const videoDir = path.join(this.selectedContentDir, 'Videos');
-                let postedDedicatedVideo = false;
+                let twitterVideoAsset = null;
                 if (fs.existsSync(videoDir)) {
                     const videoFiles = fs.readdirSync(videoDir).filter(f => f.endsWith('.mp4'));
                     for (const vf of videoFiles) {
-                        const isPosted = this.ana.log.some(e => e.platform === 'TikTok' && (e.videoFile === vf || e.asset === vf));
+                        const isPosted = this.ana.log.some(e => e.platform === 'Twitter' && (e.videoFile === vf || e.imageFile === vf));
                         if (!isPosted) {
-                            const vPath = path.join(videoDir, vf);
-                            const storyP = path.join(videoDir, vf.replace('.mp4', '.story.txt'));
-                            results.tiktok = await this.ana.publishTikTokVideo(vPath, fs.existsSync(storyP) ? storyP : null, { theme });
-                            postedDedicatedVideo = true;
+                            twitterVideoAsset = path.join(videoDir, vf);
                             break;
                         }
                     }
                 }
 
-                if (!postedDedicatedVideo) {
-                    results.tiktok = await this.ana.publishTikTokPost(theme);
+                if (twitterVideoAsset) {
+                    console.log(`[George] 🎥 Found unposted video for X/Twitter: ${path.basename(twitterVideoAsset)}`);
+                    const storyP = twitterVideoAsset.replace('.mp4', '.story.txt');
+                    results.twitter = await this.ana.twitter.publishTweet(twitterVideoAsset, fs.existsSync(storyP) ? storyP : nextItem.storyPath);
+                } else {
+                    results.twitter = await this.ana.publishTwitterPost(theme);
                 }
             } catch (e) {
-                console.error(`[George] ⚠️ TikTok publication note:`, e.message);
-                results.tiktok = { error: e.message };
+                console.error(`[George] ⚠️ Twitter publication error:`, e.message);
+                results.twitter = { error: e.message };
+                systemErrors.push(`Twitter: ${e.message}`);
             }
+        } else {
+            results.twitter = { error: 'Twitter session not configured (missing config/twitter_session.json)' };
+        }
+
+        // 2.6 Publish to TikTok (Dedicated 9:16 Video or Post)
+        try {
+            console.log(`[George] 📱 Delegating TikTok Video / Post to Ana...`);
+            const videoDir = path.join(this.selectedContentDir, 'Videos');
+            let postedDedicatedVideo = false;
+            if (fs.existsSync(videoDir)) {
+                const videoFiles = fs.readdirSync(videoDir).filter(f => f.endsWith('.mp4'));
+                for (const vf of videoFiles) {
+                    const isPosted = this.ana.log.some(e => e.platform === 'TikTok' && (e.videoFile === vf || e.asset === vf));
+                    if (!isPosted) {
+                        const vPath = path.join(videoDir, vf);
+                        const storyP = path.join(videoDir, vf.replace('.mp4', '.story.txt'));
+                        results.tiktok = await this.ana.publishTikTokVideo(vPath, fs.existsSync(storyP) ? storyP : null, { theme });
+                        postedDedicatedVideo = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!postedDedicatedVideo) {
+                results.tiktok = await this.ana.publishTikTokPost(theme);
+            }
+        } catch (e) {
+            console.error(`[George] ⚠️ TikTok publication error:`, e.message);
+            results.tiktok = { error: e.message };
+            systemErrors.push(`TikTok: ${e.message}`);
         }
 
         // 3. Post-publish health audit & auto-healing
@@ -211,6 +242,7 @@ class GeorgeProducerAgent {
         } catch (auditErr) {
             console.error(`[George] ⚠️ Health audit error (continuing workflow):`, auditErr.message);
             results.audit = { error: auditErr.message };
+            systemErrors.push(`Health Audit: ${auditErr.message}`);
         }
 
         // 4. Roomba storage inspection
@@ -221,16 +253,17 @@ class GeorgeProducerAgent {
             console.error(`[George] ⚠️ Storage inspection error (continuing):`, roombaErr.message);
         }
 
-        // 5. Send notification to janosgolya@gmail.com (Instant for 14 days, then weekly)
+        // 5. Send executive email with per-platform status, GitHub diagnostics, and screenshot attachments
         const remainingCount = this.getRemainingContentCount();
-        console.log(`[George] 📧 Triggering notification check for janosgolya@gmail.com (Remaining: ${remainingCount})...`);
+        console.log(`[George] 📧 Triggering notification dispatch for janosgolya@gmail.com (Remaining: ${remainingCount})...`);
         try {
             await this.notifier.notifyPostPublished({
                 theme,
                 item: nextItem,
                 results,
                 remainingCount,
-                rejectedImages
+                rejectedImages,
+                systemErrors
             });
         } catch (mailErr) {
             console.error(`[George] Notification dispatch note:`, mailErr.message);

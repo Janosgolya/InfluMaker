@@ -34,19 +34,22 @@ async function uploadTwitterPost(options) {
         throw new Error(`Image file does not exist: ${imagePath}`);
     }
 
-    // 1. Optimize image for fast upload
+    // 1. Optimize image for fast upload (skip for video files)
+    const isVideo = imagePath.toLowerCase().endsWith('.mp4') || imagePath.toLowerCase().endsWith('.mov');
     const optimizedImage = path.join(__dirname, '../../config/twitter_upload_optimized.jpg');
-    try {
-        await sharp(imagePath)
-            .resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true })
-            .jpeg({ quality: 88 })
-            .toFile(optimizedImage);
-        console.log(`🖼️ Optimized image created (${fs.statSync(optimizedImage).size} bytes)`);
-    } catch {
-        // Fallback to original
+    if (!isVideo) {
+        try {
+            await sharp(imagePath)
+                .resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true })
+                .jpeg({ quality: 88 })
+                .toFile(optimizedImage);
+            console.log(`🖼️ Optimized image created (${fs.statSync(optimizedImage).size} bytes)`);
+        } catch {
+            // Fallback to original
+        }
     }
 
-    const uploadTarget = fs.existsSync(optimizedImage) ? optimizedImage : imagePath;
+    const uploadTarget = (!isVideo && fs.existsSync(optimizedImage)) ? optimizedImage : imagePath;
 
     const browser = await chromium.launch({
         headless: headless,
