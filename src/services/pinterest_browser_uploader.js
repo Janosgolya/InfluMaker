@@ -162,7 +162,7 @@ async function uploadPinterestPin(options) {
 
         // 5. Click Publish Button
         console.log('🚀 Publishing Pin...');
-        const publishBtn = page.locator('button:has-text("Publish"), button:has-text("Opublikuj"), button[data-test-id="storyboard-creation-publish-button"]').first();
+        const publishBtn = page.locator('button[data-test-id="board-dropdown-save-button"], button[data-test-id="save-pin-button"], button[data-test-id="storyboard-creation-publish-button"], button:has-text("Publish"), button:has-text("Opublikuj"), button:has-text("Zapisz"), button:has-text("Save")').first();
         await publishBtn.waitFor({ state: 'visible', timeout: 10000 });
         await publishBtn.click({ force: true });
 
