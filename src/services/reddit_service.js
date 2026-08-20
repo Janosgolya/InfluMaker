@@ -6,7 +6,7 @@ const storyParser = require('./story_parser');
 class RedditService {
     constructor() {
         this.sessionPath = path.join(__dirname, '../../config/reddit_session.json');
-        this.defaultSubreddit = 'aiArt';
+        this.defaultSubreddit = 'u_BettyRyal';
     }
 
     /**
@@ -30,9 +30,7 @@ class RedditService {
     parseRedditStory(storyPath) {
         if (storyPath && fs.existsSync(storyPath)) {
             const parsed = storyParser.parse(storyPath);
-            let subreddit = this.defaultSubreddit;
-            const subMatch = parsed.reddit.subreddits.match(/r\/([A-Za-z0-9_]+)/);
-            if (subMatch) subreddit = subMatch[1];
+            let subreddit = this.defaultSubreddit; // ALWAYS use profile drop u_BettyRyal to avoid bans
 
             return {
                 title: parsed.reddit.title,

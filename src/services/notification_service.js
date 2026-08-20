@@ -75,11 +75,12 @@ class NotificationService {
 
         // If NO platform succeeded, send an honest ERROR ALERT instead of a fake success!
         if (platforms.length === 0) {
-            console.warn(`[NotificationService] ⚠️ Zero platforms succeeded for theme ${theme}. Sending Failure Alert instead.`);
+            console.warn(`[NotificationService] 🚨 Zero platforms succeeded for theme ${theme}. Sending Failure Alert instead.`);
             return this.sendPublicationFailureAlert({ theme, item, errors, remainingCount });
         }
 
-        const subject = `👑 [InfluMaker] Post Published: ${theme} (${platforms.join(', ')}) - Betty Ryal`;
+        const now = new Date();
+        const subject = `📧 [InfluMaker] Post Published: ${theme} (${platforms.join(', ')}) - Betty Ryal`;
         const imageName = item?.imagePath ? path.basename(item.imagePath) : 'Period Drama Asset';
         const formattedDate = now.toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' });
 
