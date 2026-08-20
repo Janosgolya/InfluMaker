@@ -174,33 +174,62 @@ class FanvueService {
     /**
      * Upload raw image bytes to presigned uploadUrl and capture ETag
      */
-    async uploadImageToUrl(uploadUrl, imagePath) {
+    async uploadImageToUrl(uploadUrl, imagePath, retryCount = 0) {
         const imageBuffer = fs.readFileSync(imagePath);
 
-        return new Promise((resolve, reject) => {
-            const req = https.request(uploadUrl, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'image/png',
-                    'Content-Length': imageBuffer.length
-                }
-            }, (res) => {
-                let data = '';
-                res.on('data', chunk => data += chunk);
-                res.on('end', () => {
-                    const etag = res.headers['etag'] || res.headers['ETag'] || '';
-                    if (res.statusCode >= 200 && res.statusCode < 300) {
-                        resolve(etag.replace(/"/g, ''));
-                    } else {
-                        reject(new Error(`Image upload failed (HTTP ${res.statusCode}): ${data}`));
+        const tryUpload = (targetUrl) => {
+            return new Promise((resolve, reject) => {
+                const parsed = new URL(targetUrl);
+                const req = https.request(targetUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'image/png',
+                        'Content-Length': imageBuffer.length
                     }
+                }, (res) => {
+                    let data = '';
+                    res.on('data', chunk => data += chunk);
+                    res.on('end', () => {
+                        const etag = res.headers['etag'] || res.headers['ETag'] || '';
+                        if (res.statusCode >= 200 && res.statusCode < 300) {
+                            resolve(etag.replace(/"/g, ''));
+                        } else {
+                            reject(new Error(`Image upload failed (HTTP ${res.statusCode}): ${data}`));
+                        }
+                    });
                 });
-            });
 
-            req.on('error', reject);
-            req.write(imageBuffer);
-            req.end();
-        });
+                req.on('error', reject);
+                req.setTimeout(45000, () => {
+                    req.destroy();
+                    reject(new Error('Image upload request timed out'));
+                });
+                req.write(imageBuffer);
+                req.end();
+            });
+        };
+
+        try {
+            return await tryUpload(uploadUrl);
+        } catch (err) {
+            // If DNS failure on S3 accelerated endpoint, fallback to standard S3 endpoint
+            if (uploadUrl.includes('s3-accelerate.amazonaws.com') && (err.code === 'ENOTFOUND' || err.message.includes('ENOTFOUND'))) {
+                console.log('[Fanvue] ⚠️ S3 Accelerate DNS failed, falling back to standard S3 endpoint...');
+                const fallbackUrl = uploadUrl.replace('s3-accelerate.amazonaws.com', 's3.eu-west-1.amazonaws.com');
+                try {
+                    return await tryUpload(fallbackUrl);
+                } catch (fallbackErr) {
+                    const fallbackUrl2 = uploadUrl.replace('s3-accelerate.amazonaws.com', 's3.amazonaws.com');
+                    return await tryUpload(fallbackUrl2);
+                }
+            }
+            if (retryCount < 2) {
+                console.log(`[Fanvue] 🔄 Retrying upload in 3s (attempt ${retryCount + 1})...`);
+                await new Promise(r => setTimeout(r, 3000));
+                return this.uploadImageToUrl(uploadUrl, imagePath, retryCount + 1);
+            }
+            throw err;
+        }
     }
 
     /**
