@@ -37,12 +37,37 @@ async function loginInstagram() {
             const currentUrl = page.url();
 
             if (sessionCookie && !currentUrl.includes('/accounts/login') && !currentUrl.includes('/accounts/emailsignup')) {
+                // Detect active username
+                const detectedUser = await page.evaluate(() => {
+                    const links = Array.from(document.querySelectorAll('a[href^="/"]'));
+                    for (const link of links) {
+                        const href = link.getAttribute('href');
+                        if (href && href.startsWith('/') && !href.startsWith('/explore') && !href.startsWith('/reels') && !href.startsWith('/direct') && !href.startsWith('/your_activity') && !href.startsWith('/accounts') && !href.startsWith('/stories') && href.split('/').filter(Boolean).length === 1) {
+                            const candidate = href.replace(/\//g, '').trim().toLowerCase();
+                            if (candidate) return candidate;
+                        }
+                    }
+                    return null;
+                });
+
+                if (detectedUser && detectedUser !== 'secretsofthelondonmansion') {
+                    console.log(`⚠️ UWAGA: Zalogowano jako @${detectedUser}! Przełącz konto na @secretsofthelondonmansion w oknie przeglądarki...`);
+                    return;
+                }
+
                 clearInterval(pollInterval);
-                console.log(`\n🎉 WYKRYTO ZALOGOWANIE! Zapisuję sesję do config/instagram_session.json...`);
+                console.log(`\n🎉 WYKRYTO PRAWIDŁOWE KONTO @secretsofthelondonmansion!`);
+                console.log(`💾 Zapisuję sesję do config/instagram_session.json...`);
 
                 await context.storageState({ path: SESSION_PATH });
-                console.log(`💾 Sukces! Plik sesji zapisany.`);
-                console.log(`Ana może teraz publikować posty na Instagramie w 100% automatycznie!\n`);
+
+                // Also save minified version for easy copy-pasting to GitHub Secrets
+                const minifiedPath = path.join(__dirname, '../../config/instagram_session_minified.txt');
+                const raw = fs.readFileSync(SESSION_PATH, 'utf8');
+                fs.writeFileSync(minifiedPath, JSON.stringify(JSON.parse(raw)), 'utf8');
+
+                console.log(`✅ Sukces! Plik sesji zapisany.`);
+                console.log(`📋 Minified gotowy do wklejenia w GitHub Secrets: config/instagram_session_minified.txt\n`);
 
                 await page.waitForTimeout(2000);
                 await browser.close();

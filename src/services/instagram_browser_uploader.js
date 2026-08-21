@@ -73,6 +73,24 @@ class InstagramBrowserUploader {
 
             await this.dismissPopups(page);
 
+            // Strict Account Verification - NEVER publish to a personal account
+            const activeUsername = await page.evaluate(() => {
+                const links = Array.from(document.querySelectorAll('a[href^="/"]'));
+                for (const link of links) {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('/') && !href.startsWith('/explore') && !href.startsWith('/reels') && !href.startsWith('/direct') && !href.startsWith('/your_activity') && !href.startsWith('/accounts') && !href.startsWith('/stories') && href.split('/').filter(Boolean).length === 1) {
+                        const candidate = href.replace(/\//g, '').trim().toLowerCase();
+                        if (candidate) return candidate;
+                    }
+                }
+                return null;
+            });
+            console.log(`[Instagram] 👤 Active logged-in username detected: @${activeUsername}`);
+
+            if (activeUsername && activeUsername !== 'secretsofthelondonmansion') {
+                throw new Error(`KRYTYCZNY BŁĄD KONTA: Wykryto zalogowane konto @${activeUsername} zamiast @secretsofthelondonmansion! Publikacja została zablokowana. Uruchom LOGIN_INSTAGRAM.bat i zaloguj się bezpośrednio na konto @secretsofthelondonmansion.`);
+            }
+
             console.log(`[Instagram] 🔍 Opening Create Post modal...`);
             const createBtn = await page.$('svg[aria-label="New post"], svg[aria-label="Nowy post"], span:has-text("Create"), span:has-text("Utwórz")');
             if (createBtn) {
