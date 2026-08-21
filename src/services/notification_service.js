@@ -183,32 +183,30 @@ class NotificationService {
         </div>
         `;
 
-        // Gather all confirmation and error screenshots
+        // Gather confirmation and error screenshots strictly matching current run results
         const attachments = [];
-        const screenshotCandidates = [
-            { name: 'pinterest_confirmation.png', path: path.join(__dirname, '../../config/pinterest_published_confirmation.png') },
-            { name: 'pinterest_error.png', path: path.join(__dirname, '../../config/pinterest_upload_error.png') },
-            { name: 'reddit_confirmation.png', path: path.join(__dirname, '../../config/reddit_published_confirmation.png') },
-            { name: 'twitter_confirmation.png', path: path.join(__dirname, '../../config/twitter_published_confirmation.png') },
-            { name: 'twitter_error.png', path: path.join(__dirname, '../../config/twitter_upload_error.png') },
-            { name: 'instagram_confirmation.png', path: path.join(__dirname, '../../config/instagram_published_confirmation.png') },
-            { name: 'instagram_error.png', path: path.join(__dirname, '../../config/instagram_error.png') },
-            { name: 'tiktok_confirmation.png', path: path.join(__dirname, '../../config/tiktok_published_confirmation.png') },
-            { name: 'tiktok_error.png', path: path.join(__dirname, '../../config/tiktok_error.png') }
-        ];
+        const platformScreenshots = {
+            pinterest: { success: path.join(__dirname, '../../config/pinterest_published_confirmation.png'), error: path.join(__dirname, '../../config/pinterest_upload_error.png') },
+            reddit: { success: path.join(__dirname, '../../config/reddit_published_confirmation.png'), error: path.join(__dirname, '../../config/reddit_upload_error.png') },
+            twitter: { success: path.join(__dirname, '../../config/twitter_published_confirmation.png'), error: path.join(__dirname, '../../config/twitter_upload_error.png') },
+            instagram: { success: path.join(__dirname, '../../config/instagram_published_confirmation.png'), error: path.join(__dirname, '../../config/instagram_error.png') },
+            tiktok: { success: path.join(__dirname, '../../config/tiktok_published_confirmation.png'), error: path.join(__dirname, '../../config/tiktok_error.png') }
+        };
 
-        for (const cand of screenshotCandidates) {
-            if (fs.existsSync(cand.path)) {
+        for (const [key, paths] of Object.entries(platformScreenshots)) {
+            const res = results[key];
+            if (!res) continue;
+
+            const isSuccess = !res.error && res.success !== false;
+            const targetPath = isSuccess ? paths.success : paths.error;
+            const targetName = isSuccess ? `${key}_confirmation.png` : `${key}_error.png`;
+
+            if (fs.existsSync(targetPath)) {
                 try {
-                    // Only attach if modified in the last 15 minutes
-                    const stat = fs.statSync(cand.path);
-                    const ageMinutes = (Date.now() - stat.mtimeMs) / (1000 * 60);
-                    if (ageMinutes <= 20) {
-                        attachments.push({
-                            filename: cand.name,
-                            path: cand.path
-                        });
-                    }
+                    attachments.push({
+                        filename: targetName,
+                        path: targetPath
+                    });
                 } catch (e) {}
             }
         }

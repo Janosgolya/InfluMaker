@@ -120,6 +120,19 @@ class GeorgeProducerAgent {
             break;
         }
 
+        // 2. Clear previous screenshot artifacts so email only receives fresh run results
+        const staleScreenshots = [
+            'pinterest_published_confirmation.png', 'pinterest_upload_error.png',
+            'reddit_published_confirmation.png', 'reddit_upload_error.png',
+            'twitter_published_confirmation.png', 'twitter_upload_error.png',
+            'instagram_published_confirmation.png', 'instagram_error.png',
+            'tiktok_published_confirmation.png', 'tiktok_error.png'
+        ];
+        staleScreenshots.forEach(f => {
+            const p = path.join(__dirname, '../../config', f);
+            if (fs.existsSync(p)) try { fs.unlinkSync(p); } catch (e) {}
+        });
+
         // 2. Delegate simultaneous omni-channel publication to Ana (ALL platforms 4x daily)
         const results = {};
         const systemErrors = [];
