@@ -200,8 +200,9 @@ class InstagramBrowserUploader {
             }
 
             console.log(`[Instagram] ⏳ Waiting for upload & transcoding confirmation from Instagram...`);
-            // Must strictly wait for "Your post has been shared" or throw error
-            await page.waitForSelector('text=udostępniony, text=shared, text=Udostępniono, text=Shared, text="Your post has been shared"', { timeout: 45000 });
+            // Robust regex locator matching both English and Polish confirmations
+            const confirmationLocator = page.locator('text=/your post has been shared|twój post został udostępniony|post shared|udostępniono post|udostępniony/i');
+            await confirmationLocator.first().waitFor({ state: 'visible', timeout: 60000 });
             console.log(`[Instagram] ✅ Post sharing confirmation verified!`);
 
             await page.waitForTimeout(3000);

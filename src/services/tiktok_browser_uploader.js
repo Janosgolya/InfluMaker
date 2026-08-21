@@ -70,10 +70,13 @@ class TikTokBrowserUploader {
         });
 
         const page = await context.newPage();
+        await page.addInitScript(() => {
+            Object.defineProperty(navigator, 'webdriver', { get: () => false });
+        });
 
         try {
-            console.log(`[TikTok] 🌐 Initializing TikTok session...`);
-            await page.goto('https://www.tiktok.com', { waitUntil: 'domcontentloaded', timeout: 35000 });
+            console.log(`[TikTok] 🌐 Initializing TikTok studio session...`);
+            await page.goto('https://www.tiktok.com/tiktokstudio/content', { waitUntil: 'domcontentloaded', timeout: 35000 });
             await page.waitForTimeout(3000);
             await this.dismissPopups(page);
 
