@@ -123,12 +123,15 @@ class InstagramService {
             console.log(`[Instagram] 🌐 Authenticated session found. Uploading via Playwright...`);
             uploadResult = await this.browserUploader.uploadAndPublish(formattedImage, story.fullCaption, options);
         } else {
-            console.log(`[Instagram] ⚠️ Session not found. Please run login_instagram.bat first.`);
-            uploadResult = { status: 'READY_SAVED', error: 'Not logged in' };
+            throw new Error('Brak aktywnej sesji Instagram w config/instagram_session.json. Uruchom LOGIN_INSTAGRAM.bat');
+        }
+
+        if (uploadResult && (uploadResult.error || uploadResult.status === 'ERROR')) {
+            throw new Error(`Instagram upload failed: ${uploadResult.error || 'Nieznany błąd publikacji'}`);
         }
 
         return {
-            status: uploadResult.status || 'PUBLISHED',
+            status: 'PUBLISHED',
             platform: 'Instagram',
             formattedAssetPath: formattedImage,
             caption: story.fullCaption,

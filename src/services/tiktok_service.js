@@ -369,9 +369,7 @@ class TikTokService {
             );
             return { ...postPackage, ...uploadResult, status: 'PUBLISHED' };
         } else {
-            console.log(`[TikTok] ⚠️ No active browser session found. Video rendered and saved in TikTok_Ready_Content.`);
-            console.log(`[TikTok] 👉 Run 'node src/scripts/tiktok_browser_login.js' once to enable 100% autonomous background posting.`);
-            return postPackage;
+            throw new Error('Brak aktywnej sesji TikTok w config/tiktok_session.json. Uruchom LOGIN_TIKTOK.bat');
         }
     }
 }
