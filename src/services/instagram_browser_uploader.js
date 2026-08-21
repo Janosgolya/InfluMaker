@@ -66,9 +66,9 @@ class InstagramBrowserUploader {
             await page.goto('https://www.instagram.com', { waitUntil: 'domcontentloaded', timeout: 45000 });
             await page.waitForTimeout(4000);
 
-            // Check if login is required
-            if (page.url().includes('/accounts/login')) {
-                throw new Error('Sesja wygasła. Uruchom ponownie: node src/scripts/instagram_browser_login.js');
+            // Check if login or signup is required
+            if (page.url().includes('/accounts/login') || page.url().includes('/accounts/emailsignup') || page.url().includes('/accounts/signup') || page.url().includes('/accounts/onetap')) {
+                throw new Error('Sesja Instagram wygasła (przekierowano do logowania/rejestracji). Wymagane odświeżenie sesji w config/instagram_session.json.');
             }
 
             await this.dismissPopups(page);

@@ -9,7 +9,7 @@ const FANVUE_MCP_ENDPOINT = 'https://mcp.fanvue.com/mcp';
 const OLLAMA_HOST = 'localhost';
 const OLLAMA_PORT = 11434;
 const CHAT_MODEL = 'qwen2.5vl:latest';
-const CLIENT_ID = process.env.FANVUE_CLIENT_ID || '7W956X2fWJuFSugXDBwOl80ZMnt3fNyBmg9pJ20MgOD';
+const CLIENT_ID = process.env.FANVUE_CLIENT_ID || 'V-d7H5jF6uLNiNuQlSw37pY0Oj-3_I8nFqBUl0ZjC2h';
 
 class FanvueService {
     constructor(options = {}) {
@@ -41,9 +41,8 @@ class FanvueService {
 
         const params = new URLSearchParams({
             grant_type: 'refresh_token',
-            refresh_token: this.refreshToken,
-            client_id: CLIENT_ID,
-            resource: 'https://mcp.fanvue.com/mcp'
+            refresh_token: this.refreshToken.trim(),
+            client_id: CLIENT_ID.trim()
         });
 
         const postData = params.toString();

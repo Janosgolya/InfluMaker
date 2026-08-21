@@ -72,6 +72,11 @@ class TikTokBrowserUploader {
         const page = await context.newPage();
 
         try {
+            console.log(`[TikTok] 🌐 Initializing TikTok session...`);
+            await page.goto('https://www.tiktok.com', { waitUntil: 'domcontentloaded', timeout: 35000 });
+            await page.waitForTimeout(3000);
+            await this.dismissPopups(page);
+
             console.log(`[TikTok] 🌐 Opening TikTok Studio Upload...`);
             await page.goto('https://www.tiktok.com/tiktokstudio/upload', { waitUntil: 'domcontentloaded', timeout: 45000 });
             await page.waitForTimeout(4000);
