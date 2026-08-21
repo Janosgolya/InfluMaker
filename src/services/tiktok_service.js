@@ -320,6 +320,13 @@ class TikTokService {
         const ext = path.extname(imagePath);
         const videoPath = imagePath.replace(ext, '.mp4');
 
+        // Ensure executable permissions on Linux runner
+        try {
+            if (process.platform !== 'win32' && fs.existsSync(ffmpegPath)) {
+                fs.chmodSync(ffmpegPath, 0o755);
+            }
+        } catch (e) {}
+
         console.log(`[TikTok Video Engine] 🎬 Encoding 1080x1920 MP4 video (${durationSeconds}s)...`);
 
         return new Promise((resolve, reject) => {

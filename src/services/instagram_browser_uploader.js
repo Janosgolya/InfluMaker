@@ -199,14 +199,10 @@ class InstagramBrowserUploader {
                 await headerShare.click({ force: true, timeout: 5000 });
             }
 
-            console.log(`[Instagram] ⏳ Waiting for upload & transcoding to finish...`);
-            try {
-                // Wait for the "Twój post został udostępniony" / "Your post has been shared" confirmation
-                await page.waitForSelector('text=udostępniony, text=shared, text=Udostępniono, text=Shared', { timeout: 45000 });
-                console.log(`[Instagram] ✅ Post sharing confirmation received!`);
-            } catch (e) {
-                console.log(`[Instagram] Upload timeout wait passed, continuing...`);
-            }
+            console.log(`[Instagram] ⏳ Waiting for upload & transcoding confirmation from Instagram...`);
+            // Must strictly wait for "Your post has been shared" or throw error
+            await page.waitForSelector('text=udostępniony, text=shared, text=Udostępniono, text=Shared, text="Your post has been shared"', { timeout: 45000 });
+            console.log(`[Instagram] ✅ Post sharing confirmation verified!`);
 
             await page.waitForTimeout(3000);
 
