@@ -151,53 +151,24 @@ class InstagramBrowserUploader {
 
             await page.waitForTimeout(2000);
 
-            // The real "Share" (publish post) is the text button in the TOP-RIGHT corner of the modal header.
+            // The real "Share" (publish post) button in the modal header
             console.log(`[Instagram] 🚀 Clicking Share (publish) in modal header...`);
+            await page.waitForTimeout(1500);
 
-            // Wait a moment for caption to settle
-            await page.waitForTimeout(2000);
+            // Locate the Share button directly in the modal
+            const shareButton = page.locator('div[role="dialog"]').getByRole('button', { name: /^Share$|^Udostępnij$/i })
+                .or(page.locator('div[role="dialog"] div[role="button"]:has-text("Share"), div[role="dialog"] div[role="button"]:has-text("Udostępnij")'))
+                .first();
 
-            // Close any open DM-share popup first if present
-            try {
-                const closePopup = await page.$('div[role="dialog"] svg[aria-label="Close"], button[aria-label="Close"]');
-                if (closePopup) {
-                    await closePopup.evaluate(el => el.dispatchEvent(new MouseEvent('click', { bubbles: true })));
-                    await page.waitForTimeout(1000);
-                }
-            } catch(e) {}
+            await shareButton.waitFor({ state: 'visible', timeout: 15000 });
 
-            // Find and click the header Share button
-            const shareResult = await page.evaluate(() => {
-                // Find all elements inside dialogs
-                const dialogs = document.querySelectorAll('div[role="dialog"]');
-                for (const dialog of dialogs) {
-                    const elements = Array.from(dialog.querySelectorAll('div[role="button"], button, span, div[tabindex="0"]'));
-                    for (const el of elements) {
-                        const text = (el.innerText || el.textContent || '').trim();
-                        if (text === 'Share' || text === 'Udostępnij') {
-                            const rect = el.getBoundingClientRect();
-                            // Header button is in the top portion of the dialog (< 250px from top of viewport)
-                            if (rect.top < 300 && rect.width > 0 && rect.height > 0) {
-                                el.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true, view: window }));
-                                el.dispatchEvent(new MouseEvent('mouseup', { bubbles: true, cancelable: true, view: window }));
-                                el.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
-                                if (typeof el.click === 'function') el.click();
-                                return { success: true, text, top: rect.top, left: rect.left };
-                            }
-                        }
-                    }
-                }
-                return { success: false };
-            });
-
-            console.log(`[Instagram] Share click result:`, JSON.stringify(shareResult));
-
-            if (!shareResult || !shareResult.success) {
-                // Fallback: try Playwright locator
-                console.log(`[Instagram] Trying Playwright locator fallback for Share button...`);
-                const headerShare = page.locator('div[role="dialog"]').getByRole('button', { name: /^Share$|^Udostępnij$/i }).first();
-                await headerShare.click({ force: true, timeout: 5000 });
+            // Perform bounding box coordinate click + native locator click
+            const box = await shareButton.boundingBox();
+            if (box) {
+                console.log(`[Instagram] Clicking Share button at coords (${Math.round(box.x + box.width/2)}, ${Math.round(box.y + box.height/2)})...`);
+                await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
             }
+            await shareButton.click({ force: true }).catch(() => {});
 
             console.log(`[Instagram] ⏳ Waiting for upload & transcoding confirmation from Instagram...`);
             // Robust regex locator matching both English and Polish confirmations
@@ -205,11 +176,16 @@ class InstagramBrowserUploader {
             await confirmationLocator.first().waitFor({ state: 'visible', timeout: 60000 });
             console.log(`[Instagram] ✅ Post sharing confirmation verified!`);
 
+            await page.waitForTimeout(4000);
+
+            // Navigate to profile grid to capture live confirmation
+            console.log(`[Instagram] 🔍 Navigating to profile grid to capture live confirmation...`);
+            await page.goto('https://www.instagram.com/secretsofthelondonmansion/', { waitUntil: 'domcontentloaded', timeout: 30000 });
             await page.waitForTimeout(3000);
 
             const confirmationPath = path.join(__dirname, '../../config/instagram_published_confirmation.png');
             await page.screenshot({ path: confirmationPath, fullPage: true });
-            console.log(`📸 Confirmation screenshot saved to: ${confirmationPath}`);
+            console.log(`📸 Live profile confirmation screenshot saved to: ${confirmationPath}`);
 
             // Save updated cookies
             await context.storageState({ path: this.sessionPath });
