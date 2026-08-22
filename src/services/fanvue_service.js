@@ -9,7 +9,7 @@ const FANVUE_MCP_ENDPOINT = 'https://mcp.fanvue.com/mcp';
 const OLLAMA_HOST = 'localhost';
 const OLLAMA_PORT = 11434;
 const CHAT_MODEL = 'qwen2.5vl:latest';
-const CLIENT_ID = process.env.FANVUE_CLIENT_ID || 'V-d7H5jF6uLNiNuQlSw37pY0Oj-3_I8nFqBUl0ZjC2h';
+const CLIENT_ID = (process.env.FANVUE_CLIENT_ID && process.env.FANVUE_CLIENT_ID.trim()) || '7W956X2fWJuFSugXDBwOl80ZMnt3fNyBmg9pJ20MgOD';
 
 class FanvueService {
     constructor(options = {}) {
