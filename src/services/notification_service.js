@@ -56,12 +56,11 @@ class NotificationService {
         const formattedDate = now.toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' });
         const imageName = item?.imagePath ? path.basename(item.imagePath) : 'Period Drama Asset';
 
-        // Platform definitions
+        // Platform definitions (5 Active Omni-Channel Platforms)
         const platformDefinitions = [
             { key: 'fanvue', name: '💎 Fanvue', res: results.fanvue },
             { key: 'instagram', name: '📸 Instagram', res: results.instagram },
             { key: 'pinterest', name: '📌 Pinterest', res: results.pinterest },
-            { key: 'reddit', name: '🤖 Reddit (u_BettyRyal)', res: results.reddit },
             { key: 'twitter', name: '🐦 X / Twitter', res: results.twitter },
             { key: 'tiktok', name: '📱 TikTok', res: results.tiktok }
         ];
@@ -95,7 +94,6 @@ class NotificationService {
             let details = 'Pomyślnie opublikowano';
             if (p.key === 'fanvue') details = `UUID: ${r.postUuid || 'Post Live'} (${r.priceFormatted || 'W subskrypcji'})`;
             else if (p.key === 'pinterest') details = `Tablica: ${r.board || '18th Century'} | Link: ${r.link || 'Fanvue'}`;
-            else if (p.key === 'reddit') details = `Profil: ${r.subreddit || 'u_BettyRyal'}`;
             else if (p.key === 'twitter') details = `Wpis X na profilu @SecretsOfBetty`;
             else if (p.key === 'instagram') details = `Post na siatce @secretsofthelondonmansion`;
             else if (p.key === 'tiktok') details = `Wideo / Post na TikTok Studio`;
@@ -117,7 +115,7 @@ class NotificationService {
         });
 
         const subject = successCount > 0
-            ? `🏰 [InfluMaker] Raport Publikacji (${successCount}/6 Portali): Slot ${theme} - Betty Ryal`
+            ? `🏰 [InfluMaker] Raport Publikacji (${successCount}/${platformDefinitions.length} Portali): Slot ${theme} - Betty Ryal`
             : `🚨 [InfluMaker ALARM] Błąd Publikacji (0/${platformDefinitions.length}): Slot ${theme} - Betty Ryal`;
 
         const html = `

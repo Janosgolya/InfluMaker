@@ -171,21 +171,7 @@ class GeorgeProducerAgent {
             results.pinterest = { error: 'Pinterest session not configured (missing config/pinterest_session.json)' };
         }
 
-        // 2.4 Publish to Reddit (u_BettyRyal Profile Drop)
-        if (this.ana.reddit.isConfigured()) {
-            try {
-                console.log(`[George] 🤖 Delegating Reddit Post to Ana...`);
-                results.reddit = await this.ana.publishRedditPost(theme);
-            } catch (e) {
-                console.error(`[George] ⚠️ Reddit publication error:`, e.message);
-                results.reddit = { error: e.message };
-                systemErrors.push(`Reddit: ${e.message}`);
-            }
-        } else {
-            results.reddit = { error: 'Reddit session not configured (missing config/reddit_session.json)' };
-        }
-
-        // 2.5 Publish to X / Twitter (Video or Image Tweet)
+        // 2.4 Publish to X / Twitter (Video or Image Tweet)
         if (this.ana.twitter.isConfigured()) {
             try {
                 console.log(`[George] 🐦 Delegating X / Twitter Post to Ana...`);
