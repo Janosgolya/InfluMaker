@@ -87,6 +87,6 @@ jobs:
         run: |
           git config --global user.name "George [InfluMaker AI]"
           git config --global user.email "george@influmaker.local"
-          git add config/published_log.json BettyRyal_18centuryServant/
+          git add config/published_log.json config/.fanvue_auth.json BettyRyal_18centuryServant/
           git diff-index --quiet HEAD || git commit -m "chore(george): update published_log and media queue after scheduled cycle [skip ci]"
           git push

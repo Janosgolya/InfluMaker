@@ -22,44 +22,11 @@ function generateCodeChallenge(verifier) {
     return base64UrlEncode(hash);
 }
 
-async function registerDynamicClient(port) {
-    const clientData = JSON.stringify({
-        client_name: "InfluMaker Ana Agent",
-        redirect_uris: [`http://localhost:${port}/oauth/callback`],
-        token_endpoint_auth_method: "none",
-        grant_types: ["authorization_code", "refresh_token"],
-        response_types: ["code"],
-        scope: "fanvue_mcp:read fanvue_mcp:write"
-    });
+const FanvueTokenStorage = require('../services/fanvue_token_storage');
+const OFFICIAL_CLIENT_ID = '7W956X2fWJuFSugXDBwOl80ZMnt3fNyBmg9pJ20MgOD';
 
-    return new Promise((resolve, reject) => {
-        const req = https.request('https://auth.mcp.fanvue.com/oauth2/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Content-Length': Buffer.byteLength(clientData)
-            }
-        }, (res) => {
-            let data = '';
-            res.on('data', chunk => data += chunk);
-            res.on('end', () => {
-                try {
-                    const json = JSON.parse(data);
-                    if (json.client_id) {
-                        resolve(json);
-                    } else {
-                        // Fallback client ID if open registration is bypassed
-                        resolve({ client_id: 'V-d7H5jF6uLNiNuQlSw37pY0Oj-3_I8nFqBUl0ZjC2h' });
-                    }
-                } catch (e) {
-                    resolve({ client_id: 'V-d7H5jF6uLNiNuQlSw37pY0Oj-3_I8nFqBUl0ZjC2h' });
-                }
-            });
-        });
-        req.on('error', () => resolve({ client_id: 'V-d7H5jF6uLNiNuQlSw37pY0Oj-3_I8nFqBUl0ZjC2h' }));
-        req.write(clientData);
-        req.end();
-    });
+async function registerDynamicClient(port) {
+    return { client_id: OFFICIAL_CLIENT_ID };
 }
 
 async function startOAuthFlow() {
@@ -129,34 +96,14 @@ async function startOAuthFlow() {
                         if (tokens.access_token) {
                             console.log(`\n🎉 SUCCESS: Fanvue Access Token Acquired!`);
                             
-                            // Save tokens to .env
-                            const envPath = path.join(__dirname, '../../.env');
-                            let envContent = fs.existsSync(envPath) ? fs.readFileSync(envPath, 'utf8') : '';
+                            // Persist to encrypted git-tracked storage and local .env
+                            FanvueTokenStorage.save({
+                                accessToken: tokens.access_token,
+                                refreshToken: tokens.refresh_token,
+                                clientId: OFFICIAL_CLIENT_ID
+                            });
 
-                            if (clientId) {
-                                if (envContent.includes('FANVUE_CLIENT_ID=')) {
-                                    envContent = envContent.replace(/FANVUE_CLIENT_ID=.*/, `FANVUE_CLIENT_ID=${clientId}`);
-                                } else {
-                                    envContent += `\nFANVUE_CLIENT_ID=${clientId}`;
-                                }
-                            }
-
-                            if (envContent.includes('FANVUE_ACCESS_TOKEN=')) {
-                                envContent = envContent.replace(/FANVUE_ACCESS_TOKEN=.*/, `FANVUE_ACCESS_TOKEN=${tokens.access_token}`);
-                            } else {
-                                envContent += `\nFANVUE_ACCESS_TOKEN=${tokens.access_token}`;
-                            }
-
-                            if (tokens.refresh_token) {
-                                if (envContent.includes('FANVUE_REFRESH_TOKEN=')) {
-                                    envContent = envContent.replace(/FANVUE_REFRESH_TOKEN=.*/, `FANVUE_REFRESH_TOKEN=${tokens.refresh_token}`);
-                                } else {
-                                    envContent += `\nFANVUE_REFRESH_TOKEN=${tokens.refresh_token}`;
-                                }
-                            }
-
-                            fs.writeFileSync(envPath, envContent.trim() + '\n', 'utf8');
-                            console.log(`💾 Tokens & Client ID saved to .env file!`);
+                            console.log(`💾 Tokens & Client ID encrypted and saved to config/.fanvue_auth.json and .env!`);
 
                             res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
                             res.end(`

@@ -5,6 +5,8 @@ const https = require('https');
 const http = require('http');
 const { URL, URLSearchParams } = require('url');
 
+const FanvueTokenStorage = require('./fanvue_token_storage');
+
 const FANVUE_MCP_ENDPOINT = 'https://mcp.fanvue.com/mcp';
 const OLLAMA_HOST = 'localhost';
 const OLLAMA_PORT = 11434;
@@ -13,8 +15,10 @@ const CLIENT_ID = (process.env.FANVUE_CLIENT_ID && process.env.FANVUE_CLIENT_ID.
 
 class FanvueService {
     constructor(options = {}) {
-        this.accessToken = options.accessToken || process.env.FANVUE_ACCESS_TOKEN || null;
-        this.refreshToken = options.refreshToken || process.env.FANVUE_REFRESH_TOKEN || null;
+        const stored = FanvueTokenStorage.load();
+        this.accessToken = options.accessToken || stored.accessToken || process.env.FANVUE_ACCESS_TOKEN || null;
+        this.refreshToken = options.refreshToken || stored.refreshToken || process.env.FANVUE_REFRESH_TOKEN || null;
+        this.clientId = (options.clientId || stored.clientId || process.env.FANVUE_CLIENT_ID || CLIENT_ID).trim();
         this.characterDir = options.characterDir || path.join(__dirname, '../../BettyRyal_18centuryServant');
         this.rpcId = 1;
         this.loadCharacterLore();
@@ -42,7 +46,7 @@ class FanvueService {
         const params = new URLSearchParams({
             grant_type: 'refresh_token',
             refresh_token: this.refreshToken.trim(),
-            client_id: CLIENT_ID.trim()
+            client_id: this.clientId
         });
 
         const postData = params.toString();
@@ -66,14 +70,12 @@ class FanvueService {
                                 this.refreshToken = tokens.refresh_token;
                             }
 
-                            // Update .env file
-                            const envPath = path.join(__dirname, '../../.env');
-                            let envContent = fs.existsSync(envPath) ? fs.readFileSync(envPath, 'utf8') : '';
-                            envContent = envContent.replace(/FANVUE_ACCESS_TOKEN=.*/, `FANVUE_ACCESS_TOKEN=${this.accessToken}`);
-                            if (tokens.refresh_token) {
-                                envContent = envContent.replace(/FANVUE_REFRESH_TOKEN=.*/, `FANVUE_REFRESH_TOKEN=${this.refreshToken}`);
-                            }
-                            fs.writeFileSync(envPath, envContent.trim() + '\n', 'utf8');
+                            // Persist rotated tokens to encrypted git file & local env
+                            FanvueTokenStorage.save({
+                                accessToken: this.accessToken,
+                                refreshToken: this.refreshToken,
+                                clientId: this.clientId
+                            });
 
                             console.log(`[Fanvue] ✅ Access token successfully refreshed!`);
                             resolve(tokens.access_token);
