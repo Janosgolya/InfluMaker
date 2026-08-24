@@ -976,5 +976,42 @@
     "hook": "POV: You caught the inn's new maid in the quiet corridor...",
     "timestamp": "2026-08-23T20:31:39.834Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "MORNING_SFW_Q8_S1_hf_20260816_174906_a5d906ce-3cbb-4c24-a2a9-7a81423023ca.png",
+    "theme": "MORNING",
+    "price": "Included in Subscription",
+    "priceCents": 0,
+    "audience": "subscribers",
+    "timestamp": "2026-08-24T07:07:14.962Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Pinterest",
+    "imageFile": "MORNING_SFW_Q9_S1_hf_20260816_171506_22a4d1ae-c570-4355-93ee-bb757f98ddac.png",
+    "theme": "MORNING",
+    "title": "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic",
+    "board": "18th Century Aesthetic & Maid Secrets",
+    "link": "https://fanvue.com/bettyryal",
+    "timestamp": "2026-08-24T07:07:50.825Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Twitter",
+    "imageFile": "MORNING_SFW_Q9_S1_hf_20260816_171506_22a4d1ae-c570-4355-93ee-bb757f98ddac.png",
+    "theme": "MORNING",
+    "tweetText": "Before the London manor stirs, I write my quiet confessions by tallow candlelight in the attic.\n\nhttps://fanvue.com/bettyryal\n\n#BettyRyal #18thCentury #PeriodDrama",
+    "timestamp": "2026-08-24T07:08:18.284Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "MORNING_SFW_Q8_S1_hf_20260816_175711_7e11fb26-bd11-42c2-827a-4324fb4babd3.png",
+    "theme": "MORNING",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/MORNING_SFW_Q8_S1_hf_20260816_175711_7e11fb26-bd11-42c2-827a-4324fb4babd3_tiktok_9x16.jpg",
+    "hook": "POV: You caught the inn's new maid in the quiet corridor...",
+    "timestamp": "2026-08-24T07:08:57.414Z",
+    "status": "PUBLISHED"
   }
 ]
