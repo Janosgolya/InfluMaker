@@ -1225,5 +1225,42 @@
     "hook": "POV: You caught the inn's new maid in the quiet corridor...",
     "timestamp": "2026-08-25T16:44:27.807Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "NIGHT_SFW_Q8_S1_hf_20260816_175212_56fa0f8b-b0bb-4943-8fc4-7f4730da35ab.png",
+    "theme": "NIGHT",
+    "price": "$14.99",
+    "priceCents": 1499,
+    "audience": "subscribers",
+    "timestamp": "2026-08-25T20:37:18.616Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Pinterest",
+    "imageFile": "NIGHT_SFW_Q8_S3_hf_20260816_171809_0648cc8e-707f-4978-b3c0-a5b194fee525.png",
+    "theme": "NIGHT",
+    "title": "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic",
+    "board": "18th Century Aesthetic & Maid Secrets",
+    "link": "https://fanvue.com/bettyryal",
+    "timestamp": "2026-08-25T20:37:53.572Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Twitter",
+    "imageFile": "NIGHT_SFW_Q8_S3_hf_20260816_171809_0648cc8e-707f-4978-b3c0-a5b194fee525.png",
+    "theme": "NIGHT",
+    "tweetText": "When the candles burn down and the manor sleeps, my diary is the only place I can be truly free.\n\nhttps://fanvue.com/bettyryal\n\n#BettyRyal #18thCentury #PeriodDrama",
+    "timestamp": "2026-08-25T20:38:22.228Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "NIGHT_SFW_Q8_S1_hf_20260816_180014_a174ba91-593a-4af1-937d-f16003bb69ae.png",
+    "theme": "NIGHT",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/NIGHT_SFW_Q8_S1_hf_20260816_180014_a174ba91-593a-4af1-937d-f16003bb69ae_tiktok_9x16.jpg",
+    "hook": "POV: You caught the inn's new maid in the quiet corridor, watching as the ladies of the house whispered by the fire.",
+    "timestamp": "2026-08-25T20:39:02.867Z",
+    "status": "PUBLISHED"
   }
 ]
