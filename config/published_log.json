@@ -1336,5 +1336,42 @@
     "hook": "POV: You caught the inn's new maid in the quiet corridor...",
     "timestamp": "2026-08-26T11:37:15.757Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "PREP_SFW_Q9_S1_hf_20260816_175038_9f05b121-a76b-4763-8075-28cb43109475.png",
+    "theme": "PREP",
+    "price": "$7.99",
+    "priceCents": 799,
+    "audience": "subscribers",
+    "timestamp": "2026-08-26T16:51:36.864Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Pinterest",
+    "imageFile": "PREP_SFW_Q9_S1_hf_20260816_180606_8488f84b-f299-4c1c-bd30-49d6f91e7fbc.png",
+    "theme": "PREP",
+    "title": "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic",
+    "board": "18th Century Aesthetic & Maid Secrets",
+    "link": "https://fanvue.com/bettyryal",
+    "timestamp": "2026-08-26T16:52:12.690Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Twitter",
+    "imageFile": "PREP_SFW_Q9_S1_hf_20260816_180606_8488f84b-f299-4c1c-bd30-49d6f91e7fbc.png",
+    "theme": "PREP",
+    "tweetText": "Lacing heavy silk stays for the evening ball while keeping my own desires locked tight.\n\nhttps://fanvue.com/bettyryal\n\n#BettyRyal #18thCentury #PeriodDrama",
+    "timestamp": "2026-08-26T16:52:40.969Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "PREP_SFW_Q9_S1_hf_20260816_180606_01519938-dde3-441f-867d-c1d86be806f3.png",
+    "theme": "PREP",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/PREP_SFW_Q9_S1_hf_20260816_180606_01519938-dde3-441f-867d-c1d86be806f3_tiktok_9x16.jpg",
+    "hook": "POV: You caught the inn's new maid in the quiet corridor... lace-up a green gown.",
+    "timestamp": "2026-08-26T16:53:20.308Z",
+    "status": "PUBLISHED"
   }
 ]
