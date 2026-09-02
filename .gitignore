@@ -8,6 +8,8 @@ node_modules/
 
 # Session credential files (Injected securely via GitHub Secrets)
 config/*_session.json
+config/instagram_chrome_profile/
+config/instagram_session_minified.txt
 !config/posting_schedule.json
 !config/storage_limits.json
 

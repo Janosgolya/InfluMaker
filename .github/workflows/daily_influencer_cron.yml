@@ -37,15 +37,18 @@ jobs:
 
       - name: Restore Social Sessions
         env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           INSTAGRAM_SESSION_JSON: ${{ secrets.INSTAGRAM_SESSION_JSON }}
           TIKTOK_SESSION_JSON: ${{ secrets.TIKTOK_SESSION_JSON }}
           PINTEREST_SESSION_JSON: ${{ secrets.PINTEREST_SESSION_JSON }}
           TWITTER_SESSION_JSON: ${{ secrets.TWITTER_SESSION_JSON }}
         run: |
           mkdir -p config
-          if [ -n "$INSTAGRAM_SESSION_JSON" ]; then
+          # 1. Restore Instagram from encrypted rotated git file, fallback to secret
+          node -e "require('./src/services/instagram_session_storage').restore()"
+          if [ ! -f config/instagram_session.json ] && [ -n "$INSTAGRAM_SESSION_JSON" ]; then
             printf '%s' "$INSTAGRAM_SESSION_JSON" > config/instagram_session.json
-            echo "[Restore] Instagram session restored ($(wc -c < config/instagram_session.json) bytes)"
+            echo "[Restore] Instagram session restored from secret ($(wc -c < config/instagram_session.json) bytes)"
           fi
           if [ -n "$TIKTOK_SESSION_JSON" ]; then
             printf '%s' "$TIKTOK_SESSION_JSON" > config/tiktok_session.json
@@ -63,6 +66,9 @@ jobs:
       - name: Execute George Producer Tick
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
+          INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
+          INSTAGRAM_2FA_SECRET: ${{ secrets.INSTAGRAM_2FA_SECRET }}
           FANVUE_ACCESS_TOKEN: ${{ secrets.FANVUE_ACCESS_TOKEN }}
           FANVUE_REFRESH_TOKEN: ${{ secrets.FANVUE_REFRESH_TOKEN }}
           FANVUE_CLIENT_ID: ${{ secrets.FANVUE_CLIENT_ID }}
@@ -82,6 +88,6 @@ jobs:
         run: |
           git config --global user.name "George [InfluMaker AI]"
           git config --global user.email "george@influmaker.local"
-          git add config/published_log.json config/.fanvue_auth.json BettyRyal_18centuryServant/
+          git add config/published_log.json config/.fanvue_auth.json config/.instagram_session.enc BettyRyal_18centuryServant/
           git diff-index --quiet HEAD || git commit -m "chore(george): update published_log and media queue after scheduled cycle [skip ci]"
           git push

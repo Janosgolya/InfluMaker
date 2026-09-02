@@ -86,12 +86,16 @@ async function loginInstagram() {
 
                     await context.storageState({ path: SESSION_PATH });
 
+                    // Encrypt and persist session to config/.instagram_session.enc for git tracking
+                    const InstagramSessionStorage = require('../services/instagram_session_storage');
+                    InstagramSessionStorage.persist();
+
                     // Also save minified version for easy copy-pasting to GitHub Secrets
                     const minifiedPath = path.join(__dirname, '../../config/instagram_session_minified.txt');
                     const raw = fs.readFileSync(SESSION_PATH, 'utf8');
                     fs.writeFileSync(minifiedPath, JSON.stringify(JSON.parse(raw)), 'utf8');
 
-                    console.log(`✅ Sukces! Plik sesji zapisany.`);
+                    console.log(`✅ Sukces! Plik sesji zapisany i zaszyfrowany do config/.instagram_session.enc!`);
                     console.log(`📋 Minified gotowy do wklejenia w GitHub Secrets: config/instagram_session_minified.txt\n`);
 
                     await page.waitForTimeout(2000);

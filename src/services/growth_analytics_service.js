@@ -13,11 +13,11 @@ const ANALYTICS_HISTORY = path.join(__dirname, '../../config/analytics_history.j
 class GrowthAnalyticsService {
     constructor(options = {}) {
         this.startDate = new Date(options.startDate || '2026-08-18T00:00:00Z');
-        this.phase1Days = 14;
+        this.phase1Days = parseInt(process.env.DAILY_REPORTS_DAYS || options.phase1Days || '21', 10);
     }
 
     /**
-     * Determines current reporting phase (Daily for first 14 days, then Weekly)
+     * Determines current reporting phase (Daily for first 21 days, then Weekly)
      */
     getReportingPhase(now = new Date()) {
         const diffMs = now.getTime() - this.startDate.getTime();
@@ -27,7 +27,7 @@ class GrowthAnalyticsService {
         return {
             daysPassed,
             isDailyPhase,
-            phaseLabel: isDailyPhase ? `Dzień ${daysPassed} z 14 (Raport Codzienny)` : `Tydzień ${Math.ceil((daysPassed - 14) / 7)} (Raport Cotygodniowy)`,
+            phaseLabel: isDailyPhase ? `Dzień ${daysPassed} z ${this.phase1Days} (Raport Codzienny - Faza Przedłużona)` : `Tydzień ${Math.ceil((daysPassed - this.phase1Days) / 7)} (Raport Cotygodniowy)`,
             frequency: isDailyPhase ? 'DAILY' : 'WEEKLY'
         };
     }

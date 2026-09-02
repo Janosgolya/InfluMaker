@@ -1,6 +1,8 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+const InstagramSessionStorage = require('./instagram_session_storage');
 
 const SESSION_PATH = path.join(__dirname, '../../config/instagram_session.json');
 
@@ -10,7 +12,34 @@ class InstagramBrowserUploader {
     }
 
     isLoggedIn() {
-        return fs.existsSync(this.sessionPath);
+        InstagramSessionStorage.restore();
+        return fs.existsSync(this.sessionPath) || !!(process.env.INSTAGRAM_PASSWORD || process.env.INSTAGRAM_PASS);
+    }
+
+    /**
+     * RFC 6238 TOTP code generator using built-in Node.js crypto
+     */
+    generateTOTP(secret) {
+        const base32chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+        let bits = '';
+        const cleanSecret = secret.replace(/\s+/g, '').toUpperCase();
+        for (let i = 0; i < cleanSecret.length; i++) {
+            const val = base32chars.indexOf(cleanSecret.charAt(i));
+            if (val >= 0) bits += val.toString(2).padStart(5, '0');
+        }
+        const bytes = [];
+        for (let i = 0; i + 8 <= bits.length; i += 8) {
+            bytes.push(parseInt(bits.substr(i, 8), 2));
+        }
+        const key = Buffer.from(bytes);
+        const epoch = Math.floor(Date.now() / 1000);
+        const timeStep = Math.floor(epoch / 30);
+        const timeBuffer = Buffer.alloc(8);
+        timeBuffer.writeBigInt64BE(BigInt(timeStep));
+        const hmac = crypto.createHmac('sha1', key).update(timeBuffer).digest();
+        const offset = hmac[hmac.length - 1] & 0x0f;
+        const code = (hmac.readUInt32BE(offset) & 0x7fffffff) % 1000000;
+        return code.toString().padStart(6, '0');
     }
 
     /**
@@ -18,7 +47,7 @@ class InstagramBrowserUploader {
      */
     async dismissPopups(page) {
         try {
-            const notNowButtons = await page.$$('button:has-text("Not Now"), button:has-text("Nie teraz"), button:has-text("Cancel"), button:has-text("Odrzuć"), button:has-text("OK"), button:has-text("Ok")');
+            const notNowButtons = await page.$$('button:has-text("Not Now"), button:has-text("Nie teraz"), button:has-text("Cancel"), button:has-text("Odrzuć"), button:has-text("OK"), button:has-text("Ok"), button:has-text("Save info"), button:has-text("Zapisz informacje")');
             for (const btn of notNowButtons) {
                 if (await btn.isVisible()) {
                     await btn.click().catch(() => {});
@@ -29,11 +58,87 @@ class InstagramBrowserUploader {
     }
 
     /**
+     * Self-healing autonomous login when session cookies expire
+     */
+    async attemptCredentialLogin(page, context) {
+        const username = (process.env.INSTAGRAM_USERNAME || 'secretsofthelondonmansion').trim();
+        const password = (process.env.INSTAGRAM_PASSWORD || process.env.INSTAGRAM_PASS || '').trim();
+
+        if (!password) {
+            console.log(`[Instagram Auth] ℹ️ No INSTAGRAM_PASSWORD in environment. Cannot perform autonomous credential login.`);
+            return false;
+        }
+
+        console.log(`[Instagram Auth] 🤖 Attempting autonomous credential login for @${username}...`);
+
+        try {
+            // If on landing screen showing another profile (e.g. "Use another profile")
+            const useAnotherBtn = page.locator('button:has-text("Use another profile"), div[role="button"]:has-text("Use another profile"), span:has-text("Use another profile")');
+            if (await useAnotherBtn.count() > 0) {
+                console.log(`[Instagram Auth] Clicking "Use another profile"...`);
+                await useAnotherBtn.first().click();
+                await page.waitForTimeout(3000);
+            }
+
+            // Ensure on login page
+            if (!page.url().includes('/accounts/login')) {
+                await page.goto('https://www.instagram.com/accounts/login/', { waitUntil: 'domcontentloaded', timeout: 30000 });
+                await page.waitForTimeout(3000);
+            }
+
+            const userInput = page.locator('input[name="username"], input[name="email"], input[type="text"]').first();
+            const passInput = page.locator('input[name="password"], input[type="password"]').first();
+
+            await userInput.waitFor({ state: 'visible', timeout: 15000 });
+            await userInput.fill(username);
+            await page.waitForTimeout(500);
+
+            await passInput.waitFor({ state: 'visible', timeout: 15000 });
+            await passInput.fill(password);
+            await page.waitForTimeout(500);
+
+            const submitBtn = page.locator('button[type="submit"]').first();
+            await submitBtn.click();
+            console.log(`[Instagram Auth] 🔑 Submitted credentials, waiting for response...`);
+            await page.waitForTimeout(6000);
+
+            // Handle 2FA Challenge if prompted
+            const codeInput = page.locator('input[name="verificationCode"], input[name="security_code"], input[type="tel"]').first();
+            if (await codeInput.count() > 0 && process.env.INSTAGRAM_2FA_SECRET) {
+                console.log(`[Instagram Auth] 🛡️ 2FA Challenge detected! Generating TOTP code...`);
+                const totpCode = this.generateTOTP(process.env.INSTAGRAM_2FA_SECRET);
+                await codeInput.fill(totpCode);
+                await page.waitForTimeout(500);
+                const confirm2fa = page.locator('button:has-text("Confirm"), button:has-text("Potwierdź"), button[type="button"]:has-text("Log In")').first();
+                if (await confirm2fa.count() > 0) {
+                    await confirm2fa.click();
+                } else {
+                    await page.keyboard.press('Enter');
+                }
+                await page.waitForTimeout(6000);
+            }
+
+            await this.dismissPopups(page);
+
+            // Save fresh session
+            const freshState = await context.storageState({ path: this.sessionPath });
+            InstagramSessionStorage.persist(freshState);
+            console.log(`[Instagram Auth] ✅ Autonomous login successful! Fresh session encrypted & persisted.`);
+            return true;
+        } catch (e) {
+            console.warn(`[Instagram Auth] Autonomous login attempt error:`, e.message);
+            return false;
+        }
+    }
+
+    /**
      * Upload and publish photo post directly to Instagram feed
      */
     async uploadAndPublish(filePath, captionText, options = {}) {
+        InstagramSessionStorage.restore();
+
         if (!this.isLoggedIn()) {
-            throw new Error(`Brak aktywnej sesji Instagram. Uruchom najpierw: node src/scripts/instagram_browser_login.js`);
+            throw new Error(`Brak aktywnej sesji Instagram ani danych logowania. Uruchom najpierw: LOGIN_INSTAGRAM.bat lub ustaw INSTAGRAM_PASSWORD w GitHub Secrets.`);
         }
 
         console.log(`\n======================================================`);
@@ -53,12 +158,16 @@ class InstagramBrowserUploader {
             ]
         });
 
-        const context = await browser.newContext({
-            storageState: this.sessionPath,
+        const contextOptions = {
             viewport: { width: 1440, height: 900 },
             userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
-        });
+        };
 
+        if (fs.existsSync(this.sessionPath)) {
+            contextOptions.storageState = this.sessionPath;
+        }
+
+        const context = await browser.newContext(contextOptions);
         const page = await context.newPage();
 
         try {
@@ -66,9 +175,16 @@ class InstagramBrowserUploader {
             await page.goto('https://www.instagram.com', { waitUntil: 'domcontentloaded', timeout: 45000 });
             await page.waitForTimeout(4000);
 
-            // Check if login or signup is required
-            if (page.url().includes('/accounts/login') || page.url().includes('/accounts/emailsignup') || page.url().includes('/accounts/signup') || page.url().includes('/accounts/onetap')) {
-                throw new Error('Sesja Instagram wygasła (przekierowano do logowania/rejestracji). Wymagane odświeżenie sesji w config/instagram_session.json.');
+            // Check if login or multi-account selector is displayed
+            const isLoggedOut = page.url().includes('/accounts/login') || page.url().includes('/accounts/emailsignup') || page.url().includes('/accounts/signup') || page.url().includes('/accounts/onetap');
+            const hasOneTapOrContinue = await page.locator('button:has-text("Continue"), div[role="button"]:has-text("Continue"), div:has-text("bocianjanusz")').count() > 0;
+
+            if (isLoggedOut || hasOneTapOrContinue) {
+                console.log(`[Instagram] ⚠️ Active session not found or account selector shown. Attempting self-healing login...`);
+                const loginSuccess = await this.attemptCredentialLogin(page, context);
+                if (!loginSuccess) {
+                    throw new Error('Sesja Instagram wygasła. Aby system samoczynnie wznawiał sesję 24/7 w chmurze, dodaj w GitHub Secrets sekret INSTAGRAM_PASSWORD (oraz opcjonalnie INSTAGRAM_2FA_SECRET), lub uruchom jednorazowo LOGIN_INSTAGRAM.bat.');
+                }
             }
 
             await this.dismissPopups(page);
@@ -189,7 +305,6 @@ class InstagramBrowserUploader {
             await shareButton.click({ force: true }).catch(() => {});
 
             console.log(`[Instagram] ⏳ Waiting for upload & transcoding confirmation from Instagram...`);
-            // Robust regex locator matching both English and Polish confirmations
             const confirmationLocator = page.locator('text=/your post has been shared|twój post został udostępniony|post shared|udostępniono post|udostępniony/i');
             await confirmationLocator.first().waitFor({ state: 'visible', timeout: 60000 });
             console.log(`[Instagram] ✅ Post sharing confirmation verified!`);
@@ -205,8 +320,9 @@ class InstagramBrowserUploader {
             await page.screenshot({ path: confirmationPath, fullPage: true });
             console.log(`📸 Live profile confirmation screenshot saved to: ${confirmationPath}`);
 
-            // Save updated cookies
-            await context.storageState({ path: this.sessionPath });
+            // Save updated cookies to disk and encrypted git-storage
+            const finalState = await context.storageState({ path: this.sessionPath });
+            InstagramSessionStorage.persist(finalState);
 
             console.log(`🎉 [Instagram Success] Post published successfully on Betty's feed!`);
             await browser.close();

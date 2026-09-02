@@ -6,7 +6,7 @@ class NotificationService {
     constructor(options = {}) {
         this.recipient = options.recipient || 'janosgolya@gmail.com';
         this.projectStartDate = new Date(options.startDate || '2026-08-18T00:00:00Z');
-        this.phase1DurationDays = options.phase1DurationDays || 14;
+        this.phase1DurationDays = parseInt(process.env.DAILY_REPORTS_DAYS || options.phase1DurationDays || '21', 10);
         this.logPath = path.join(__dirname, '../../logs/email_notifications.log');
 
         this.initTransporter();
