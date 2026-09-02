@@ -134,7 +134,7 @@ class InstagramBrowserUploader {
      * 3. Switch to secretsofthelondonmansion via account switcher
      */
     async attemptCredentialLogin(page, context) {
-        const mainUsername = (process.env.INSTAGRAM_USERNAME || 'bocianjanusz').trim();
+        const configuredUsername = (process.env.INSTAGRAM_USERNAME || '').trim();
         const password = (process.env.INSTAGRAM_PASSWORD || process.env.INSTAGRAM_PASS || '').trim();
         const targetAccount = 'secretsofthelondonmansion';
 
@@ -143,91 +143,117 @@ class InstagramBrowserUploader {
             return false;
         }
 
-        console.log(`[Instagram Auth] 🤖 Attempting autonomous login as @${mainUsername}, then switching to @${targetAccount}...`);
+        // Try candidate usernames: configured first, then bocianjanusz, then secretsofthelondonmansion
+        const candidateUsernames = configuredUsername 
+            ? [configuredUsername] 
+            : ['bocianjanusz', 'secretsofthelondonmansion'];
 
-        try {
-            // Step 1: Dismiss any cookie banner first so it doesn't block clicks/inputs
-            await this.dismissPopups(page);
+        for (const mainUsername of candidateUsernames) {
+            console.log(`[Instagram Auth] 🤖 Attempting autonomous login as @${mainUsername}...`);
 
-            // Step 2: Handle one-tap screen ("Use another profile" button)
-            const useAnotherBtn = page.locator('div[role="button"]:has-text("Use another profile"), button:has-text("Use another profile"), span:has-text("Use another profile")').first();
-            if (await useAnotherBtn.count() > 0 && await useAnotherBtn.isVisible().catch(() => false)) {
-                console.log(`[Instagram Auth] 📲 One-tap screen detected. Clicking "Use another profile" to reveal login form...`);
-                await useAnotherBtn.click({ force: true });
-                await page.waitForTimeout(3000);
-            }
-
-            // Step 3: Check if login inputs are present on the current page
-            let userInput = page.locator('input[name="email"], input[name="username"], input[type="text"]').first();
-            let passInput = page.locator('input[name="pass"], input[name="password"], input[type="password"]').first();
-
-            const hasInputs = (await userInput.count() > 0) && (await passInput.count() > 0);
-            if (!hasInputs) {
-                console.log(`[Instagram Auth] 📲 Navigating directly to /accounts/login/...`);
-                await page.goto('https://www.instagram.com/accounts/login/', { waitUntil: 'domcontentloaded', timeout: 30000 });
-                await page.waitForTimeout(3000);
+            try {
+                // Step 1: Dismiss any cookie banner first so it doesn't block clicks/inputs
                 await this.dismissPopups(page);
 
-                userInput = page.locator('input[name="email"], input[name="username"], input[type="text"]').first();
-                passInput = page.locator('input[name="pass"], input[name="password"], input[type="password"]').first();
-            }
+                // Step 2: Handle one-tap screen ("Use another profile" button)
+                const useAnotherBtn = page.locator('div[role="button"]:has-text("Use another profile"), button:has-text("Use another profile"), span:has-text("Use another profile")').first();
+                if (await useAnotherBtn.count() > 0 && await useAnotherBtn.isVisible().catch(() => false)) {
+                    console.log(`[Instagram Auth] 📲 One-tap screen detected. Clicking "Use another profile" to reveal login form...`);
+                    await useAnotherBtn.click({ force: true });
+                    await page.waitForTimeout(3000);
+                }
 
-            await userInput.waitFor({ state: 'visible', timeout: 15000 });
-            await userInput.fill(mainUsername);
-            await page.waitForTimeout(500);
+                // Step 3: Check if login inputs are present on the current page
+                let userInput = page.locator('input[name="email"], input[name="username"], input[type="text"]').first();
+                let passInput = page.locator('input[name="pass"], input[name="password"], input[type="password"]').first();
 
-            await passInput.waitFor({ state: 'visible', timeout: 15000 });
-            await passInput.fill(password);
-            await page.waitForTimeout(500);
+                const hasInputs = (await userInput.count() > 0) && (await passInput.count() > 0);
+                if (!hasInputs) {
+                    console.log(`[Instagram Auth] 📲 Navigating directly to /accounts/login/...`);
+                    await page.goto('https://www.instagram.com/accounts/login/', { waitUntil: 'domcontentloaded', timeout: 30000 });
+                    await page.waitForTimeout(3000);
+                    await this.dismissPopups(page);
 
-            const submitBtn = page.locator('button[type="submit"], button:has-text("Log in"), button:has-text("Zaloguj się")').first();
-            await submitBtn.click();
-            console.log(`[Instagram Auth] 🔑 Submitted credentials for @${mainUsername}, waiting for login response...`);
-            await page.waitForTimeout(8000);
+                    userInput = page.locator('input[name="email"], input[name="username"], input[type="text"]').first();
+                    passInput = page.locator('input[name="pass"], input[name="password"], input[type="password"]').first();
+                }
 
-            // Handle 2FA Challenge if prompted
-            const codeInput = page.locator('input[name="verificationCode"], input[name="security_code"], input[type="tel"]').first();
-            if (await codeInput.count() > 0 && process.env.INSTAGRAM_2FA_SECRET) {
-                console.log(`[Instagram Auth] 🛡️ 2FA challenge detected! Generating TOTP...`);
-                const totpCode = this.generateTOTP(process.env.INSTAGRAM_2FA_SECRET);
-                await codeInput.fill(totpCode);
+                await userInput.waitFor({ state: 'visible', timeout: 15000 });
+                await userInput.fill(mainUsername);
                 await page.waitForTimeout(500);
-                const confirm2fa = page.locator('button:has-text("Confirm"), button:has-text("Potwierdź")').first();
-                if (await confirm2fa.count() > 0) await confirm2fa.click();
-                else await page.keyboard.press('Enter');
+
+                await passInput.waitFor({ state: 'visible', timeout: 15000 });
+                await passInput.fill(password);
+                await page.waitForTimeout(500);
+
+                // Modern Instagram uses a DIV with role="button" for "Log in", NOT a <button> tag!
+                const submitBtn = page.locator('div[role="button"]:has-text("Log in"), button[type="submit"], button:has-text("Log in"), button:has-text("Zaloguj się"), input[type="submit"]').first();
+                if (await submitBtn.count() > 0 && await submitBtn.isVisible().catch(() => false)) {
+                    await submitBtn.click();
+                } else {
+                    await passInput.press('Enter');
+                }
+                console.log(`[Instagram Auth] 🔑 Submitted credentials for @${mainUsername}, waiting for login response...`);
                 await page.waitForTimeout(8000);
-            }
 
-            await this.dismissPopups(page);
+                // Handle 2FA Challenge if prompted
+                const codeInput = page.locator('input[name="verificationCode"], input[name="security_code"], input[type="tel"]').first();
+                if (await codeInput.count() > 0) {
+                    if (process.env.INSTAGRAM_2FA_SECRET) {
+                        console.log(`[Instagram Auth] 🛡️ 2FA challenge detected! Generating TOTP...`);
+                        const totpCode = this.generateTOTP(process.env.INSTAGRAM_2FA_SECRET);
+                        await codeInput.fill(totpCode);
+                        await page.waitForTimeout(500);
+                        const confirm2fa = page.locator('div[role="button"]:has-text("Confirm"), button:has-text("Confirm"), button:has-text("Potwierdź")').first();
+                        if (await confirm2fa.count() > 0) await confirm2fa.click();
+                        else await codeInput.press('Enter');
+                        await page.waitForTimeout(8000);
+                    } else {
+                        console.warn(`[Instagram Auth] ⚠️ 2FA challenge requested by Instagram, but INSTAGRAM_2FA_SECRET is not configured in GitHub Secrets!`);
+                    }
+                }
 
-            // Step 4: Verify who is active after login
-            const activeUser = await this.getActiveUsername(page);
-            console.log(`[Instagram Auth] 👤 Active account after login attempt: @${activeUser || 'none (still logged out)'}`);
+                // Check for login error messages on the page
+                const errorAlert = page.locator('p[role="alert"], div[role="alert"], p[data-testid="login-error-message"], span:has-text("incorrect"), span:has-text("nieprawidłow")').first();
+                if (await errorAlert.count() > 0 && await errorAlert.isVisible().catch(() => false)) {
+                    const errText = await errorAlert.innerText().catch(() => '');
+                    console.warn(`[Instagram Auth] ⚠️ Instagram error response for @${mainUsername}: "${errText}"`);
+                }
 
-            if (activeUser === targetAccount) {
-                const freshState = await context.storageState({ path: this.sessionPath });
-                InstagramSessionStorage.persist(freshState);
-                console.log(`[Instagram Auth] ✅ Successfully active as @${targetAccount}! Session persisted.`);
-                return true;
-            }
+                if (page.url().includes('/challenge/')) {
+                    console.warn(`[Instagram Auth] ⚠️ Instagram security checkpoint detected: ${page.url()}`);
+                }
 
-            if (activeUser) {
-                console.log(`[Instagram Auth] 🔄 Logged in as @${activeUser}. Switching to @${targetAccount}...`);
-                const switched = await this.trySwitchToTargetAccount(page, context);
-                if (switched) {
+                await this.dismissPopups(page);
+
+                // Step 4: Verify who is active after login
+                const activeUser = await this.getActiveUsername(page);
+                console.log(`[Instagram Auth] 👤 Active account after login attempt: @${activeUser || 'none (still logged out)'}`);
+
+                if (activeUser === targetAccount) {
                     const freshState = await context.storageState({ path: this.sessionPath });
                     InstagramSessionStorage.persist(freshState);
-                    console.log(`[Instagram Auth] ✅ Successfully switched to @${targetAccount}! Session persisted.`);
+                    console.log(`[Instagram Auth] ✅ Successfully active as @${targetAccount}! Session persisted.`);
                     return true;
                 }
-            }
 
-            console.warn(`[Instagram Auth] ❌ Autonomous login did not reach @${targetAccount}. Active: @${activeUser}`);
-            return false;
-        } catch (e) {
-            console.warn(`[Instagram Auth] Autonomous login attempt error:`, e.message);
-            return false;
+                if (activeUser) {
+                    console.log(`[Instagram Auth] 🔄 Logged in as @${activeUser}. Switching to @${targetAccount}...`);
+                    const switched = await this.trySwitchToTargetAccount(page, context);
+                    if (switched) {
+                        const freshState = await context.storageState({ path: this.sessionPath });
+                        InstagramSessionStorage.persist(freshState);
+                        console.log(`[Instagram Auth] ✅ Successfully switched to @${targetAccount}! Session persisted.`);
+                        return true;
+                    }
+                }
+            } catch (e) {
+                console.warn(`[Instagram Auth] Autonomous login attempt error for @${mainUsername}:`, e.message);
+            }
         }
+
+        console.warn(`[Instagram Auth] ❌ Autonomous login could not reach @${targetAccount}.`);
+        return false;
     }
 
     /**
