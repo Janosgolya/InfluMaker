@@ -59,74 +59,194 @@ class InstagramBrowserUploader {
 
     /**
      * Self-healing autonomous login when session cookies expire
+     *
+     * @secretsofthelondonmansion is a LINKED CREATOR account under bocianjanusz.
+     * It has NO independent password. The correct flow is:
+     * 1. Login as bocianjanusz (main account) using INSTAGRAM_PASSWORD
+     * 2. Switch to secretsofthelondonmansion via account switcher
      */
     async attemptCredentialLogin(page, context) {
-        const username = (process.env.INSTAGRAM_USERNAME || 'secretsofthelondonmansion').trim();
+        // Use bocianjanusz as the login account (the main account that holds the creator profile)
+        const mainUsername = (process.env.INSTAGRAM_USERNAME || 'bocianjanusz').trim();
         const password = (process.env.INSTAGRAM_PASSWORD || process.env.INSTAGRAM_PASS || '').trim();
+        const targetAccount = 'secretsofthelondonmansion';
 
         if (!password) {
             console.log(`[Instagram Auth] ℹ️ No INSTAGRAM_PASSWORD in environment. Cannot perform autonomous credential login.`);
             return false;
         }
 
-        console.log(`[Instagram Auth] 🤖 Attempting autonomous credential login for @${username}...`);
+        console.log(`[Instagram Auth] 🤖 Attempting autonomous login as @${mainUsername}, then switching to @${targetAccount}...`);
 
         try {
-            // If on landing screen showing another profile (e.g. "Use another profile")
-            const useAnotherBtn = page.locator('button:has-text("Use another profile"), div[role="button"]:has-text("Use another profile"), span:has-text("Use another profile")');
-            if (await useAnotherBtn.count() > 0) {
-                console.log(`[Instagram Auth] Clicking "Use another profile"...`);
-                await useAnotherBtn.first().click();
-                await page.waitForTimeout(3000);
-            }
+            // Step 1: Handle one-tap screen showing bocianjanusz "Continue"
+            const continueBtn = page.locator('div[role="button"]:has-text("Continue"), button:has-text("Continue")').first();
+            const hasContinue = await continueBtn.count() > 0 && await continueBtn.isVisible().catch(() => false);
 
-            // Ensure on login page
-            if (!page.url().includes('/accounts/login')) {
+            if (hasContinue) {
+                console.log(`[Instagram Auth] 📲 One-tap screen detected. Clicking "Continue as ${mainUsername}"...`);
+                await continueBtn.click();
+                await page.waitForTimeout(6000);
+                await this.dismissPopups(page);
+            } else {
+                // Go to login page and login with main account username + password
+                console.log(`[Instagram Auth] 📲 Navigating to login page...`);
                 await page.goto('https://www.instagram.com/accounts/login/', { waitUntil: 'domcontentloaded', timeout: 30000 });
                 await page.waitForTimeout(3000);
-            }
 
-            const userInput = page.locator('input[name="username"], input[name="email"], input[type="text"]').first();
-            const passInput = page.locator('input[name="password"], input[type="password"]').first();
+                const userInput = page.locator('input[name="username"], input[name="email"]').first();
+                const passInput = page.locator('input[name="password"], input[type="password"]').first();
 
-            await userInput.waitFor({ state: 'visible', timeout: 15000 });
-            await userInput.fill(username);
-            await page.waitForTimeout(500);
-
-            await passInput.waitFor({ state: 'visible', timeout: 15000 });
-            await passInput.fill(password);
-            await page.waitForTimeout(500);
-
-            const submitBtn = page.locator('button[type="submit"]').first();
-            await submitBtn.click();
-            console.log(`[Instagram Auth] 🔑 Submitted credentials, waiting for response...`);
-            await page.waitForTimeout(6000);
-
-            // Handle 2FA Challenge if prompted
-            const codeInput = page.locator('input[name="verificationCode"], input[name="security_code"], input[type="tel"]').first();
-            if (await codeInput.count() > 0 && process.env.INSTAGRAM_2FA_SECRET) {
-                console.log(`[Instagram Auth] 🛡️ 2FA Challenge detected! Generating TOTP code...`);
-                const totpCode = this.generateTOTP(process.env.INSTAGRAM_2FA_SECRET);
-                await codeInput.fill(totpCode);
+                await userInput.waitFor({ state: 'visible', timeout: 15000 });
+                await userInput.fill(mainUsername);
                 await page.waitForTimeout(500);
-                const confirm2fa = page.locator('button:has-text("Confirm"), button:has-text("Potwierdź"), button[type="button"]:has-text("Log In")').first();
-                if (await confirm2fa.count() > 0) {
-                    await confirm2fa.click();
-                } else {
-                    await page.keyboard.press('Enter');
+
+                await passInput.waitFor({ state: 'visible', timeout: 15000 });
+                await passInput.fill(password);
+                await page.waitForTimeout(500);
+
+                await page.locator('button[type="submit"]').first().click();
+                console.log(`[Instagram Auth] 🔑 Submitted credentials, waiting for login...`);
+                await page.waitForTimeout(7000);
+
+                // Handle 2FA if prompted
+                const codeInput = page.locator('input[name="verificationCode"], input[name="security_code"], input[type="tel"]').first();
+                if (await codeInput.count() > 0 && process.env.INSTAGRAM_2FA_SECRET) {
+                    console.log(`[Instagram Auth] 🛡️ 2FA challenge detected! Generating TOTP...`);
+                    const totpCode = this.generateTOTP(process.env.INSTAGRAM_2FA_SECRET);
+                    await codeInput.fill(totpCode);
+                    await page.waitForTimeout(500);
+                    const confirm2fa = page.locator('button:has-text("Confirm"), button:has-text("Potwierdź")').first();
+                    if (await confirm2fa.count() > 0) await confirm2fa.click();
+                    else await page.keyboard.press('Enter');
+                    await page.waitForTimeout(7000);
                 }
-                await page.waitForTimeout(6000);
+
+                await this.dismissPopups(page);
             }
 
-            await this.dismissPopups(page);
+            // Step 2: Now logged in as bocianjanusz — switch to secretsofthelondonmansion
+            const currentUser = await page.evaluate(() => {
+                for (const a of document.querySelectorAll('a[href^="/"]')) {
+                    const h = a.getAttribute('href');
+                    if (h && !h.startsWith('/explore') && !h.startsWith('/reels') && !h.startsWith('/direct') && !h.startsWith('/accounts') && !h.startsWith('/stories') && h.split('/').filter(Boolean).length === 1) {
+                        return h.replace(/\//g, '').trim().toLowerCase();
+                    }
+                }
+                return null;
+            });
+            console.log(`[Instagram Auth] 👤 Currently logged in as: @${currentUser}`);
 
-            // Save fresh session
+            if (currentUser !== targetAccount) {
+                // Switch account via sidebar "More" menu
+                console.log(`[Instagram Auth] 🔄 Switching to @${targetAccount}...`);
+                const moreBtn = page.locator('svg[aria-label="Settings"], svg[aria-label="Ustawienia"], span:has-text("More"), span:has-text("Więcej")').first();
+                if (await moreBtn.count() > 0 && await moreBtn.isVisible().catch(() => false)) {
+                    await moreBtn.click();
+                    await page.waitForTimeout(1500);
+                    const switchBtn = page.locator('span:has-text("Switch accounts"), span:has-text("Przełącz konta")').first();
+                    if (await switchBtn.count() > 0) {
+                        await switchBtn.click();
+                        await page.waitForTimeout(2000);
+                        const bettyBtn = page.locator(`button:has-text("${targetAccount}"), a[href="/${targetAccount}/"]`).first();
+                        if (await bettyBtn.count() > 0) {
+                            await bettyBtn.click();
+                            await page.waitForTimeout(5000);
+                            await this.dismissPopups(page);
+                        }
+                    }
+                }
+            }
+
+            // Final verification
+            const finalUser = await page.evaluate(() => {
+                for (const a of document.querySelectorAll('a[href^="/"]')) {
+                    const h = a.getAttribute('href');
+                    if (h && !h.startsWith('/explore') && !h.startsWith('/reels') && !h.startsWith('/direct') && !h.startsWith('/accounts') && !h.startsWith('/stories') && h.split('/').filter(Boolean).length === 1) {
+                        return h.replace(/\//g, '').trim().toLowerCase();
+                    }
+                }
+                return null;
+            });
+            console.log(`[Instagram Auth] 👤 Final active account: @${finalUser}`);
+
+            // Save fresh session regardless
             const freshState = await context.storageState({ path: this.sessionPath });
             InstagramSessionStorage.persist(freshState);
-            console.log(`[Instagram Auth] ✅ Autonomous login successful! Fresh session encrypted & persisted.`);
             return true;
         } catch (e) {
             console.warn(`[Instagram Auth] Autonomous login attempt error:`, e.message);
+            return false;
+        }
+    }
+
+    /**
+     * Switch the active Instagram session to secretsofthelondonmansion
+     * using the account switcher in the sidebar.
+     */
+    async trySwitchToTargetAccount(page, context) {
+        const targetAccount = 'secretsofthelondonmansion';
+        try {
+            // Try clicking the avatar/profile icon at bottom of sidebar to open menu
+            const avatarBtn = page.locator('img[alt*="bocianjanusz"], img[data-testid="user-avatar"], a[href="/bocianjanusz/"] img').first();
+            if (await avatarBtn.count() > 0) {
+                await avatarBtn.click();
+                await page.waitForTimeout(2000);
+            }
+
+            // Try "Switch accounts" option in the more menu
+            const moreSelectors = [
+                'svg[aria-label="More"], svg[aria-label="Więcej"]',
+                'div[role="button"]:has(svg[aria-label="Settings"])',
+                'span:has-text("More")',
+                'span:has-text("Więcej")'
+            ];
+            for (const sel of moreSelectors) {
+                const el = page.locator(sel).first();
+                if (await el.count() > 0 && await el.isVisible().catch(() => false)) {
+                    await el.click();
+                    await page.waitForTimeout(1500);
+                    break;
+                }
+            }
+
+            const switchBtn = page.locator('span:has-text("Switch accounts"), span:has-text("Przełącz konta"), div:has-text("Switch accounts"), div:has-text("Przełącz konta")').first();
+            if (await switchBtn.count() > 0) {
+                await switchBtn.click();
+                await page.waitForTimeout(2000);
+                // Look for Betty's account in the switcher list
+                const bettyBtn = page.locator(`div:has-text("${targetAccount}") [role="button"], button:has-text("${targetAccount}"), a[href="/${targetAccount}/"]`).first();
+                if (await bettyBtn.count() > 0) {
+                    await bettyBtn.click();
+                    await page.waitForTimeout(5000);
+                    await this.dismissPopups(page);
+                    // Save refreshed session
+                    const freshState = await context.storageState({ path: this.sessionPath });
+                    InstagramSessionStorage.persist(freshState);
+                    console.log(`[Instagram Auth] ✅ Switched to @${targetAccount} and saved session.`);
+                    return true;
+                }
+            }
+
+            // Last resort: try direct switch URL (doesn't always work but worth trying)
+            console.log(`[Instagram Auth] Trying direct switch via /api/v1/accounts/set_contactpoint_display/...`);
+            await page.goto(`https://www.instagram.com/${targetAccount}/`, { waitUntil: 'domcontentloaded', timeout: 20000 });
+            await page.waitForTimeout(3000);
+
+            const finalUrl = page.url();
+            const finalUser = await page.evaluate(() => {
+                for (const a of document.querySelectorAll('a[href^="/"]')) {
+                    const h = a.getAttribute('href');
+                    if (h && !h.startsWith('/explore') && !h.startsWith('/reels') && !h.startsWith('/direct') && !h.startsWith('/accounts') && !h.startsWith('/stories') && h.split('/').filter(Boolean).length === 1) {
+                        return h.replace(/\//g, '').trim().toLowerCase();
+                    }
+                }
+                return null;
+            });
+            console.log(`[Instagram Auth] After direct nav: finalUser=${finalUser}`);
+            return finalUser === targetAccount;
+        } catch (e) {
+            console.warn(`[Instagram Auth] trySwitchToTargetAccount error:`, e.message);
             return false;
         }
     }
@@ -190,6 +310,7 @@ class InstagramBrowserUploader {
             await this.dismissPopups(page);
 
             // Strict Account Verification - NEVER publish to a personal account
+            // If bocianjanusz is detected, attempt to switch to secretsofthelondonmansion
             const activeUsername = await page.evaluate(() => {
                 const links = Array.from(document.querySelectorAll('a[href^="/"]'));
                 for (const link of links) {
@@ -204,7 +325,12 @@ class InstagramBrowserUploader {
             console.log(`[Instagram] 👤 Active logged-in username detected: @${activeUsername}`);
 
             if (activeUsername && activeUsername !== 'secretsofthelondonmansion') {
-                throw new Error(`KRYTYCZNY BŁĄD KONTA: Wykryto zalogowane konto @${activeUsername} zamiast @secretsofthelondonmansion! Publikacja została zablokowana. Uruchom LOGIN_INSTAGRAM.bat i zaloguj się bezpośrednio na konto @secretsofthelondonmansion.`);
+                console.log(`[Instagram] 🔄 Currently on @${activeUsername}, attempting switch to @secretsofthelondonmansion...`);
+                // Try account switcher via avatar menu in the sidebar
+                const switched = await this.trySwitchToTargetAccount(page, context);
+                if (!switched) {
+                    throw new Error(`KRYTYCZNY BŁĄD KONTA: Wykryto zalogowane konto @${activeUsername} zamiast @secretsofthelondonmansion! Nie udało się przełączyć konta. Uruchom LOGIN_INSTAGRAM.bat.`);
+                }
             }
 
             console.log(`[Instagram] 🔍 Opening Create Post modal...`);
