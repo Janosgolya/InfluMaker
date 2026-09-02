@@ -32,32 +32,14 @@ async function loginInstagram() {
     await page.goto('https://www.instagram.com', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(3000);
 
-    // 1. If Instagram shows a one-tap screen locked to personal account (e.g. bocianjanusz), automatically click "Use another profile"
-    try {
-        const useAnotherBtn = page.locator('button:has-text("Use another profile"), div[role="button"]:has-text("Use another profile"), span:has-text("Use another profile"), button:has-text("Użyj innego profilu"), div[role="button"]:has-text("Użyj innego profilu"), span:has-text("Użyj innego profilu")');
-        if (await useAnotherBtn.count() > 0) {
-            console.log(`👉 Wykryto ekran pojedynczego konta. Klikam automatycznie 'Użyj innego profilu', aby otworzyć wybór i logowanie...`);
-            await useAnotherBtn.first().click();
-            await page.waitForTimeout(2000);
-        }
-    } catch (e) {}
-
-    // 2. If logged in to another account on feed, automatically open "Switch accounts" modal
-    try {
-        const moreBtn = page.locator('svg[aria-label="Settings"], svg[aria-label="Ustawienia"], span:has-text("More"), span:has-text("Więcej")').first();
-        if (await moreBtn.count() > 0 && await moreBtn.isVisible()) {
-            console.log(`👉 Wykryto zalogowane inne konto. Otwieram menu 'Więcej' -> 'Przełącz konta'...`);
-            await moreBtn.click();
-            await page.waitForTimeout(1000);
-            const switchBtn = page.locator('span:has-text("Switch accounts"), span:has-text("Przełącz konta"), button:has-text("Switch accounts"), button:has-text("Przełącz konta")').first();
-            if (await switchBtn.count() > 0 && await switchBtn.isVisible()) {
-                await switchBtn.click();
-                console.log(`📋 Okno wyboru Twoich kont zostało otwarte!`);
-            }
-        }
-    } catch (e) {}
-
     console.log(`\n======================================================`);
+    console.log(`👉 INSTRUKCJA (Konto Betty jest powiązane z Twoim kontem głównym):`);
+    console.log(`   1. Kliknij 'Kontynuuj jako bocianjanusz' (lub zaloguj się na swoje konto główne).`);
+    console.log(`   2. Po zalogowaniu przełącz profil na: @secretsofthelondonmansion`);
+    console.log(`      (klikając awatar / 'Przełącz konto' / 'Switch').`);
+    console.log(`   3. W ułamku sekundy po przełączeniu na Betty, skrypt automatycznie`);
+    console.log(`      zapisze sesję i zaszyfruje ją dla chmury.`);
+    console.log(`======================================================\n`);
     console.log(`👉 W OTWARTYM OKNIE PRZEGLĄDARKI:`);
     console.log(`   1. Jeśli widzisz listę profili - wybierz @secretsofthelondonmansion,`);
     console.log(`   2. Lub wpisz login: secretsofthelondonmansion i hasło.`);
