@@ -2463,5 +2463,42 @@
     "hook": "POV: You caught the inn's new maid in the quiet corridor...",
     "timestamp": "2026-09-03T22:33:13.540Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "MIDDAY_SFW_Q9_S1_hf_20260817_183221_993db6e7-cc8a-41bd-bc2c-3c892e1bc8db.png",
+    "theme": "MIDDAY",
+    "price": "Included in Subscription",
+    "priceCents": 0,
+    "audience": "subscribers",
+    "timestamp": "2026-09-04T11:01:05.387Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Pinterest",
+    "imageFile": "MIDDAY_SFW_Q9_S3_hf_20260816_175842_84bdf7ce-8049-49c6-b148-d24e8822a14a.png",
+    "theme": "MIDDAY",
+    "title": "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic",
+    "board": "18th Century Aesthetic & Maid Secrets",
+    "link": "https://fanvue.com/bettyryal",
+    "timestamp": "2026-09-04T11:01:58.638Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Twitter",
+    "imageFile": "MIDDAY_SFW_Q9_S3_hf_20260816_175842_84bdf7ce-8049-49c6-b148-d24e8822a14a.png",
+    "theme": "MIDDAY",
+    "tweetText": "Scrubbing the grand halls taught me that the quietest maids hear the loudest secrets.\n\nhttps://fanvue.com/bettyryal\n\n#BettyRyal #18thCentury #PeriodDrama",
+    "timestamp": "2026-09-04T11:02:28.109Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "MIDDAY_SFW_Q9_S1_hf_20260817_183943_8db6dcf0-0adc-44e3-a1db-970b7419964c.png",
+    "theme": "MIDDAY",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/MIDDAY_SFW_Q9_S1_hf_20260817_183943_8db6dcf0-0adc-44e3-a1db-970b7419964c_tiktok_9x16.jpg",
+    "hook": "POV: You caught the inn's new maid in the quiet corridor...",
+    "timestamp": "2026-09-04T11:03:09.538Z",
+    "status": "PUBLISHED"
   }
 ]
