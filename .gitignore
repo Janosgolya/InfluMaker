@@ -20,6 +20,7 @@ test-results/
 playwright-report/
 .tempmediaStorage/
 temp_insta_profile/
+config/*.png
 RawGenerations/
 BettyRyal_18centuryServant/RawGenerations/
 BettyRyal_18centuryServant/Rejected_Slop/

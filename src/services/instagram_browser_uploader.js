@@ -78,7 +78,11 @@ class InstagramBrowserUploader {
 
     /**
      * Accurately get currently active logged-in Instagram username.
-     * Prevents footer links like /popular/, /about/, /terms/ from ever being misidentified as handles.
+     * Checks:
+     * 1. Left navigation rail profile link (avatar with alt text or href)
+     * 2. Direct profile page owner controls ("Edit profile" / "View archive")
+     * 3. Right sidebar user profile card next to "Switch" / "Przełącz"
+     * Strictly avoids matching friend stories or random feed post authors.
      */
     async getActiveUsername(page) {
         const IG_RESERVED = [
@@ -86,46 +90,75 @@ class InstagramBrowserUploader {
             'popular', 'about', 'legal', 'privacy', 'terms', 'locations', 'directory',
             'meta', 'threads', 'developer', 'api', 'help', 'blog', 'jobs', 'press',
             'contact', 'lite', 'web', 'settings', 'emailsignup', 'login', 'signup',
-            'password', 'download', 'support', 'terms_and_policies'
+            'password', 'download', 'support', 'terms_and_policies', 'p', 'reel', 'tv'
         ];
 
         try {
             return await page.evaluate((reservedList) => {
                 const reserved = new Set(reservedList.map(r => r.toLowerCase()));
 
-                // Priority 1: Navigation elements (sidebar/nav profile link)
-                const navLinks = Array.from(document.querySelectorAll('nav a[href^="/"], div[role="navigation"] a[href^="/"], header a[href^="/"]'));
-                for (const a of navLinks) {
-                    const href = a.getAttribute('href') || '';
-                    const parts = href.split('/').filter(Boolean);
-                    if (parts.length === 1 && !reserved.has(parts[0].toLowerCase())) {
-                        return parts[0].toLowerCase();
-                    }
-                }
-
-                // Priority 2: Avatar img alt text ("username's profile picture")
-                const profileImgs = Array.from(document.querySelectorAll('img[alt*="profile picture"], img[alt*="zdjęcie profilowe"]'));
-                for (const img of profileImgs) {
-                    const alt = img.getAttribute('alt') || '';
-                    const match = alt.match(/^([^'’s]+)['’]s profile picture/i) || alt.match(/Zdjęcie profilowe użytkownika ([^\s]+)/i);
-                    if (match && match[1] && !reserved.has(match[1].trim().toLowerCase())) {
-                        return match[1].trim().toLowerCase();
-                    }
-                }
-
-                // Priority 3: Non-footer links strictly validating username characters
-                const links = Array.from(document.querySelectorAll('a[href^="/"]'));
-                for (const link of links) {
-                    if (link.closest('footer')) continue;
-                    const href = link.getAttribute('href') || '';
-                    const parts = href.split('/').filter(Boolean);
-                    if (parts.length === 1) {
-                        const candidate = parts[0].toLowerCase();
-                        if (!reserved.has(candidate) && /^[a-zA-Z0-9._]{2,30}$/.test(candidate)) {
-                            return candidate;
+                // Priority 1: Left navigation rail profile link (contains avatar img, rect.x < 150)
+                const navAnchors = Array.from(document.querySelectorAll('a[href^="/"]'));
+                for (const a of navAnchors) {
+                    const rect = a.getBoundingClientRect();
+                    if (rect.x < 150 && rect.width > 0 && rect.height > 0) {
+                        const img = a.querySelector('img');
+                        if (img) {
+                            const alt = img.getAttribute('alt') || '';
+                            const match = alt.match(/^([a-zA-Z0-9._]+)['’]s profile picture/i) || alt.match(/Zdjęcie profilowe użytkownika ([a-zA-Z0-9._]+)/i);
+                            if (match && match[1]) {
+                                const handle = match[1].toLowerCase();
+                                if (!reserved.has(handle)) return handle;
+                            }
+                            const handle = (a.getAttribute('href') || '').replace(/\//g, '').toLowerCase();
+                            if (handle && !reserved.has(handle) && /^[a-zA-Z0-9._]{2,30}$/.test(handle)) {
+                                return handle;
+                            }
                         }
                     }
                 }
+
+                // Priority 2: If currently on a profile page (e.g. /secretsofthelondonmansion/)
+                const currentPath = window.location.pathname.replace(/^\/+|\/+$/g, '');
+                if (currentPath && !reserved.has(currentPath) && /^[a-zA-Z0-9._]{2,30}$/.test(currentPath)) {
+                    const hasOwnerControls = Array.from(document.querySelectorAll('a, button')).some(el => 
+                        /Edit profile|Edytuj profil|View archive|Wyświetl archiwum/i.test(el.innerText || el.textContent || '') ||
+                        (el.getAttribute('href') && el.getAttribute('href').includes('/accounts/edit/'))
+                    );
+                    if (hasOwnerControls) {
+                        return currentPath.toLowerCase();
+                    }
+                }
+
+                // Priority 3: Right sidebar user profile card (next to Switch / Przełącz button)
+                const switchButtons = Array.from(document.querySelectorAll('button, div[role="button"], span')).filter(el => 
+                    /^(Switch|Przełącz)$/i.test((el.innerText || '').trim())
+                );
+                for (const switchBtn of switchButtons) {
+                    const parentRow = switchBtn.closest('div');
+                    const rowContainer = parentRow ? parentRow.parentElement : null;
+                    if (rowContainer) {
+                        const userLink = rowContainer.querySelector('a[href^="/"]');
+                        if (userLink) {
+                            const handle = (userLink.getAttribute('href') || '').replace(/\//g, '').toLowerCase();
+                            if (handle && !reserved.has(handle) && /^[a-zA-Z0-9._]{2,30}$/.test(handle)) {
+                                return handle;
+                            }
+                        }
+                    }
+                }
+
+                // Priority 4: Profile link with text "Profile" or "Profil"
+                for (const a of navAnchors) {
+                    const text = (a.innerText || '').trim().toLowerCase();
+                    if (text === 'profile' || text === 'profil') {
+                        const handle = (a.getAttribute('href') || '').replace(/\//g, '').toLowerCase();
+                        if (handle && !reserved.has(handle) && /^[a-zA-Z0-9._]{2,30}$/.test(handle)) {
+                            return handle;
+                        }
+                    }
+                }
+
                 return null;
             }, IG_RESERVED);
         } catch (e) {
@@ -363,14 +396,24 @@ class InstagramBrowserUploader {
         const page = await context.newPage();
 
         try {
-            console.log(`[Instagram] 🌐 Opening Instagram Home...`);
-            await page.goto('https://www.instagram.com', { waitUntil: 'domcontentloaded', timeout: 45000 });
+            console.log(`[Instagram] 🌐 Opening Instagram (@secretsofthelondonmansion profile)...`);
+            await page.goto('https://www.instagram.com/secretsofthelondonmansion/', { waitUntil: 'domcontentloaded', timeout: 45000 });
             await page.waitForTimeout(4000);
             await this.dismissPopups(page);
 
             // Check if already active as Betty
             let activeUsername = await this.getActiveUsername(page);
             console.log(`[Instagram] 👤 Initial active account: @${activeUsername || 'none (logged out)'}`);
+
+            // Fallback check on home feed if not immediately confirmed on profile
+            if (activeUsername !== 'secretsofthelondonmansion') {
+                console.log(`[Instagram] 🔍 Checking home feed for active session...`);
+                await page.goto('https://www.instagram.com', { waitUntil: 'domcontentloaded', timeout: 30000 });
+                await page.waitForTimeout(4000);
+                await this.dismissPopups(page);
+                activeUsername = await this.getActiveUsername(page);
+                console.log(`[Instagram] 👤 Active account on Home: @${activeUsername || 'none'}`);
+            }
 
             if (activeUsername !== 'secretsofthelondonmansion') {
                 console.log(`[Instagram] ⚠️ Not active as @secretsofthelondonmansion. Attempting autonomous self-healing login...`);

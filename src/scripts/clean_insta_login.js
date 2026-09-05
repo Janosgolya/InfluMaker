@@ -1,6 +1,7 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
+const InstagramSessionStorage = require('../services/instagram_session_storage');
 
 const SESSION_PATH = path.join(__dirname, '../../config/instagram_session.json');
 const TEMP_PROFILE_DIR = path.join(__dirname, '../../temp_insta_profile');
@@ -59,7 +60,11 @@ async function cleanLogin() {
 
                     await page.waitForTimeout(3000);
                     await context.storageState({ path: SESSION_PATH });
-                    console.log(`💾 Sesja zapisana pomyślnie w config/instagram_session.json!`);
+                    try {
+                        const savedState = JSON.parse(fs.readFileSync(SESSION_PATH, 'utf8'));
+                        InstagramSessionStorage.persist(savedState);
+                    } catch (e) {}
+                    console.log(`💾 Sesja zapisana pomyślnie w config/instagram_session.json oraz zaszyfrowana!`);
 
                     await page.waitForTimeout(2000);
                     await context.close();
