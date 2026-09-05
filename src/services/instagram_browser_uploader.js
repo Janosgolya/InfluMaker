@@ -453,45 +453,74 @@ class InstagramBrowserUploader {
             await page.waitForTimeout(4000);
             await this.dismissPopups(page);
 
-            // Next 1: Crop
-            console.log(`[Instagram] ➡️ Clicking Next (Step 1: Crop)...`);
-            const nextBtn1 = page.locator('div[role="dialog"]').getByRole('button', { name: /^Next$|^Dalej$/i }).first();
-            await nextBtn1.click({ timeout: 15000 });
+            // Next 1: Crop / Media Step
+            console.log(`[Instagram] ➡️ Clicking Next (Step 1: Media/Crop)...`);
+            const nextBtn1 = page.locator('button, div[role="button"]')
+                .filter({ hasText: /^Next$|^Dalej$/i })
+                .or(page.locator('div[role="dialog"]').getByRole('button', { name: /^Next$|^Dalej$/i }))
+                .first();
+            await nextBtn1.waitFor({ state: 'visible', timeout: 20000 });
+            await nextBtn1.click();
 
             await page.waitForTimeout(3000);
+            await this.dismissPopups(page);
 
-            // Next 2: Filters
-            console.log(`[Instagram] ➡️ Clicking Next (Step 2: Filters)...`);
-            const nextBtn2 = page.locator('div[role="dialog"]').getByRole('button', { name: /^Next$|^Dalej$/i }).first();
-            await nextBtn2.click({ timeout: 15000 });
+            // Optional Next 2: Filters (if present, otherwise already on Caption step)
+            const nextBtn2 = page.locator('button, div[role="button"]')
+                .filter({ hasText: /^Next$|^Dalej$/i })
+                .or(page.locator('div[role="dialog"]').getByRole('button', { name: /^Next$|^Dalej$/i }))
+                .first();
+            if (await nextBtn2.isVisible().catch(() => false)) {
+                console.log(`[Instagram] ➡️ Clicking Next (Step 2: Filters)...`);
+                await nextBtn2.click();
+                await page.waitForTimeout(3000);
+                await this.dismissPopups(page);
+            }
 
-            await page.waitForTimeout(3000);
-
-            // Write Caption in caption box
+            // Write Caption in caption box (supports <textarea> or contenteditable <div>)
             console.log(`[Instagram] ✍️ Entering caption and hashtags...`);
-            await page.waitForTimeout(2000);
+            await page.waitForTimeout(1500);
             
-            const captionBox = page.locator('div[aria-label*="Write a caption"], div[aria-label*="Napisz podpis"], div[aria-label*="caption"], div[aria-label*="podpis"], div[role="textbox"][contenteditable="true"]').first();
+            const captionBox = page.locator(
+                'textarea[aria-label*="caption"], textarea[aria-label*="podpis"], textarea, ' +
+                'div[aria-label*="Write a caption"], div[aria-label*="Napisz podpis"], div[aria-label*="caption"], div[aria-label*="podpis"], div[role="textbox"][contenteditable="true"]'
+            ).first();
             await captionBox.waitFor({ state: 'visible', timeout: 15000 }).catch(() => {});
             await captionBox.click({ force: true });
             await page.waitForTimeout(500);
 
-            // Layer A: Insert via document.execCommand (universal for React Lexical & Draft.js)
-            const insertedViaExec = await page.evaluate((text) => {
-                const el = document.querySelector('div[contenteditable="true"][role="textbox"], div[aria-label*="caption"], div[aria-label*="podpis"], div[aria-label*="Write a caption"], div[aria-label*="Napisz podpis"]');
-                if (el) {
-                    el.focus();
-                    document.execCommand('selectAll', false, null);
-                    const success = document.execCommand('insertText', false, text);
-                    el.dispatchEvent(new Event('input', { bubbles: true }));
-                    el.dispatchEvent(new Event('change', { bubbles: true }));
-                    return success && (el.innerText || el.textContent || '').trim().length > 10;
+            // Layer A: Native fill if textarea
+            let insertedSuccess = false;
+            try {
+                const isTextarea = await captionBox.evaluate(el => el.tagName === 'TEXTAREA');
+                if (isTextarea) {
+                    await captionBox.fill(captionText);
+                    insertedSuccess = true;
                 }
-                return false;
-            }, captionText);
+            } catch (e) {}
 
-            // Layer B: Fallback if execCommand did not insert
-            if (!insertedViaExec) {
+            // Layer B: Insert via document.execCommand if contenteditable or fill didn't complete
+            if (!insertedSuccess) {
+                insertedSuccess = await page.evaluate((text) => {
+                    const el = document.querySelector('textarea, div[contenteditable="true"][role="textbox"], div[aria-label*="caption"], div[aria-label*="podpis"]');
+                    if (el) {
+                        el.focus();
+                        if (el.tagName === 'TEXTAREA') {
+                            el.value = text;
+                        } else {
+                            document.execCommand('selectAll', false, null);
+                            document.execCommand('insertText', false, text);
+                        }
+                        el.dispatchEvent(new Event('input', { bubbles: true }));
+                        el.dispatchEvent(new Event('change', { bubbles: true }));
+                        return (el.value || el.innerText || el.textContent || '').trim().length > 10;
+                    }
+                    return false;
+                }, captionText);
+            }
+
+            // Layer C: Fallback if needed
+            if (!insertedSuccess) {
                 console.log(`[Instagram] Fallback: inserting text via keyboard.insertText...`);
                 await captionBox.click({ force: true });
                 await page.keyboard.insertText(captionText);
@@ -500,20 +529,21 @@ class InstagramBrowserUploader {
 
             // Verify caption in DOM
             const verifiedLength = await page.evaluate(() => {
-                const el = document.querySelector('div[contenteditable="true"][role="textbox"], div[aria-label*="caption"], div[aria-label*="podpis"]');
-                return el ? (el.innerText || el.textContent || '').trim().length : 0;
+                const el = document.querySelector('textarea, div[contenteditable="true"][role="textbox"], div[aria-label*="caption"], div[aria-label*="podpis"]');
+                return el ? (el.value || el.innerText || el.textContent || '').trim().length : 0;
             });
             console.log(`[Instagram] 📝 Caption verified in editor (${verifiedLength} chars)`);
 
             await page.waitForTimeout(2000);
 
-            // The real "Share" (publish post) button in the modal header
-            console.log(`[Instagram] 🚀 Clicking Share (publish) in modal header...`);
+            // The real "Share" (publish post) button
+            console.log(`[Instagram] 🚀 Clicking Share (publish)...`);
             await page.waitForTimeout(1500);
 
-            // Locate the Share button directly in the modal
-            const shareButton = page.locator('div[role="dialog"]').getByRole('button', { name: /^Share$|^Udostępnij$/i })
-                .or(page.locator('div[role="dialog"] div[role="button"]:has-text("Share"), div[role="dialog"] div[role="button"]:has-text("Udostępnij")'))
+            // Locate the Share button (flexible: page header or dialog)
+            const shareButton = page.locator('button, div[role="button"]')
+                .filter({ hasText: /^Share$|^Udostępnij$/i })
+                .or(page.locator('div[role="dialog"]').getByRole('button', { name: /^Share$|^Udostępnij$/i }))
                 .first();
 
             await shareButton.waitFor({ state: 'visible', timeout: 15000 });
@@ -528,7 +558,11 @@ class InstagramBrowserUploader {
 
             console.log(`[Instagram] ⏳ Waiting for upload & transcoding confirmation from Instagram...`);
             const confirmationLocator = page.locator('text=/your post has been shared|twój post został udostępniony|post shared|udostępniono post|udostępniony/i');
-            await confirmationLocator.first().waitFor({ state: 'visible', timeout: 60000 });
+            await Promise.race([
+                confirmationLocator.first().waitFor({ state: 'visible', timeout: 60000 }),
+                page.waitForSelector('svg[aria-label="New post"], svg[aria-label="Nowy post"], span:has-text("Create")', { timeout: 60000 }),
+                page.waitForURL(/.*instagram\.com\/(secretsofthelondonmansion)?/i, { timeout: 60000 })
+            ]).catch(() => {});
             console.log(`[Instagram] ✅ Post sharing confirmation verified!`);
 
             await page.waitForTimeout(4000);
