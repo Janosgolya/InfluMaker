@@ -7,21 +7,30 @@ echo 📸 INFLUMAKER: INSTAGRAM CONNECTION MANAGER
 echo Target: @secretsofthelondonmansion
 echo ======================================================
 echo.
-echo  [1] Log in / Refresh Instagram Session (Opens Browser)
-echo  [2] Check Instagram Connection Health & Diagnostics
-echo  [3] Exit
+echo  [1] Direct Login in Clean Browser (Pre-fills @secretsofthelondonmansion)
+echo  [2] Quick Import sessionid from your normal browser (10 seconds)
+echo  [3] Check Instagram Connection Health & Diagnostics
+echo  [4] Exit
 echo.
-set /p choice="Select an option [1-3] (Default: 1): "
+set /p choice="Select an option [1-4] (Default: 1): "
 
-if "%choice%"=="2" goto health
-if "%choice%"=="3" exit /b 0
+if "%choice%"=="2" goto import
+if "%choice%"=="3" goto health
+if "%choice%"=="4" exit /b 0
 
 :login
 cls
 echo ======================================================
-echo 📸 LAUNCHING INSTAGRAM LOGIN HELPER...
+echo 📸 LAUNCHING DIRECT INSTAGRAM LOGIN HELPER...
 echo ======================================================
 node src/scripts/instagram_browser_login.js
+echo.
+pause
+exit /b 0
+
+:import
+cls
+node src/scripts/import_instagram_cookie.js
 echo.
 pause
 exit /b 0

@@ -69,41 +69,54 @@ async function dismissBanners(page) {
 
 async function loginInstagram() {
     console.log(`\n======================================================`);
-    console.log(`📸 INFLUMAKER: Instagram Bulletproof Login & Session Sync`);
+    console.log(`📸 INFLUMAKER: Instagram Direct Login & Session Capture`);
     console.log(`Target Account: @${TARGET_ACCOUNT}`);
     console.log(`======================================================`);
-    console.log(`Uruchamiam przeglądarkę z dedykowanym profilem...`);
+    console.log(`Uruchamiam czyste, odizolowane okno logowania (brak zapamiętanych innych kont)...`);
 
-    if (!fs.existsSync(PROFILE_DIR)) {
-        fs.mkdirSync(PROFILE_DIR, { recursive: true });
-    }
-
-    const context = await chromium.launchPersistentContext(PROFILE_DIR, {
+    const browser = await chromium.launch({
         headless: false,
-        viewport: null,
         args: [
             '--disable-blink-features=AutomationControlled',
             '--start-maximized'
-        ],
+        ]
+    });
+
+    const context = await browser.newContext({
+        viewport: null,
         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
     });
 
-    const page = context.pages().length > 0 ? context.pages()[0] : await context.newPage();
+    const page = await context.newPage();
 
-    console.log(`🌐 Otwieram https://www.instagram.com ...`);
-    await page.goto('https://www.instagram.com', { waitUntil: 'domcontentloaded' });
+    console.log(`🌐 Otwieram formularz logowania Instagrama...`);
+    await page.goto('https://www.instagram.com/accounts/login/', { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(2000);
     await dismissBanners(page);
 
+    // Auto-fill username with secretsofthelondonmansion
+    try {
+        const userInput = page.locator('input[name="email"], input[name="username"], input[type="text"]').first();
+        if (await userInput.count() > 0 && await userInput.isVisible({ timeout: 5000 }).catch(() => false)) {
+            await userInput.fill(TARGET_ACCOUNT);
+            console.log(`✍️ Automatycznie wpisano login: @${TARGET_ACCOUNT}`);
+
+            const passInput = page.locator('input[name="pass"], input[name="password"], input[type="password"]').first();
+            if (await passInput.count() > 0 && await passInput.isVisible({ timeout: 3000 }).catch(() => false)) {
+                await passInput.focus();
+                console.log(`👉 Kursor ustawiony w polu hasła. Wpisz hasło i kliknij Zaloguj się.`);
+            }
+        }
+    } catch (e) {}
+
     console.log(`\n======================================================`);
     console.log(`👉 INSTRUKCJA LOGOWANIA:`);
-    console.log(`   1. Jeśli widzisz przycisk 'Continue / Kontynuuj' dla bocianjanusz:`);
-    console.log(`      - Kliknij go i wpisz hasło, LUB kliknij 'Use another profile' i wpisz dane.`);
-    console.log(`   2. Po zalogowaniu upewnij się, że jesteś na profilu @${TARGET_ACCOUNT}:`);
-    console.log(`      - Jeśli jesteś na koncie głównym, kliknij 'Switch / Przełącz konta' i wybierz Betty.`);
-    console.log(`   3. Możesz też po prostu przejść na stronę: https://www.instagram.com/${TARGET_ACCOUNT}/`);
-    console.log(`   4. Jak tylko skrypt wykryje aktywne konto @${TARGET_ACCOUNT}`);
-    console.log(`      z poprawnym ciasteczkiem sesji, automatycznie zapisze i zaszyfruje dane!`);
+    console.log(`   1. Wpisz hasło dla konta @${TARGET_ACCOUNT} i kliknij 'Log in / Zaloguj się'.`);
+    console.log(`   (Wskazówka: jeśli konto powstało pod Twoim kontem głównym,`);
+    console.log(`    hasło może być takie samo jak do Twojego konta osobistego).`);
+    console.log(`   2. Jeśli pojawi się kod SMS lub weryfikacja 2FA - przepisz go w oknie.`);
+    console.log(`   3. Jak tylko zalogujesz się na konto Betty (@${TARGET_ACCOUNT}),`);
+    console.log(`      skrypt automatycznie przechwyci ciasteczka sesji i zamknie okno!`);
     console.log(`======================================================\n`);
 
     let lastReportedUser = null;

@@ -77,18 +77,55 @@ function importSession({ sessionid, ds_user_id = '34366700973', csrftoken = '' }
     const minifiedPath = path.join(__dirname, '../../config/instagram_session_minified.txt');
     fs.writeFileSync(minifiedPath, JSON.stringify(sessionData), 'utf8');
 
-    console.log(`✅ Session imported, saved to ${SESSION_PATH} and encrypted to config/.instagram_session.enc!`);
+    console.log(`\n======================================================`);
+    console.log(`✅ SUKCES! Ciasteczko zaimportowane i zweryfikowane!`);
+    console.log(`📁 1. Lokalna sesja: config/instagram_session.json`);
+    console.log(`🔒 2. Zaszyfrowana kopia: config/.instagram_session.enc`);
+    console.log(`📋 3. Token dla GitHub Secrets: config/instagram_session_minified.txt`);
+    console.log(`======================================================\n`);
     return sessionData;
 }
 
 if (require.main === module) {
-    const sessionid = process.argv[2];
-    const csrftoken = process.argv[3];
-    if (sessionid) {
-        importSession({ sessionid, csrftoken });
+    const readline = require('readline');
+    const sessionidArg = process.argv[2];
+    const csrfArg = process.argv[3];
+
+    if (sessionidArg) {
+        importSession({ sessionid: sessionidArg, csrftoken: csrfArg });
     } else {
-        console.log('Usage: node import_instagram_cookie.js <sessionid> [csrftoken]');
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+
+        console.log(`\n======================================================`);
+        console.log(`🍪 SZYBKI IMPORT CIASTECZKA INSTAGRAM (10 SEKUND)`);
+        console.log(`======================================================`);
+        console.log(`Jeśli jesteś już zalogowany na @secretsofthelondonmansion`);
+        console.log(`w swojej zwykłej przeglądarce (Chrome, Edge, Firefox, Brave):`);
+        console.log(`1. Wejdź na: https://www.instagram.com/secretsofthelondonmansion/`);
+        console.log(`2. Naciśnij F12 -> zakładka 'Application' (lub 'Aplikacja')`);
+        console.log(`3. Po lewej stronie: Cookies -> https://www.instagram.com`);
+        console.log(`4. Znajdź wiersz 'sessionid', skopiuj jego wartość.`);
+        console.log(`======================================================\n`);
+
+        rl.question('Wklej wartość sessionid: ', (answer) => {
+            rl.close();
+            const clean = (answer || '').trim();
+            if (!clean) {
+                console.log('Anulowano: brak wartości sessionid.');
+                process.exit(1);
+            }
+            try {
+                importSession({ sessionid: clean });
+            } catch (err) {
+                console.error('Błąd importu:', err.message);
+                process.exit(1);
+            }
+        });
     }
 }
 
 module.exports = importSession;
+
