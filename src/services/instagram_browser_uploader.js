@@ -457,7 +457,6 @@ class InstagramBrowserUploader {
             console.log(`[Instagram] ➡️ Clicking Next (Step 1: Media/Crop)...`);
             const nextBtn1 = page.locator('button, div[role="button"]')
                 .filter({ hasText: /^Next$|^Dalej$/i })
-                .or(page.locator('div[role="dialog"]').getByRole('button', { name: /^Next$|^Dalej$/i }))
                 .first();
             await nextBtn1.waitFor({ state: 'visible', timeout: 20000 });
             await nextBtn1.click();
@@ -468,7 +467,6 @@ class InstagramBrowserUploader {
             // Optional Next 2: Filters (if present, otherwise already on Caption step)
             const nextBtn2 = page.locator('button, div[role="button"]')
                 .filter({ hasText: /^Next$|^Dalej$/i })
-                .or(page.locator('div[role="dialog"]').getByRole('button', { name: /^Next$|^Dalej$/i }))
                 .first();
             if (await nextBtn2.isVisible().catch(() => false)) {
                 console.log(`[Instagram] ➡️ Clicking Next (Step 2: Filters)...`);
@@ -543,7 +541,6 @@ class InstagramBrowserUploader {
             // Locate the Share button (flexible: page header or dialog)
             const shareButton = page.locator('button, div[role="button"]')
                 .filter({ hasText: /^Share$|^Udostępnij$/i })
-                .or(page.locator('div[role="dialog"]').getByRole('button', { name: /^Share$|^Udostępnij$/i }))
                 .first();
 
             await shareButton.waitFor({ state: 'visible', timeout: 15000 });
