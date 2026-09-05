@@ -12,8 +12,17 @@ class InstagramBrowserUploader {
     }
 
     isLoggedIn() {
-        InstagramSessionStorage.restore();
-        return fs.existsSync(this.sessionPath) || !!(process.env.INSTAGRAM_PASSWORD || process.env.INSTAGRAM_PASS);
+        const session = InstagramSessionStorage.restore();
+        if (session && InstagramSessionStorage.isValidSession(session)) {
+            return true;
+        }
+        if (fs.existsSync(this.sessionPath)) {
+            try {
+                const data = JSON.parse(fs.readFileSync(this.sessionPath, 'utf8'));
+                if (InstagramSessionStorage.isValidSession(data)) return true;
+            } catch (e) {}
+        }
+        return false;
     }
 
     /**

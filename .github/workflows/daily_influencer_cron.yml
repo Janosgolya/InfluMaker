@@ -44,12 +44,8 @@ jobs:
           TWITTER_SESSION_JSON: ${{ secrets.TWITTER_SESSION_JSON }}
         run: |
           mkdir -p config
-          # 1. Restore Instagram from encrypted rotated git file, fallback to secret
+          # 1. Restore Instagram session (checks INSTAGRAM_SESSION_JSON secret, disk, or .instagram_session.enc with strict validation)
           node -e "require('./src/services/instagram_session_storage').restore()"
-          if [ ! -f config/instagram_session.json ] && [ -n "$INSTAGRAM_SESSION_JSON" ]; then
-            printf '%s' "$INSTAGRAM_SESSION_JSON" > config/instagram_session.json
-            echo "[Restore] Instagram session restored from secret ($(wc -c < config/instagram_session.json) bytes)"
-          fi
           if [ -n "$TIKTOK_SESSION_JSON" ]; then
             printf '%s' "$TIKTOK_SESSION_JSON" > config/tiktok_session.json
             echo "[Restore] TikTok session restored ($(wc -c < config/tiktok_session.json) bytes)"
@@ -88,6 +84,6 @@ jobs:
         run: |
           git config --global user.name "George [InfluMaker AI]"
           git config --global user.email "george@influmaker.local"
-          git add config/published_log.json config/.fanvue_auth.json config/.instagram_session.enc BettyRyal_18centuryServant/
+          git add config/published_log.json config/.fanvue_auth.json BettyRyal_18centuryServant/
           git diff-index --quiet HEAD || git commit -m "chore(george): update published_log and media queue after scheduled cycle [skip ci]"
           git push
