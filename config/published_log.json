@@ -2612,5 +2612,24 @@
     "hook": "POV: You caught the inn's new maid in the quiet corridor, her apron flapping as she hurried to the kitchen.",
     "timestamp": "2026-09-05T10:17:54.701Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "MIDDAY_SFW_Q9_S1_hf_20260817_191617_64d0babd-f885-4f80-8f32-2ec142974891.png",
+    "theme": "MIDDAY",
+    "price": "Included in Subscription",
+    "priceCents": 0,
+    "audience": "subscribers",
+    "timestamp": "2026-09-05T13:14:14.349Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "MIDDAY_SFW_Q9_S3_hf_20260816_175842_84bdf7ce-8049-49c6-b148-d24e8822a14a.png",
+    "theme": "MIDDAY",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/MIDDAY_SFW_Q9_S3_hf_20260816_175842_84bdf7ce-8049-49c6-b148-d24e8822a14a_tiktok_9x16.jpg",
+    "hook": "POV: You caught the inn's new maid in the quiet corridor...",
+    "timestamp": "2026-09-05T13:15:44.350Z",
+    "status": "PUBLISHED"
   }
 ]
