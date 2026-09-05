@@ -2650,5 +2650,24 @@
     "hook": "POV: You caught the inn's new maid in the quiet corridor...",
     "timestamp": "2026-09-05T13:48:13.471Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "MIDDAY_SFW_Q9_S3_hf_20260816_175842_84bdf7ce-8049-49c6-b148-d24e8822a14a.png",
+    "theme": "MIDDAY",
+    "price": "Included in Subscription",
+    "priceCents": 0,
+    "audience": "subscribers",
+    "timestamp": "2026-09-05T14:05:03.051Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "MORNING_SFW_Q8_S1_hf_20260816_174906_0ec393fc-7d80-4843-9796-405c5b7481f6.png",
+    "theme": "MORNING",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/MORNING_SFW_Q8_S1_hf_20260816_174906_0ec393fc-7d80-4843-9796-405c5b7481f6_tiktok_9x16.jpg",
+    "hook": "POV: You caught the inn's new maid in the quiet corridor...",
+    "timestamp": "2026-09-05T14:06:10.220Z",
+    "status": "PUBLISHED"
   }
 ]
