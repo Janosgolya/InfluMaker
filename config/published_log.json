@@ -2714,5 +2714,32 @@
     "hook": "POV: You caught the inn's new maid in the quiet corridor...",
     "timestamp": "2026-09-05T15:04:07.936Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "PREP_SFW_Q9_S1_hf_20260817_181203_6d028efb-b26d-4bcf-b4dd-910878c2d82b.png",
+    "theme": "PREP",
+    "price": "$7.99",
+    "priceCents": 799,
+    "audience": "subscribers",
+    "timestamp": "2026-09-05T18:01:23.569Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Instagram",
+    "imageFile": "PREP_SFW_Q9_S1_hf_20260816_175711_1e7ff61c-100d-48f0-8d0b-b12072941663.png",
+    "theme": "PREP",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/Instagram_Ready_Content/PREP_SFW_Q9_S1_hf_20260816_175711_1e7ff61c-100d-48f0-8d0b-b12072941663_insta_4x5.jpg",
+    "timestamp": "2026-09-05T18:01:52.663Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "PREP_SFW_Q9_S3_hf_20260817_181203_3bf2ba2d-0fb5-49a0-8540-52991d999c2b.png",
+    "theme": "PREP",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/PREP_SFW_Q9_S3_hf_20260817_181203_3bf2ba2d-0fb5-49a0-8540-52991d999c2b_tiktok_9x16.jpg",
+    "hook": "A punchy 1-line curiosity gap / POV hook\n\"POV: You caught the inn's new maid in the quiet corridor... a steamy surprise awaits!",
+    "timestamp": "2026-09-05T18:02:37.998Z",
+    "status": "PUBLISHED"
   }
 ]
