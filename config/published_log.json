@@ -3092,5 +3092,42 @@
     "hook": "POV: You caught the inn's new maid in the quiet corridor...",
     "timestamp": "2026-09-09T15:07:17.487Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "NIGHT_SFW_Q9_S1_hf_20260816_175842_0e41acc1-5119-4a4a-9b5a-ea902614543a.png",
+    "theme": "NIGHT",
+    "price": "$14.99",
+    "priceCents": 1499,
+    "audience": "subscribers",
+    "timestamp": "2026-09-09T19:10:30.915Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Instagram",
+    "imageFile": "NIGHT_SFW_Q8_S4_hf_20260816_171809_f3107643-f49e-4e61-804a-cd3d37a950dc.png",
+    "theme": "NIGHT",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/Instagram_Ready_Content/NIGHT_SFW_Q8_S4_hf_20260816_171809_f3107643-f49e-4e61-804a-cd3d37a950dc_insta_4x5.jpg",
+    "timestamp": "2026-09-09T19:10:59.722Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Pinterest",
+    "imageFile": "NIGHT_SFW_Q9_S1_hf_20260817_181203_de19a9e8-9505-4396-940c-5257a286953b.png",
+    "theme": "NIGHT",
+    "title": "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic",
+    "board": "18th Century Aesthetic & Maid Secrets",
+    "link": "https://fanvue.com/bettyryal",
+    "timestamp": "2026-09-09T19:11:27.908Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "NIGHT_SFW_Q9_S1_hf_20260816_175842_99fee2f1-d7fd-448c-8383-52f8f7d2ce89.png",
+    "theme": "NIGHT",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/NIGHT_SFW_Q9_S1_hf_20260816_175842_99fee2f1-d7fd-448c-8383-52f8f7d2ce89_tiktok_9x16.jpg",
+    "hook": "POV: You caught the inn's new maid in the quiet corridor... a candlelit secret.",
+    "timestamp": "2026-09-09T19:12:42.239Z",
+    "status": "PUBLISHED"
   }
 ]
