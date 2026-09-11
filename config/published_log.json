@@ -3309,5 +3309,50 @@
     "hook": "POV: You caught the inn's new maid in the quiet corridor...",
     "timestamp": "2026-09-11T19:06:31.857Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "NIGHT_SFW_Q9_S1_hf_20260817_184629_5c8fffac-fb0b-4c46-bc52-a9d08a7eb56a.png",
+    "theme": "NIGHT",
+    "price": "$14.99",
+    "priceCents": 1499,
+    "audience": "subscribers",
+    "timestamp": "2026-09-11T22:22:21.790Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Instagram",
+    "imageFile": "NIGHT_SFW_Q8_S5_hf_20260816_180014_f99daf80-c541-4e32-9e3b-da6f312b7ffa.png",
+    "theme": "NIGHT",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/Instagram_Ready_Content/NIGHT_SFW_Q8_S5_hf_20260816_180014_f99daf80-c541-4e32-9e3b-da6f312b7ffa_insta_4x5.jpg",
+    "timestamp": "2026-09-11T22:22:51.037Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Pinterest",
+    "imageFile": "NIGHT_SFW_Q9_S3_hf_20260816_175212_cfbe4e86-8d94-47a9-a4b5-d60c31d98faf.png",
+    "theme": "NIGHT",
+    "title": "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic",
+    "board": "18th Century Aesthetic & Maid Secrets",
+    "link": "https://fanvue.com/bettyryal",
+    "timestamp": "2026-09-11T22:23:20.082Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Twitter",
+    "imageFile": "NIGHT_SFW_Q9_S3_hf_20260816_171809_609b54c5-3902-4a5e-8641-4b62d45debf6.png",
+    "theme": "NIGHT",
+    "tweetText": "When the candles burn down and the manor sleeps, my diary is the only place I can be truly free.\n\nhttps://fanvue.com/bettyryal\n\n#BettyRyal #18thCentury #PeriodDrama",
+    "timestamp": "2026-09-11T22:23:34.752Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "NIGHT_SFW_Q9_S3_hf_20260816_171809_609b54c5-3902-4a5e-8641-4b62d45debf6.png",
+    "theme": "NIGHT",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/NIGHT_SFW_Q9_S3_hf_20260816_171809_609b54c5-3902-4a5e-8641-4b62d45debf6_tiktok_9x16.jpg",
+    "hook": "POV: You caught the inn's new maid in the quiet corridor...",
+    "timestamp": "2026-09-11T22:24:16.464Z",
+    "status": "PUBLISHED"
   }
 ]
