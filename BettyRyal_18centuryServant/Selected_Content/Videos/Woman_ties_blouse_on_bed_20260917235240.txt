@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_Woman_ties_blouse_on_bed_20260917235240.jpg
+Anonymized ID: Woman_ties_blouse_on_bed_20260917235240
+File Format: .JPG | Size: 234.0 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman is sitting on a rustic bed in a dimly lit attic room, knitting with a candle providing the only light. She is dressed in period-appropriate attire, and the setting suggests a historical scene from the 18th century.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and a warm, atmospheric lighting that enhances the historical feel.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the woman is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the presence of a candle suggest it is nighttime.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman is sitting on a rustic bed in a dimly lit attic room, knitting with a candle providing the only light. She is dressed in period-appropriate attire, and the setting suggests a historical scene from the 18th century.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has a high level of detail and a warm, atmospheric lighting that enhances the historical feel.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the woman is fully clothed.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the presence of a candle suggest it is nighttime.
+
+ISSUES: NONE
+====================================================

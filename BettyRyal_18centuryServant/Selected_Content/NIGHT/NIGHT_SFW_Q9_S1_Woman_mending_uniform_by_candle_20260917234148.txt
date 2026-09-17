@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_Woman_mending_uniform_by_candle_20260917234148.jpeg
+Anonymized ID: Woman_mending_uniform_by_candle_20260917234148
+File Format: .JPEG | Size: 606.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is seated at a wooden table, engaged in needlework. She wears a simple brown dress with a matching apron and a bonnet, and the setting is a dimly lit room with a candle providing the primary light source. The window in the background has diamond-patterned glass, and the overall atmosphere is one of quiet concentration.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and realism, with excellent lighting and composition.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the focus is on the woman's hands and the needlework, which is appropriate for the historical setting.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and candlelight suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is seated at a wooden table, engaged in needlework. She wears a simple brown dress with a matching apron and a bonnet, and the setting is a dimly lit room with a candle providing the primary light source. The window in the background has diamond-patterned glass, and the overall atmosphere is one of quiet concentration.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+
+QUALITY_REASON: The image has a high level of detail and realism, with excellent lighting and composition.
+
+SENSUALITY: 1
+
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the focus is on the woman's hands and the needlework, which is appropriate for the historical setting.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+
+THEME_REASON: The dim lighting and candlelight suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

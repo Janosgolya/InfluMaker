@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_polishing_brass_lanterns_20260917234148.jpeg
+Anonymized ID: Woman_polishing_brass_lanterns_20260917234148
+File Format: .JPEG | Size: 687.8 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is kneeling and cleaning a brass lantern in a dimly lit corridor with large windows. The setting appears to be a historical building, possibly a manor or a similar structure, with wooden beams and stone walls. The lighting is soft and natural, coming from the windows.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with a realistic and well-composed scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the clothing is modest.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the windows suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is kneeling and cleaning a brass lantern in a dimly lit corridor with large windows. The setting appears to be a historical building, possibly a manor or a similar structure, with wooden beams and stone walls. The lighting is soft and natural, coming from the windows.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detailed textures, with a realistic and well-composed scene.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the clothing is modest.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light coming through the windows suggests it is morning.
+
+ISSUES: NONE
+====================================================

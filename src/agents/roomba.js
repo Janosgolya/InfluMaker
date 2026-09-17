@@ -204,6 +204,77 @@ class RoombaAgent {
         }
         return `🧹 Roomba cleaned Selected_Content! Removed ${removedFiles} old files.`;
     }
+
+    /**
+     * Archive already-posted content from Selected_Content to Archived_Posted
+     */
+    archivePostedContent(logPath = path.join(__dirname, '../../config/published_log.json')) {
+        const selectedDir = this.config.paths.selected_content;
+        const archiveBaseDir = path.join(this.config.paths.project_root, 'Archived_Posted');
+
+        if (!fs.existsSync(logPath)) {
+            return { error: `published_log.json not found at ${logPath}` };
+        }
+
+        const log = JSON.parse(fs.readFileSync(logPath, 'utf8'));
+        const postedFiles = new Set(log.filter(e => e.status === 'PUBLISHED').map(e => e.imageFile).filter(Boolean));
+
+        const themes = ['MORNING', 'MIDDAY', 'PREP', 'NIGHT'];
+        let archivedImages = 0;
+        let archivedSidecars = 0;
+
+        themes.forEach(theme => {
+            const themeDir = path.join(selectedDir, theme);
+            const targetArchiveDir = path.join(archiveBaseDir, theme);
+
+            if (fs.existsSync(themeDir)) {
+                if (!fs.existsSync(targetArchiveDir)) {
+                    fs.mkdirSync(targetArchiveDir, { recursive: true });
+                }
+
+                const files = fs.readdirSync(themeDir);
+                const images = files.filter(f => /\.(png|jpg|jpeg|webp)$/i.test(f));
+
+                images.forEach(img => {
+                    if (postedFiles.has(img)) {
+                        const srcImg = path.join(themeDir, img);
+                        const destImg = path.join(targetArchiveDir, img);
+                        try {
+                            fs.renameSync(srcImg, destImg);
+                            archivedImages++;
+                        } catch (e) {
+                            console.warn(`[Roomba] Could not move ${img}: ${e.message}`);
+                        }
+
+                        // Also move sidecar files (.story.txt, .txt)
+                        const ext = path.extname(img);
+                        const baseName = path.basename(img, ext);
+                        const sidecars = [
+                            `${baseName}.story.txt`,
+                            `${baseName}.txt`
+                        ];
+
+                        sidecars.forEach(sc => {
+                            const srcSc = path.join(themeDir, sc);
+                            if (fs.existsSync(srcSc)) {
+                                try {
+                                    fs.renameSync(srcSc, path.join(targetArchiveDir, sc));
+                                    archivedSidecars++;
+                                } catch (e) {}
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        console.log(`[Roomba] 📦 Archived ${archivedImages} posted images and ${archivedSidecars} sidecars to ${archiveBaseDir}`);
+        return {
+            archivedImages,
+            archivedSidecars,
+            archiveDirectory: archiveBaseDir
+        };
+    }
 }
 
 if (require.main === module) {

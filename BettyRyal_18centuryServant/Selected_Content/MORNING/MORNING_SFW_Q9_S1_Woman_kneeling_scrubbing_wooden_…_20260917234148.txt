@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_kneeling_scrubbing_wooden_…_20260917234148.jpeg
+Anonymized ID: Woman_kneeling_scrubbing_wooden_…_20260917234148
+File Format: .JPEG | Size: 760.1 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress is kneeling and scrubbing a wooden surface with a brush. She is outdoors, in front of a stone building with a wooden door and some potted plants. The lighting suggests it is daytime, possibly morning or midday.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with natural lighting and a realistic depiction of the scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the only visible skin is covered by the dress.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and shadows suggest it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress is kneeling and scrubbing a wooden surface with a brush. She is outdoors, in front of a stone building with a wooden door and some potted plants. The lighting suggests it is daytime, possibly morning or midday.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with natural lighting and a realistic depiction of the scene.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the only visible skin is covered by the dress.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting and shadows suggest it is morning.
+
+ISSUES: NONE
+====================================================

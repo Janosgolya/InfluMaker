@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_Woman_tucking_herself_into_bed_20260917234148.jpeg
+Anonymized ID: Woman_tucking_herself_into_bed_20260917234148
+File Format: .JPEG | Size: 626.1 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person is sleeping peacefully in a rustic, dimly lit attic room. They are dressed in period-appropriate attire, lying under a blanket, with a lit candle on a small table beside the bed providing the only light. The room has wooden beams and a small window with diamond panes, suggesting a historical setting.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has excellent detail and lighting, capturing the historical ambiance effectively.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the presence of a candle suggest it is nighttime.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person is sleeping peacefully in a rustic, dimly lit attic room. They are dressed in period-appropriate attire, lying under a blanket, with a lit candle on a small table beside the bed providing the only light. The room has wooden beams and a small window with diamond panes, suggesting a historical setting.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has excellent detail and lighting, capturing the historical ambiance effectively.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the presence of a candle suggest it is nighttime.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_carrying_linens_through_co…_20260917234148.jpeg
+Anonymized ID: Woman_carrying_linens_through_co…_20260917234148
+File Format: .JPEG | Size: 641.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person dressed in 18th-century attire stands in a stone-walled room, holding a stack of folded white linens. The setting appears to be a historical interior, possibly a kitchen or laundry room, with natural light streaming in from a window. The person is wearing a brown dress with a beige apron and a head covering.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with natural lighting enhancing the texture of the clothing and linens.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the person is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light and the person's attire suggest a morning setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person dressed in 18th-century attire stands in a stone-walled room, holding a stack of folded white linens. The setting appears to be a historical interior, possibly a kitchen or laundry room, with natural light streaming in from a window. The person is wearing a brown dress with a beige apron and a head covering.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+
+QUALITY_REASON: The image has high resolution and clear details, with natural lighting enhancing the texture of the clothing and linens.
+
+SENSUALITY: 1
+
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the person is fully clothed.
+
+CATEGORY: SFW
+
+THEME: MORNING
+
+THEME_REASON: The natural light and the person's attire suggest a morning setting.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_gathering_eggs_in_cellar_20260917234148.jpeg
+Anonymized ID: Woman_gathering_eggs_in_cellar_20260917234148
+File Format: .JPEG | Size: 759.7 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is collecting eggs from a straw-lined trough. She is wearing a brown dress with a white headscarf and sandals, and she holds a basket filled with eggs. The setting appears to be a rustic, stone-walled room, possibly a barn or a kitchen, with sunlight streaming in from a small window. The lighting creates a warm, natural ambiance.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a realistic and naturalistic appearance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive content.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is collecting eggs from a straw-lined trough. She is wearing a brown dress with a white headscarf and sandals, and she holds a basket filled with eggs. The setting appears to be a rustic, stone-walled room, possibly a barn or a kitchen, with sunlight streaming in from a small window. The lighting creates a warm, natural ambiance.
+
+AGE_ESTIMATE: The person appears to be a mature adult, likely in their 30s or 40s.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a realistic and naturalistic appearance.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive content.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S2_Woman_polishing_dining_table_20260917234148.jpeg
+Anonymized ID: Woman_polishing_dining_table_20260917234148
+File Format: .JPEG | Size: 625.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is cleaning a wooden table in a rustic, candlelit room. She wears a brown dress and a white headscarf, and the setting includes wooden chairs, a stone fireplace, and a window with diamond panes. The lighting is warm and dim, creating a historical ambiance.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on historical accuracy.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 2 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman's bare arms and shoulders, but no nudity or explicit content.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The woman is preparing the table, which aligns with the theme of preparation.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is cleaning a wooden table in a rustic, candlelit room. She wears a brown dress and a white headscarf, and the setting includes wooden chairs, a stone fireplace, and a window with diamond panes. The lighting is warm and dim, creating a historical ambiance.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+
+QUALITY_REASON: The image has high resolution and clear details, with a focus on historical accuracy.
+
+SENSUALITY: 2
+
+SENSUALITY_REASON: The image shows the woman's bare arms and shoulders, but no nudity or explicit content.
+
+CATEGORY: SFW
+
+THEME: PREP
+
+THEME_REASON: The woman is preparing the table, which aligns with the theme of preparation.
+
+ISSUES: NONE
+====================================================

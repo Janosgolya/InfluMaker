@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_doing_laundry_in_tub_20260917234148.jpeg
+Anonymized ID: Woman_doing_laundry_in_tub_20260917234148
+File Format: .JPEG | Size: 666.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in period attire is washing clothes in a wooden tub outdoors. She is using a washboard and appears to be scrubbing the fabric. The setting is rustic, with stone buildings and laundry hanging on a line in the background. The lighting suggests it is either morning or early afternoon, with soft sunlight filtering through the trees.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a natural and realistic appearance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The soft lighting and the presence of laundry suggest it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in period attire is washing clothes in a wooden tub outdoors. She is using a washboard and appears to be scrubbing the fabric. The setting is rustic, with stone buildings and laundry hanging on a line in the background. The lighting suggests it is either morning or early afternoon, with soft sunlight filtering through the trees.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a natural and realistic appearance.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The soft lighting and the presence of laundry suggest it is morning.
+
+ISSUES: NONE
+====================================================

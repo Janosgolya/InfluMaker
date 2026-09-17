@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_Woman_preparing_tray_of_vegetables_20260917234148.jpeg
+Anonymized ID: Woman_preparing_tray_of_vegetables_20260917234148
+File Format: .JPEG | Size: 663.0 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress is preparing vegetables in a rustic kitchen. She is wearing a brown apron and a head covering, and the setting includes a stone fireplace with a pot of food cooking over the fire. The lighting is warm and natural, suggesting a midday scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and the setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the subject is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The woman is preparing vegetables, which aligns with the theme of preparing food.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress is preparing vegetables in a rustic kitchen. She is wearing a brown apron and a head covering, and the setting includes a stone fireplace with a pot of food cooking over the fire. The lighting is warm and natural, suggesting a midday scene.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and the setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the subject is fully clothed.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The woman is preparing vegetables, which aligns with the theme of preparing food.
+
+ISSUES: NONE
+====================================================

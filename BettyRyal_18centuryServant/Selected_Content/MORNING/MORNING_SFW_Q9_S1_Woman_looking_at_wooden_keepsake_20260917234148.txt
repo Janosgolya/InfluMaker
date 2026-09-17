@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_looking_at_wooden_keepsake_20260917234148.jpeg
+Anonymized ID: Woman_looking_at_wooden_keepsake_20260917234148
+File Format: .JPEG | Size: 693.1 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person dressed in 18th-century attire is seated on a rustic bed in a dimly lit room with stone walls and wooden beams. They are holding a small bird and appear to be in a contemplative or gentle mood. The setting includes a candle on a small table and a wooden chest at the foot of the bed.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a realistic texture and lighting that enhances the historical atmosphere.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and the person's posture suggest a calm and reflective moment, which is often associated with morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person dressed in 18th-century attire is seated on a rustic bed in a dimly lit room with stone walls and wooden beams. They are holding a small bird and appear to be in a contemplative or gentle mood. The setting includes a candle on a small table and a wooden chest at the foot of the bed.
+
+AGE_ESTIMATE: The person appears to be mature adult 26+.
+
+QUALITY: 9
+
+QUALITY_REASON: The image has high resolution and detail, with a realistic texture and lighting that enhances the historical atmosphere.
+
+SENSUALITY: 1
+
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: MORNING
+
+THEME_REASON: The lighting and the person's posture suggest a calm and reflective moment, which is often associated with morning.
+
+ISSUES: NONE
+====================================================

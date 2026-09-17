@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_washing_hands_in_basin_20260917234846.jpg
+Anonymized ID: Woman_washing_hands_in_basin_20260917234846
+File Format: .JPG | Size: 205.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is washing her hands in a bowl on a wooden table. She wears a white blouse and a brown apron, with her hair tied back under a headscarf. The setting appears to be a rustic kitchen with a window featuring diamond panes, and the lighting is soft and natural, suggesting a morning or early afternoon scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has excellent detail and lighting, with a high level of realism and fine texture.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light and the woman's activity suggest a morning routine.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is washing her hands in a bowl on a wooden table. She wears a white blouse and a brown apron, with her hair tied back under a headscarf. The setting appears to be a rustic kitchen with a window featuring diamond panes, and the lighting is soft and natural, suggesting a morning or early afternoon scene.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+
+QUALITY_REASON: The image has excellent detail and lighting, with a high level of realism and fine texture.
+
+SENSUALITY: 1
+
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: MORNING
+
+THEME_REASON: The natural light and the woman's activity suggest a morning routine.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_Woman_scrubbing_stone_floor_20260917234148_2.jpeg
+Anonymized ID: Woman_scrubbing_stone_floor_20260917234148_2
+File Format: .JPEG | Size: 733.7 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is kneeling on a stone floor, scrubbing it with a brush. She is wearing a brown dress and a headscarf, and the setting appears to be a rustic kitchen or hearth area with stone walls, a fireplace, and various baskets and utensils. The lighting is warm and natural, coming from a candle and a window.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a realistic depiction of the scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The woman is preparing the floor, which is a common activity in historical settings.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is kneeling on a stone floor, scrubbing it with a brush. She is wearing a brown dress and a headscarf, and the setting appears to be a rustic kitchen or hearth area with stone walls, a fireplace, and various baskets and utensils. The lighting is warm and natural, coming from a candle and a window.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a realistic depiction of the scene.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The woman is preparing the floor, which is a common activity in historical settings.
+
+ISSUES: NONE
+====================================================

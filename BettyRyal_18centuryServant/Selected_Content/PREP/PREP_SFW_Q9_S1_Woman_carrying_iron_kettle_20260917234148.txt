@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_Woman_carrying_iron_kettle_20260917234148.jpeg
+Anonymized ID: Woman_carrying_iron_kettle_20260917234148
+File Format: .JPEG | Size: 697.8 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person dressed in 18th-century attire stands in a rustic kitchen, holding a teapot. The setting includes a stone fireplace with a fire burning, hanging copper pots, and a wooden table with various kitchen items. The lighting is warm and natural, highlighting the textures of the clothing and surroundings.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a realistic and well-composed scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the clothing is modest.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The person is preparing a meal or drink, as indicated by the teapot and the kitchen setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person dressed in 18th-century attire stands in a rustic kitchen, holding a teapot. The setting includes a stone fireplace with a fire burning, hanging copper pots, and a wooden table with various kitchen items. The lighting is warm and natural, highlighting the textures of the clothing and surroundings.
+
+AGE_ESTIMATE: The person appears to be a mature adult, likely in their 30s or 40s.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a realistic and well-composed scene.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the clothing is modest.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The person is preparing a meal or drink, as indicated by the teapot and the kitchen setting.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MIDDAY_SFW_Q9_S1_Woman_pouring_soup_from_pot_20260917234148.jpeg
+Anonymized ID: Woman_pouring_soup_from_pot_20260917234148
+File Format: .JPEG | Size: 742.7 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person dressed in 18th-century attire stands by a brick fireplace, ladling soup from a large pot into a wooden bowl. The setting appears to be a rustic kitchen, with a wooden table and various cooking utensils in the background. The lighting is warm and natural, suggesting a midday scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and the setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the clothing is appropriate for the historical period.
+
+📅 THEME CLASSIFICATION:
+Theme: MIDDAY
+Reasoning: The warm lighting and the activity of cooking suggest a midday scene.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MIDDAY
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person dressed in 18th-century attire stands by a brick fireplace, ladling soup from a large pot into a wooden bowl. The setting appears to be a rustic kitchen, with a wooden table and various cooking utensils in the background. The lighting is warm and natural, suggesting a midday scene.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and the setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the clothing is appropriate for the historical period.
+
+CATEGORY: SFW
+
+THEME: MIDDAY
+THEME_REASON: The warm lighting and the activity of cooking suggest a midday scene.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_Arranging_silver_goblets_on_side…_20260917234148.jpeg
+Anonymized ID: Arranging_silver_goblets_on_side…_20260917234148
+File Format: .JPEG | Size: 683.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person dressed in 18th-century attire is arranging silver goblets on a wooden table in a dimly lit room with stone walls and a candle providing light. The individual is wearing a brown dress with a beige apron and a head covering, suggesting a domestic or servant role.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and the setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the subject is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The image depicts the preparation of goblets, likely for a formal event or gathering, which aligns with the theme of preparation.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person dressed in 18th-century attire is arranging silver goblets on a wooden table in a dimly lit room with stone walls and a candle providing light. The individual is wearing a brown dress with a beige apron and a head covering, suggesting a domestic or servant role.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and the setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the subject is fully clothed.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The image depicts the preparation of goblets, likely for a formal event or gathering, which aligns with the theme of preparation.
+
+ISSUES: NONE
+====================================================

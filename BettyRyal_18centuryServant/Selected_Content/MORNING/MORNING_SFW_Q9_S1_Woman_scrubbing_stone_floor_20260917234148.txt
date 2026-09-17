@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_scrubbing_stone_floor_20260917234148.jpeg
+Anonymized ID: Woman_scrubbing_stone_floor_20260917234148
+File Format: .JPEG | Size: 705.8 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is kneeling on a stone floor, scrubbing it with a brush and cloth. She wears a simple dress and a bonnet, and the setting appears to be a rustic interior with stone walls and wooden furniture. The lighting is warm and natural, suggesting a daytime scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with natural lighting and a realistic depiction of the scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the woman's actions rather than her body.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural lighting and the woman's focused activity suggest a morning scene.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is kneeling on a stone floor, scrubbing it with a brush and cloth. She wears a simple dress and a bonnet, and the setting appears to be a rustic interior with stone walls and wooden furniture. The lighting is warm and natural, suggesting a daytime scene.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with natural lighting and a realistic depiction of the scene.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the woman's actions rather than her body.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural lighting and the woman's focused activity suggest a morning scene.
+
+ISSUES: NONE
+====================================================

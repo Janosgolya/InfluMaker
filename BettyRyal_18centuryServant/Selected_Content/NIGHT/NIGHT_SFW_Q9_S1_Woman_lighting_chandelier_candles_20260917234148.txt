@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_Woman_lighting_chandelier_candles_20260917234148.jpeg
+Anonymized ID: Woman_lighting_chandelier_candles_20260917234148
+File Format: .JPEG | Size: 657.0 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is lighting candles on a chandelier in a dimly lit room with stone walls and wooden beams. She is wearing a brown dress with a white apron and sandals, standing on a small stool. The setting appears to be a historical interior, possibly a manor or castle.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and the historical setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the subject is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the act of lighting candles suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire is lighting candles on a chandelier in a dimly lit room with stone walls and wooden beams. She is wearing a brown dress with a white apron and sandals, standing on a small stool. The setting appears to be a historical interior, possibly a manor or castle.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and the historical setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the subject is fully clothed.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The dim lighting and the act of lighting candles suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

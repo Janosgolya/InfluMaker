@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_pouring_water_from_pitcher_20260917234148_2.jpeg
+Anonymized ID: Woman_pouring_water_from_pitcher_20260917234148_2
+File Format: .JPEG | Size: 675.5 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person in a 18th-century dress is pouring water from a ceramic jug into a wooden bowl in a rustic kitchen setting. The lighting is warm and natural, suggesting a daytime scene. The person is wearing sandals and a head covering, and the background includes stone walls, hanging herbs, and copper pots.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with natural lighting and a realistic setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the clothing and setting are appropriate for the historical period.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural lighting and the activity of pouring water suggest a morning scene.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person in a 18th-century dress is pouring water from a ceramic jug into a wooden bowl in a rustic kitchen setting. The lighting is warm and natural, suggesting a daytime scene. The person is wearing sandals and a head covering, and the background includes stone walls, hanging herbs, and copper pots.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with natural lighting and a realistic setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the clothing and setting are appropriate for the historical period.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural lighting and the activity of pouring water suggest a morning scene.
+
+ISSUES: NONE
+====================================================

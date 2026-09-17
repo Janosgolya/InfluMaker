@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S3_Woman_washing_face_at_washstand_20260917234147.jpeg
+Anonymized ID: Woman_washing_face_at_washstand_20260917234147
+File Format: .JPEG | Size: 629.9 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman dressed in 18th-century attire, including a white blouse and a brown apron, is washing her hands in a bowl on a wooden table. The setting appears to be a rustic kitchen with stone walls and a window with diamond panes. The lighting is soft and natural, suggesting a daytime scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detailed textures, with a focus on natural lighting and a realistic depiction of the scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image shows the woman's bare arms and hands, but no other parts of her body are exposed.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light and the woman's activity suggest a morning routine.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman dressed in 18th-century attire, including a white blouse and a brown apron, is washing her hands in a bowl on a wooden table. The setting appears to be a rustic kitchen with stone walls and a window with diamond panes. The lighting is soft and natural, suggesting a daytime scene.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+
+QUALITY_REASON: The image has high resolution and detailed textures, with a focus on natural lighting and a realistic depiction of the scene.
+
+SENSUALITY: 3
+
+SENSUALITY_REASON: The image shows the woman's bare arms and hands, but no other parts of her body are exposed.
+
+CATEGORY: SFW
+
+THEME: MORNING
+
+THEME_REASON: The natural light and the woman's activity suggest a morning routine.
+
+ISSUES: NONE
+====================================================

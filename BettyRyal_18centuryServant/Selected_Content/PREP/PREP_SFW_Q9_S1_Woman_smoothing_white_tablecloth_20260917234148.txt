@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q9_S1_Woman_smoothing_white_tablecloth_20260917234148.jpeg
+Anonymized ID: Woman_smoothing_white_tablecloth_20260917234148
+File Format: .JPEG | Size: 577.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire stands beside a wooden table, her hands resting on the surface. The setting appears to be a rustic interior, possibly a tavern or a workshop, with stone walls and a lit lantern providing warm, ambient lighting. The woman's clothing is simple and period-appropriate, suggesting a historical context.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and the setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive content.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The woman appears to be preparing or organizing something on the table, which aligns with the "prep" theme.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in 18th-century attire stands beside a wooden table, her hands resting on the surface. The setting appears to be a rustic interior, possibly a tavern or a workshop, with stone walls and a lit lantern providing warm, ambient lighting. The woman's clothing is simple and period-appropriate, suggesting a historical context.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and the setting.
+
+SENSUALITY: 1
+
+SENSUALITY_REASON: The image does not contain any nudity or suggestive content.
+
+CATEGORY: SFW
+
+THEME: PREP
+
+THEME_REASON: The woman appears to be preparing or organizing something on the table, which aligns with the "prep" theme.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_sleeping_in_attic_bed_20260917234148.jpeg
+Anonymized ID: Woman_sleeping_in_attic_bed_20260917234148
+File Format: .JPEG | Size: 683.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person is sleeping peacefully on a wooden bed in a rustic attic room. The bed is covered with a simple, worn blanket, and the person is dressed in light, period-appropriate clothing. The room is dimly lit by natural light coming through a small window, and the wooden beams and furniture suggest a 18th-century setting.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and realism, with excellent lighting and composition.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the person is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person is sleeping peacefully on a wooden bed in a rustic attic room. The bed is covered with a simple, worn blanket, and the person is dressed in light, period-appropriate clothing. The room is dimly lit by natural light coming through a small window, and the wooden beams and furniture suggest a 18th-century setting.
+
+AGE_ESTIMATE: The person appears to be an adult, likely in their 30s or 40s, based on their physical appearance and the historical setting.
+
+QUALITY: 9
+QUALITY_REASON: The image has a high level of detail and realism, with excellent lighting and composition.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the person is fully clothed.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light coming through the window suggests it is morning.
+
+ISSUES: NONE
+====================================================

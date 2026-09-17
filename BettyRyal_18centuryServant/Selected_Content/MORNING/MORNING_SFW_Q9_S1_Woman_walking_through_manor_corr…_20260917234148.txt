@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_walking_through_manor_corr…_20260917234148.jpeg
+Anonymized ID: Woman_walking_through_manor_corr…_20260917234148
+File Format: .JPEG | Size: 603.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person dressed in 18th-century attire holds a tray with a covered dish, a loaf of bread, and a silver cup. The setting appears to be a dimly lit, stone-walled corridor with a window in the background, suggesting a historical or period drama setting. The lighting is soft and natural, coming from a lantern on the left and the window.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and the setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the subject is fully clothed.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and the subject's attire suggest a morning setting, as the person appears to be preparing for the day.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person dressed in 18th-century attire holds a tray with a covered dish, a loaf of bread, and a silver cup. The setting appears to be a dimly lit, stone-walled corridor with a window in the background, suggesting a historical or period drama setting. The lighting is soft and natural, coming from a lantern on the left and the window.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and the setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the subject is fully clothed.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting and the subject's attire suggest a morning setting, as the person appears to be preparing for the day.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,981 @@
+{
+  "agent": "Jones",
+  "mode": "Real Vision via Ollama qwen2.5vl",
+  "timestamp": "2026-09-17T22:01:07.166Z",
+  "total_evaluated": 120,
+  "selected_and_copied": 60,
+  "rejected_breakdown": {
+    "total": 59,
+    "underage_appearance": 57,
+    "AI_slop": 2,
+    "bad_quality": 0,
+    "not_following_world_rules": 0,
+    "parent": 0
+  },
+  "theme_breakdown": {
+    "MORNING": 30,
+    "MIDDAY": 1,
+    "PREP": 12,
+    "NIGHT": 17
+  },
+  "sfw_vs_nsfw": {
+    "SFW": 60,
+    "NSFW": 0
+  },
+  "rejected_files": [
+    {
+      "file": "Group_laughing_by_the_fire_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Group_laughing_by_the_fire_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Ladies_preparing_in_room_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S3_Ladies_preparing_in_room_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Person_warming_feet_by_fire_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Person_warming_feet_by_fire_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Servants_eating_at_feast_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Servants_eating_at_feast_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_arranging_bread_on_board_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_arranging_bread_on_board_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_arranging_wildflowers_in_vase_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_arranging_wildflowers_in_vase_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_braiding_her_hair_20260917234147.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_braiding_her_hair_20260917234147.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_brushing_blonde_hair_20260917234148_2.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S3_Woman_brushing_blonde_hair_20260917234148_2.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_carrying_linen_napkins_tavern_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_carrying_linen_napkins_tavern_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_carrying_napkins_in_corridor_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_carrying_napkins_in_corridor_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_carrying_tray_of_mugs_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_carrying_tray_of_mugs_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_changing_bedsheets_20260917234148.jpeg",
+      "standardized": "REJECT_AI_SLOP_SFW_Q9_S1_Woman_changing_bedsheets_20260917234148.jpeg",
+      "rejection_category": "AI_slop",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_checking_roast_in_hearth_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_checking_roast_in_hearth_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_closing_wooden_door_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q8_S1_Woman_closing_wooden_door_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 8,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_extinguishing_candles_in_inn_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_extinguishing_candles_in_inn_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_fastening_wool_skirt_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_fastening_wool_skirt_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_kneeling_praying_in_room_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_kneeling_praying_in_room_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_lacing_bodice_by_window_20260917234147.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_lacing_bodice_by_window_20260917234147.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_lacing_wealthy_lady_corset_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S3_Woman_lacing_wealthy_lady_corset_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_lacing_wooden_shoes_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_lacing_wooden_shoes_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_lighting_candles_in_room_20260917234148.jpeg",
+      "standardized": "REJECT_AI_SLOP_SFW_Q9_S1_Woman_lighting_candles_in_room_20260917234148.jpeg",
+      "rejection_category": "AI_slop",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_lighting_wall_lamp_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q8_S1_Woman_lighting_wall_lamp_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 8,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_looking_at_water_reflection_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q8_S1_Woman_looking_at_water_reflection_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 8,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_looking_at_wildflower_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_looking_at_wildflower_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_looking_out_window_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_looking_out_window_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_lying_in_attic_bed_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q8_S3_Woman_lying_in_attic_bed_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 8,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_opening_attic_window_shutters_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_opening_attic_window_shutters_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_organizing_messy_bedsheets_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S3_Woman_organizing_messy_bedsheets_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_polishing_brass_lanterns_20260917234148_2.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_polishing_brass_lanterns_20260917234148_2.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_polishing_grandfather_clock_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_polishing_grandfather_clock_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_pouring_red_wine_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_pouring_red_wine_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_pouring_water_from_pitcher_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_pouring_water_from_pitcher_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_pouring_wine_for_guests_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S3_Woman_pouring_wine_for_guests_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_pulling_on_wool_stockings_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q8_S3_Woman_pulling_on_wool_stockings_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 8,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_putting_on_wooden_shoes_20260917234147.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_putting_on_wooden_shoes_20260917234147.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_resting_in_attic_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_resting_in_attic_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_serving_food_at_feast_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S3_Woman_serving_food_at_feast_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_setting_out_heavy_cutlery_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_setting_out_heavy_cutlery_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_shaking_out_maid_cap_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_shaking_out_maid_cap_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_sitting_by_kitchen_fireplace_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_sitting_by_kitchen_fireplace_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_sitting_by_kitchen_fire_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_sitting_by_kitchen_fire_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_sitting_holding_blue_ribbon_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_sitting_holding_blue_ribbon_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_sitting_on_bed_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_sitting_on_bed_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_sitting_on_bed_in_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q8_S1_Woman_sitting_on_bed_in_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 8,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_sleeping_in_attic_room_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_sleeping_in_attic_room_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_staring_at_night_sky_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_staring_at_night_sky_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_staring_into_mirror_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_staring_into_mirror_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_stirring_pot_in_kitchen_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_stirring_pot_in_kitchen_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_stretching_legs_in_bed_20260917234147.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q8_S1_Woman_stretching_legs_in_bed_20260917234147.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 8,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_sweeping_stone_stairs_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_sweeping_stone_stairs_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_tending_hearth_fire_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q8_S1_Woman_tending_hearth_fire_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 8,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_unlacing_blouse_by_candlel…_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_unlacing_blouse_by_candlel…_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_unlacing_bodice_in_bedroom_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_unlacing_bodice_in_bedroom_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_waking_up_in_bed_20260917234147.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_waking_up_in_bed_20260917234147.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_waking_up_in_bed_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_waking_up_in_bed_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_walking_carrying_candle_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_walking_carrying_candle_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_washing_her_face_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_washing_her_face_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_wrapping_in_wool_shawl_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q8_S1_Woman_wrapping_in_wool_shawl_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 8,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Women_laughing_in_dressing_room_20260917234148.jpeg",
+      "standardized": "REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S3_Women_laughing_in_dressing_room_20260917234148.jpeg",
+      "rejection_category": "underage_appearance",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    }
+  ],
+  "approved_files": [
+    {
+      "file": "Person_blowing_out_candle_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S3_Person_blowing_out_candle_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Person_staring_out_attic_window_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Person_staring_out_attic_window_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Person_sweeping_cobblestones_out…_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Person_sweeping_cobblestones_out…_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Person_tucking_into_bed_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Person_tucking_into_bed_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Servant_girl_polishing_silver_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Servant_girl_polishing_silver_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Servant_scrubbing_wooden_floor_20260917234148.jpeg",
+      "standardized": "PREP_SFW_Q8_S3_Servant_scrubbing_wooden_floor_20260917234148.jpeg",
+      "theme": "PREP",
+      "quality": 8,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_beating_rug_outside_inn_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_beating_rug_outside_inn_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_brushing_blonde_hair_20260917234148.jpeg",
+      "standardized": "PREP_SFW_Q9_S2_Woman_brushing_blonde_hair_20260917234148.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 2,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_carrying_iron_kettle_20260917234148.jpeg",
+      "standardized": "PREP_SFW_Q9_S1_Woman_carrying_iron_kettle_20260917234148.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_carrying_linens_through_co…_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_carrying_linens_through_co…_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_carrying_wine_glasses_20260917234148.jpeg",
+      "standardized": "PREP_SFW_Q9_S1_Woman_carrying_wine_glasses_20260917234148.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_changing_bedsheets_20260917234148_2.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_changing_bedsheets_20260917234148_2.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_checking_inn_door_locks_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_checking_inn_door_locks_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_checking_reflection_in_mirror_20260917234147.jpeg",
+      "standardized": "PREP_SFW_Q9_S1_Woman_checking_reflection_in_mirror_20260917234147.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_doing_laundry_in_tub_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_doing_laundry_in_tub_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_doing_laundry_in_washhouse_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S3_Woman_doing_laundry_in_washhouse_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_dressing_in_maid_uniform_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_dressing_in_maid_uniform_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_dusting_wood_carvings_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_dusting_wood_carvings_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_gathering_eggs_in_cellar_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_gathering_eggs_in_cellar_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_gazing_at_moon_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_gazing_at_moon_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_getting_dressed_in_attic_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_getting_dressed_in_attic_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_hanging_laundry_in_attic_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_hanging_laundry_in_attic_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_holding_candle_by_wall_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q8_S1_Woman_holding_candle_by_wall_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 8,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_kneeling_clearing_ashes_20260917234148.jpeg",
+      "standardized": "PREP_SFW_Q9_S1_Woman_kneeling_clearing_ashes_20260917234148.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_kneeling_scrubbing_wooden_…_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_kneeling_scrubbing_wooden_…_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_lighting_chandelier_candles_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_lighting_chandelier_candles_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_lighting_hearth_fire_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_lighting_hearth_fire_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_looking_at_wooden_keepsake_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_looking_at_wooden_keepsake_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_mending_linen_apron_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_mending_linen_apron_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_mending_uniform_by_candle_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_mending_uniform_by_candle_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_organizing_pantry_shelves_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_organizing_pantry_shelves_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_peeling_apples_in_kitchen_20260917234148.jpeg",
+      "standardized": "PREP_SFW_Q9_S1_Woman_peeling_apples_in_kitchen_20260917234148.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_polishing_brass_knocker_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_polishing_brass_knocker_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_polishing_brass_lanterns_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_polishing_brass_lanterns_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_polishing_dining_table_20260917234148.jpeg",
+      "standardized": "PREP_SFW_Q9_S2_Woman_polishing_dining_table_20260917234148.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 2,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_pouring_soup_from_pot_20260917234148.jpeg",
+      "standardized": "MIDDAY_SFW_Q9_S1_Woman_pouring_soup_from_pot_20260917234148.jpeg",
+      "theme": "MIDDAY",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_pouring_water_from_pitcher_20260917234148_2.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_pouring_water_from_pitcher_20260917234148_2.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_preparing_tray_of_vegetables_20260917234148.jpeg",
+      "standardized": "PREP_SFW_Q9_S1_Woman_preparing_tray_of_vegetables_20260917234148.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_scrubbing_stone_floor_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_scrubbing_stone_floor_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_scrubbing_stone_floor_20260917234148_2.jpeg",
+      "standardized": "PREP_SFW_Q9_S1_Woman_scrubbing_stone_floor_20260917234148_2.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_scrubbing_wooden_floor_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_scrubbing_wooden_floor_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_serving_food_at_table_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q8_S3_Woman_serving_food_at_table_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 8,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_shaking_out_woven_rug_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_shaking_out_woven_rug_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_sleeping_in_attic_bed_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_sleeping_in_attic_bed_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_smoothing_linen_shift_20260917234148.jpeg",
+      "standardized": "PREP_SFW_Q9_S1_Woman_smoothing_linen_shift_20260917234148.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_smoothing_white_tablecloth_20260917234148.jpeg",
+      "standardized": "PREP_SFW_Q9_S1_Woman_smoothing_white_tablecloth_20260917234148.jpeg",
+      "theme": "PREP",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_sorting_linen_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_sorting_linen_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_splashing_water_on_neck_20260917234147.jpeg",
+      "standardized": "MORNING_SFW_Q9_S3_Woman_splashing_water_on_neck_20260917234147.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_standing_in_pantry_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_standing_in_pantry_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_staring_into_antique_mirror_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S3_Woman_staring_into_antique_mirror_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_stepping_out_of_shoes_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_stepping_out_of_shoes_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_tucking_hair_into_cap_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_tucking_hair_into_cap_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_tucking_herself_into_bed_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_tucking_herself_into_bed_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_unlacing_dress_in_attic_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_unlacing_dress_in_attic_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_untying_apron_strings_in_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_untying_apron_strings_in_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_waking_up_in_bed_20260917234148_2.jpeg",
+      "standardized": "MORNING_SFW_Q8_S1_Woman_waking_up_in_bed_20260917234148_2.jpeg",
+      "theme": "MORNING",
+      "quality": 8,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_walking_through_garden_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_walking_through_garden_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_walking_through_manor_corr…_20260917234148.jpeg",
+      "standardized": "MORNING_SFW_Q9_S1_Woman_walking_through_manor_corr…_20260917234148.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_walking_up_attic_stairs_20260917234148.jpeg",
+      "standardized": "NIGHT_SFW_Q9_S1_Woman_walking_up_attic_stairs_20260917234148.jpeg",
+      "theme": "NIGHT",
+      "quality": 9,
+      "sensuality": 1,
+      "category": "SFW"
+    },
+    {
+      "file": "Woman_washing_face_at_washstand_20260917234147.jpeg",
+      "standardized": "MORNING_SFW_Q9_S3_Woman_washing_face_at_washstand_20260917234147.jpeg",
+      "theme": "MORNING",
+      "quality": 9,
+      "sensuality": 3,
+      "category": "SFW"
+    }
+  ]
+}

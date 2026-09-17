@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_sorting_linen_20260917234148.jpeg
+Anonymized ID: Woman_sorting_linen_20260917234148
+File Format: .JPEG | Size: 688.3 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in a 18th-century dress is kneeling beside a large wicker laundry basket filled with white linens. She is wearing a bonnet and appears to be sorting the clothes. The setting is a rustic room with stone walls, a wooden floor, and a window with diamond panes. The lighting is soft and natural, suggesting a daytime scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a realistic depiction of the scene.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the clothing and setting are appropriate for the historical period.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light and the woman's activity suggest a morning scene.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A woman in a 18th-century dress is kneeling beside a large wicker laundry basket filled with white linens. She is wearing a bonnet and appears to be sorting the clothes. The setting is a rustic room with stone walls, a wooden floor, and a window with diamond panes. The lighting is soft and natural, suggesting a daytime scene.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with a realistic depiction of the scene.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the clothing and setting are appropriate for the historical period.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light and the woman's activity suggest a morning scene.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_beating_rug_outside_inn_20260917234148.jpeg
+Anonymized ID: Woman_beating_rug_outside_inn_20260917234148
+File Format: .JPEG | Size: 814.0 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person dressed in 18th-century attire is dusting a piece of fabric against a stone wall. The setting appears to be an old cobblestone street with a building that has ivy climbing its walls. The lighting suggests it is either morning or early afternoon, with sunlight casting shadows on the ground.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with good lighting and composition.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The lighting and shadows suggest it is either morning or early afternoon.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person dressed in 18th-century attire is dusting a piece of fabric against a stone wall. The setting appears to be an old cobblestone street with a building that has ivy climbing its walls. The lighting suggests it is either morning or early afternoon, with sunlight casting shadows on the ground.
+
+AGE_ESTIMATE: The person appears to be a mature adult, likely in their 30s or 40s.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and clear details, with good lighting and composition.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The lighting and shadows suggest it is either morning or early afternoon.
+
+ISSUES: NONE
+====================================================

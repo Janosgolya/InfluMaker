@@ -83,6 +83,18 @@ class AnaSocialManager {
     }
 
     /**
+     * Get any unposted content across themes for a platform as fallback
+     */
+    getAnyUnpostedContent(platform = 'Fanvue') {
+        const themes = ['MORNING', 'MIDDAY', 'PREP', 'NIGHT'];
+        for (const t of themes) {
+            const item = this.getNextContentForTheme(t, platform);
+            if (item) return item;
+        }
+        return null;
+    }
+
+    /**
      * Publish or schedule a post to Fanvue
      */
     async publishFanvueItem(imagePath, storyPath, options = {}) {
@@ -154,42 +166,31 @@ class AnaSocialManager {
      * Prepare and publish TikTok post (9:16 vertical + hook overlay + Fanvue funnel)
      */
     async publishTikTokPost(theme = 'MORNING', options = {}) {
-        const nextItem = this.getNextContentForTheme(theme, 'TikTok');
-        let result;
+        let item = options.item || (options.imagePath ? {
+            imagePath: options.imagePath,
+            storyPath: options.storyPath,
+            theme: options.theme || theme
+        } : null);
 
-        if (!nextItem) {
-            const themeDir = path.join(this.selectedContentDir, 'MORNING');
-            const files = fs.readdirSync(themeDir).filter(f => f.endsWith('.png') || f.endsWith('.jpg'));
-            if (files.length === 0) throw new Error('No MORNING images found for TikTok');
-            
-            const firstImg = path.join(themeDir, files[0]);
-            const ext = path.extname(files[0]);
-            const baseName = path.basename(files[0], ext);
-            const storyPath = path.join(themeDir, `${baseName}.story.txt`);
-
-            result = await this.tiktok.publishPost(firstImg, storyPath, options);
-            
-            this.log.push({
-                platform: 'TikTok',
-                imageFile: files[0],
-                theme: 'MORNING',
-                assetPath: result.formattedAssetPath,
-                hook: result.hookText,
-                timestamp: new Date().toISOString(),
-                status: result.status || 'READY'
-            });
-        } else {
-            result = await this.tiktok.publishPost(nextItem.imagePath, nextItem.storyPath, options);
-            this.log.push({
-                platform: 'TikTok',
-                imageFile: path.basename(nextItem.imagePath),
-                theme: theme,
-                assetPath: result.formattedAssetPath,
-                hook: result.hookText,
-                timestamp: new Date().toISOString(),
-                status: result.status || 'READY'
-            });
+        if (!item) {
+            item = this.getNextContentForTheme(theme, 'TikTok') || this.getAnyUnpostedContent('TikTok');
         }
+
+        if (!item) {
+            console.log(`[Ana] ⚠️ No unposted items found across any theme for TikTok.`);
+            return { success: false, reason: 'No unposted content for TikTok' };
+        }
+
+        const result = await this.tiktok.publishPost(item.imagePath, item.storyPath, options);
+        this.log.push({
+            platform: 'TikTok',
+            imageFile: path.basename(item.imagePath),
+            theme: item.theme || theme,
+            assetPath: result.formattedAssetPath,
+            hook: result.hookText,
+            timestamp: new Date().toISOString(),
+            status: result.status || 'READY'
+        });
 
         this.saveLog();
         return result;
@@ -199,40 +200,30 @@ class AnaSocialManager {
      * Prepare and publish Instagram post (4:5 vertical portrait + sensory journal + Fanvue CTA)
      */
     async publishInstagramPost(theme = 'MORNING', options = {}) {
-        const nextItem = this.getNextContentForTheme(theme, 'Instagram');
-        let result;
+        let item = options.item || (options.imagePath ? {
+            imagePath: options.imagePath,
+            storyPath: options.storyPath,
+            theme: options.theme || theme
+        } : null);
 
-        if (!nextItem) {
-            const themeDir = path.join(this.selectedContentDir, 'MORNING');
-            const files = fs.readdirSync(themeDir).filter(f => f.endsWith('.png') || f.endsWith('.jpg'));
-            if (files.length === 0) throw new Error('No MORNING images found for Instagram');
-
-            const firstImg = path.join(themeDir, files[0]);
-            const ext = path.extname(files[0]);
-            const baseName = path.basename(files[0], ext);
-            const storyPath = path.join(themeDir, `${baseName}.story.txt`);
-
-            result = await this.instagram.publishPost(firstImg, storyPath, options);
-
-            this.log.push({
-                platform: 'Instagram',
-                imageFile: files[0],
-                theme: 'MORNING',
-                assetPath: result.formattedAssetPath,
-                timestamp: new Date().toISOString(),
-                status: result.status || 'READY'
-            });
-        } else {
-            result = await this.instagram.publishPost(nextItem.imagePath, nextItem.storyPath, options);
-            this.log.push({
-                platform: 'Instagram',
-                imageFile: path.basename(nextItem.imagePath),
-                theme: theme,
-                assetPath: result.formattedAssetPath,
-                timestamp: new Date().toISOString(),
-                status: result.status || 'READY'
-            });
+        if (!item) {
+            item = this.getNextContentForTheme(theme, 'Instagram') || this.getAnyUnpostedContent('Instagram');
         }
+
+        if (!item) {
+            console.log(`[Ana] ⚠️ No unposted items found across any theme for Instagram.`);
+            return { success: false, reason: 'No unposted content for Instagram' };
+        }
+
+        const result = await this.instagram.publishPost(item.imagePath, item.storyPath, options);
+        this.log.push({
+            platform: 'Instagram',
+            imageFile: path.basename(item.imagePath),
+            theme: item.theme || theme,
+            assetPath: result.formattedAssetPath,
+            timestamp: new Date().toISOString(),
+            status: result.status || 'READY'
+        });
 
         this.saveLog();
         return result;
@@ -713,9 +704,18 @@ class AnaSocialManager {
         console.log(`📌 ANA: Publishing Pin to Pinterest (Theme: ${theme})`);
         console.log(`======================================================\n`);
 
-        const nextItem = this.getNextContentForTheme(theme, 'Pinterest');
+        let nextItem = options.item || (options.imagePath ? {
+            imagePath: options.imagePath,
+            storyPath: options.storyPath,
+            theme: options.theme || theme
+        } : null);
+
         if (!nextItem) {
-            console.log(`[Ana] ℹ️ No pending unposted items found for Pinterest theme: ${theme}`);
+            nextItem = this.getNextContentForTheme(theme, 'Pinterest') || this.getAnyUnpostedContent('Pinterest');
+        }
+
+        if (!nextItem) {
+            console.log(`[Ana] ℹ️ No pending unposted items found across any theme for Pinterest`);
             return { success: false, reason: 'No unposted content' };
         }
 
@@ -726,7 +726,7 @@ class AnaSocialManager {
             this.log.push({
                 platform: 'Pinterest',
                 imageFile: path.basename(nextItem.imagePath),
-                theme: theme.toUpperCase(),
+                theme: (nextItem.theme || theme).toUpperCase(),
                 title: pinResult.title,
                 board: pinResult.board,
                 link: pinResult.link,
@@ -748,9 +748,18 @@ class AnaSocialManager {
         console.log(`🤖 ANA: Publishing Post to Reddit (Theme: ${theme})`);
         console.log(`======================================================\n`);
 
-        const nextItem = this.getNextContentForTheme(theme, 'Reddit');
+        let nextItem = options.item || (options.imagePath ? {
+            imagePath: options.imagePath,
+            storyPath: options.storyPath,
+            theme: options.theme || theme
+        } : null);
+
         if (!nextItem) {
-            console.log(`[Ana] ℹ️ No pending unposted items found for Reddit theme: ${theme}`);
+            nextItem = this.getNextContentForTheme(theme, 'Reddit') || this.getAnyUnpostedContent('Reddit');
+        }
+
+        if (!nextItem) {
+            console.log(`[Ana] ℹ️ No pending unposted items found across any theme for Reddit`);
             return { success: false, reason: 'No unposted content' };
         }
 
@@ -761,7 +770,7 @@ class AnaSocialManager {
             this.log.push({
                 platform: 'Reddit',
                 imageFile: path.basename(nextItem.imagePath),
-                theme: theme.toUpperCase(),
+                theme: (nextItem.theme || theme).toUpperCase(),
                 title: redditResult.title,
                 subreddit: redditResult.subreddit,
                 postUrl: redditResult.postUrl,
@@ -783,9 +792,18 @@ class AnaSocialManager {
         console.log(`🐦 ANA: Publishing Post to X / Twitter (Theme: ${theme})`);
         console.log(`======================================================\n`);
 
-        const nextItem = this.getNextContentForTheme(theme, 'Twitter');
+        let nextItem = options.item || (options.imagePath ? {
+            imagePath: options.imagePath,
+            storyPath: options.storyPath,
+            theme: options.theme || theme
+        } : null);
+
         if (!nextItem) {
-            console.log(`[Ana] ℹ️ No pending unposted items found for Twitter theme: ${theme}`);
+            nextItem = this.getNextContentForTheme(theme, 'Twitter') || this.getAnyUnpostedContent('Twitter');
+        }
+
+        if (!nextItem) {
+            console.log(`[Ana] ℹ️ No pending unposted items found across any theme for Twitter`);
             return { success: false, reason: 'No unposted content' };
         }
 
@@ -796,7 +814,7 @@ class AnaSocialManager {
             this.log.push({
                 platform: 'Twitter',
                 imageFile: path.basename(nextItem.imagePath),
-                theme: theme.toUpperCase(),
+                theme: (nextItem.theme || theme).toUpperCase(),
                 tweetText: twitterResult.tweetText,
                 timestamp: new Date().toISOString(),
                 status: 'PUBLISHED'

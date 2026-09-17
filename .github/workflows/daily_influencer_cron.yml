@@ -2,8 +2,8 @@ name: InfluMaker Daily Autonomous Scheduler
 
 on:
   schedule:
-    # 4 times daily (UTC): 06:00 (MORNING), 11:00 (MIDDAY), 16:00 (PREP), 20:00 (NIGHT)
-    - cron: '0 6,11,16,20 * * *'
+    # 4 times daily (UTC): 06:17 (MORNING), 11:17 (MIDDAY), 16:17 (PREP), 20:17 (NIGHT)
+    - cron: '17 6,11,16,20 * * *'
   workflow_dispatch:
     inputs:
       theme:
@@ -84,6 +84,13 @@ jobs:
         run: |
           git config --global user.name "George [InfluMaker AI]"
           git config --global user.email "george@influmaker.local"
+          git checkout -- package-lock.json || true
           git add config/published_log.json config/.fanvue_auth.json BettyRyal_18centuryServant/
-          git diff-index --quiet HEAD || git commit -m "chore(george): update published_log and media queue after scheduled cycle [skip ci]"
-          git push
+          if ! git diff --cached --quiet; then
+            echo "[Git] Changes detected in published_log or media queue. Committing..."
+            git commit -m "chore(george): update published_log and media queue after scheduled cycle [skip ci]"
+            git pull --rebase origin main || true
+            git push origin main
+          else
+            echo "[Git] No queue or log changes to commit. Skipping push."
+          fi

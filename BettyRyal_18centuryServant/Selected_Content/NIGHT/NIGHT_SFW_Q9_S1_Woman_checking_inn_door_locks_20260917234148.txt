@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_Woman_checking_inn_door_locks_20260917234148.jpeg
+Anonymized ID: Woman_checking_inn_door_locks_20260917234148
+File Format: .JPEG | Size: 600.6 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person in 18th-century attire is holding a lit candle and unlocking a large wooden door with a padlock. The setting appears to be a stone-walled room, possibly a dungeon or a medieval-style interior, illuminated by the candlelight. The person is wearing a simple, long-sleeved dress and a head covering, suggesting a historical or period drama context.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and detail, with a warm, atmospheric lighting that enhances the historical ambiance.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The candlelight and the setting suggest a nighttime scenario.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person in 18th-century attire is holding a lit candle and unlocking a large wooden door with a padlock. The setting appears to be a stone-walled room, possibly a dungeon or a medieval-style interior, illuminated by the candlelight. The person is wearing a simple, long-sleeved dress and a head covering, suggesting a historical or period drama context.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a warm, atmospheric lighting that enhances the historical ambiance.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+THEME_REASON: The candlelight and the setting suggest a nighttime scenario.
+
+ISSUES: NONE
+====================================================

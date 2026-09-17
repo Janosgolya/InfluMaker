@@ -1,0 +1,51 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_Woman_untying_apron_strings_in_20260917234148.jpeg
+Anonymized ID: Woman_untying_apron_strings_in_20260917234148
+File Format: .JPEG | Size: 656.0 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person dressed in 18th-century attire stands in a rustic, dimly lit room with wooden beams and shelves. They are wearing a white blouse, a brown skirt, and a head covering, and are holding a small object in their hands. A lit candle on a wooden table illuminates the scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has high resolution and clear details, with a focus on the subject and the setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or naked genitalia, and the clothing is modest.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: The dim lighting and the presence of a candle suggest a nighttime setting.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person dressed in 18th-century attire stands in a rustic, dimly lit room with wooden beams and shelves. They are wearing a white blouse, a brown skirt, and a head covering, and are holding a small object in their hands. A lit candle on a wooden table illuminates the scene.
+
+AGE_ESTIMATE: 24 years old
+
+QUALITY: 9
+
+QUALITY_REASON: The image has high resolution and clear details, with a focus on the subject and the setting.
+
+SENSUALITY: 1
+
+SENSUALITY_REASON: The image does not contain any naked breasts or naked genitalia, and the clothing is modest.
+
+CATEGORY: SFW
+
+THEME: NIGHT
+
+THEME_REASON: The dim lighting and the presence of a candle suggest a nighttime setting.
+
+ISSUES: NONE
+====================================================

@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: PREP_SFW_Q8_S3_Servant_scrubbing_wooden_floor_20260917234148.jpeg
+Anonymized ID: Servant_scrubbing_wooden_floor_20260917234148
+File Format: .JPEG | Size: 688.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a scene set in 18th-century London, with individuals dressed in period attire. A woman in the foreground is kneeling and scrubbing the wooden floor with a brush, while others in the background are seated at a table, engaged in conversation and enjoying drinks. The setting is warmly lit by candles, and the overall atmosphere suggests a social gathering or a domestic scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: The image has a high level of detail and clarity, with well-defined characters and a realistic setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any naked breasts or genitalia, and the focus is on the characters' actions rather than their bodies.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: The scene appears to be set during a preparatory moment, possibly before a social event or gathering.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved)
+Overall Reason: Passed all vision quality, period-authenticity, and content checks.
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: The image depicts a scene set in 18th-century London, with individuals dressed in period attire. A woman in the foreground is kneeling and scrubbing the wooden floor with a brush, while others in the background are seated at a table, engaged in conversation and enjoying drinks. The setting is warmly lit by candles, and the overall atmosphere suggests a social gathering or a domestic scene.
+
+AGE_ESTIMATE: The individuals appear to be mature adults, likely in their 30s or 40s.
+
+QUALITY: 8
+QUALITY_REASON: The image has a high level of detail and clarity, with well-defined characters and a realistic setting.
+
+SENSUALITY: 3
+SENSUALITY_REASON: The image does not contain any naked breasts or genitalia, and the focus is on the characters' actions rather than their bodies.
+
+CATEGORY: SFW
+
+THEME: PREP
+THEME_REASON: The scene appears to be set during a preparatory moment, possibly before a social event or gathering.
+
+ISSUES: NONE
+====================================================

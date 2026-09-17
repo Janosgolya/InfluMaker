@@ -89,9 +89,26 @@ class GeorgeProducerAgent {
                 nextItem = this.ana.getNextContentForTheme(theme, 'Fanvue');
             }
 
+            // CROSS-SLOT QUEUE FALLBACK: Prevent empty-run failure if current slot is depleted
             if (!nextItem) {
-                console.log(`[George] ⚠️ No available images found in ${theme} folder.`);
-                return { success: false, reason: `No images in ${theme}`, rejectedImages };
+                console.log(`[George] ⚠️ Slot ${theme} depleted. Searching for unposted content across other themes...`);
+                const fallbackThemes = ['MORNING', 'MIDDAY', 'PREP', 'NIGHT'].filter(t => t !== theme.toUpperCase());
+                for (const fbTheme of fallbackThemes) {
+                    const fbDir = path.join(this.selectedContentDir, fbTheme);
+                    if (fs.existsSync(fbDir)) {
+                        await this.eve.processFolder(fbDir, { limit: 2 });
+                    }
+                    nextItem = this.ana.getNextContentForTheme(fbTheme, 'Fanvue');
+                    if (nextItem) {
+                        console.log(`[George] 🔀 Fallback successful! Pulled unposted asset from ${fbTheme} for ${theme} slot.`);
+                        break;
+                    }
+                }
+            }
+
+            if (!nextItem) {
+                console.log(`[George] ⚠️ All themes are currently depleted across the queue!`);
+                return { success: false, reason: `All themes depleted`, rejectedImages };
             }
 
             console.log(`[George] 🎯 Next asset selected: ${path.basename(nextItem.imagePath)}`);
@@ -147,21 +164,21 @@ class GeorgeProducerAgent {
             systemErrors.push(`Fanvue: ${e.message}`);
         }
 
-        // 2.2 Publish to Instagram (Grid Feed)
+        // 2.2 Publish to Instagram (Grid Feed) - synchronized with nextItem
         try {
             console.log(`[George] 📸 Delegating Instagram Post to Ana...`);
-            results.instagram = await this.ana.publishInstagramPost(theme);
+            results.instagram = await this.ana.publishInstagramPost(theme, { item: nextItem });
         } catch (e) {
             console.error(`[George] ⚠️ Instagram publication error:`, e.message);
             results.instagram = { error: e.message };
             systemErrors.push(`Instagram: ${e.message}`);
         }
 
-        // 2.3 Publish to Pinterest (Pin Board)
+        // 2.3 Publish to Pinterest (Pin Board) - synchronized with nextItem
         if (this.ana.pinterest.isConfigured()) {
             try {
                 console.log(`[George] 📌 Delegating Pinterest Pin to Ana...`);
-                results.pinterest = await this.ana.publishPinterestPin(theme);
+                results.pinterest = await this.ana.publishPinterestPin(theme, { item: nextItem });
             } catch (e) {
                 console.error(`[George] ⚠️ Pinterest publication error:`, e.message);
                 results.pinterest = { error: e.message };
@@ -171,7 +188,7 @@ class GeorgeProducerAgent {
             results.pinterest = { error: 'Pinterest session not configured (missing config/pinterest_session.json)' };
         }
 
-        // 2.4 Publish to X / Twitter (Video or Image Tweet)
+        // 2.4 Publish to X / Twitter (Video or Image Tweet) - synchronized with nextItem
         if (this.ana.twitter.isConfigured()) {
             try {
                 console.log(`[George] 🐦 Delegating X / Twitter Post to Ana...`);
@@ -194,7 +211,7 @@ class GeorgeProducerAgent {
                     const storyP = twitterVideoAsset.replace('.mp4', '.story.txt');
                     results.twitter = await this.ana.twitter.publishTweet(twitterVideoAsset, fs.existsSync(storyP) ? storyP : nextItem.storyPath);
                 } else {
-                    results.twitter = await this.ana.publishTwitterPost(theme);
+                    results.twitter = await this.ana.publishTwitterPost(theme, { item: nextItem });
                 }
             } catch (e) {
                 console.error(`[George] ⚠️ Twitter publication error:`, e.message);
@@ -205,7 +222,7 @@ class GeorgeProducerAgent {
             results.twitter = { error: 'Twitter session not configured (missing config/twitter_session.json)' };
         }
 
-        // 2.6 Publish to TikTok (Dedicated 9:16 Video or Post)
+        // 2.6 Publish to TikTok (Dedicated 9:16 Video or Post) - synchronized with nextItem
         try {
             console.log(`[George] 📱 Delegating TikTok Video / Post to Ana...`);
             const videoDir = path.join(this.selectedContentDir, 'Videos');
@@ -225,7 +242,7 @@ class GeorgeProducerAgent {
             }
 
             if (!postedDedicatedVideo) {
-                results.tiktok = await this.ana.publishTikTokPost(theme);
+                results.tiktok = await this.ana.publishTikTokPost(theme, { item: nextItem });
             }
         } catch (e) {
             console.error(`[George] ⚠️ TikTok publication error:`, e.message);
