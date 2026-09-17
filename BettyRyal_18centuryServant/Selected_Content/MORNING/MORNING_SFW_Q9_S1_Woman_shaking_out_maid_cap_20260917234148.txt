@@ -1,0 +1,30 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl - Tuned 18+ Adult Standard)
+====================================================
+Image File: MORNING_SFW_Q9_S1_Woman_shaking_out_maid_cap_20260917234148.jpeg
+Anonymized ID: Woman_shaking_out_maid_cap_20260917234148
+File Format: .JPEG
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a person dressed in 18th-century attire, holding a piece of cloth. The setting appears to be an indoor stone structure, possibly a historical building, with natural light coming through a window. The person is wearing a beige dress with a brown belt and has light-colored hair tied back.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: High resolution, period authentic fine art.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: Compliant artistic period framing.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: Classified by scene lighting and activity.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved - Compliant Young Adult)
+Overall Reason: Passed fine-art quality and age compliance.
+====================================================

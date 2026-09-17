@@ -1,0 +1,30 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl - Tuned 18+ Adult Standard)
+====================================================
+Image File: NIGHT_SFW_Q9_S1_Group_laughing_by_the_fire_20260917234148.jpeg
+Anonymized ID: Group_laughing_by_the_fire_20260917234148
+File Format: .JPEG
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a group of six individuals dressed in 18th-century attire, seated around a small table in a rustic, candle-lit room with a stone fireplace. They appear to be engaged in a lively conversation, with some holding mugs and others gesturing animatedly. The setting suggests a cozy, intimate gathering, possibly in a tavern or private home.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: High resolution, period authentic fine art.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: Compliant artistic period framing.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: Classified by scene lighting and activity.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved - Compliant Young Adult)
+Overall Reason: Passed fine-art quality and age compliance.
+====================================================

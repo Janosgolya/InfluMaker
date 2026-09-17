@@ -1,0 +1,30 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl - Tuned 18+ Adult Standard)
+====================================================
+Image File: PREP_SFW_Q9_S3_Ladies_preparing_in_room_20260917234148.jpeg
+Anonymized ID: Ladies_preparing_in_room_20260917234148
+File Format: .JPEG
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+Three women in 18th-century attire are in a well-lit, ornate room with wooden paneling and large windows. One woman is adjusting her dress, another is looking at herself in a mirror, and the third is holding a fan. The setting suggests a domestic or social scene from the period.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: High resolution, period authentic fine art.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: Compliant artistic period framing.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: Classified by scene lighting and activity.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved - Compliant Young Adult)
+Overall Reason: Passed fine-art quality and age compliance.
+====================================================

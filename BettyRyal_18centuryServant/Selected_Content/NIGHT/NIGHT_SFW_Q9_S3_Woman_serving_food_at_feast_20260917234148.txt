@@ -1,0 +1,30 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl - Tuned 18+ Adult Standard)
+====================================================
+Image File: NIGHT_SFW_Q9_S3_Woman_serving_food_at_feast_20260917234148.jpeg
+Anonymized ID: Woman_serving_food_at_feast_20260917234148
+File Format: .JPEG
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+The image depicts a lively scene in a 18th-century London tavern. A woman in a brown apron and bonnet serves food on a tray, while other individuals in period attire are seated around tables, engaged in conversation and dining. The setting is warmly lit by candlelight, with a stone fireplace in the background, and the atmosphere is bustling with activity.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: High resolution, period authentic fine art.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 3 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: Compliant artistic period framing.
+
+📅 THEME CLASSIFICATION:
+Theme: NIGHT
+Reasoning: Classified by scene lighting and activity.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/NIGHT
+Rejection Category: N/A (Approved - Compliant Young Adult)
+Overall Reason: Passed fine-art quality and age compliance.
+====================================================

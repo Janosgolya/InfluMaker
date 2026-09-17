@@ -1,0 +1,30 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl - Tuned 18+ Adult Standard)
+====================================================
+Image File: PREP_SFW_Q9_S1_Woman_polishing_grandfather_clock_20260917234148.jpeg
+Anonymized ID: Woman_polishing_grandfather_clock_20260917234148
+File Format: .JPEG
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A woman in 18th-century attire is kneeling and polishing a wooden grandfather clock. She wears a brown dress and a headscarf, and there is a bucket and a container of polish on the floor beside her. The setting appears to be a stone-walled room with a window featuring diamond panes, suggesting a historical domestic scene.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: High resolution, period authentic fine art.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: Compliant artistic period framing.
+
+📅 THEME CLASSIFICATION:
+Theme: PREP
+Reasoning: Classified by scene lighting and activity.
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/PREP
+Rejection Category: N/A (Approved - Compliant Young Adult)
+Overall Reason: Passed fine-art quality and age compliance.
+====================================================

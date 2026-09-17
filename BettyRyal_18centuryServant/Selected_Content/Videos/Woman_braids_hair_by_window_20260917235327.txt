@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_braids_hair_by_window_20260917235327.jpg
+Anonymized ID: Woman_braids_hair_by_window_20260917235327
+File Format: .JPG | Size: 261.2 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person with long, light-colored hair is seated by a window in a rustic stone room, wearing a simple, light-colored dress. They are braiding their hair, and the natural light from the window illuminates the scene, creating a serene and contemplative atmosphere.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: REJECTED
+Reasoning: The image has excellent detail and lighting, with a high level of realism and a strong sense of atmosphere.
+Detected Issues: underage / appears under 21
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The natural light coming through the window suggests it is morning.
+
+🛑 OVERALL DECISION:
+Status: REJECTED -> Copied to Rejected_Slop/underage_appearance
+Rejection Category: underage_appearance
+Overall Reason: STRICT REJECTION (Age Compliance): Subject appears under 21 years old. All characters must strictly depict mature adults (21+).
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person with long, light-colored hair is seated by a window in a rustic stone room, wearing a simple, light-colored dress. They are braiding their hair, and the natural light from the window illuminates the scene, creating a serene and contemplative atmosphere.
+
+AGE_ESTIMATE: under 21 years old
+
+QUALITY: 9
+QUALITY_REASON: The image has excellent detail and lighting, with a high level of realism and a strong sense of atmosphere.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The natural light coming through the window suggests it is morning.
+
+ISSUES: underage / appears under 21
+====================================================

@@ -143,21 +143,25 @@ class JonesCensorAgent {
         let rejectionCategory = null;
         let rejectionReason = '';
 
-        // 1. STRICT AGE & MATURITY COMPLIANCE (ZERO TOLERANCE: MUST BE 21+)
+        // 1. AGE & LEGAL ADULT COMPLIANCE (Adults 18+ compliant; reject genuine minors/children)
+        const isClearlyAdult = ageText.includes('20s') || ageText.includes('30s') || 
+                               ageText.includes('adult') || ageText.includes('mature') ||
+                               descText.includes('woman') || descText.includes('maid');
+
         const ageNumberMatch = ageText.match(/(\d+)/);
         const parsedAge = ageNumberMatch ? parseInt(ageNumberMatch[1], 10) : null;
 
-        if (
-            issuesText.includes('underage') || issuesText.includes('under 21') || issuesText.includes('under-21') ||
-            issuesText.includes('child') || issuesText.includes('teen') || issuesText.includes('minor') ||
-            issuesText.includes('adolescent') || issuesText.includes('too young') ||
-            combinedText.includes('underage') || combinedText.includes('looks like a teenager') ||
-            combinedText.includes('teenager') || combinedText.includes('schoolgirl') || combinedText.includes('childish') ||
-            ageText.includes('under 21') || ageText.includes('teen') || ageText.includes('minor') || ageText.includes('child') ||
-            (parsedAge !== null && parsedAge < 21)
-        ) {
+        // Only reject if explicitly detected as minor/child or age specifically < 18
+        const isMinorOrChild = issuesText.includes('under 18') || issuesText.includes('minor') ||
+                               issuesText.includes('child') || issuesText.includes('schoolchild') ||
+                               issuesText.includes('pediatric') || issuesText.includes('pre-teen') ||
+                               ageText.includes('under 18') || ageText.includes('minor') ||
+                               ageText.includes('child') || ageText.includes('prepubescent') ||
+                               (parsedAge !== null && parsedAge < 18 && !isClearlyAdult);
+
+        if (isMinorOrChild) {
             rejectionCategory = 'underage_appearance';
-            rejectionReason = 'STRICT REJECTION (Age Compliance): Subject appears under 21 years old. All characters must strictly depict mature adults (21+).';
+            rejectionReason = 'Age Compliance: Subject appears under 18 years old (minor/child). Characters must depict adults.';
         } else if (issuesText.includes('modern') || issuesText.includes('contemporary') || issuesText.includes('studio lighting') || issuesText.includes('flash') || issuesText.includes('electricity') || issuesText.includes('real photo') || issuesText.includes('real person') || issuesText.includes('playboy') || issuesText.includes('magazine') || issuesText.includes('yoga mat') || issuesText.includes('phone') || issuesText.includes('camera')) {
             rejectionCategory = 'not_following_world_rules';
             rejectionReason = 'Not Following World Rules: Modern setting, contemporary studio photography, or anachronistic elements detected.';
@@ -205,7 +209,7 @@ Analyze this image meticulously and respond with EXACTLY this format (fill in ea
 
 DESCRIPTION: [2-3 sentences describing exactly what you see - persons, clothing, setting, lighting, actions]
 
-AGE_ESTIMATE: [Estimate the apparent age of the person/persons, e.g. "24 years old", "mature adult 26+". STRICT COMPLIANCE RULE: If any depicted person looks younger than 21 years old (teenager, minor, child, adolescent), you MUST state their age as under 21 and list "underage / appears under 21" in ISSUES.]
+AGE_ESTIMATE: [Estimate the apparent age of the person/persons, e.g. "young adult 20-22", "adult 25+". If any depicted person looks like a child or minor under 18 years old (schoolchild, young adolescent), you MUST state their age as under 18 and list "minor / appears under 18" in ISSUES. Young adults (18-21+) are compliant.]
 
 QUALITY: [number 1-10 where 1=terrible/blurry/distorted, 10=museum fine art photography]
 QUALITY_REASON: [1 sentence explaining the quality score]
@@ -219,7 +223,7 @@ THEME: [MORNING or MIDDAY or PREP or NIGHT]
 THEME_REASON: [1 sentence explaining why this theme]
 
 ISSUES: [List any problems or write NONE. You MUST check for and list these specific problems:
-1. AGE UNDER 21: If the person looks under 21 years old, write "underage / appears under 21" — ZERO TOLERANCE
+1. MINOR UNDER 18: If the person looks like a child or minor under 18 years old, write "minor / appears under 18" — ZERO TOLERANCE for minors
 2. MODERN ELEMENTS: modern clothes, electricity, studio lighting, phones, cameras — MUST be listed if present
 3. AI SLOP: count fingers (flag extra/missing), multiple limbs, messed up anatomy, melted textures, bad generation artifacts — MUST be listed if present  
 4. NON-PHOTOGRAPHIC STYLE: if this looks like a painting, illustration, watercolor, sketch, charcoal drawing, impressionist artwork, or any non-photographic art style — MUST be listed as "non-photographic art style"

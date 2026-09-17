@@ -1,0 +1,27 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl - Tuned 18+ Adult Standard)
+====================================================
+Image File: MORNING_SFW_Q8_S1_Woman_stretching_legs_in_bed_20260917234147.jpeg
+Anonymized ID: Woman_stretching_legs_in_bed_20260917234147
+File Format: .JPEG
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person lies on a bed in a rustic attic room, bathed in soft, natural light streaming through a small window. The individual is dressed in light, period-appropriate attire, and the setting suggests a historical, possibly 18th-century, environment.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 8 / 10
+Status: PASSED (High Quality Fine Art)
+Reasoning: High resolution, period authentic fine art.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+
+🛑 OVERALL DECISION:
+Status: APPROVED -> Copied to Selected_Content/MORNING
+Rejection Category: N/A (Approved - Compliant Young Adult)
+====================================================

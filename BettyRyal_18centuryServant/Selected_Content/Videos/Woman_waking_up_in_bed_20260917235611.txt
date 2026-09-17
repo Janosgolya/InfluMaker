@@ -1,0 +1,48 @@
+====================================================
+🕵️ JONES REAL VISION AUDIT REPORT (Ollama qwen2.5vl)
+====================================================
+Image File: REJECT_UNDERAGE_APPEARANCE_SFW_Q9_S1_Woman_waking_up_in_bed_20260917235611.jpg
+Anonymized ID: Woman_waking_up_in_bed_20260917235611
+File Format: .JPG | Size: 261.4 KB
+
+👁️ VISION DESCRIPTION (what the model actually sees):
+A person is waking up in a rustic attic bedroom, stretching their arms above their head. The room is lit by natural light coming through a small window, and the person is wearing a light-colored, long-sleeved nightgown. The bed is unmade, with a quilt and pillows, and the setting includes wooden beams, stone walls, and a simple wooden chair.
+
+⭐ QUALITY RATING (0 - 10):
+Score: 9 / 10
+Status: REJECTED
+Reasoning: The image has high resolution and detail, with a warm, natural lighting that enhances the historical setting.
+Detected Issues: NONE
+
+🔥 SENSUALITY & SFW / NSFW RATING (0 - 10):
+Score: 1 / 10
+Category: SFW (0-5 SFW, 6-10 NSFW)
+Reasoning: The image does not contain any nudity or suggestive elements.
+
+📅 THEME CLASSIFICATION:
+Theme: MORNING
+Reasoning: The person is waking up, which is a morning activity.
+
+🛑 OVERALL DECISION:
+Status: REJECTED -> Copied to Rejected_Slop/underage_appearance
+Rejection Category: underage_appearance
+Overall Reason: STRICT REJECTION (Age Compliance): Subject appears under 21 years old. All characters must strictly depict mature adults (21+).
+
+📋 RAW VISION MODEL RESPONSE:
+DESCRIPTION: A person is waking up in a rustic attic bedroom, stretching their arms above their head. The room is lit by natural light coming through a small window, and the person is wearing a light-colored, long-sleeved nightgown. The bed is unmade, with a quilt and pillows, and the setting includes wooden beams, stone walls, and a simple wooden chair.
+
+AGE_ESTIMATE: The person appears to be an adult, likely in their 20s or 30s.
+
+QUALITY: 9
+QUALITY_REASON: The image has high resolution and detail, with a warm, natural lighting that enhances the historical setting.
+
+SENSUALITY: 1
+SENSUALITY_REASON: The image does not contain any nudity or suggestive elements.
+
+CATEGORY: SFW
+
+THEME: MORNING
+THEME_REASON: The person is waking up, which is a morning activity.
+
+ISSUES: NONE
+====================================================
