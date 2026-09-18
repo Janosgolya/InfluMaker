@@ -3698,5 +3698,40 @@
     "hook": "POV: You caught the inn's new maid in the quiet corridor...",
     "timestamp": "2026-09-17T19:41:26.886Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "MIDDAY_SFW_Q9_S1_Servants_eating_at_feast_20260917234148.jpeg",
+    "theme": "MIDDAY",
+    "price": "Included in Subscription",
+    "priceCents": 0,
+    "audience": "subscribers",
+    "timestamp": "2026-09-18T11:22:33.387Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Instagram",
+    "imageFile": "MIDDAY_SFW_Q9_S1_Servants_eating_at_feast_20260917234148.jpeg",
+    "theme": "MIDDAY",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/Instagram_Ready_Content/MIDDAY_SFW_Q9_S1_Servants_eating_at_feast_20260917234148_insta_4x5.jpg",
+    "timestamp": "2026-09-18T11:23:03.764Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Pinterest",
+    "imageFile": "MIDDAY_SFW_Q9_S1_Servants_eating_at_feast_20260917234148.jpeg",
+    "theme": "MIDDAY",
+    "title": "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic",
+    "board": "18th Century Aesthetic & Maid Secrets",
+    "link": "https://fanvue.com/bettyryal",
+    "timestamp": "2026-09-18T11:23:31.557Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "videoFile": "Betty_adjusts_hair_in_bed_20260917235154.mp4",
+    "theme": "MIDDAY",
+    "timestamp": "2026-09-18T11:24:47.327Z",
+    "status": "PUBLISHED"
   }
 ]
