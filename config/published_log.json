@@ -3803,5 +3803,40 @@
     "theme": "NIGHT",
     "timestamp": "2026-09-18T22:39:55.352Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "MIDDAY_SFW_Q9_S1_Woman_pouring_soup_from_pot_20260917234148.jpeg",
+    "theme": "MIDDAY",
+    "price": "Included in Subscription",
+    "priceCents": 0,
+    "audience": "subscribers",
+    "timestamp": "2026-09-19T11:06:02.189Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Instagram",
+    "imageFile": "MIDDAY_SFW_Q9_S1_Woman_pouring_soup_from_pot_20260917234148.jpeg",
+    "theme": "MIDDAY",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/Instagram_Ready_Content/MIDDAY_SFW_Q9_S1_Woman_pouring_soup_from_pot_20260917234148_insta_4x5.jpg",
+    "timestamp": "2026-09-19T11:06:31.973Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Pinterest",
+    "imageFile": "MIDDAY_SFW_Q9_S1_Woman_pouring_soup_from_pot_20260917234148.jpeg",
+    "theme": "MIDDAY",
+    "title": "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic",
+    "board": "18th Century Aesthetic & Maid Secrets",
+    "link": "https://fanvue.com/bettyryal",
+    "timestamp": "2026-09-19T11:07:00.372Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "videoFile": "Woman_ties_blouse_on_bed_20260917235240.mp4",
+    "theme": "MIDDAY",
+    "timestamp": "2026-09-19T11:08:06.524Z",
+    "status": "PUBLISHED"
   }
 ]
