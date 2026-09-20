@@ -3971,5 +3971,42 @@
     "link": "https://fanvue.com/bettyryal",
     "timestamp": "2026-09-20T11:31:50.249Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "PREP_SFW_Q8_S3_Woman_pulling_on_wool_stockings_20260917234148.jpeg",
+    "theme": "PREP",
+    "price": "$7.99",
+    "priceCents": 799,
+    "audience": "subscribers",
+    "timestamp": "2026-09-20T18:51:45.209Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Instagram",
+    "imageFile": "PREP_SFW_Q8_S3_Woman_pulling_on_wool_stockings_20260917234148.jpeg",
+    "theme": "PREP",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/Instagram_Ready_Content/PREP_SFW_Q8_S3_Woman_pulling_on_wool_stockings_20260917234148_insta_4x5.jpg",
+    "timestamp": "2026-09-20T18:52:14.207Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Pinterest",
+    "imageFile": "PREP_SFW_Q8_S3_Woman_pulling_on_wool_stockings_20260917234148.jpeg",
+    "theme": "PREP",
+    "title": "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic",
+    "board": "18th Century Aesthetic & Maid Secrets",
+    "link": "https://fanvue.com/bettyryal",
+    "timestamp": "2026-09-20T18:52:42.575Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "PREP_SFW_Q8_S3_Woman_pulling_on_wool_stockings_20260917234148.jpeg",
+    "theme": "PREP",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/PREP_SFW_Q8_S3_Woman_pulling_on_wool_stockings_20260917234148_tiktok_9x16.jpg",
+    "hook": "POV: You caught the manor's new maid in the quiet corridor...",
+    "timestamp": "2026-09-20T18:53:57.542Z",
+    "status": "PUBLISHED"
   }
 ]
