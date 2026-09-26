@@ -4554,5 +4554,42 @@
     "hook": "POV: You caught the manor's new maid in the quiet corridor...",
     "timestamp": "2026-09-25T23:22:54.654Z",
     "status": "PUBLISHED"
+  },
+  {
+    "platform": "Fanvue",
+    "imageFile": "MORNING_SFW_Q9_S1_Woman_arranging_wildflowers_in_vase_20260917234148.jpeg",
+    "theme": "MIDDAY",
+    "price": "Included in Subscription",
+    "priceCents": 0,
+    "audience": "subscribers",
+    "timestamp": "2026-09-26T11:30:52.574Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Instagram",
+    "imageFile": "MORNING_SFW_Q9_S1_Woman_arranging_wildflowers_in_vase_20260917234148.jpeg",
+    "theme": "MORNING",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/Instagram_Ready_Content/MORNING_SFW_Q9_S1_Woman_arranging_wildflowers_in_vase_20260917234148_insta_4x5.jpg",
+    "timestamp": "2026-09-26T11:31:21.707Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "Pinterest",
+    "imageFile": "MORNING_SFW_Q9_S1_Woman_arranging_wildflowers_in_vase_20260917234148.jpeg",
+    "theme": "MORNING",
+    "title": "18th Century London Maid by Candlelight 🕯️ | Historical Romance Aesthetic",
+    "board": "18th Century Aesthetic & Maid Secrets",
+    "link": "https://fanvue.com/bettyryal",
+    "timestamp": "2026-09-26T11:31:48.856Z",
+    "status": "PUBLISHED"
+  },
+  {
+    "platform": "TikTok",
+    "imageFile": "MORNING_SFW_Q9_S1_Woman_arranging_wildflowers_in_vase_20260917234148.jpeg",
+    "theme": "MORNING",
+    "assetPath": "/home/runner/work/InfluMaker/InfluMaker/BettyRyal_18centuryServant/TikTok_Ready_Content/MORNING_SFW_Q9_S1_Woman_arranging_wildflowers_in_vase_20260917234148_tiktok_9x16.jpg",
+    "hook": "POV: You caught the manor's new maid in the quiet corridor...",
+    "timestamp": "2026-09-26T11:32:50.155Z",
+    "status": "PUBLISHED"
   }
 ]
