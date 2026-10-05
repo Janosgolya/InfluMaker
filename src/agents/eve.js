@@ -235,6 +235,11 @@ FIRST-PRINCIPLES WRITING RULES:
 2. FULL IMMERSION: Betty speaks/writes directly in first person ("I", "my tallow candle", "the cold linen", "in our London manor").
 3. ZERO META-TEXT: DO NOT write quotation marks around lines, DO NOT write parenthetical tone instructions like "(Whispered)" or "(Seductive)", DO NOT write labels like "Note:".
 4. SEPARATION OF CONCERNS: Keep paragraphs of prose 100% clean. NEVER insert hashtags inside narrative sentences.
+5. STRICT VISUAL FIDELITY (IMAGE GROUNDING):
+   - You MUST write specifically about what Betty is doing, wearing, and feeling in the CURRENT SCENE.
+   - If she is in a nightgown, in bed, or wearing simple clothes, DO NOT mention corsets, stays, or lacing.
+   - If she is doing chores (scrubbing, washing, knitting, cooking), the prose, question, and tweet MUST focus on that chore, the cold water, the stone floor, or her quiet thoughts—NOT corsets.
+   - NEVER use generic stock questions. Craft an engagement question tailored to the exact visual setting!
 
 CURRENT SCENE:
 - Visual Scene: ${visualInfo.description}
@@ -261,10 +266,10 @@ POV: You caught the manor's new maid in the quiet corridor...
 [A striking, poetic first sentence that stops the scroll]
 
 #### INTIMATE DIARY EXCERPT:
-[2 evocative paragraphs from Betty's journal detailing sensations, textures, candlelight, and hidden feelings]
+[2 evocative paragraphs from Betty's journal detailing sensations, textures, candlelight, and hidden feelings directly related to the visual scene]
 
 #### ENGAGEMENT QUESTION:
-[A question prompting followers to reply, e.g. Would you have helped me lace my corset, or let it fall?]
+[A captivating question tailored specifically to THIS scene's action, room, and garments (e.g., if in bed or nightgown, ask about dreams or waking; if washing or chores, ask about quiet labor or peace; if by window or candle, ask about secrets in the dark). NEVER mention corsets or stays unless Betty is explicitly dressing or wearing stays in the visual scene.]
 
 #### FANVUE LINK-IN-BIO CTA:
 [Sensual invitation directing to the private diary linked in bio]
@@ -307,7 +312,7 @@ r/aiArt, r/HistoricalCostuming, r/AIGirls
 
 ### SECTION 6: 🐦 X (TWITTER) FORMAT
 #### TWEET TEXT:
-[A punchy, breathless 1-2 sentence micro-confession strictly under 180 characters. Zero hashtags, zero links in this field]
+[A unique, scene-specific 1-2 sentence micro-confession strictly under 180 characters describing the exact setting, task, or sensation in THIS image. Never use generic stock phrases.]
 
 #### CALLOUT LINK:
 https://fanvue.com/bettyryal

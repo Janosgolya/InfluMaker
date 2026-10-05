@@ -67,14 +67,15 @@ class StoryParser {
             }
         }
 
+        const metadata = this.parseMetadata(raw);
         const result = {
-            metadata: this.parseMetadata(raw),
-            tiktok: this.parseTikTok(raw),
-            instagram: this.parseInstagram(raw),
-            fanvue: this.parseFanvue(raw),
-            pinterest: this.parsePinterest(raw),
-            reddit: this.parseReddit(raw),
-            twitter: this.parseTwitter(raw)
+            metadata,
+            tiktok: this.parseTikTok(raw, metadata),
+            instagram: this.parseInstagram(raw, metadata),
+            fanvue: this.parseFanvue(raw, metadata),
+            pinterest: this.parsePinterest(raw, metadata),
+            reddit: this.parseReddit(raw, metadata),
+            twitter: this.parseTwitter(raw, metadata)
         };
 
         return result;
@@ -129,11 +130,178 @@ class StoryParser {
     }
 
     /**
-     * Parses SECTION 2: INSTAGRAM FORMAT
+     * Extracts visual context indicators from scene description and theme
      */
-    parseInstagram(raw) {
+    detectVisualContext(sceneSummary = '', theme = 'MORNING') {
+        const text = (sceneSummary || '').toLowerCase();
+        
+        const isBedOrSleepwear = /\b(bed|nightgown|sleep|sleeping|waking|wake|sheets|mattress|pillow|blanket|chemise|lying|bare feet|stretched|stretching|attic bed)\b/i.test(text);
+        const isWashingOrWater = /\b(washing|wash|laundry|trough|basin|water|soapy|soap|rinse|hands in basin|face with water)\b/i.test(text);
+        const isCleaningOrChores = /\b(scrubbing|scrub|floor|flagstone|sweeping|sweep|dusting|dust|polishing|polish|silver|hearth|fire|wood carvings|smoothing linen)\b/i.test(text);
+        const isKitchenOrCooking = /\b(soup|pot|cooking|kitchen|hearth|feast|eating|pouring|tavern|bread|copper)\b/i.test(text);
+        const isCraftsOrKnitting = /\b(knitting|knit|needle|mending|mend|sewing|sew|spinning|yarn)\b/i.test(text);
+        const isWindowOrNight = /\b(window|diamond panes|reflection|mirror|candle|candlelight|tallow|shadows|lantern|dark|night sky|corridor)\b/i.test(text);
+        const isCorsetOrDressing = /\b(corset|stays|lacing|unlaced|unlacing|bodice|undressing|dressing gown|silk gown|evening ball|fine gown)\b/i.test(text);
+
+        return {
+            isBedOrSleepwear,
+            isWashingOrWater,
+            isCleaningOrChores,
+            isKitchenOrCooking,
+            isCraftsOrKnitting,
+            isWindowOrNight,
+            isCorsetOrDressing
+        };
+    }
+
+    /**
+     * Simple deterministic seed from string (hardened against unbounded input)
+     */
+    getSeed(str = '') {
+        const s = typeof str === 'string' ? str.slice(0, 500) : '';
+        let hash = 0;
+        for (let i = 0; i < s.length; i++) {
+            hash = (hash << 5) - hash + s.charCodeAt(i);
+            hash |= 0;
+        }
+        return Math.abs(hash);
+    }
+
+    /**
+     * Generates a contextually accurate Instagram engagement question matching the scene
+     */
+    generateContextualQuestion(sceneSummary = '', theme = 'MORNING', currentQuestion = '') {
+        const context = this.detectVisualContext(sceneSummary, theme);
+        const cleanCurrent = this.cleanFieldText(currentQuestion);
+
+        // If question already exists and is appropriate (doesn't mention corset when not dressed in corset), keep it
+        const hasCorsetMention = /\b(corset|stays|lace my|lace her)\b/i.test(cleanCurrent);
+        if (cleanCurrent && cleanCurrent.length >= 15 && (!hasCorsetMention || context.isCorsetOrDressing)) {
+            return cleanCurrent;
+        }
+
+        const seed = this.getSeed(sceneSummary || theme);
+
+        if (context.isBedOrSleepwear) {
+            const pool = [
+                "Do you ever find yourself waking in the quiet hours before dawn, lost in thought?",
+                "What dreams keep you awake when the morning chill touches the linen sheets?",
+                "Would you linger with me in the attic stillness, or hurry to meet the morning bell?",
+                "Do the quiet moments before the house stirs bring you peace, or restless longing?"
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isWashingOrWater) {
+            const pool = [
+                "Have you ever found quiet peace in the steady rhythm of cold water and chores?",
+                "What whispered secrets would you share while the rest of the manor sleeps?",
+                "Do the simplest tasks give your mind space to wander into forbidden thoughts?",
+                "Would you keep me company by the washbasin, or leave me to the morning cold?"
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isCleaningOrChores) {
+            const pool = [
+                "Do you find that the quietest chores often carry the heaviest thoughts?",
+                "If you walked down this corridor while I worked, would you stop to speak with me?",
+                "Have you ever longed for someone to break the silence of a long day's duty?",
+                "What secrets would you look for in the grand halls of an 18th-century manor?"
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isKitchenOrCooking) {
+            const pool = [
+                "Do you prefer the warmth of the roaring hearth, or the cool shadows of the evening?",
+                "What comforting memories remind you most of home on a cold London night?",
+                "If you sat by the kitchen fire tonight, what story would you ask me to tell?",
+                "Would you steal a quiet moment with me by the hearth before the masters call?"
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isCraftsOrKnitting) {
+            const pool = [
+                "Have you ever found solace in counting quiet stitches while the world rushes past?",
+                "What thoughts keep your hands busy when the night grows long and cold?",
+                "Would you keep me company in the attic while the tallow candle burns down?",
+                "Do you ever pour your deepest secrets into quiet, patient work?"
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isWindowOrNight) {
+            const pool = [
+                "What secrets would you whisper if you found me gazing out into the London fog?",
+                "Do the quiet shadows comfort you, or do they make your heart race?",
+                "Would you keep watch with me through the dark, or blow out the tallow flame?",
+                "If you looked up at my attic window from the cobblestones, would you wonder who waits inside?"
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isCorsetOrDressing) {
+            const pool = [
+                "Would you have helped me lace my stays, or let them fall?",
+                "Do you think the grand ladies' gowns hide heavier secrets than a maid's simple apron?",
+                "How long would you linger in the dressing chamber before slipping away?"
+            ];
+            return pool[seed % pool.length];
+        }
+
+        const fallbackPool = [
+            "If our paths crossed in the quiet corridors tonight, would you call my name or keep silent?",
+            "What unspoken thoughts do you hold closest when the rest of the world is asleep?",
+            "Do you believe a servant girl sees more of the truth than the lords and ladies?"
+        ];
+        return fallbackPool[seed % fallbackPool.length];
+    }
+
+    /**
+     * Sanitizes narrative excerpt to prevent contradictory clothing/actions
+     */
+    sanitizeNarrativeExcerpt(excerpt = '', sceneSummary = '', theme = 'MORNING') {
+        if (!excerpt) return '';
+        let cleaned = this.cleanFieldText(excerpt);
+        const context = this.detectVisualContext(sceneSummary, theme);
+
+        if (!context.isCorsetOrDressing) {
+            // Remove misplaced engagement questions that leaked into excerpt prose
+            cleaned = cleaned.replace(/Would you have helped (me|her) lace (my|her) (corset|stays)[^?.\n]*\??/gi, '');
+            // Replace incongruous stays/corset physical references
+            cleaned = cleaned.replace(/made my stays feel heavy/gi, 'made my heart feel heavy');
+            cleaned = cleaned.replace(/my corset was laced with/gi, 'my diary was filled with');
+            cleaned = cleaned.replace(/pulse race against my corset/gi, 'pulse race in my chest');
+            cleaned = cleaned.replace(/pounding so loudly against my corset/gi, 'pounding so loudly in my chest');
+            cleaned = cleaned.replace(/longed to lace (her|my) corset/gi, 'longed to speak my secret thoughts');
+            cleaned = cleaned.replace(/let my corset fall/gi, 'let my guard fall');
+            cleaned = cleaned.replace(/as I try to lace my stays/gi, 'as I smooth my cold linen');
+            cleaned = cleaned.replace(/helped lace (her|my) (stays|corset)/gi, 'shared that quiet glance');
+            cleaned = cleaned.replace(/help me lace my (corset|stays)/gi, 'keep me company in this quiet chamber');
+            cleaned = cleaned.replace(/loosened my stays/gi, 'paused my breath');
+            cleaned = cleaned.replace(/secret lace-up( moment)?/gi, 'secret quiet moment');
+            cleaned = cleaned.replace(/corset falling slightly/gi, 'gown catching the candlelight');
+            cleaned = cleaned.replace(/lace (her|my) (stays|corset)/gi, 'fasten her simple gown');
+            cleaned = cleaned.replace(/\bcorset\b/gi, 'linen gown');
+            cleaned = cleaned.replace(/\bstays\b/gi, 'linens');
+        }
+
+        // Clean double spaces and empty lines
+        return cleaned.replace(/[ \t]{2,}/g, ' ').trim();
+    }
+
+    /**
+     * Parses SECTION 2: INSTAGRAM FORMAT with Visual Scene Consistency
+     */
+    parseInstagram(raw, metadata = null) {
         const secMatch = raw.match(/### SECTION 2:\s*📸 INSTAGRAM FORMAT[\s\S]*?(?=### SECTION 3:|$)/i);
         const sec = secMatch ? secMatch[0] : '';
+
+        const meta = metadata || this.parseMetadata(raw);
+        const sceneSummary = meta.sceneSummary || '';
+        const theme = meta.theme || 'MORNING';
 
         let hook = this.extractSubfield(sec, 'OPENING HOOK LINE', ['INTIMATE DIARY', 'ENGAGEMENT QUESTION', 'FANVUE', 'HASHTAGS']);
         let excerpt = this.extractSubfield(sec, 'INTIMATE DIARY EXCERPT', ['ENGAGEMENT QUESTION', 'FANVUE', 'HASHTAGS', 'OPENING HOOK']);
@@ -146,7 +314,6 @@ class StoryParser {
             excerpt = sec.replace(/###.+/g, '').replace(/####.+/g, '').replace(/#\w+/g, '').trim();
         }
         if (!hook) hook = "The morning chill in the stone corridors... 🕯️";
-        if (!question) question = "Would you have helped me lace my corset, or let it fall?";
         if (!cta) cta = "Discover the rest of my private diary via the link in my bio 🗝️";
 
         // Clean hashtags from prose
@@ -154,6 +321,10 @@ class StoryParser {
         excerpt = excerpt.replace(/#\w+/g, '').trim();
         question = question.replace(/#\w+/g, '').trim();
         cta = cta.replace(/#\w+/g, '').trim();
+
+        // Visual Context Consistency & Grounding
+        excerpt = this.sanitizeNarrativeExcerpt(excerpt, sceneSummary, theme);
+        question = this.generateContextualQuestion(sceneSummary, theme, question);
 
         const defaultTags = ['#18thCentury', '#PeriodDrama', '#FineArtPhotography', '#RembrandtLighting', '#BettyRyal', '#HistoricalRomance', '#LondonManor', '#VintageAesthetic'];
         const parsedTags = (hashtags.match(/#\w+/g) || []).filter(t => !t.toLowerCase().includes('fanvue'));
@@ -255,13 +426,121 @@ class StoryParser {
     }
 
     /**
-     * Parses SECTION 6: X (TWITTER) FORMAT
-     * Enforces STRICT 280-character budget and 100% Betty character immersion.
+     * Generates a contextually accurate, non-repeating 18th-century tweet grounded in the image
      */
-    parseTwitter(raw) {
+    generateContextualTweet(sceneSummary = '', theme = 'MORNING', existingBody = '', extraSalt = 0) {
+        const context = this.detectVisualContext(sceneSummary, theme);
+        let body = this.cleanFieldText(existingBody);
+        body = body.replace(/https?:\/\/\S+/g, '').replace(/#\w+/g, '').trim();
+
+        const isStockCanned = [
+            /When the candles burn down and the manor sleeps/i,
+            /Before the London manor stirs, I write my quiet confessions/i,
+            /Scrubbing the grand halls taught me/i,
+            /Lacing heavy silk stays for the evening ball/i,
+            /Caught in the quiet corridor of the manor/i,
+            /Swipe up to read/i
+        ].some(p => p.test(body));
+
+        const hasCorsetConflict = !context.isCorsetOrDressing && /\b(corset|stays)\b/i.test(body);
+
+        // If body is valid, unique, and not conflicting, keep it
+        if (body && body.length >= 20 && !isStockCanned && !hasCorsetConflict) {
+            return body;
+        }
+
+        const seed = (this.getSeed(sceneSummary || theme) + extraSalt);
+
+        if (context.isBedOrSleepwear) {
+            const pool = [
+                "Linen sheets still warm from restless dreams before the morning bell strikes in the manor.",
+                "Waking in the drafty attic chamber while London still sleeps under a veil of autumn mist.",
+                "The tallow candle burns low as I lie in the quiet dawn, thinking of what cannot be spoken aloud.",
+                "A moment of stillness on the cold linen before the long day of service claims my hours.",
+                "Listening to the quiet rain against the roof before anyone in the grand house awakens."
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isWashingOrWater) {
+            const pool = [
+                "Cold well-water and coarse lavender soap numbing my fingers. Even simple chores hold whispered secrets.",
+                "Washing linens by candlelight before the house stirs. My thoughts drift further than the Thames.",
+                "The steam from the washbasin rises into the cold air. Another quiet morning keeping secrets.",
+                "Scrubbing fine lace in cold water, wondering about the ladies who wear it into grand ballrooms."
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isCleaningOrChores) {
+            const pool = [
+                "Scrubbing stone flagstones in the corridor, learning which doors to pass and which to watch.",
+                "Polishing brass and wood by candlelight. The quietest maids always hear the loudest secrets.",
+                "Duty begins long before the ladies awake. In this quiet labor, my heart wanders freely.",
+                "Gathering fresh linens in the stone gallery while the morning fog clings to the courtyard."
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isKitchenOrCooking) {
+            const pool = [
+                "Tending the great hearth in the early hour, watching embers glow like whispered confidences.",
+                "The kitchen warms slowly while London sleeps outside. My diary holds what my lips dare not say.",
+                "Stirring the copper pot by firelight, wondering what tomorrow's banquet will bring to our manor.",
+                "Bread baking in the hearth while I steal a quiet moment to write by candlelight."
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isCraftsOrKnitting) {
+            const pool = [
+                "Counting quiet stitches in the attic while the grand house sleeps below. My diary knows my heart.",
+                "The rhythmic click of needles by candlelight—the only sound in a house full of hidden lives.",
+                "Mending linen in the quiet afternoon. A maid's hands are never idle, nor are her thoughts.",
+                "Knitting warm wool by the attic window while evening settles over the London chimneys."
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isWindowOrNight) {
+            const pool = [
+                "Staring through diamond panes into the London fog, wondering if anyone out there shares my longing.",
+                "A single tallow flame between me and the grand manor's darkness. My journal is my only confidante.",
+                "Watching the street lanterns flicker through London's mist while keeping my quiet watch.",
+                "When the manor falls silent, I look out over the cobblestones and write my true thoughts."
+            ];
+            return pool[seed % pool.length];
+        }
+
+        if (context.isCorsetOrDressing) {
+            const pool = [
+                "Lacing silk stays in the dressing room while listening to low laughter echo down the gallery.",
+                "Silk and ribbons for the ladies, coarse linen for me—yet our secret desires are not so different.",
+                "Fastening silk buttons in the golden afternoon light before the carriage arrives."
+            ];
+            return pool[seed % pool.length];
+        }
+
+        const fallbackPool = [
+            "In the quiet corners of this 18th-century manor, every candle flame reveals a secret.",
+            "Walking softly so the floorboards never tell where Betty has been.",
+            "My hands belong to the house, but my thoughts by candlelight belong only to my diary."
+        ];
+        return fallbackPool[seed % fallbackPool.length];
+    }
+
+    /**
+     * Parses SECTION 6: X (TWITTER) FORMAT
+     * Enforces STRICT 280-character budget, scene grounding, and zero duplicate stock phrases.
+     */
+    parseTwitter(raw, metadata = null) {
         const secMatch = raw.match(/### SECTION 6:\s*🐦 X\s*\(?TWITTER\)? FORMAT[\s\S]*?(?=$)/i)
             || raw.match(/### SECTION 3:\s*🐦 X\s*\(?TWITTER\)? FORMAT[\s\S]*?(?=$)/i);
         const sec = secMatch ? secMatch[0] : '';
+
+        const meta = metadata || this.parseMetadata(raw);
+        const sceneSummary = meta.sceneSummary || '';
+        const theme = meta.theme || 'MORNING';
 
         let tweetBody = '';
         if (sec) {
@@ -273,19 +552,8 @@ class StoryParser {
         tweetBody = this.cleanFieldText(tweetBody);
         tweetBody = tweetBody.replace(/https?:\/\/\S+/g, '').replace(/#\w+/g, '').trim();
 
-        // If tweet body is empty or too short, generate authentic 18th-century fallback from visual summary or general voice
-        if (!tweetBody || tweetBody.length < 15) {
-            const meta = this.parseMetadata(raw);
-            if (meta.theme === 'MORNING') {
-                tweetBody = "Before the London manor stirs, I write my quiet confessions by tallow candlelight in the attic.";
-            } else if (meta.theme === 'MIDDAY') {
-                tweetBody = "Scrubbing the grand halls taught me that the quietest maids hear the loudest secrets.";
-            } else if (meta.theme === 'PREP') {
-                tweetBody = "Lacing heavy silk stays for the evening ball while keeping my own desires locked tight.";
-            } else {
-                tweetBody = "When the candles burn down and the manor sleeps, my diary is the only place I can be truly free.";
-            }
-        }
+        // Enforce scene grounding and deduplication
+        tweetBody = this.generateContextualTweet(sceneSummary, theme, tweetBody);
 
         const hashtags = "#BettyRyal #18thCentury #PeriodDrama";
         const link = this.fanvueUrl;
@@ -296,11 +564,12 @@ class StoryParser {
         // Hashtags = ~37 chars + 2 newlines = 39 chars
         // Max body text length = 280 - 25 - 39 - 5 (safety) = ~210 chars
         const maxBodyLen = 205;
-        if (tweetBody.length > maxBodyLen) {
-            tweetBody = tweetBody.substring(0, maxBodyLen - 3).trim() + '...';
+        let fullTweet = `${tweetBody}\n\n${link}\n\n${hashtags}`.trim();
+        if (fullTweet.length > 280) {
+            const overflow = fullTweet.length - 280;
+            tweetBody = tweetBody.substring(0, Math.max(0, tweetBody.length - overflow - 3)).trim() + '...';
+            fullTweet = `${tweetBody}\n\n${link}\n\n${hashtags}`.trim();
         }
-
-        const fullTweet = `${tweetBody}\n\n${link}\n\n${hashtags}`;
 
         return {
             body: tweetBody,
