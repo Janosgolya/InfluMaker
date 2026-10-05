@@ -342,6 +342,95 @@ ${visionResponse}
         };
     }
 
+    /**
+     * Platform-Specific Moderation & Compliance Audit
+     * Enforces customized, hardened policies per social platform (especially TikTok Community Guidelines).
+     * @param {string} platform - 'TikTok', 'Instagram', 'Twitter', 'Fanvue', 'Pinterest', 'Reddit'
+     * @param {string} imagePath - Path to image file
+     * @param {Object} [metadata] - Story sidecar or additional attributes
+     */
+    async auditForPlatform(platform, imagePath, metadata = {}) {
+        const normPlatform = (platform || '').trim();
+        const baseAudit = await this.inspectImageWithVision(path.basename(imagePath), imagePath);
+        
+        const platformAudit = {
+            platform: normPlatform,
+            approved: true,
+            reasons: [],
+            baseAudit
+        };
+
+        const sensuality = baseAudit.sensuality_score;
+        const quality = baseAudit.quality_score;
+        const issues = (baseAudit.rejection_reason || '').toLowerCase();
+        const desc = (baseAudit.sidecar_content || '').toLowerCase();
+        const textToCheck = (metadata.caption || metadata.tweetText || metadata.storyText || '').toLowerCase();
+
+        // TIKTOK STRICTEST POLICIES (Preventing bans, 0-views & shadowbans)
+        if (normPlatform.toLowerCase() === 'tiktok') {
+            // 1. Strict Age Recognition Policy: Must appear 22+ (Adult). Zero tolerance for youthful/teen look
+            if (baseAudit.rejection_category === 'underage_appearance' ||
+                issues.includes('minor') || issues.includes('under 18') || issues.includes('teen') ||
+                desc.includes('young girl') || desc.includes('adolescent') || desc.includes('schoolgirl') ||
+                desc.includes('youthful') || desc.includes('teen')) {
+                platformAudit.approved = false;
+                platformAudit.reasons.push('TikTok Age Policy Violation: Subject has youthful/adolescent features. TikTok requires strict mature adult appearance (22+) to protect against minor safety strikes.');
+            }
+
+            // 2. Strict Sensuality & NSFW Policy: Max Sensuality 2 / 10
+            if (sensuality > 2) {
+                platformAudit.approved = false;
+                platformAudit.reasons.push(`TikTok NSFW Policy: Sensuality score is ${sensuality}/10 (Max allowed for TikTok is 2/10). TikTok's algorithms strictly suppress suggestive content from FYP.`);
+            }
+
+            // 3. Prohibited visual elements for TikTok
+            const prohibitedVisuals = [
+                { pattern: /cleavage|breast|low[ -]?cut|revealing neckline/i, label: 'Exposed cleavage or revealing neckline' },
+                { pattern: /unlaced|open corset|loose stays|undergarment|lingerie/i, label: 'Unlaced stays, open corset, or visible undergarments' },
+                { pattern: /bare leg|bare thigh|short hem/i, label: 'Exposed leg or thigh' },
+                { pattern: /lying in bed|sensual bed|bedroom intimate/i, label: 'Sensual bedroom/bed scene' },
+                { pattern: /transparent|see-through|sheer fabric/i, label: 'Sheer or transparent fabric' }
+            ];
+
+            for (const pv of prohibitedVisuals) {
+                if (pv.pattern.test(desc) || pv.pattern.test(issues)) {
+                    platformAudit.approved = false;
+                    platformAudit.reasons.push(`TikTok Community Guideline Violation: ${pv.label} detected.`);
+                }
+            }
+
+            // 4. Prohibited words in TikTok captions
+            const bannedWords = ['confession', 'bedroom', 'stays', 'unlaced', 'sensual', 'naked', 'house of joys', 'secret pleasure', 'ppv', 'exclusive room', 'desire', 'intimate', 'panties', 'touches'];
+            for (const bw of bannedWords) {
+                if (textToCheck.includes(bw)) {
+                    platformAudit.approved = false;
+                    platformAudit.reasons.push(`TikTok Metadata Flag: Banned sensitive word "${bw}" in caption.`);
+                }
+            }
+        } else if (normPlatform.toLowerCase() === 'instagram') {
+            if (sensuality > 4) {
+                platformAudit.approved = false;
+                platformAudit.reasons.push(`Instagram SFW Policy: Sensuality score is ${sensuality}/10 (Max allowed is 4/10).`);
+            }
+            if (baseAudit.rejection_category === 'underage_appearance') {
+                platformAudit.approved = false;
+                platformAudit.reasons.push('Instagram Age Policy: Subject flagged as underage.');
+            }
+        } else if (normPlatform.toLowerCase() === 'pinterest') {
+            if (sensuality > 3) {
+                platformAudit.approved = false;
+                platformAudit.reasons.push(`Pinterest Safety Policy: Sensuality score is ${sensuality}/10 (Max allowed is 3/10).`);
+            }
+        } else if (normPlatform.toLowerCase() === 'twitter' || normPlatform.toLowerCase() === 'x') {
+            if (sensuality > 7) {
+                platformAudit.approved = false;
+                platformAudit.reasons.push(`Twitter Organic Policy: Sensuality score is ${sensuality}/10 (Max allowed for main feed is 7/10).`);
+            }
+        }
+
+        return platformAudit;
+    }
+
     async evaluateAndSortRawGenerations(customSourceDir = null, limit = null) {
         const rawGenDir = customSourceDir || this.config.paths.raw_generations;
         const selectedDir = this.config.paths.selected_content;

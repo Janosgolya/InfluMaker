@@ -188,31 +188,11 @@ class GeorgeProducerAgent {
             results.pinterest = { error: 'Pinterest session not configured (missing config/pinterest_session.json)' };
         }
 
-        // 2.4 Publish to X / Twitter (Video or Image Tweet) - synchronized with nextItem
+        // 2.4 Publish to X / Twitter (High-Res Image Tweet) - synchronized with nextItem
         if (this.ana.twitter.isConfigured()) {
             try {
-                console.log(`[George] 🐦 Delegating X / Twitter Post to Ana...`);
-                // Check if dedicated video exists in Selected_Content/Videos
-                const videoDir = path.join(this.selectedContentDir, 'Videos');
-                let twitterVideoAsset = null;
-                if (fs.existsSync(videoDir)) {
-                    const videoFiles = fs.readdirSync(videoDir).filter(f => f.endsWith('.mp4'));
-                    for (const vf of videoFiles) {
-                        const isPosted = this.ana.log.some(e => e.platform === 'Twitter' && (e.videoFile === vf || e.imageFile === vf));
-                        if (!isPosted) {
-                            twitterVideoAsset = path.join(videoDir, vf);
-                            break;
-                        }
-                    }
-                }
-
-                if (twitterVideoAsset) {
-                    console.log(`[George] 🎥 Found unposted video for X/Twitter: ${path.basename(twitterVideoAsset)}`);
-                    const storyP = twitterVideoAsset.replace('.mp4', '.story.txt');
-                    results.twitter = await this.ana.twitter.publishTweet(twitterVideoAsset, fs.existsSync(storyP) ? storyP : nextItem.storyPath);
-                } else {
-                    results.twitter = await this.ana.publishTwitterPost(theme, { item: nextItem });
-                }
+                console.log(`[George] 🐦 Delegating X / Twitter Post to Ana (Synchronized Image)...`);
+                results.twitter = await this.ana.publishTwitterPost(theme, { item: nextItem });
             } catch (e) {
                 console.error(`[George] ⚠️ Twitter publication error:`, e.message);
                 results.twitter = { error: e.message };
@@ -225,8 +205,44 @@ class GeorgeProducerAgent {
         // 2.6 Publish to TikTok (Dedicated 9:16 Video or Post) - synchronized with nextItem
         try {
             console.log(`[George] 📱 Delegating TikTok Video / Post to Ana...`);
-            const videoDir = path.join(this.selectedContentDir, 'Videos');
-            let postedDedicatedVideo = false;
+
+            // 2.6.1 Check Platform Quarantine Cooldown
+            const quarantinePath = path.join(__dirname, '../../config/quarantine_status.json');
+            let isTikTokQuarantined = false;
+            let quarantineDetails = null;
+
+            if (fs.existsSync(quarantinePath)) {
+                try {
+                    const qData = JSON.parse(fs.readFileSync(quarantinePath, 'utf8'));
+                    if (qData.TikTok && qData.TikTok.quarantined) {
+                        const until = new Date(qData.TikTok.quarantineUntil);
+                        if (new Date() < until) {
+                            isTikTokQuarantined = true;
+                            quarantineDetails = qData.TikTok;
+                        } else {
+                            qData.TikTok.quarantined = false;
+                            fs.writeFileSync(quarantinePath, JSON.stringify(qData, null, 2), 'utf8');
+                            console.log(`[George] 🎉 TikTok quarantine cooldown has EXPIRED. Platform unblocked!`);
+                        }
+                    }
+                } catch (qErr) {
+                    console.error(`[George] ⚠️ Error checking quarantine status:`, qErr.message);
+                }
+            }
+
+            if (isTikTokQuarantined) {
+                console.log(`[George] 🛑 TikTok is in ACTIVE SAFETY QUARANTINE until ${quarantineDetails.quarantineUntil}. Skipping all publications to protect account trust!`);
+                results.tiktok = {
+                    status: 'SKIPPED_QUARANTINE_ACTIVE',
+                    quarantineUntil: quarantineDetails.quarantineUntil,
+                    reason: quarantineDetails.reason
+                };
+            } else {
+                const videoDir = path.join(this.selectedContentDir, 'Videos');
+                let targetTikTokAsset = null;
+                let targetStoryPath = null;
+                let isVideoAsset = false;
+
             if (fs.existsSync(videoDir)) {
                 const videoFiles = fs.readdirSync(videoDir).filter(f => f.endsWith('.mp4'));
                 for (const vf of videoFiles) {
@@ -234,15 +250,53 @@ class GeorgeProducerAgent {
                     if (!isPosted) {
                         const vPath = path.join(videoDir, vf);
                         const storyP = path.join(videoDir, vf.replace('.mp4', '.story.txt'));
-                        results.tiktok = await this.ana.publishTikTokVideo(vPath, fs.existsSync(storyP) ? storyP : null, { theme });
-                        postedDedicatedVideo = true;
+                        targetTikTokAsset = vPath;
+                        targetStoryPath = fs.existsSync(storyP) ? storyP : null;
+                        isVideoAsset = true;
                         break;
                     }
                 }
             }
 
-            if (!postedDedicatedVideo) {
-                results.tiktok = await this.ana.publishTikTokPost(theme, { item: nextItem });
+            if (!targetTikTokAsset && nextItem) {
+                targetTikTokAsset = nextItem.imagePath;
+                targetStoryPath = nextItem.storyPath;
+                isVideoAsset = false;
+            }
+
+            if (targetTikTokAsset) {
+                let storyText = '';
+                if (targetStoryPath && fs.existsSync(targetStoryPath)) {
+                    storyText = fs.readFileSync(targetStoryPath, 'utf8');
+                }
+
+                console.log(`[George] 🛡️ Running Jones Platform Compliance Audit for TikTok...`);
+                let visualCheckAsset = targetTikTokAsset;
+                if (isVideoAsset) {
+                    const candidateJpg = targetTikTokAsset.replace('.mp4', '.jpg');
+                    visualCheckAsset = fs.existsSync(candidateJpg) ? candidateJpg : (nextItem ? nextItem.imagePath : targetTikTokAsset);
+                }
+
+                const ttAudit = await this.jones.auditForPlatform('TikTok', visualCheckAsset, { storyText });
+
+                if (!ttAudit.approved) {
+                    console.log(`[George] 🚨 TikTok Upload BLOCKED by Jones Platform Audit:`);
+                    ttAudit.reasons.forEach(r => console.log(`   ⛔ ${r}`));
+                    results.tiktok = {
+                        status: 'BLOCKED_BY_SAFETY_FILTER',
+                        reasons: ttAudit.reasons,
+                        asset: path.basename(targetTikTokAsset)
+                    };
+                } else {
+                    console.log(`[George] ✅ TikTok Compliance Audit PASSED! Proceeding with upload.`);
+                    if (isVideoAsset) {
+                        results.tiktok = await this.ana.publishTikTokVideo(targetTikTokAsset, targetStoryPath, { theme });
+                    } else {
+                        results.tiktok = await this.ana.publishTikTokPost(theme, { item: nextItem });
+                    }
+                }
+            } else {
+                results.tiktok = { status: 'NO_CONTENT_AVAILABLE' };
             }
         } catch (e) {
             console.error(`[George] ⚠️ TikTok publication error:`, e.message);

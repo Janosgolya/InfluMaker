@@ -1,0 +1,22 @@
+{
+  "TikTok": {
+    "quarantined": true,
+    "quarantineUntil": "2026-10-08T20:15:00.000Z",
+    "reason": "Algorithmic shadowban & CAPTCHA puzzle reset cooldown (72h trust recovery)"
+  },
+  "Twitter": {
+    "quarantined": false,
+    "quarantineUntil": null,
+    "reason": "Restriction lifted, 32 duplicate video tweets purged, safe image posting active"
+  },
+  "Instagram": {
+    "quarantined": false,
+    "quarantineUntil": null,
+    "reason": "Operating normally"
+  },
+  "Fanvue": {
+    "quarantined": false,
+    "quarantineUntil": null,
+    "reason": "Operating normally"
+  }
+}

@@ -16,6 +16,11 @@ class StoryParser {
     cleanFieldText(text) {
         if (!text) return '';
         let cleaned = text.trim();
+        // Check if entire text is a prompt placeholder e.g. [A punchy, breathless...] or [Teasing 1-sentence...]
+        if (/^\[.*\]$/s.test(cleaned) ||
+            /micro-confession|strictly under|1-sentence caption|teasing 1-sentence|zero hashtags|punchy, breathless/i.test(cleaned)) {
+            return '';
+        }
         // Strip wrapping quotes (single, double, smart quotes)
         cleaned = cleaned.replace(/^["'“«]+|["'”»]+$/g, '').trim();
         // Strip markdown bold/italics wrappers around full lines

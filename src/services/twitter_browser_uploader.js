@@ -2,11 +2,12 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
+const humanEmulator = require('./human_emulator');
 
 const SESSION_PATH = path.join(__dirname, '../../config/twitter_session.json');
 
 /**
- * Uploads an image post with copy to X (Twitter)
+ * Uploads an image post with copy to X (Twitter) using advanced stealth & human emulation
  * @param {Object} options
  * @param {string} options.imagePath - Path to image file
  * @param {string} options.tweetText - Text content for the tweet
@@ -21,7 +22,7 @@ async function uploadTwitterPost(options) {
     } = options;
 
     console.log('\n======================================================');
-    console.log('🐦 X (TWITTER) POST UPLOADER');
+    console.log('🐦 X (TWITTER) POST UPLOADER (Human Emulation Mode)');
     console.log(`Tweet: "${tweetText.substring(0, 100)}..."`);
     console.log(`Image: ${imagePath}`);
     console.log('======================================================\n');
@@ -57,25 +58,27 @@ async function uploadTwitterPost(options) {
             '--disable-blink-features=AutomationControlled',
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage'
+            '--disable-dev-shm-usage',
+            '--disable-infobars',
+            '--window-size=1440,900'
         ]
     });
 
     const context = await browser.newContext({
         storageState: SESSION_PATH,
         viewport: { width: 1440, height: 900 },
-        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        locale: 'en-US',
+        timezoneId: 'Europe/Warsaw'
     });
 
     const page = await context.newPage();
-    await page.addInitScript(() => {
-        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-    });
+    await humanEmulator.injectStealth(page);
 
     try {
-        console.log('🌐 Navigating to X / Twitter Compose...');
+        console.log('🌐 Navigating to X / Twitter Compose with human pacing...');
         await page.goto('https://x.com/compose/post', { waitUntil: 'domcontentloaded', timeout: 45000 });
-        await page.waitForTimeout(3000);
+        await humanEmulator.randomDelay(3000, 5000);
 
         // Check if redirected to login
         if (page.url().includes('/login') || page.url().includes('/i/flow/login')) {
@@ -85,21 +88,20 @@ async function uploadTwitterPost(options) {
         // Dismiss Cookie Banner if present
         const cookieBanner = page.locator('div[data-testid="BottomBar"], div[role="dialog"]').filter({ hasText: /cookies/i });
         if (await cookieBanner.isVisible({ timeout: 3000 }).catch(() => false)) {
-            console.log('🍪 Dismissing Twitter Cookie Banner...');
+            console.log('🍪 Dismissing Twitter Cookie Banner with human click...');
             const btn = cookieBanner.locator('button').first();
-            await btn.click().catch(() => {});
-            await page.waitForTimeout(1000);
+            await humanEmulator.humanClick(page, btn);
+            await humanEmulator.randomDelay(1000, 2000);
         }
 
-        // 2. Enter Tweet Text
-        console.log('✍️ Populating Tweet Text...');
+        // 2. Enter Tweet Text using Human Emulator
+        console.log('✍️ Populating Tweet Text with realistic human rhythm...');
         const textBox = page.locator('div[data-testid="tweetTextarea_0"], div[role="textbox"][contenteditable="true"]').first();
         await textBox.waitFor({ state: 'visible', timeout: 15000 });
-        await textBox.click();
-        await page.keyboard.type(tweetText, { delay: 5 });
-        console.log('✅ Tweet text entered!');
+        await humanEmulator.humanType(page, textBox, tweetText);
+        console.log('✅ Tweet text entered naturally!');
 
-        await page.waitForTimeout(1000);
+        await humanEmulator.simulateHesitation(1000, 2500);
 
         // 3. Upload Image File
         console.log('📤 Locating media upload input...');
@@ -112,21 +114,21 @@ async function uploadTwitterPost(options) {
         console.log('⏳ Waiting for upload completion and Post button activation...');
         const postBtn = page.locator('button[data-testid="tweetButton"]:not([disabled])').first();
         await postBtn.waitFor({ state: 'visible', timeout: 25000 });
-        await page.waitForTimeout(1500);
+        await humanEmulator.randomDelay(1800, 3200);
 
-        // 5. Click Post Button & Control+Enter
-        console.log('🚀 Clicking Tweet / Post Button...');
-        await page.keyboard.press('Control+Enter');
-        await page.waitForTimeout(1000);
+        // 5. Human click on Post button
+        console.log('🚀 Clicking Tweet / Post Button via human trajectory...');
+        await humanEmulator.humanClick(page, postBtn);
+        await humanEmulator.randomDelay(1500, 3000);
 
         const dialog = page.locator('div[role="dialog"][aria-modal="true"]');
         if (await dialog.isVisible({ timeout: 2000 }).catch(() => false)) {
-            await postBtn.click({ force: true }).catch(() => {});
+            await humanEmulator.humanClick(page, postBtn);
         }
 
         console.log('⏳ Waiting for tweet submission confirmation...');
         await dialog.waitFor({ state: 'detached', timeout: 15000 }).catch(() => {});
-        await page.waitForTimeout(3000);
+        await humanEmulator.randomDelay(3000, 5000);
 
         const confirmationScreenshot = path.join(__dirname, '../../config/twitter_published_confirmation.png');
         await page.screenshot({ path: confirmationScreenshot });
