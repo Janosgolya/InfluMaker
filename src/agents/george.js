@@ -5,6 +5,7 @@ const EveScreenwriterAgent = require('./eve');
 const AnaSocialManager = require('./ana');
 const RoombaAgent = require('./roomba');
 const JonesCensorAgent = require('./jones');
+const BettyAgent = require('./betty');
 const NotificationService = require('../services/notification_service');
 
 class GeorgeProducerAgent {
@@ -19,6 +20,7 @@ class GeorgeProducerAgent {
         this.ana = new AnaSocialManager();
         this.roomba = new RoombaAgent();
         this.jones = new JonesCensorAgent();
+        this.betty = new BettyAgent();
         this.notifier = new NotificationService({ recipient: 'janosgolya@gmail.com' });
         
         this.loadSchedule();
@@ -351,11 +353,40 @@ class GeorgeProducerAgent {
             }
         }
 
+        // 7. Schedule / Execute Post-Publishing Engagement Session for Betty herself
+        try {
+            console.log(`[George] 🌹 Initiating Betty's post-publishing engagement session...`);
+            const bettySchedule = await this.scheduleBettySession({ immediate: true, sendEmail: true });
+            results.bettySession = bettySchedule;
+        } catch (bettyErr) {
+            console.error(`[George] Betty session scheduling note:`, bettyErr.message);
+            results.bettySession = { error: bettyErr.message };
+        }
+
         console.log(`\n======================================================`);
         console.log(`✅ GEORGE: Scheduled Tick Completed Successfully`);
         console.log(`======================================================\n`);
 
         return results;
+    }
+
+    /**
+     * Schedules or launches an irregular post-publication human browsing session for Betty
+     * @param {Object} [options]
+     * @param {number} [options.delayMinMinutes=15]
+     * @param {number} [options.delayMaxMinutes=45]
+     */
+    async scheduleBettySession(options = {}) {
+        const minMin = options.delayMinMinutes || 15;
+        const maxMin = options.delayMaxMinutes || 45;
+        const delayMinutes = Math.floor(Math.random() * (maxMin - minMin + 1)) + minMin;
+        console.log(`[George] 🕯️ Irregular human schedule: Betty will visit her profiles in ~${delayMinutes} minutes.`);
+        
+        if (options.immediate) {
+            console.log(`[George] 🌹 Immediate Betty session triggered...`);
+            return await this.betty.runAutonomousSession({ platform: 'instagram', dryRun: false, sendEmail: true });
+        }
+        return { scheduledInMinutes: delayMinutes };
     }
 
     /**

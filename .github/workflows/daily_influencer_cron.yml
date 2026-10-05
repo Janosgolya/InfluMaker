@@ -85,7 +85,7 @@ jobs:
           git config --global user.name "George [InfluMaker AI]"
           git config --global user.email "george@influmaker.local"
           git checkout -- package-lock.json || true
-          git add config/published_log.json config/.fanvue_auth.json BettyRyal_18centuryServant/
+          git add config/published_log.json config/.fanvue_auth.json config/betty_activity_ledger.json BettyRyal_18centuryServant/
           if ! git diff --cached --quiet; then
             echo "[Git] Changes detected in published_log or media queue. Committing..."
             git commit -m "chore(george): update published_log and media queue after scheduled cycle [skip ci]"

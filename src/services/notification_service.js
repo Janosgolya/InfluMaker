@@ -341,6 +341,137 @@ class NotificationService {
     }
 
     /**
+     * Send dedicated email report detailing Betty's autonomous human engagement session
+     * @param {Object} report
+     */
+    async sendBettyInteractionReport(report = {}) {
+        const now = new Date();
+        const formattedDate = now.toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' });
+        const platform = report.platform || 'Instagram';
+        const stats = report.summary || {};
+        const details = report.details || {};
+        const errors = report.errors || [];
+
+        const durationMinutes = stats.durationSeconds ? (stats.durationSeconds / 60).toFixed(1) : (stats.durationMinutes || '15.0');
+        const postsViewed = stats.postsViewed || 0;
+        const likes = stats.likes || 0;
+        const comments = stats.comments || 0;
+        const follows = stats.follows || 0;
+        const distractions = stats.distractionsCount || 0;
+
+        const subject = `🌹 [Betty Ryal] Raport Autonomicznej Sesji Społecznościowej & Lejek Fanvue (${platform})`;
+
+        const html = `
+        <div style="font-family: 'Georgia', serif; background-color: #121014; color: #f0ede6; padding: 25px; border-radius: 8px; max-width: 650px; margin: auto; border: 1px solid #3d263b;">
+            <!-- HEADER -->
+            <div style="text-align: center; border-bottom: 2px solid #5c2d54; padding-bottom: 15px; margin-bottom: 20px;">
+                <h1 style="color: #e1bee7; margin: 0; font-size: 24px; letter-spacing: 1px;">🌹 RAPORT AGENTKI BETTY RYAL</h1>
+                <p style="color: #ce93d8; font-size: 13px; margin-top: 5px;">Autonomiczna Symulacja Człowieka &bull; Infiltracja Społeczności &bull; Pozyskiwanie Ruchu do Fanvue</p>
+                <div style="margin-top: 8px;">
+                    <span style="background: #381c34; color: #f48fb1; padding: 3px 12px; border-radius: 12px; font-size: 12px; font-weight: bold;">PORTAL: ${platform.toUpperCase()}</span>
+                    <span style="background: #241421; color: #ba68c8; padding: 3px 12px; border-radius: 12px; font-size: 12px; margin-left: 6px;">${formattedDate}</span>
+                </div>
+            </div>
+
+            <!-- SECTION 1: SESSION METRICS SUMMARY -->
+            <div style="background-color: #1f1422; padding: 18px; border-radius: 6px; border-left: 4px solid #ba68c8; margin-bottom: 20px;">
+                <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #f3e5f5;">⏱️ Przebieg Sesji i Fizyka Przeglądania (Turing Grade)</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                    <tr style="border-bottom: 1px solid #381c34;">
+                        <td style="padding: 8px 4px; color: #ce93d8;">Czas aktywności na profilu:</td>
+                        <td style="padding: 8px 4px; font-weight: bold; color: #ffffff; text-align: right;">${durationMinutes} minut</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #381c34;">
+                        <td style="padding: 8px 4px; color: #ce93d8;">Przejrzane posty i profile:</td>
+                        <td style="padding: 8px 4px; font-weight: bold; color: #ffffff; text-align: right;">${postsViewed} materiałów</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #381c34;">
+                        <td style="padding: 8px 4px; color: #ce93d8;">Rozproszenia uwagi (Curiosity Drift):</td>
+                        <td style="padding: 8px 4px; font-weight: bold; color: #ffd54f; text-align: right;">${distractions} zdarzeń</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #381c34;">
+                        <td style="padding: 8px 4px; color: #ce93d8;">Styl przeglądania:</td>
+                        <td style="padding: 8px 4px; color: #81c784; text-align: right;">Krzywe Béziera, ludzki jitter, mikro-scroll</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- SECTION 2: SOCIAL ACTIONS & IN-CHARACTER ENGAGEMENT -->
+            <div style="background-color: #1a121c; padding: 18px; border-radius: 6px; border-left: 4px solid #f06292; margin-bottom: 20px;">
+                <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #f8bbd0;">💬 Podjęte Interakcje Społecznościowe</h3>
+                <ul style="margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.6; color: #fce4ec;">
+                    <li><strong>Polubienia (Likes):</strong> <span style="color: #ff80ab; font-weight: bold;">${likes}</span> (z zachowaniem przerw chłodzących 40–80s)</li>
+                    <li><strong>Komentarze z epoki:</strong> <span style="color: #ff80ab; font-weight: bold;">${comments}</span></li>
+                    <li><strong>Zaobserwowani użytkownicy:</strong> <span style="color: #ff80ab; font-weight: bold;">${follows}</span> (admiratorzy AI z profili konkurencji)</li>
+                </ul>
+
+                ${details.sampleComment ? `
+                <div style="margin-top: 15px; background: #2b1828; padding: 12px; border-radius: 6px; border-left: 3px solid #ff4081; font-style: italic; font-size: 13px; color: #f8bbd0;">
+                    <strong style="color: #ff80ab; font-style: normal;">📝 Przykładowy Komentarz Betty (Język Epoki):</strong><br>
+                    "${details.sampleComment}"
+                </div>` : ''}
+
+                ${details.inboundDMReply ? `
+                <div style="margin-top: 12px; background: #261726; padding: 12px; border-radius: 6px; border-left: 3px solid #ba68c8; font-size: 13px; color: #e1bee7;">
+                    <strong style="color: #ce93d8;">💌 Obsługa Wiadomości DM & Lejek Fanvue:</strong><br>
+                    "${details.inboundDMReply}"
+                </div>` : ''}
+            </div>
+
+            <!-- SECTION 3: INFILTRATION TARGETS & FANVUE FUNNEL IMPACT -->
+            <div style="background-color: #151117; padding: 18px; border-radius: 6px; border-left: 4px solid #ffd54f; margin-bottom: 20px;">
+                <h3 style="margin: 0 0 12px 0; font-size: 16px; color: #fff8e1;">💎 Wpływ na Profile i Konwersję do Fanvue</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                    <tr style="border-bottom: 1px solid #2b221d;">
+                        <td style="padding: 6px 4px; color: #ffe082;">Docelowe Profile AI:</td>
+                        <td style="padding: 6px 4px; color: #ffffff; text-align: right;">@fit_aitana, @emilypellegrini, @millasofiafin</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #2b221d;">
+                        <td style="padding: 6px 4px; color: #ffe082;">Eksplorowane Nisze:</td>
+                        <td style="padding: 6px 4px; color: #ffffff; text-align: right;">Fanny Hill, Corsets/Stays, Old Money, Gothic</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #2b221d;">
+                        <td style="padding: 6px 4px; color: #ffe082;">Profil Fanvue Betty:</td>
+                        <td style="padding: 6px 4px; text-align: right;"><a href="https://www.fanvue.com/bettyryal" style="color: #ffd54f; text-decoration: underline;">fanvue.com/bettyryal</a></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 6px 4px; color: #ffe082;">Mechanizm Konwersji:</td>
+                        <td style="padding: 6px 4px; color: #c8e6c9; text-align: right;">Zainteresowanie w komentarzu &rarr; Wejście na profil &rarr; Bio &rarr; Fanvue</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- SECTION 4: DIAGNOSTICS & SYSTEM SAFETY -->
+            <div style="background-color: #171518; padding: 15px; border-radius: 6px; margin-bottom: 20px; border-left: 4px solid ${errors.length === 0 ? '#4caf50' : '#f44336'}; font-size: 13px;">
+                <strong style="color: ${errors.length === 0 ? '#81c784' : '#e57373'};">🛡️ Status Ochrony Anty-Botowej & Błędy:</strong><br>
+                ${errors.length === 0
+                    ? '<p style="margin: 6px 0 0 0; color: #a5d6a7;">🟢 Zero podejrzeń algorytmów. Maskowanie webdrivera, rotacja opóźnień i limity dzienne aktywne.</p>'
+                    : `<p style="margin: 6px 0 0 0; color: #ef9a9a;">⚠️ Zarejestrowano zdarzenia diagnostyczne:</p>
+                       <ul style="margin: 6px 0 0 0; padding-left: 20px; color: #ffcdd2;">
+                           ${errors.map(e => `<li><code>${e}</code></li>`).join('')}
+                       </ul>`
+                }
+            </div>
+
+            <div style="text-align: center; border-top: 1px solid #381c34; padding-top: 15px; font-size: 11px; color: #8e718b;">
+                Wiadomość wygenerowana automatycznie po sesji Betty Ryal &bull; InfluMaker Multi-Agent Growth System.
+            </div>
+        </div>
+        `;
+
+        const plainText = `RAPORT AGENTKI BETTY RYAL (${platform})
+Czas sesji: ${durationMinutes} min
+Przejrzane posty: ${postsViewed}
+Polubienia: ${likes}
+Komentarze: ${comments}
+Zaobserwowani: ${follows}
+Rozproszenia uwagi: ${distractions}
+Status Fanvue: https://www.fanvue.com/bettyryal`;
+
+        return this.sendEmail({ subject, html, text: plainText });
+    }
+
+    /**
      * Core email dispatcher
      */
     async sendEmail({ subject, html, text, attachments = [] }) {

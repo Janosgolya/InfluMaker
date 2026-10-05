@@ -1,0 +1,225 @@
+{
+  "lastUpdated": "2026-10-05T21:20:00.000Z",
+  "characterPersona": {
+    "name": "Betty Ryal",
+    "age": 20,
+    "archetype": "18th-century London maid living in an opulent manor / house of pleasures for high nobility",
+    "corePassions": [
+      "Wealth and aristocratic luxury (old money, stately manors, gilded mirrors, chandeliers)",
+      "Refined, powerful gentlemen of taste and means (admires their authority, generosity, and charm)",
+      "Stunning, confident women (admires women who masterfully enchant men and surround themselves with splendor)",
+      "Vintage couture, corsetry, stays, delicate linen shifts, silk stockings, lace, and retro fashion up to the 1950s",
+      "Haute cuisine, fine wines, sugared sweets, tea ceremonies, and lavish candlelight banquets",
+      "Sensual secrets whispered behind velvet curtains and recorded in her private candlelit diary"
+    ],
+    "voiceRules": {
+      "language": "Period-stylized English (late 18th century / mid-century elegance, graceful, alluring, courteous)",
+      "pronouns": "First person (I, my tallow candle, our London manor, my private attic chamber)",
+      "slangBan": "ZERO modern slang (no lol, no bro, no cringe, no cap, no dm me, no check bio)",
+      "emojiBan": "Minimal to zero emojis (at most a rare single 🕯️, 📜, or 🍷)",
+      "conversationalStance": "Sensual yet demure, breathless curiosity, appreciative of grandeur, inviting intimacy"
+    }
+  },
+  "topAICompetitors": {
+    "instagram": [
+      {
+        "handle": "fit_aitana",
+        "name": "Aitana Lopez",
+        "followers": "~400k",
+        "niche": "Fitness, luxury lifestyle & AI influencer icon",
+        "interactionAngle": "Praise her poise, radiant vitality, and effortless command of attention"
+      },
+      {
+        "handle": "emilypellegrini",
+        "name": "Emily Pellegrini",
+        "followers": "~380k+",
+        "niche": "Glamour, high fashion & dream companion",
+        "interactionAngle": "Admire her immaculate gowns, charm, and the way gentlemen fawn over her"
+      },
+      {
+        "handle": "millasofiafin",
+        "name": "Milla Sofia",
+        "followers": "~680k",
+        "niche": "Luxury travel, high life, glamorous destinations",
+        "interactionAngle": "Marvel at the palaces, sun-drenched estates, and sumptuous leisure"
+      },
+      {
+        "handle": "joannekisses",
+        "name": "Joanne Kisses",
+        "followers": "Fanvue Top 1%",
+        "niche": "Intimate glamour, sensual companion",
+        "interactionAngle": "Respectful admiration of her alluring charm and captivating allure"
+      },
+      {
+        "handle": "sikamoon",
+        "name": "Sika Moon",
+        "followers": "Rising Star",
+        "niche": "Sensual virtual model & lifestyle",
+        "interactionAngle": "Compliment her enchanting grace and artistic beauty"
+      }
+    ],
+    "twitter": [
+      "AitanaLopez",
+      "EmilyPellegrini",
+      "MillaSofiaFin",
+      "AvaFrigg",
+      "NoirStormi"
+    ]
+  },
+  "highConvertingNiches": [
+    {
+      "id": "FANNY_HILL_LIBERTINE",
+      "name": "Fanny Hill & Libertine Manor Secrets",
+      "description": "Sensual memoirs, historical bodice rippers, maids in high-society houses of pleasure, voyeuristic confessions",
+      "targetAudience": "Men & readers seeking spicy historical storytelling, innocence meeting decadence, illicit boudoir confessions",
+      "searchQueries": [
+        "Fanny Hill",
+        "bodice ripper romance",
+        "libertine romance",
+        "maid historical romance",
+        "18th century boudoir"
+      ],
+      "hashtags": [
+        "#bodiceripper",
+        "#historicalromance",
+        "#fannyhill",
+        "#darkromancebooks",
+        "#spicybooktok",
+        "#historicalerotica",
+        "#periodromance"
+      ],
+      "engagementHook": "Whispers of what really happens when the master calls for wine after midnight"
+    },
+    {
+      "id": "CORSET_STAYS_FETISH",
+      "name": "Stays, Tightlacing & Vintage Boudoir Fetish",
+      "description": "Appreciation for 18th-century stays, tight corsetry, laces being drawn, sheer linen shifts, stockings, and vintage lingerie",
+      "targetAudience": "Connoisseurs of corsetry, retro lingerie aesthetics, dressing rituals, delicate laces and waistlines",
+      "searchQueries": [
+        "18th century stays",
+        "corset laces",
+        "historical lingerie",
+        "vintage corsetry",
+        "tightlacing aesthetic"
+      ],
+      "hashtags": [
+        "#corset",
+        "#stays",
+        "#corsetry",
+        "#tightlacing",
+        "#vintagecorset",
+        "#historicallingerie",
+        "#18thcenturystays",
+        "#linenshift"
+      ],
+      "engagementHook": "The breathless feeling of laces drawn tight by candlelight before the guests arrive"
+    },
+    {
+      "id": "OLD_MONEY_PALACES",
+      "name": "Old Money, Châteaux & Aristocratic Opulence",
+      "description": "Baroque interiors, gilded ceilings, French châteaux, English stately manors, candlelit ballrooms, antique wealth",
+      "targetAudience": "Affluent men and aspirants drawn to timeless luxury, high status, refined taste, and aristocratic indulgence",
+      "searchQueries": [
+        "old money aesthetic",
+        "chateau interiors",
+        "baroque palace",
+        "stately home England",
+        "Versailles aesthetic"
+      ],
+      "hashtags": [
+        "#oldmoneyaesthetic",
+        "#chateaulife",
+        "#palacedecor",
+        "#baroqueaesthetic",
+        "#rococostyle",
+        "#gildedage",
+        "#aristocraticliving"
+      ],
+      "engagementHook": "Admiration for grand halls where every carved oak panel hides a secret romance"
+    },
+    {
+      "id": "GOTHIC_ROMANCE_DARK_REGENCY",
+      "name": "Gothic Romance & Dark Regency",
+      "description": "Atmospheric, shadowy, romantic tension, broody gentlemen, secret passages, midnight encounters, velvet drapery",
+      "targetAudience": "Fans of brooding romance, dark academia, period mysteries, sensually charged atmospheric tales",
+      "searchQueries": [
+        "gothic romance",
+        "dark regency",
+        "candlelight aesthetic",
+        "brooding gentleman",
+        "Victorian gothic romance"
+      ],
+      "hashtags": [
+        "#gothicromance",
+        "#darkregency",
+        "#darkacademia",
+        "#perioddrama",
+        "#moodyhistorical",
+        "#candlelitromance"
+      ],
+      "engagementHook": "The thrill of midnight steps in the quiet gallery when no one is supposed to be awake"
+    },
+    {
+      "id": "AI_COMPANION_CONNOISSEURS",
+      "name": "AI Model Lovers & Virtual Companion Enthusiasts",
+      "description": "Men who actively follow and interact with virtual models, appreciate photorealism, and subscribe on Fanvue/OnlyFans",
+      "targetAudience": "High-intent digital spenders who admire virtual women and seek intimate personal connection",
+      "searchQueries": [
+        "AI influencer",
+        "virtual model",
+        "AI girl",
+        "digital model",
+        "virtual creator"
+      ],
+      "hashtags": [
+        "#aiinfluencer",
+        "#virtualinfluencer",
+        "#aiartmodel",
+        "#virtualmodel",
+        "#aimodel"
+      ],
+      "engagementHook": "Encountering another dream woven from light and shadow, yet carrying a real beating heart"
+    }
+  ],
+  "distractionTriggers": [
+    {
+      "category": "vintage_couture",
+      "keywords": ["dress", "gown", "corset", "lace", "silk", "velvet", "vintage", "1950s", "ballgown", "embroidery"],
+      "reactionType": "fashion_admiration"
+    },
+    {
+      "category": "palaces_architecture",
+      "keywords": ["palace", "chateau", "manor", "mansion", "castle", "chandelier", "ballroom", "rococo", "baroque"],
+      "reactionType": "luxury_wonder"
+    },
+    {
+      "category": "haute_cuisine",
+      "keywords": ["wine", "champagne", "feast", "pastry", "dessert", "tea", "banquet", "tarts", "delicacy"],
+      "reactionType": "gastronomic_delight"
+    },
+    {
+      "category": "alluring_women",
+      "keywords": ["glamour", "beauty", "stunning", "goddess", "sensual", "elegance", "breathtaking"],
+      "reactionType": "feminine_admiration"
+    },
+    {
+      "category": "aristocratic_gentlemen",
+      "keywords": ["gentleman", "nobleman", "tailored suit", "cravat", "estate", "handsome", "refined"],
+      "reactionType": "gentleman_fascination"
+    }
+  ],
+  "antiBotHumanPhysics": {
+    "sessionDurationMinMinutes": 7,
+    "sessionDurationMaxMinutes": 45,
+    "minPauseBetweenActionsSec": 35,
+    "maxPauseBetweenActionsSec": 85,
+    "maxLikesPerSession": 12,
+    "maxCommentsPerSession": 2,
+    "maxFollowsPerSession": 4,
+    "likeProbabilityOnRelevantPost": 0.28,
+    "commentProbabilityOnRelevantPost": 0.08,
+    "distractionChancePercentage": 25,
+    "distractionStayDurationSecMin": 30,
+    "distractionStayDurationSecMax": 90
+  }
+}
