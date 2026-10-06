@@ -69,11 +69,36 @@ class HumanEmulator {
                 configurable: true
             });
 
-            // Mock hardware concurrency
+            // Mock hardware concurrency and device memory
             Object.defineProperty(navigator, 'hardwareConcurrency', {
                 get: () => 8,
                 configurable: true
             });
+            Object.defineProperty(navigator, 'deviceMemory', {
+                get: () => 8,
+                configurable: true
+            });
+
+            // Mock platform
+            Object.defineProperty(navigator, 'platform', {
+                get: () => 'Win32',
+                configurable: true
+            });
+
+            // Mock WebGL unmasked vendor & renderer (masks Linux SwiftShader/Mesa)
+            const overrideWebGL = (proto) => {
+                if (!proto) return;
+                const oldGetParam = proto.getParameter;
+                proto.getParameter = function(param) {
+                    if (param === 37445) return 'Google Inc. (NVIDIA)';
+                    if (param === 37446) return 'ANGLE (NVIDIA, NVIDIA GeForce RTX 3060 Direct3D11 vs_5_0 ps_5_0, D3D11)';
+                    return oldGetParam.apply(this, arguments);
+                };
+            };
+            try {
+                if (window.WebGLRenderingContext) overrideWebGL(WebGLRenderingContext.prototype);
+                if (window.WebGL2RenderingContext) overrideWebGL(WebGL2RenderingContext.prototype);
+            } catch (e) {}
 
             // Mock permissions query safely
             if (window.navigator.permissions && window.navigator.permissions.query) {

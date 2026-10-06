@@ -1,5 +1,9 @@
 const humanEmulator = require('./human_emulator');
 const personaEngine = require('./betty_persona_engine');
+const fs = require('fs');
+const path = require('path');
+
+const SAFETY_MODE_PATH = path.resolve(__dirname, '../../config/instagram_safety_mode.json');
 
 /**
  * BettyBehaviorSimulator
@@ -18,6 +22,38 @@ class BettyBehaviorSimulator {
             postsViewed: 0,
             startTime: null
         };
+    }
+
+    /**
+     * Checks if safety cooldown is active for Instagram
+     * @returns {{ active: boolean, reason: string, until: string, limits: object }}
+     */
+    getInstagramSafetyStatus() {
+        if (!fs.existsSync(SAFETY_MODE_PATH)) {
+            return { active: false };
+        }
+        try {
+            const data = JSON.parse(fs.readFileSync(SAFETY_MODE_PATH, 'utf8'));
+            if (data.cooldownActive && data.cooldownUntil) {
+                const untilDate = new Date(data.cooldownUntil);
+                if (new Date() < untilDate) {
+                    return {
+                        active: true,
+                        reason: data.cooldownReason || 'Protective Cooldown',
+                        until: data.cooldownUntil,
+                        limits: data.warmupLimits || { maxLikes: 0, maxComments: 0, maxFollows: 0 }
+                    };
+                } else {
+                    // Expired, toggle off
+                    data.cooldownActive = false;
+                    fs.writeFileSync(SAFETY_MODE_PATH, JSON.stringify(data, null, 2), 'utf8');
+                    console.log(`[BettyBehavior] 🎉 Instagram safety cooldown has naturally EXPIRED. Normal limits restored.`);
+                }
+            }
+        } catch (e) {
+            console.warn(`[BettyBehavior] Warning reading safety mode: ${e.message}`);
+        }
+        return { active: false };
     }
 
     /**
@@ -44,17 +80,38 @@ class BettyBehaviorSimulator {
      * Starts tracking a new browsing session
      */
     startSession(platform = 'instagram') {
-        const durationMs = this.planSessionDurationMs();
+        const safety = platform.toLowerCase() === 'instagram' ? this.getInstagramSafetyStatus() : { active: false };
+
+        let durationMs;
+        let limits;
+
+        if (safety.active) {
+            console.log(`[BettyBehavior] 🛡️ [SAFETY MODE ACTIVE] Protective cooldown active until ${safety.until}`);
+            console.log(`[BettyBehavior] 🔒 Reason: "${safety.reason}"`);
+            console.log(`[BettyBehavior] 🛑 Enforcing STRICT ZERO-ACTION WARMUP: 0 likes, 0 comments, 0 follows.`);
+            // Short, cautious session (3 - 5 minutes)
+            durationMs = (Math.floor(Math.random() * 3) + 3) * 60 * 1000;
+            limits = {
+                maxLikes: 0,
+                maxComments: 0,
+                maxFollows: 0
+            };
+        } else {
+            durationMs = this.planSessionDurationMs();
+            limits = {
+                maxLikes: Math.floor(Math.random() * 5) + 8, // 8-12
+                maxComments: Math.floor(Math.random() * 2) + 1, // 1-2
+                maxFollows: Math.floor(Math.random() * 3) + 2 // 2-4
+            };
+        }
+
         this.activeSession = {
             platform,
             startTime: Date.now(),
             durationMs,
             endTime: Date.now() + durationMs,
-            limits: {
-                maxLikes: Math.floor(Math.random() * 5) + 8, // 8-12
-                maxComments: Math.floor(Math.random() * 2) + 1, // 1-2
-                maxFollows: Math.floor(Math.random() * 3) + 2 // 2-4
-            }
+            limits,
+            isSafetyMode: safety.active
         };
 
         this.sessionStats = {
@@ -67,7 +124,7 @@ class BettyBehaviorSimulator {
         };
 
         const durationMinutes = (durationMs / 60000).toFixed(1);
-        console.log(`[BettyBehavior] 🕯️ Betty sits down to browse ${platform}. Session duration: ${durationMinutes} mins.`);
+        console.log(`[BettyBehavior] 🕯️ Betty sits down to browse ${platform}. Session duration: ${durationMinutes} mins (Limits: Likes=${limits.maxLikes}, Comments=${limits.maxComments}, Follows=${limits.maxFollows}).`);
         return this.activeSession;
     }
 

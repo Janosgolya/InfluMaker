@@ -300,6 +300,7 @@ class GeorgeProducerAgent {
             } else {
                 results.tiktok = { status: 'NO_CONTENT_AVAILABLE' };
             }
+            }
         } catch (e) {
             console.error(`[George] ⚠️ TikTok publication error:`, e.message);
             results.tiktok = { error: e.message };
@@ -384,6 +385,18 @@ class GeorgeProducerAgent {
         
         if (options.immediate) {
             console.log(`[George] 🌹 Immediate Betty session triggered...`);
+
+            // GITHUB ACTIONS DATACENTER GUARD:
+            // Meta / Instagram flags interactive browser sessions originating from datacenter ASNs (Azure / AWS).
+            // Cloud CI/CD environments must ONLY run simulated dry-run audits, never live interactive sessions.
+            if (process.env.GITHUB_ACTIONS === 'true') {
+                console.log(`[George] 🛡️ [GITHUB ACTIONS DATACENTER GUARD ACTIVE]`);
+                console.log(`[George] 🛑 Cloud runner environment detected (Azure ASN).`);
+                console.log(`[George] 🔒 Live Playwright Instagram browsing is SKIPPED to protect account trust and prevent security checkpoints.`);
+                console.log(`[George] 🧪 Running Betty session in safe DRY-RUN audit mode.`);
+                return await this.betty.runAutonomousSession({ platform: 'instagram', dryRun: true, sendEmail: options.sendEmail !== false });
+            }
+
             return await this.betty.runAutonomousSession({ platform: 'instagram', dryRun: false, sendEmail: true });
         }
         return { scheduledInMinutes: delayMinutes };

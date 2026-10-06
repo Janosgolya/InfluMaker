@@ -1,0 +1,15 @@
+{
+  "cooldownActive": true,
+  "cooldownReason": "Post-checkpoint email verification safety recovery (prevent bot flag & action block)",
+  "cooldownUntil": "2026-10-09T18:00:00.000Z",
+  "enforceWarmup": true,
+  "warmupLimits": {
+    "maxLikes": 0,
+    "maxComments": 0,
+    "maxFollows": 0,
+    "maxPostsViewed": 6,
+    "maxSessionDurationMinutes": 5
+  },
+  "datacenterExecutionAllowed": false,
+  "lastChallengeResolvedAt": "2026-10-06T12:00:00.000Z"
+}

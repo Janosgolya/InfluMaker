@@ -110,8 +110,16 @@ class BettyAgent {
     /**
      * Check daily hard limits to prevent social platform algorithm triggers.
      * Normalized key lookup eliminates counter mismatch bug.
+     * Enforces strict zero-action gate when safety cooldown is active.
      */
     canActDaily(actionType) {
+        // Strict safety cooldown check
+        const safety = bettyBehavior.getInstagramSafetyStatus();
+        if (safety.active) {
+            console.log(`[BettyAgent] 🛡️ Safety cooldown active (${safety.reason}). Action '${actionType}' BLOCKED.`);
+            return false;
+        }
+
         const key = this.normalizeActionType(actionType);
         const today = new Date().toISOString().split('T')[0];
         
@@ -218,18 +226,219 @@ class BettyAgent {
     }
 
     /**
+     * Circuit breaker: Checks whether Meta presented an authentication challenge or checkpoint
+     */
+    async detectSecurityChallenge(page) {
+        if (!page) return false;
+        try {
+            const url = page.url() || '';
+            const isChallengeUrl = url.includes('/challenge/') || 
+                                   url.includes('/checkpoint/') || 
+                                   url.includes('/accounts/suspended') ||
+                                   (url.includes('/accounts/login') && !url.includes('next='));
+
+            if (isChallengeUrl) {
+                console.error(`[BettyAgent] 🚨 CRITICAL: Instagram security challenge URL detected: ${url}`);
+                await this.triggerSecurityLockout(page, `Instagram Challenge URL: ${url}`);
+                return true;
+            }
+
+            // Check page content for challenge phrases
+            const challengeTexts = [
+                'Suspicious Activity',
+                'Help us confirm that you own this account',
+                'We noticed unusual activity',
+                'Confirm it\'s you',
+                'Potwierdź, że to Ty',
+                'Zauważyliśmy nietypową aktywność',
+                'Ograniczamy niektóre działania',
+                'Try Again Later',
+                'Feedback_required',
+                'checkpoint_required'
+            ];
+
+            // Check for CAPTCHA elements or verification inputs
+            const captchaElements = await page.locator('iframe[src*="recaptcha"], iframe[src*="hcaptcha"], div.g-recaptcha, input[name="verificationCode"], input[name="security_code"]').count().catch(() => 0);
+            if (captchaElements > 0) {
+                console.error(`[BettyAgent] 🚨 CRITICAL: Interactive CAPTCHA / Verification Code input detected!`);
+                await this.triggerSecurityLockout(page, 'Interactive CAPTCHA / Verification Code Form Present');
+                return true;
+            }
+
+            const bodyLocator = page.locator('body');
+            const pageText = await bodyLocator.innerText({ timeout: 2000 }).catch(() => '');
+            if (pageText) {
+                for (const phrase of challengeTexts) {
+                    if (pageText.toLowerCase().includes(phrase.toLowerCase())) {
+                        console.error(`[BettyAgent] 🚨 CRITICAL: Checkpoint phrase found in page text: "${phrase}"`);
+                        await this.triggerSecurityLockout(page, `Checkpoint phrase detected: "${phrase}"`);
+                        return true;
+                    }
+                }
+            }
+        } catch (e) {
+            if (e.message && e.message.includes('Circuit breaker triggered')) {
+                throw e;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Locks down autonomous operations for 7 days, captures proof screenshot, and alerts the user
+     */
+    async triggerSecurityLockout(page, reason) {
+        const screenshotPath = path.resolve(CONFIG_DIR, 'instagram_challenge_detected.png');
+        try {
+            if (page) await page.screenshot({ path: screenshotPath, fullPage: true }).catch(() => {});
+        } catch (e) {}
+
+        const safetyPath = path.resolve(CONFIG_DIR, 'instagram_safety_mode.json');
+        const quarantineUntil = new Date(Date.now() + 7 * 24 * 3600 * 1000).toISOString();
+        try {
+            const data = {
+                cooldownActive: true,
+                cooldownReason: `AUTOMATIC CIRCUIT BREAKER: ${reason}`,
+                cooldownUntil: quarantineUntil,
+                enforceWarmup: true,
+                warmupLimits: { maxLikes: 0, maxComments: 0, maxFollows: 0, maxPostsViewed: 0, maxSessionDurationMinutes: 0 },
+                datacenterExecutionAllowed: false,
+                lastChallengeDetectedAt: new Date().toISOString()
+            };
+            fs.writeFileSync(safetyPath, JSON.stringify(data, null, 2), 'utf8');
+        } catch (e) {}
+
+        // Send alert email
+        try {
+            const NotificationService = require('../services/notification_service');
+            const notifier = new NotificationService({ recipient: 'janosgolya@gmail.com' });
+            if (notifier && notifier.transporter) {
+                await notifier.transporter.sendMail({
+                    from: `"InfluMaker Security" <${notifier.gmailUser || 'security@influmaker.local'}>`,
+                    to: 'janosgolya@gmail.com',
+                    subject: '🚨 URGENT: Instagram Security Checkpoint Detected - Automation Paused',
+                    html: `<h2>Instagram Security Circuit Breaker Activated</h2>
+                           <p><strong>Reason:</strong> ${reason}</p>
+                           <p><strong>Protection:</strong> Autonomous browsing paused for 7 days (until ${quarantineUntil}) to prevent an account ban.</p>
+                           <p>Screenshot saved to <code>config/instagram_challenge_detected.png</code>.</p>`
+                }).catch(() => {});
+            }
+        } catch (mailErr) {}
+
+        throw new Error(`[BettyAgent] Circuit breaker triggered: ${reason}`);
+    }
+
+    /**
+     * SPA in-app navigation: clicks sidebar navigation rail instead of hard page.goto
+     * Uses resilient selector fallbacks across locales and UI variants.
+     */
+    async navigateToInstagramSection(page, section = 'home') {
+        const currentUrl = page.url() || '';
+        const isInstagram = currentUrl.includes('instagram.com');
+
+        if (!isInstagram) {
+            console.log(`[BettyAgent] 🌐 Initializing Instagram session at home base...`);
+            await page.goto('https://www.instagram.com/', { waitUntil: 'domcontentloaded', timeout: 35000 });
+            await humanEmulator.randomDelay(3000, 5000);
+            await this.dismissInstagramPopups(page);
+            await this.detectSecurityChallenge(page);
+            return;
+        }
+
+        await this.detectSecurityChallenge(page);
+
+        if (section === 'home') {
+            if (currentUrl === 'https://www.instagram.com/' || currentUrl === 'https://www.instagram.com') {
+                return;
+            }
+            const homeSelectors = [
+                'a[href="/"]',
+                'svg[aria-label="Home"]',
+                'svg[aria-label="Strona główna"]',
+                'div[role="navigation"] a[href="/"]'
+            ];
+            for (const sel of homeSelectors) {
+                const el = page.locator(sel).first();
+                if (await el.isVisible().catch(() => false)) {
+                    console.log(`[BettyAgent] 🏠 Clicking Home navigation rail (${sel})...`);
+                    await humanEmulator.humanClick(page, el);
+                    await humanEmulator.randomDelay(2500, 4500);
+                    await this.detectSecurityChallenge(page);
+                    return;
+                }
+            }
+            await page.goto('https://www.instagram.com/', { waitUntil: 'domcontentloaded', timeout: 35000 });
+            await humanEmulator.randomDelay(2500, 4500);
+            await this.dismissInstagramPopups(page);
+            await this.detectSecurityChallenge(page);
+            return;
+        }
+
+        if (section === 'inbox') {
+            const inboxSelectors = [
+                'a[href="/direct/inbox/"]',
+                'a[href^="/direct/"]',
+                'svg[aria-label="Messages"]',
+                'svg[aria-label="Direct"]',
+                'svg[aria-label="Wiadomości"]'
+            ];
+            for (const sel of inboxSelectors) {
+                const el = page.locator(sel).first();
+                if (await el.isVisible().catch(() => false)) {
+                    console.log(`[BettyAgent] 💌 Clicking Direct Messages navigation rail (${sel})...`);
+                    await humanEmulator.humanClick(page, el);
+                    await humanEmulator.randomDelay(3000, 5000);
+                    await this.detectSecurityChallenge(page);
+                    return;
+                }
+            }
+            console.log(`[BettyAgent] Navigating to inbox directly...`);
+            await page.goto('https://www.instagram.com/direct/inbox/', { waitUntil: 'domcontentloaded', timeout: 35000 });
+            await humanEmulator.randomDelay(3000, 5000);
+            await this.dismissInstagramPopups(page);
+            await this.detectSecurityChallenge(page);
+            return;
+        }
+
+        if (section === 'explore') {
+            const exploreSelectors = [
+                'a[href="/explore/"]',
+                'a[href^="/explore/"]',
+                'svg[aria-label="Explore"]',
+                'svg[aria-label="Odkrywaj"]',
+                'svg[aria-label="Search"]'
+            ];
+            for (const sel of exploreSelectors) {
+                const el = page.locator(sel).first();
+                if (await el.isVisible().catch(() => false)) {
+                    console.log(`[BettyAgent] 🔍 Clicking Explore navigation rail (${sel})...`);
+                    await humanEmulator.humanClick(page, el);
+                    await humanEmulator.randomDelay(3000, 5000);
+                    await this.detectSecurityChallenge(page);
+                    return;
+                }
+            }
+            await page.goto('https://www.instagram.com/explore/', { waitUntil: 'domcontentloaded', timeout: 35000 });
+            await humanEmulator.randomDelay(3000, 5000);
+            await this.dismissInstagramPopups(page);
+            await this.detectSecurityChallenge(page);
+            return;
+        }
+    }
+
+    /**
      * Browses home feed naturally like a human with reading pauses and curiosity distractions
      */
     async browseInstagramFeed(page) {
         console.log(`\n[BettyAgent] 📰 Betty begins browsing her Instagram feed...`);
         try {
-            await page.goto('https://www.instagram.com/', { waitUntil: 'domcontentloaded', timeout: 35000 });
-            await humanEmulator.randomDelay(3000, 5000);
+            await this.navigateToInstagramSection(page, 'home');
             await this.dismissInstagramPopups(page);
 
-            const scrollRounds = Math.floor(Math.random() * 3) + 3; // 3 to 5 scrolls
+            const scrollRounds = Math.floor(Math.random() * 2) + 2; // 2 to 3 scrolls
             for (let r = 0; r < scrollRounds; r++) {
                 if (!bettyBehavior.isSessionActive()) break;
+                if (await this.detectSecurityChallenge(page)) break;
 
                 console.log(`[BettyAgent] 📜 Scrolling feed round ${r + 1}/${scrollRounds}...`);
                 await bettyBehavior.humanBrowseScroll(page, 2);
@@ -249,8 +458,8 @@ class BettyAgent {
                         await bettyBehavior.gazePause(2);
                     });
 
-                    // Occasional like if relevant
-                    const shouldLike = Math.random() < 0.25;
+                    // Occasional like if relevant (canActDaily returns false during cooldown)
+                    const shouldLike = Math.random() < 0.20;
                     if (shouldLike && this.canActDaily('likes')) {
                         const likeBtn = currentPost.locator('svg[aria-label="Like"], svg[aria-label="Lubię to!"]').first();
                         if (await likeBtn.isVisible().catch(() => false)) {
@@ -261,6 +470,7 @@ class BettyAgent {
                 }
             }
         } catch (err) {
+            if (err.message && err.message.includes('Circuit breaker')) throw err;
             console.warn(`[BettyAgent] Notice during feed browsing: ${err.message}`);
         }
     }
@@ -269,12 +479,21 @@ class BettyAgent {
      * Infiltrates top AI Influencer profiles, engages with their posts, and scouts their commenters
      */
     async scoutTopAIInfluencers(page) {
+        // Enforce safety cooldown gate
+        const safety = bettyBehavior.getInstagramSafetyStatus();
+        if (safety.active) {
+            console.log(`[BettyAgent] 🛡️ AI Influencer scouting SKIPPED during protective safety cooldown.`);
+            return;
+        }
+
         console.log(`\n======================================================`);
         console.log(`👑 BETTY AGENT: TOP AI INFLUENCER COMMUNITY INFILTRATION`);
         console.log(`======================================================\n`);
 
         const competitors = this.intelligence.topAICompetitors.instagram || [];
         if (competitors.length === 0) return;
+
+        if (await this.detectSecurityChallenge(page)) return;
 
         // Pick 1-2 competitors to visit during this session
         const rawTarget = competitors[Math.floor(Math.random() * competitors.length)];
@@ -288,6 +507,7 @@ class BettyAgent {
             await page.goto(`https://www.instagram.com/${targetHandle}/`, { waitUntil: 'domcontentloaded', timeout: 35000 });
             await humanEmulator.randomDelay(3500, 6000);
             await this.dismissInstagramPopups(page);
+            if (await this.detectSecurityChallenge(page)) return;
 
             // Gaze at their grid like an admirer
             console.log(`[BettyAgent] 👗 Betty gazes at @${targetHandle}'s aesthetic grid...`);
@@ -390,12 +610,21 @@ class BettyAgent {
      * Explores high-converting subculture niches (Fanny Hill, Corsets/Stays, Old Money, Gothic Romance)
      */
     async scoutNiches(page) {
+        // Enforce safety cooldown gate
+        const safety = bettyBehavior.getInstagramSafetyStatus();
+        if (safety.active) {
+            console.log(`[BettyAgent] 🛡️ Niche exploration SKIPPED during protective safety cooldown.`);
+            return;
+        }
+
         console.log(`\n======================================================`);
         console.log(`🕯️ BETTY AGENT: SUBCULTURE & NICHE EXPLORATION`);
         console.log(`======================================================\n`);
 
         const niches = this.intelligence.highConvertingNiches || [];
         if (niches.length === 0) return;
+
+        if (await this.detectSecurityChallenge(page)) return;
 
         const chosenNiche = niches[Math.floor(Math.random() * niches.length)];
         const rawTag = chosenNiche.hashtags[Math.floor(Math.random() * chosenNiche.hashtags.length)];
@@ -408,9 +637,10 @@ class BettyAgent {
             await page.goto(`https://www.instagram.com/explore/tags/${tag}/`, { waitUntil: 'domcontentloaded', timeout: 35000 });
             await humanEmulator.randomDelay(3500, 6000);
             await this.dismissInstagramPopups(page);
+            if (await this.detectSecurityChallenge(page)) return;
 
             // Browse through posts in this niche
-            await bettyBehavior.humanBrowseScroll(page, 3);
+            await bettyBehavior.humanBrowseScroll(page, 2);
             await bettyBehavior.gazePause(2);
 
             // Trigger potential curiosity distraction
@@ -419,6 +649,7 @@ class BettyAgent {
                 await bettyBehavior.gazePause(3);
             });
         } catch (err) {
+            if (err.message && err.message.includes('Circuit breaker')) throw err;
             console.warn(`[BettyAgent] Notice during niche exploration: ${err.message}`);
         }
     }
@@ -432,9 +663,9 @@ class BettyAgent {
         console.log(`======================================================\n`);
 
         try {
-            await page.goto('https://www.instagram.com/direct/inbox/', { waitUntil: 'domcontentloaded', timeout: 35000 });
-            await humanEmulator.randomDelay(3500, 6000);
+            await this.navigateToInstagramSection(page, 'inbox');
             await this.dismissInstagramPopups(page);
+            if (await this.detectSecurityChallenge(page)) return;
 
             const threadLocators = page.locator('div[role="listitem"], div[role="row"]');
             const count = await threadLocators.count().catch(() => 0);
@@ -444,6 +675,7 @@ class BettyAgent {
                 const firstThread = threadLocators.first();
                 await humanEmulator.humanClick(page, firstThread);
                 await humanEmulator.randomDelay(2500, 4500);
+                if (await this.detectSecurityChallenge(page)) return;
 
                 const messages = page.locator('div[role="none"] span, div[dir="auto"]');
                 const msgCount = await messages.count().catch(() => 0);
@@ -457,6 +689,7 @@ class BettyAgent {
                         incomingMessage: lastMsg,
                         turnNumber: 1
                     });
+                    this.lastInboundReply = reply;
                     console.log(`[BettyAgent] ✍️ Betty drafted reply: "${reply}"`);
                     console.log(`[BettyAgent] 🔒 Inbound reply primed and ready for delivery.`);
                 }
@@ -464,6 +697,7 @@ class BettyAgent {
                 console.log(`[BettyAgent] No unread inbound DMs found at this time.`);
             }
         } catch (err) {
+            if (err.message && err.message.includes('Circuit breaker')) throw err;
             console.warn(`[BettyAgent] Notice during DM check: ${err.message}`);
         }
     }
@@ -548,21 +782,43 @@ class BettyAgent {
             browserBundle = await this.launchStealthBrowser(platform, headless);
             const { page } = browserBundle;
 
-            // 1. Check inbound DMs first
-            await this.checkInboundDMs(page);
+            // 1. Initial health and security challenge check
+            await this.navigateToInstagramSection(page, 'home');
+            if (await this.detectSecurityChallenge(page)) {
+                throw new Error('[BettyAgent] Instagram security checkpoint triggered on launch.');
+            }
 
-            // 2. Browse Feed with human pauses & curiosity distractions
-            if (bettyBehavior.isSessionActive()) {
+            // 2. Determine single focused activity for this human session
+            const safety = bettyBehavior.getInstagramSafetyStatus();
+            let selectedActivity = 'FEED';
+
+            if (safety.active) {
+                // In safety cooldown: only passive read activities allowed (70% feed scroll, 30% check DMs)
+                selectedActivity = Math.random() < 0.70 ? 'FEED' : 'DMS';
+                console.log(`[BettyAgent] 🛡️ [COOLDOWN SESSION] Performing PASSIVE focus: ${selectedActivity} (0 likes, 0 follows, 0 comments).`);
+            } else {
+                // Stochastic human choice: pick ONE activity for this session
+                const roll = Math.random();
+                if (roll < 0.45) {
+                    selectedActivity = 'FEED';
+                } else if (roll < 0.70) {
+                    selectedActivity = 'DMS';
+                } else if (roll < 0.85) {
+                    selectedActivity = 'CREATOR';
+                } else {
+                    selectedActivity = 'NICHE';
+                }
+                console.log(`[BettyAgent] 🎯 Single session activity selected: ${selectedActivity}`);
+            }
+
+            // 3. Execute the single chosen activity
+            if (selectedActivity === 'FEED') {
                 await this.browseInstagramFeed(page);
-            }
-
-            // 3. Scout Top AI Influencers & engage with their audience
-            if (bettyBehavior.isSessionActive()) {
+            } else if (selectedActivity === 'DMS') {
+                await this.checkInboundDMs(page);
+            } else if (selectedActivity === 'CREATOR') {
                 await this.scoutTopAIInfluencers(page);
-            }
-
-            // 4. Explore High-Converting Niches
-            if (bettyBehavior.isSessionActive()) {
+            } else if (selectedActivity === 'NICHE') {
                 await this.scoutNiches(page);
             }
 
