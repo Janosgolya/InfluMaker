@@ -127,18 +127,48 @@ async function runInstagramHealthCheck() {
         }
     }
 
-    // 5. Final Diagnostic Summary
+    // 5. Check Safety Mode & Quarantine Status
+    const SAFETY_PATH = path.join(__dirname, '../../config/instagram_safety_mode.json');
+    let safetyMode = { cooldownActive: false };
+    if (fs.existsSync(SAFETY_PATH)) {
+        try {
+            safetyMode = JSON.parse(fs.readFileSync(SAFETY_PATH, 'utf8'));
+        } catch (e) {}
+    }
+    const isCooldownActive = safetyMode.cooldownActive && safetyMode.cooldownUntil && (new Date() < new Date(safetyMode.cooldownUntil));
+
+    console.log(`\n🛡️ Checking Safety Mode & Cooldown: config/instagram_safety_mode.json ...`);
+    if (isCooldownActive) {
+        console.log(`   - Status: 🟡 ACTIVE COOLDOWN until ${safetyMode.cooldownUntil}`);
+        console.log(`   - Reason: ${safetyMode.cooldownReason || 'N/A'}`);
+        console.log(`   - Datacenter execution allowed: ${safetyMode.datacenterExecutionAllowed ? 'YES' : 'NO (Blocked in GitHub Actions)'}`);
+    } else {
+        console.log(`   - Status: 🟢 INACTIVE (Normal operation permitted)`);
+    }
+
+    // 6. Final Diagnostic Summary
     console.log(`\n======================================================`);
     console.log(`📋 DIAGNOSTIC SUMMARY:`);
-    const isOverallHealthy = report.sessionFileValid || report.encFileValid || report.envSecretValid;
+    const filesValid = report.sessionFileValid || report.encFileValid || report.envSecretValid;
+    const liveFailed = report.liveConnection === 'EXPIRED_OR_REJECTED' || report.liveConnection === 'ERROR';
+    const isOverallHealthy = filesValid && !liveFailed;
+
     if (isOverallHealthy) {
         console.log(`Status: 🟢 HEALTHY & READY TO PUBLISH`);
-        console.log(`Instagram automation is configured and protected by strict session guards.`);
+        if (isCooldownActive) {
+            console.log(`Note: Automation is in safety cooldown until ${safetyMode.cooldownUntil}. Posting will resume after.`);
+        } else {
+            console.log(`Instagram automation is configured and protected by strict session guards.`);
+        }
     } else {
-        console.log(`Status: 🔴 SESSION EXPIRED / NOT CONFIGURED`);
+        console.log(`Status: 🔴 SESSION EXPIRED / NOT AUTHENTICATED`);
+        if (liveFailed) {
+            console.log(`Reason: Instagram rejected the saved session cookies during live connection check.`);
+        }
         console.log(`Action Required:`);
         console.log(`1. Double-click LOGIN_INSTAGRAM.bat on your PC`);
         console.log(`2. Log in and switch to @${TARGET_ACCOUNT}`);
+        console.log(`   (Or use option [2] to paste fresh 'sessionid' from your web browser)`);
         console.log(`3. The script will automatically save, validate, and encrypt the fresh session.`);
         console.log(`4. To enable 24/7 cloud posting in GitHub Actions:`);
         console.log(`   Copy contents of config/instagram_session_minified.txt`);

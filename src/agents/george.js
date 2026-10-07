@@ -169,7 +169,51 @@ class GeorgeProducerAgent {
         // 2.2 Publish to Instagram (Grid Feed) - synchronized with nextItem
         try {
             console.log(`[George] 📸 Delegating Instagram Post to Ana...`);
-            results.instagram = await this.ana.publishInstagramPost(theme, { item: nextItem });
+
+            // 2.2.1 Check Instagram Safety Mode Cooldown & Datacenter Guard
+            const instaSafetyPath = path.join(__dirname, '../../config/instagram_safety_mode.json');
+            let isInstagramSafetyBlocked = false;
+            let instaSafetyDetails = null;
+
+            if (fs.existsSync(instaSafetyPath)) {
+                try {
+                    const sData = JSON.parse(fs.readFileSync(instaSafetyPath, 'utf8'));
+                    const isCooldownActive = sData.cooldownActive && sData.cooldownUntil && (new Date() < new Date(sData.cooldownUntil));
+                    const isDatacenterBlocked = (process.env.GITHUB_ACTIONS === 'true') && (sData.datacenterExecutionAllowed === false);
+
+                    if (isCooldownActive || isDatacenterBlocked) {
+                        isInstagramSafetyBlocked = true;
+                        instaSafetyDetails = {
+                            cooldownUntil: sData.cooldownUntil,
+                            reason: isDatacenterBlocked
+                                ? `GitHub Actions Datacenter Guard (datacenterExecutionAllowed is false)`
+                                : (sData.cooldownReason || 'Active Safety Cooldown')
+                        };
+                    } else if (sData.cooldownActive && sData.cooldownUntil && (new Date() >= new Date(sData.cooldownUntil))) {
+                        sData.cooldownActive = false;
+                        fs.writeFileSync(instaSafetyPath, JSON.stringify(sData, null, 2), 'utf8');
+                        console.log(`[George] 🎉 Instagram safety cooldown has naturally EXPIRED. Platform unblocked!`);
+                    }
+                } catch (sErr) {
+                    console.error(`[George] ⚠️ Error checking Instagram safety status (failing safe):`, sErr.message);
+                    isInstagramSafetyBlocked = true;
+                    instaSafetyDetails = {
+                        cooldownUntil: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
+                        reason: `Fail-Safe Lockdown: Error parsing safety config (${sErr.message})`
+                    };
+                }
+            }
+
+            if (isInstagramSafetyBlocked) {
+                console.log(`[George] 🛑 Instagram is PROTECTED by Safety Mode / Datacenter Guard (${instaSafetyDetails.reason}). Skipping Instagram post to protect account trust!`);
+                results.instagram = {
+                    status: 'SKIPPED_SAFETY_MODE_ACTIVE',
+                    cooldownUntil: instaSafetyDetails.cooldownUntil,
+                    reason: instaSafetyDetails.reason
+                };
+            } else {
+                results.instagram = await this.ana.publishInstagramPost(theme, { item: nextItem });
+            }
         } catch (e) {
             console.error(`[George] ⚠️ Instagram publication error:`, e.message);
             results.instagram = { error: e.message };

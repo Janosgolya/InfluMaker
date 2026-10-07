@@ -503,6 +503,25 @@ class AnaSocialManager {
      */
     async verifyAndHealInstagram(expectedCaption = null) {
         console.log(`\n[Ana Inspector] 🔍 Verifying Instagram status on @${this.instagram.profile.username}...`);
+
+        // Check Safety Mode & Datacenter Guard
+        const safetyPath = path.join(__dirname, '../../config/instagram_safety_mode.json');
+        if (fs.existsSync(safetyPath)) {
+            try {
+                const sData = JSON.parse(fs.readFileSync(safetyPath, 'utf8'));
+                const isCooldownActive = sData.cooldownActive && sData.cooldownUntil && (new Date() < new Date(sData.cooldownUntil));
+                const isDatacenterBlocked = (process.env.GITHUB_ACTIONS === 'true') && (sData.datacenterExecutionAllowed === false);
+                if (isCooldownActive || isDatacenterBlocked) {
+                    console.log(`[Ana Inspector] 🛡️ Instagram is in ACTIVE SAFETY COOLDOWN / DATACENTER GUARD. Skipping browser inspection.`);
+                    return {
+                        platform: 'Instagram',
+                        healthy: true,
+                        actionsTaken: [`Skipped browser inspection (Safety mode active until ${sData.cooldownUntil || 'N/A'})`]
+                    };
+                }
+            } catch (e) {}
+        }
+
         const { chromium } = require('playwright');
         const browser = await chromium.launch({
             headless: true,
